@@ -14,6 +14,21 @@ function isDeadlineOpen(item: Item): boolean {
 }
 
 /**
+ * "Upcoming" at day granularity: true for a sitting/reading scheduled today
+ * or later. Source dates (e.g. Saeima committee sittings) are stored as UTC
+ * midnight of the sitting day, so compare against the start of today rather
+ * than the current instant — otherwise a same-day sitting reads as already past.
+ */
+function isUpcoming(isoDate: string | undefined): boolean {
+  if (!isoDate) return false;
+  const d = new Date(isoDate);
+  if (Number.isNaN(d.getTime())) return false;
+  const now = new Date();
+  const startOfToday = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
+  return d.getTime() >= startOfToday;
+}
+
+/**
  * Deterministic rules pass. Runs on every scanned item — cheap, explainable,
  * and the only thing that runs at all when no LLM key is configured.
  */
@@ -40,8 +55,15 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
     matchedRules.push("Startup-relevant ministry");
     score += 10;
   }
-  if (READING_STAGE_BOOST.test(haystack) || (item.stage && READING_STAGE_BOOST.test(item.stage))) {
-    matchedRules.push("Near-final reading (2nd/3rd)");
+  const readingStageMatch =
+    READING_STAGE_BOOST.test(haystack) || Boolean(item.stage && READING_STAGE_BOOST.test(item.stage));
+  const readingUpcoming = isUpcoming(item.date);
+  if (readingStageMatch) {
+    matchedRules.push(
+      readingUpcoming
+        ? "Near-final reading (2nd/3rd) — upcoming"
+        : "Near-final reading (2nd/3rd) — already occurred",
+    );
     score += 15;
   }
   const deadlineOpen = isDeadlineOpen(item);
@@ -62,7 +84,7 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
   let tier: Tier;
   if (excluded && !hasStrongOverride) {
     tier = "excluded";
-  } else if (score >= 65 && (deadlineOpen || READING_STAGE_BOOST.test(haystack))) {
+  } else if (score >= 65 && (deadlineOpen || (readingStageMatch && readingUpcoming))) {
     tier = "act_now";
   } else if (score >= 45) {
     tier = "watch";
