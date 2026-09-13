@@ -74,11 +74,13 @@ export function describeItemDates(item: {
 }): ItemDateLabel[] {
   const out: ItemDateLabel[] = [];
   if (item.deadline) {
-    out.push({
-      label: item.source === "tap_consultations" ? "Public feedback due" : "Comment period closes",
-      iso: item.deadline,
-      isDeadline: true,
-    });
+    const label =
+      item.source === "tap_consultations"
+        ? "Consultation deadline"
+        : NEWS_SOURCES.has(item.source)
+          ? "Application deadline"
+          : "Comment deadline";
+    out.push({ label, iso: item.deadline, isDeadline: true });
   }
   if (!item.dateIsApproximate) {
     const label = MEETING_SOURCES.has(item.source)

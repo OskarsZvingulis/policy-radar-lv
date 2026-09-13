@@ -65,7 +65,14 @@ export function scoreItem(
   }
   const deadlineOpen = isDeadlineStillOpen(item.deadline);
   if (deadlineOpen) {
-    matchedRules.push("Consultation window open");
+    // Same underlying signal (a real, open deadline), but the label must
+    // match what it actually is — a submission window on a news feed reads
+    // nothing like a government consultation.
+    matchedRules.push(
+      item.source === "em_news" || item.source === "liaa_news" || item.source === "altum_news"
+        ? "Application window open"
+        : "Consultation window open",
+    );
     score += 20;
   } else if (item.stage && CONSULTATION_STAGE.test(item.stage)) {
     matchedRules.push("In public consultation");

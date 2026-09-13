@@ -18,8 +18,9 @@ export default function MethodologyPage() {
         <h1 className="font-heading text-2xl font-semibold">What counts as &ldquo;startup-relevant&rdquo;</h1>
         <p className="mt-3 text-base">
           <strong>
-            An item is startup-relevant if it plausibly changes the cost, legality, funding, or
-            market access of building and scaling a young technology company in Latvia.
+            An item is startup-relevant if it plausibly affects the funding, operating costs,
+            obligations, hiring, or market access of startups in Latvia — including support
+            programmes they can apply to.
           </strong>
         </p>
       </div>

@@ -6,7 +6,7 @@
  */
 import { XMLParser } from "fast-xml-parser";
 import type { Item, SourceId } from "../types";
-import { fetchText } from "./fetch-utils";
+import { fetchText, extractDeadlinePhrase } from "./fetch-utils";
 
 interface RssConfig {
   source: SourceId;
@@ -39,6 +39,12 @@ async function collectOne(cfg: RssConfig): Promise<Item[]> {
     const title = String(it.title ?? "").trim();
     const pubDate = it.pubDate ? new Date(String(it.pubDate)).toISOString() : new Date().toISOString();
     const description = it.description ? String(it.description).replace(/<[^>]+>/g, " ").trim() : "";
+    // EM/LIAA/Altum have no structured deadline field, but a support-programme
+    // announcement usually states its own window in prose ("No 9. līdz 24.
+    // septembrim ... aicina pieteikties"). Extract it when present rather than
+    // let a genuine, currently-open application window show as a plain
+    // "Published" date with no actionability at all.
+    const deadline = extractDeadlinePhrase(`${title} ${description}`, pubDate);
     return {
       id: `${cfg.source}:${link || idx}`,
       source: cfg.source,
@@ -46,6 +52,7 @@ async function collectOne(cfg: RssConfig): Promise<Item[]> {
       title,
       url: link,
       date: pubDate,
+      deadline,
       text: description,
     };
   });

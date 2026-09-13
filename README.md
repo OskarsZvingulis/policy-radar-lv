@@ -20,9 +20,9 @@ have no part in. Dropped in favour of one ranked list; see `/methodology`.
 
 ## What counts as "startup-relevant"
 
-> An item is startup-relevant if it plausibly changes the cost, legality,
-> funding, or market access of building and scaling a young technology
-> company in Latvia.
+> An item is startup-relevant if it plausibly affects the funding, operating
+> costs, obligations, hiring, or market access of startups in Latvia —
+> including support programmes they can apply to.
 
 Full definition, with the three scoring axes, boosters, and exclusions, is
 in the app at `/methodology` and in [`lib/relevance/keywords.ts`](lib/relevance/keywords.ts)

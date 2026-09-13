@@ -1,9 +1,9 @@
 # Policy Radar LV — Weekly Digest
 
 Week of 2026-09-07 – 2026-09-13
-Generated 2026-09-13T20:50:38.597Z
+Generated 2026-09-13T21:06:13.228Z
 
-Scanned **316** items across 8 sources → surfaced **55** as startup-relevant (**9** with an open feedback window). _(rules-only mode — no LLM key configured)_
+Scanned **316** items across 8 sources → surfaced **55** as startup-relevant (**12** with an open feedback window). _(rules-only mode — no LLM key configured)_
 
 ## Startup-relevant items (55)
 
@@ -14,6 +14,15 @@ Scanned **316** items across 8 sources → surfaced **55** as startup-relevant (
 _Matched:_ Taxation, Crowdfunding, Fintech / payments, Ecosystem stakeholder named, Near-final reading (2nd/3rd) — already occurred
 
 [Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument)
+
+
+### No prototipa līdz eksporta tirgum: LIAA atver rudens uzņemšanu Biznesa inkubācijas programmā
+
+**Source:** LIAA · **Application deadline:** 2026-09-24 · **Published:** 2026-09-09 · **Relevance:** 75/100
+
+_Matched:_ Incubator / accelerator programme, Young companies addressed, Application window open
+
+[Open source →](https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma)
 
 
 ### Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Noziedzīgi iegūtu līdzekļu legalizācijas un terorisma un proliferācijas finansēšanas novēršanas likumā” (Nr.1386/Lp14; 3 .lasījums). 10…
@@ -27,7 +36,7 @@ _Matched:_ Taxation, Fintech / payments, Near-final reading (2nd/3rd) — alread
 
 ### 26-TA-2109: Grozījumi Ministru kabineta 2024. gada 24. jūlija rīkojumā Nr. 627 "Par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna 2. komponentes "Digitālā transformācija" 2.1. reformu un investīciju virziena "Valsts pārvaldes, tai skaitā pašvaldību, digitālā transformācija" 2.1.2.1.i. investīcijas "Centralizētās platformas un sistēmas" nolūka "Pašvaldību pakalpojumu digitālā transformācija un pašvaldību atbalsta procesu modernizācija un centralizācija" programmas "Pašvaldību koplietošanas platformas" projekta "Pašvaldību vēlēšanu un referendumu IS funkcionalitātes pilnveide" pases, centralizētās funkcijas vai koplietošanas pakalpojumu attīstības plāna apstiprināšanu"
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-16 · **Submitted:** 2026-09-11 · **Relevance:** 70/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-16 · **Submitted:** 2026-09-11 · **Relevance:** 70/100
 
 _Matched:_ Digital services, Platform rules, Startup-relevant ministry, Consultation window open
 
@@ -36,7 +45,7 @@ _Matched:_ Digital services, Platform rules, Startup-relevant ministry, Consulta
 
 ### 26-TA-2079: Par Ministru kabineta atbildes vēstules projektu Saeimas Budžeta un finanšu (nodokļu) komisijas Ēnu ekonomikas apkarošanas apakškomisijai
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Ekonomikas ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-17 · **Submitted:** 2026-09-03 · **Relevance:** 60/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Ekonomikas ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-17 · **Submitted:** 2026-09-03 · **Relevance:** 60/100
 
 _Matched:_ Taxation, Startup-relevant ministry, Consultation window open
 
@@ -52,18 +61,9 @@ _Matched:_ Taxation, Ecosystem stakeholder named, Near-final reading (2nd/3rd) �
 [Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/ECC79249FC0FABA7C2258E66004945CA?OpenDocument)
 
 
-### No prototipa līdz eksporta tirgum: LIAA atver rudens uzņemšanu Biznesa inkubācijas programmā
-
-**Source:** LIAA · **Published:** 2026-09-09 · **Relevance:** 55/100
-
-_Matched:_ Incubator / accelerator programme, Young companies addressed
-
-[Open source →](https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma)
-
-
 ### 26-TA-2150: Valsts digitālās pārvaldes informācijas un komunikācijas tehnoloģiju resursu attīstības kārtība
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-21 · **Submitted:** 2026-09-07 · **Relevance:** 50/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-21 · **Submitted:** 2026-09-07 · **Relevance:** 50/100
 
 _Matched:_ Digital services, Startup-relevant ministry, Consultation window open
 
@@ -72,16 +72,34 @@ _Matched:_ Digital services, Startup-relevant ministry, Consultation window open
 
 ### 26-TA-2115: Grozījumi Ministru kabineta 2024. gada 16. janvāra noteikumos Nr. 55 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa "Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās" 5.1.1.1. pasākuma "Infrastruktūra uzņēmējdarbības atbalstam" īstenošanas noteikumi"
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-15 · **Submitted:** 2026-09-01 · **Relevance:** 50/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Viedās administrācijas un reģionālās attīstības ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-15 · **Submitted:** 2026-09-01 · **Relevance:** 50/100
 
 _Matched:_ EU funds, Startup-relevant ministry, Consultation window open
 
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/bb99bade-e198-4090-87a3-06d1e4eb0dc2)
 
 
+### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
+
+**Source:** Ekonomikas ministrija · **Application deadline:** 2026-09-28 · **Published:** 2026-09-10 · **Relevance:** 45/100
+
+_Matched:_ LIAA instrument, Application window open
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv)
+
+
+### Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem
+
+**Source:** Ekonomikas ministrija · **Application deadline:** 2026-09-17 · **Published:** 2026-09-07 · **Relevance:** 45/100
+
+_Matched:_ LIAA instrument, Application window open
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem)
+
+
 ### 26-TA-2121: Par konceptuālā ziņojuma "Par māksliniecisko kolektīvu vadītāju darba samaksas finansēšanas kārtības maiņu" pirmā risinājuma varianta izvērtēšanu un reformas turpināšanu
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-14 · **Submitted:** 2026-08-31 · **Relevance:** 45/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-14 · **Submitted:** 2026-08-31 · **Relevance:** 45/100
 
 _Matched:_ Payroll / social contributions, Consultation window open
 
@@ -225,7 +243,7 @@ _Matched:_ Taxation, Near-final reading (2nd/3rd) — already occurred
 
 ### 26-TA-2087: Grozījumi Rūpnieciskā īpašuma institūciju un procedūru likumā
 
-**Source:** TAP portāls — Sabiedrības līdzdalība · **Institution:** Tieslietu ministrija · **Stage:** Publiskā apspriešana · **Public feedback due:** 2026-09-15 · **Submitted:** 2026-09-01 · **Relevance:** 40/100
+**Source:** TAP portāls — Sabiedrības līdzdalība · **Institution:** Tieslietu ministrija · **Stage:** Publiskā apspriešana · **Consultation deadline:** 2026-09-15 · **Submitted:** 2026-09-01 · **Relevance:** 40/100
 
 _Matched:_ IP, Consultation window open
 
@@ -243,7 +261,7 @@ _Matched:_ Digital services, Platform rules
 
 ### 26-TA-2181: Grozījumi Ministru kabineta 2023. gada 12. septembra noteikumos Nr. 530 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa "Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās" 5.1.1.5. pasākuma "Unikāla Eiropas mēroga kultūras mantojuma atjaunošana, lai veicinātu to piekļūstamību, attīstot kultūras pakalpojumus" īstenošanas noteikumi"
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-22 · **Submitted:** 2026-09-08 · **Relevance:** 40/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-22 · **Submitted:** 2026-09-08 · **Relevance:** 40/100
 
 _Matched:_ EU funds, Consultation window open
 
@@ -261,7 +279,7 @@ _Matched:_ Company/commercial law, Startup-relevant ministry
 
 ### 26-TA-2147: Grozījumi Ministru kabineta 2024. gada 17. decembra noteikumos Nr. 889 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.3.2. specifiskā atbalsta mērķa "Kultūras un tūrisma lomas palielināšana ekonomiskajā attīstībā, sociālajā iekļaušanā un sociālajās inovācijās" īstenošanas noteikumi"
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-22 · **Submitted:** 2026-09-08 · **Relevance:** 40/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Kultūras ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-22 · **Submitted:** 2026-09-08 · **Relevance:** 40/100
 
 _Matched:_ EU funds, Consultation window open
 
@@ -270,7 +288,7 @@ _Matched:_ EU funds, Consultation window open
 
 ### 26-TA-2087: Grozījumi Rūpnieciskā īpašuma institūciju un procedūru likumā
 
-**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Tieslietu ministrija · **Stage:** Saskaņošana · **Comment period closes:** 2026-09-16 · **Submitted:** 2026-09-02 · **Relevance:** 40/100
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Tieslietu ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-16 · **Submitted:** 2026-09-02 · **Relevance:** 40/100
 
 _Matched:_ IP, Consultation window open
 
@@ -347,24 +365,6 @@ _Matched:_ Taxation
 _Matched:_ Taxation
 
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/685189af-f388-4d28-9a3d-da00f487d79b)
-
-
-### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
-
-**Source:** Ekonomikas ministrija · **Published:** 2026-09-10 · **Relevance:** 25/100
-
-_Matched:_ LIAA instrument
-
-[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv)
-
-
-### Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem
-
-**Source:** Ekonomikas ministrija · **Published:** 2026-09-07 · **Relevance:** 25/100
-
-_Matched:_ LIAA instrument
-
-[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem)
 
 
 ### 26-TA-2216: Par administratīvā sloga mazināšanas stratēģisko mērķi un pasākumiem
@@ -506,11 +506,11 @@ _Matched:_ Public procurement
 
 | Source | Status | Items | Time |
 |---|---|---|---|
-| Ekonomikas ministrija | ok | 20 | 0.2s |
-| TAP portāls — Sabiedrības līdzdalība | ok | 25 | 0.4s |
-| Altum | ok | 10 | 1.1s |
-| LIAA | ok | 20 | 1.4s |
-| TAP portāls — Tiesību aktu projekti | ok | 100 | 2.7s |
-| Valsts sekretāru sanāksme | ok | 6 | 3.4s |
-| Saeima — komisiju sēdes | ok | 48 | 5.8s |
-| Ministru kabineta sēdes | ok | 87 | 7.2s |
+| Altum | ok | 10 | 0.3s |
+| Ekonomikas ministrija | ok | 20 | 0.4s |
+| TAP portāls — Sabiedrības līdzdalība | ok | 25 | 0.6s |
+| LIAA | ok | 20 | 1.1s |
+| TAP portāls — Tiesību aktu projekti | ok | 100 | 3.5s |
+| Valsts sekretāru sanāksme | ok | 6 | 4.5s |
+| Saeima — komisiju sēdes | ok | 48 | 6.4s |
+| Ministru kabineta sēdes | ok | 87 | 8.3s |

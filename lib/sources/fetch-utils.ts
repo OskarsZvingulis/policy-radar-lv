@@ -115,3 +115,47 @@ export function parseLvDate(s: string): string | undefined {
   const [, d, mo, y] = m;
   return new Date(Date.UTC(Number(y), Number(mo) - 1, Number(d))).toISOString();
 }
+
+
+const LV_MONTHS: [RegExp, number][] = [
+  [/janvār/i, 1], [/februār/i, 2], [/^mart/i, 3], [/aprīl/i, 4],
+  [/maij/i, 5], [/jūnij/i, 6], [/jūlij/i, 7], [/august/i, 8],
+  [/septembr/i, 9], [/oktobr/i, 10], [/novembr/i, 11], [/decembr/i, 12],
+];
+
+function lvMonthNumber(word: string): number | undefined {
+  for (const [re, n] of LV_MONTHS) if (re.test(word)) return n;
+  return undefined;
+}
+
+/**
+ * Extract a "līdz DD. mēnesis" (until DD month) deadline from free text —
+ * the phrasing LIAA/Altum/EM use in prose for application and consultation
+ * windows ("No 9. līdz 24. septembrim ... aicina piesakīties"), which never
+ * appears as a structured field the way TAP's deadline column does. Anchored
+ * to the item's own publish year; if the resulting date falls more than ~60
+ * days before publication it is assumed to roll into the following year (a
+ * December post referencing a January close). Returns undefined — never a
+ * guess — when nothing matches, so an item without this phrasing simply
+ * keeps showing its publish date instead of a fabricated deadline.
+ */
+export function extractDeadlinePhrase(text: string, publishedIso: string): string | undefined {
+  const re = /līdz\s+(\d{1,2})\.\s*([A-Za-zĀ-ž]+)/gi;
+  let match: RegExpExecArray | null;
+  let last: { day: number; month: number } | undefined;
+  while ((match = re.exec(text))) {
+    const month = lvMonthNumber(match[2]);
+    if (month) last = { day: Number(match[1]), month };
+  }
+  if (!last) return undefined;
+
+  const published = new Date(publishedIso);
+  if (Number.isNaN(published.getTime())) return undefined;
+  let year = published.getUTCFullYear();
+  let candidate = Date.UTC(year, last.month - 1, last.day);
+  if (candidate < published.getTime() - 60 * 86_400_000) {
+    year += 1;
+    candidate = Date.UTC(year, last.month - 1, last.day);
+  }
+  return new Date(candidate).toISOString();
+}
