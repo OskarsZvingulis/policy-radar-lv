@@ -16,6 +16,7 @@ import { weekBounds } from "./week";
 
 const PER_SOURCE_TIMEOUT_MS = 20_000;
 const LLM_SHORTLIST_SIZE = 25;
+const RECENCY_WINDOW_DAYS = 7;
 
 interface SourceDef {
   id: SourceId;
@@ -33,6 +34,31 @@ const SOURCES: SourceDef[] = [
   { id: "liaa_news", label: "LIAA", run: collectLiaaNews },
   { id: "altum_news", label: "Altum", run: collectAltumNews },
 ];
+
+/**
+ * Only the Saeima collector self-limits to a trailing date window. Every
+ * other source (RSS feeds especially) returns whatever is most recent in
+ * its own feed/listing, with no guarantee that is actually "new this week"
+ * — a low-traffic feed (Altum posts roughly weekly) can still have a
+ * 2-month-old item sitting inside its "10 most recent" window. Confirmed
+ * live: an Altum RSS item published 06 Jul 2026 was still surfacing in a
+ * mid-September digest run. This is the one place that enforces "this is a
+ * WEEKLY digest" for every source, with one deliberate exception: an item
+ * whose action deadline is still open stays visible even if it was
+ * originally published outside the window — staying actionable until its
+ * deadline is the entire point of a consultation window.
+ *
+ * Note: tap_legal_acts stamps `date` as scrape time, not a true submission
+ * date (see sources/tap.ts) — this filter is a structural no-op for that
+ * source specifically; it always passes. That is a pre-existing, documented
+ * limitation of that collector, not something this filter fixes.
+ */
+function isWithinRecencyWindow(item: Item): boolean {
+  const cutoff = Date.now() - RECENCY_WINDOW_DAYS * 86_400_000;
+  if (new Date(item.date).getTime() >= cutoff) return true;
+  if (item.deadline && new Date(item.deadline).getTime() >= Date.now()) return true;
+  return false;
+}
 
 function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   return new Promise((resolve, reject) => {
@@ -93,7 +119,9 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const allItems = sources.flatMap((s) => s.items);
   const totalScanned = allItems.length;
 
-  const ruleScored = scoreItems(allItems);
+  const freshItems = allItems.filter(isWithinRecencyWindow);
+
+  const ruleScored = scoreItems(freshItems);
   const surfaced = ruleScored.filter((i) => i.tier !== "excluded");
 
   const shortlist: LlmShortlistItem[] = [...surfaced]
