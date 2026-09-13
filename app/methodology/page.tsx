@@ -82,7 +82,9 @@ export default function MethodologyPage() {
         <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
           <li>
             <strong className="text-foreground">🔴 Act now</strong> — a consultation deadline is
-            open, or a vote/adoption is imminent. Has a date attached.
+            open, or a vote/adoption is imminent. Has a date attached.{" "}
+            <strong>No relevance score alone ever produces this tier</strong> — it requires that
+            date-based condition regardless of how high the score is.
           </li>
           <li>
             <strong className="text-foreground">🟡 Watch</strong> — moving through

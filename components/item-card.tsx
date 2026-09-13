@@ -43,7 +43,7 @@ export function ItemCard({ item }: { item: ScoredItem }) {
               ⏰ {deadline.text}
             </Badge>
           )}
-          <span className="ml-auto tabular-nums opacity-60">score {item.score}</span>
+          <span className="ml-auto tabular-nums opacity-60">relevance {item.score}</span>
         </div>
       </CardHeader>
       <CardContent>

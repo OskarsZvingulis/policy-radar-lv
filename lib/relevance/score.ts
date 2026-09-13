@@ -37,7 +37,17 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
   const matchedRules: string[] = [];
   let score = 0;
 
-  for (const rule of ALL_AXES) {
+  // A source mentioning its own name in its own press release is not a
+  // signal — it is guaranteed. "Altum instrument" / "LIAA instrument" only
+  // count when the mention comes from somewhere else (a Saeima agenda, a
+  // TAP item, EM news) referencing that org as relevant to the topic.
+  const applicableAxes = ALL_AXES.filter((rule) => {
+    if (rule.id === "capital.altum" && item.source === "altum_news") return false;
+    if (rule.id === "capital.liaa" && item.source === "liaa_news") return false;
+    return true;
+  });
+
+  for (const rule of applicableAxes) {
     if (rule.pattern.test(haystack)) {
       matchedRules.push(rule.label);
       score += rule.weight;

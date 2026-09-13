@@ -17,7 +17,7 @@ function renderItem(item: ScoredItem): string {
   if (item.institution) meta.push(`**Institution:** ${item.institution}`);
   if (item.stage) meta.push(`**Stage:** ${item.stage}`);
   if (item.deadline) meta.push(`**Deadline:** ${fmtDate(item.deadline)}`);
-  meta.push(`**Score:** ${item.score}/100`);
+  meta.push(`**Relevance:** ${item.score}/100`);
   lines.push(meta.join(" · "), "");
   if (item.whyItMatters) {
     lines.push(`> ${item.whyItMatters}`, "");
