@@ -38,16 +38,17 @@ export interface Item {
   text?: string;
 }
 
-export type Tier = "act_now" | "watch" | "fyi" | "excluded";
-
 export interface ScoredItem extends Item {
   score: number;
-  tier: Tier;
   /** Which keyword/taxonomy rules fired — shown for transparency. */
   matchedRules: string[];
   /**
-   * Whether action is still possible: an open deadline, or a reading still
-   * ahead. Act now requires this; the LLM pass may not override it.
+   * True only when there is a real, structured deadline still open (a
+   * consultation close date, a coordination-comment deadline). Never set
+   * from a reading stage or a vote being "imminent" — being about to happen
+   * is not something a reader can act on; only a genuine submission window
+   * is. Governs whether the UI uses action language ("feedback due") versus
+   * plain informational dates ("meeting: ...").
    */
   actionable: boolean;
   /** LLM-written explanation, 1-2 sentences. Absent when running rules-only. */

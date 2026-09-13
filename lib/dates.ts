@@ -49,3 +49,44 @@ export function isWithinTrailingDays(iso: string | undefined, days: number, now:
   const cutoff = startOfTodayUtc(now) - (days - 1) * 86_400_000;
   return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) >= cutoff;
 }
+
+
+/**
+ * What to call an item's date(s) in the UI, chosen by source rather than
+ * guessed from the field name — "deadline" only ever means a genuine
+ * submission window; a meeting or publish date is informational, never
+ * action language.
+ */
+export interface ItemDateLabel {
+  label: string;
+  iso: string;
+  isDeadline: boolean;
+}
+
+const MEETING_SOURCES = new Set(["tap_vss", "tap_mk", "saeima_committees"]);
+const NEWS_SOURCES = new Set(["em_news", "liaa_news", "altum_news"]);
+
+export function describeItemDates(item: {
+  source: string;
+  date: string;
+  deadline?: string;
+  dateIsApproximate?: boolean;
+}): ItemDateLabel[] {
+  const out: ItemDateLabel[] = [];
+  if (item.deadline) {
+    out.push({
+      label: item.source === "tap_consultations" ? "Public feedback due" : "Comment period closes",
+      iso: item.deadline,
+      isDeadline: true,
+    });
+  }
+  if (!item.dateIsApproximate) {
+    const label = MEETING_SOURCES.has(item.source)
+      ? "Meeting date"
+      : NEWS_SOURCES.has(item.source)
+        ? "Published"
+        : "Submitted";
+    out.push({ label, iso: item.date, isDeadline: false });
+  }
+  return out;
+}

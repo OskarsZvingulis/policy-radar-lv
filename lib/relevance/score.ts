@@ -1,4 +1,4 @@
-import type { Item, ScoredItem, Tier } from "../types";
+import type { Item, ScoredItem } from "../types";
 import { isDeadlineStillOpen, isTodayOrLater } from "../dates";
 import {
   ALL_AXES,
@@ -13,7 +13,9 @@ import {
  * Deterministic rules pass. Runs on every scanned item — cheap, explainable,
  * and the only thing that runs at all when no LLM key is configured.
  */
-export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmScored"> {
+export function scoreItem(
+  item: Item,
+): Omit<ScoredItem, "whyItMatters" | "llmScored"> & { relevant: boolean } {
   const haystack = [item.title, item.text, item.stage].filter(Boolean).join(" \n ");
   const matchedRules: string[] = [];
   let score = 0;
@@ -76,30 +78,23 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
 
   score = Math.min(100, score);
 
-  // Timing is urgency, not relevance. An open submission window says when you
-  // could act, never that the subject matters to a startup — without this gate
-  // a consultation boost alone (20pts) clears the 15pt surfacing floor, which
-  // put juvenile-justice and clinical-trial bills into a startup digest.
-  const actionable = deadlineOpen || (readingStageMatch && readingUpcoming);
+  // Actionable means a reader can genuinely do something — a real, open
+  // deadline. A reading stage being "upcoming" is not that: nobody can act on
+  // a vote they have no part in, only be aware of it before it happens. Using
+  // reading-stage timing to grant actionability was the mistake behind the
+  // whole earlier tier system; it is not repeated here.
+  const actionable = deadlineOpen;
 
-  let tier: Tier;
-  if (excluded && !hasStrongOverride) {
-    tier = "excluded";
-  } else if (topicalMatches === 0) {
-    tier = "excluded";
-  } else if (score >= 65 && actionable) {
-    tier = "act_now";
-  } else if (score >= 45) {
-    tier = "watch";
-  } else if (score >= 15) {
-    tier = "fyi";
-  } else {
-    tier = "excluded";
-  }
+  // Surfacing is a flat relevance floor, not a tier: excluded topics, and
+  // items with a real topical hit only from timing/context boosts (no axis or
+  // ecosystem match) never overcome an unrelated deadline alone.
+  const relevant = !(excluded && !hasStrongOverride) && topicalMatches > 0 && score >= 15;
 
-  return { ...item, score, tier, matchedRules, actionable };
+  return { ...item, score, matchedRules, actionable, relevant };
 }
 
-export function scoreItems(items: Item[]): Omit<ScoredItem, "whyItMatters" | "llmScored">[] {
+export function scoreItems(
+  items: Item[],
+): (Omit<ScoredItem, "whyItMatters" | "llmScored"> & { relevant: boolean })[] {
   return items.map(scoreItem);
 }

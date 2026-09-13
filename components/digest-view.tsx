@@ -7,14 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ItemCard } from "@/components/item-card";
 import { SourceStatusRow, type LiveSourceState } from "@/components/source-status";
-import type { DigestResult, ScoredItem, SourceId, Tier } from "@/lib/types";
-
-const TIER_TABS: { key: Tier | "all"; label: string }[] = [
-  { key: "all", label: "All" },
-  { key: "act_now", label: "🔴 Act now" },
-  { key: "watch", label: "🟡 Watch" },
-  { key: "fyi", label: "⚪ FYI" },
-];
+import type { DigestResult, ScoredItem, SourceId } from "@/lib/types";
 
 // Must mirror the SOURCES list in lib/digest/run.ts — used only to render
 // pending placeholders before the first live event for that source arrives.
@@ -49,7 +42,6 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
   );
   const [refreshing, setRefreshing] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
-  const [tierFilter, setTierFilter] = useState<Tier | "all">("all");
   const [sourceFilter, setSourceFilter] = useState<string>("all");
   const started = useRef(false);
 
@@ -84,10 +76,9 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       setDigest(data);
       setLiveSources(toLiveSources(data));
       setRefreshing(false);
+      setRunError(null);
       es.close();
     });
-
-    es.addEventListener("done", () => setRunError(null));
 
     // A failed or dropped stream previously just closed the connection: with no
     // digest yet, the page went on claiming it was scanning, pending dots still
@@ -119,16 +110,18 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
     [digest],
   );
 
+  // A single list ranked by relevance — no urgency tiers. Buckets like
+  // "Act now" implied a reader could influence a vote or reading they have
+  // no part in; the only thing genuinely actionable is a real, open
+  // submission window, which each item states for itself (see actionableCount
+  // and the per-item date badges) rather than a whole category implying it.
   const visibleItems: ScoredItem[] = useMemo(() => {
     if (!digest) return [];
-    return digest.scored.filter((i) => {
-      if (tierFilter !== "all" && i.tier !== tierFilter) return false;
-      if (sourceFilter !== "all" && i.source !== sourceFilter) return false;
-      return true;
-    });
-  }, [digest, tierFilter, sourceFilter]);
+    if (sourceFilter === "all") return digest.scored;
+    return digest.scored.filter((i) => i.source === sourceFilter);
+  }, [digest, sourceFilter]);
 
-  const actNowCount = digest?.scored.filter((i) => i.tier === "act_now").length ?? 0;
+  const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8">
@@ -152,11 +145,11 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
             Scanned <strong className="tabular-nums">{digest.totalScanned}</strong> items across{" "}
             {digest.sources.length} sources → surfaced{" "}
             <strong className="tabular-nums">{digest.totalSurfaced}</strong> as startup-relevant
-            {actNowCount > 0 && (
+            {actionableCount > 0 && (
               <>
                 {" "}
-                (<strong className="text-red-600 dark:text-red-400">{actNowCount}</strong> need
-                action this week)
+                (<strong className="text-red-600 dark:text-red-400">{actionableCount}</strong>{" "}
+                with an open feedback window)
               </>
             )}
             . That&apos;s minutes of reading instead of the ~5 hours this used to take manually.
@@ -185,7 +178,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
           <Alert>
             <AlertTitle>Running rules-only</AlertTitle>
             <AlertDescription>
-              No AI Gateway key configured — tiers and matches below come from the deterministic
+              No AI Gateway key configured — matches below come from the deterministic
               keyword/taxonomy engine only, no LLM-written explanations.{" "}
               <Link href="/methodology" className="underline">
                 See the definition
@@ -210,49 +203,30 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
       {digest && (
         <>
-          <div className="flex flex-col gap-3">
-            <p className="text-xs text-muted-foreground">
-              Tiers rank by <strong>urgency</strong> — can you still act? — not by relevance
-              score. An Act now item with a lower score but a live deadline outranks a Watch item
-              stuck at a higher score because its vote already happened.
-            </p>
-            <div className="flex flex-wrap gap-1.5">
-              {TIER_TABS.map((t) => (
-                <Button
-                  key={t.key}
-                  size="sm"
-                  variant={tierFilter === t.key ? "default" : "outline"}
-                  onClick={() => setTierFilter(t.key)}
-                >
-                  {t.label}
-                </Button>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-1.5">
+            <Button
+              size="sm"
+              variant={sourceFilter === "all" ? "secondary" : "ghost"}
+              onClick={() => setSourceFilter("all")}
+            >
+              All sources
+            </Button>
+            {sourceOptions.map((s) => (
               <Button
+                key={s.id}
                 size="sm"
-                variant={sourceFilter === "all" ? "secondary" : "ghost"}
-                onClick={() => setSourceFilter("all")}
+                variant={sourceFilter === s.id ? "secondary" : "ghost"}
+                onClick={() => setSourceFilter(s.id)}
               >
-                All sources
+                {s.label}
               </Button>
-              {sourceOptions.map((s) => (
-                <Button
-                  key={s.id}
-                  size="sm"
-                  variant={sourceFilter === s.id ? "secondary" : "ghost"}
-                  onClick={() => setSourceFilter(s.id)}
-                >
-                  {s.label}
-                </Button>
-              ))}
-            </div>
+            ))}
           </div>
 
           <div className="flex flex-col gap-4">
             {visibleItems.length === 0 ? (
               <p className="py-10 text-center text-sm text-muted-foreground">
-                No items match this filter this week.
+                No startup-relevant items from this source this week.
               </p>
             ) : (
               visibleItems.map((item) => <ItemCard key={item.id} item={item} />)

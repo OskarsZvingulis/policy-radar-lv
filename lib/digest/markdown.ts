@@ -1,11 +1,5 @@
-import type { DigestResult, ScoredItem, Tier } from "../types";
-
-const TIER_LABEL: Record<Tier, string> = {
-  act_now: "🔴 Act now",
-  watch: "🟡 Watch",
-  fyi: "⚪ FYI",
-  excluded: "Excluded",
-};
+import type { DigestResult, ScoredItem } from "../types";
+import { describeItemDates } from "../dates";
 
 function fmtDate(iso: string): string {
   return new Date(iso).toISOString().slice(0, 10);
@@ -16,7 +10,9 @@ function renderItem(item: ScoredItem): string {
   const meta: string[] = [`**Source:** ${item.sourceLabel}`];
   if (item.institution) meta.push(`**Institution:** ${item.institution}`);
   if (item.stage) meta.push(`**Stage:** ${item.stage}`);
-  if (item.deadline) meta.push(`**Deadline:** ${fmtDate(item.deadline)}`);
+  for (const d of describeItemDates(item)) {
+    meta.push(`**${d.label}:** ${fmtDate(d.iso)}`);
+  }
   meta.push(`**Relevance:** ${item.score}/100`);
   lines.push(meta.join(" · "), "");
   if (item.whyItMatters) {
@@ -35,18 +31,25 @@ export function renderDigestMarkdown(digest: DigestResult): string {
   lines.push(`Week of ${fmtDate(digest.weekStart)} – ${fmtDate(digest.weekEnd)}`);
   lines.push(`Generated ${new Date(digest.generatedAt).toISOString()}`);
   lines.push("");
+
+  const actionableCount = digest.scored.filter((i) => i.actionable).length;
   lines.push(
-    `Scanned **${digest.totalScanned}** items across ${digest.sources.length} sources → surfaced **${digest.totalSurfaced}** as startup-relevant.` +
+    `Scanned **${digest.totalScanned}** items across ${digest.sources.length} sources → surfaced ` +
+      `**${digest.totalSurfaced}** as startup-relevant` +
+      (actionableCount > 0 ? ` (**${actionableCount}** with an open feedback window)` : "") +
+      "." +
       (digest.llmAvailable ? "" : " _(rules-only mode — no LLM key configured)_"),
   );
   lines.push("");
 
-  const tiers: Tier[] = ["act_now", "watch", "fyi"];
-  for (const tier of tiers) {
-    const items = digest.scored.filter((i) => i.tier === tier);
-    if (items.length === 0) continue;
-    lines.push(`## ${TIER_LABEL[tier]} (${items.length})`, "");
-    for (const item of items) lines.push(renderItem(item), "");
+  // A single list, ranked by relevance — not bucketed into urgency tiers.
+  // "Act now" style buckets implied a reader could influence outcomes (a
+  // vote, a reading) that a startup founder has no part in; the only thing
+  // genuinely actionable is a real, open submission window, which each
+  // item states for itself via its date labels rather than a category.
+  if (digest.scored.length > 0) {
+    lines.push(`## Startup-relevant items (${digest.scored.length})`, "");
+    for (const item of digest.scored) lines.push(renderItem(item), "");
   }
 
   lines.push("## Sources scanned", "");

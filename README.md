@@ -3,14 +3,20 @@
 A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
 sources for startup-relevant news with a digest that runs in minutes.
 
-**Live app:** https://policy-radar-lv.vercel.app
+**Live app:** https://policy-radar-lv-seven.vercel.app
 
 ## The problem, reframed
 
 The team's actual bottleneck isn't reading — it's triage. Most of the 5
 hours goes into opening long documents just to decide whether they matter.
-So this isn't a search tool; it's a weekly briefing that answers three
-questions per item: **does this matter, why, and by when do you need to act.**
+The brief asks exactly that: a relevance filter, not an urgency ranking. So
+this is a weekly briefing that answers two questions per item — **does this
+matter, and why** — plus whatever real dates the source itself carries
+(a consultation deadline, a meeting date), shown as plain information. An
+earlier version added a third question, "by when do you need to act," and a
+tier system to match. That was scope creep beyond the brief, and worse, it
+implied a founder could act on things — an imminent vote, a reading — they
+have no part in. Dropped in favour of one ranked list; see `/methodology`.
 
 ## What counts as "startup-relevant"
 
@@ -75,10 +81,11 @@ Refresh (SSE)  ──►  /api/digest/stream  ──►  8 collectors, parallel,
 ```
 
 - **Relevance**: deterministic Latvian keyword/taxonomy engine
-  (`lib/relevance/score.ts`) always runs and alone decides the tier if no LLM
-  is available. When it is, only the shortlist gets sent for a "why it
-  matters" explanation — bounds LLM cost/latency regardless of how busy a
-  given week is.
+  (`lib/relevance/score.ts`) always runs and alone decides what surfaces (and
+  its rank) if no LLM is available. When it is, only the shortlist gets sent
+  for a "why it matters" explanation — bounds LLM cost/latency regardless of
+  how busy a given week is, and the LLM never touches ranking or which dates
+  count as a real deadline.
 - **LLM**: Vercel AI Gateway via a plain `"anthropic/claude-sonnet-5"` model
   string — no provider SDK pinned. The AI SDK docs describe deployed Vercel
   projects auto-authenticating via a `VERCEL_OIDC_TOKEN` the platform injects,
@@ -88,7 +95,7 @@ Refresh (SSE)  ──►  /api/digest/stream  ──►  8 collectors, parallel,
   the live URL rather than assumed. Set `AI_GATEWAY_API_KEY` as a project
   environment variable (or in `.env.local` for local dev, see `.env.example`)
   to turn on LLM-written summaries. Either way the app runs rules-only and
-  still produces a complete, correctly-tiered digest — this was the explicit
+  still produces a complete, correctly-ranked digest — this was the explicit
   design goal, not a fallback bolted on after the fact.
 - **Streaming**: `/api/digest/stream` (SSE) reports each collector's status
   as it resolves, which is what the UI's live "Refresh" view is actually
@@ -112,15 +119,17 @@ npm run build   # type-checks + production build
 ## Verification
 
 - `curl http://localhost:3000/api/digest` and, after deploy,
-  `curl https://policy-radar-lv.vercel.app/api/digest?refresh=1` both return
-  all 8 source statuses as `"ok"` against live data (checked 2026-09-13) —
-  the deployed run finished in ~9s, so the datacenter-IP-blocking risk noted
-  below didn't materialize.
+  `curl https://policy-radar-lv-seven.vercel.app/api/digest?refresh=1` both
+  return all 8 source statuses as `"ok"` against live data — the deployed
+  run finished in single-digit seconds, so the datacenter-IP-blocking risk
+  noted below didn't materialize.
 - Ground-truth check: the Budget Committee's 09.09.2026 agenda item
   *"Grozījumi Kolektīvās finansēšanas pakalpojumu likumā"* (crowdfunding law,
-  3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100
-  and lands in **🔴 Act now**. A routine Ārlietu ministrija EU position paper
-  from the same run does not surface at all.
+  3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100,
+  ranks at the top of the list, and correctly carries no deadline badge —
+  the reading already happened, so there is nothing left to submit. A
+  routine Ārlietu ministrija EU position paper from the same run does not
+  surface at all.
 - `samples/` has a real digest generated from a live run, both as Markdown
   and as the JSON the app itself produces.
 

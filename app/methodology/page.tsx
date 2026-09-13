@@ -57,12 +57,12 @@ export default function MethodologyPage() {
       <section className="flex flex-col gap-2">
         <h2 className="font-heading text-lg font-medium">Signal boosters</h2>
         <p className="text-muted-foreground">
-          Raise an item&apos;s score: the Jaunuzņēmumu darbības atbalsta likums (Startup Law) is
-          named; the TAP policy area is on the allowlist; the responsible institution is EM, FM,
-          VARAM or KEM; a public-consultation window is currently open; the bill is at a 2nd/3rd
-          Saeima reading (near-final — last real chance to weigh in); or an ecosystem stakeholder
-          (LIAA, Altum, FinTech Latvija, LTRK, LDDK, Startin.LV) is invited to the committee
-          discussion.
+          Raise an item&apos;s relevance score: the Jaunuzņēmumu darbības atbalsta likums (Startup
+          Law) is named; the TAP policy area is on the allowlist; the responsible institution is
+          EM, FM, VARAM or KEM; an incubator/accelerator programme or open application round is
+          named; the bill is at a 2nd/3rd Saeima reading (context — see below on why this doesn&apos;t
+          imply an action); or an ecosystem stakeholder (LIAA, Altum, FinTech Latvija, LTRK, LDDK,
+          Startin.LV) is invited to the committee discussion.
         </p>
       </section>
 
@@ -71,30 +71,33 @@ export default function MethodologyPage() {
         <p className="text-muted-foreground">
           Suppressed regardless of keyword match: routine EU position papers, appointments and
           ceremonial items, defence procurement with no tech angle, agriculture/fisheries unless
-          it&apos;s a funding instrument, purely municipal matters.
+          it&apos;s a funding instrument, purely municipal matters, and any item that only matched
+          on timing (an open deadline, a near-final reading) with no substantive topical signal —
+          urgency is not relevance.
         </p>
       </section>
 
       <Separator />
 
       <section className="flex flex-col gap-2">
-        <h2 className="font-heading text-lg font-medium">Output tiers</h2>
-        <ul className="list-disc space-y-1 pl-5 text-muted-foreground">
-          <li>
-            <strong className="text-foreground">🔴 Act now</strong> — a consultation deadline is
-            open, or a vote/adoption is imminent. Has a date attached.{" "}
-            <strong>No relevance score alone ever produces this tier</strong> — it requires that
-            date-based condition regardless of how high the score is.
-          </li>
-          <li>
-            <strong className="text-foreground">🟡 Watch</strong> — moving through
-            inter-ministry coordination; will land eventually but isn&apos;t actionable yet.
-          </li>
-          <li>
-            <strong className="text-foreground">⚪ FYI</strong> — useful context, no action
-            needed this week.
-          </li>
-        </ul>
+        <h2 className="font-heading text-lg font-medium">One ranked list, not urgency tiers</h2>
+        <p className="text-muted-foreground">
+          Results are a single list ordered by relevance score — not bucketed into &ldquo;Act
+          now / Watch / FYI&rdquo; tiers. An earlier version of this tool did that, using language
+          like &ldquo;Act now&rdquo; for a bill approaching a vote. That was a mistake: a founder
+          has no vote and cannot influence most of these processes, so implying an action they
+          could take was misleading. The actual brief only asks whether something is relevant, not
+          how urgent it is to act on.
+        </p>
+        <p className="text-muted-foreground">
+          <strong className="text-foreground">Action language is used only where it&apos;s literally
+          true</strong> — a real, open submission window. Those items carry a <strong>⏰ deadline
+          badge</strong> (&ldquo;Public feedback due&rdquo;, &ldquo;Comment period closes&rdquo;),
+          computed from the source&apos;s own listed deadline, compared by calendar day so the
+          closing day itself still counts as open. Everything else — a committee sitting, a
+          reading, a published article — shows a plain, non-action date (&ldquo;Meeting
+          date&rdquo;, &ldquo;Published&rdquo;) instead: useful to know, nothing to submit.
+        </p>
       </section>
 
       <Separator />
@@ -102,14 +105,15 @@ export default function MethodologyPage() {
       <section className="flex flex-col gap-2">
         <h2 className="font-heading text-lg font-medium">How scoring actually works</h2>
         <p className="text-muted-foreground">
-          Every scanned item first runs through a deterministic Latvian keyword/taxonomy engine —
-          the three axes above, each with its own weighted patterns, plus the boosters and
-          exclusions. This alone decides the tier and is all that runs if no LLM key is
-          configured, so the digest always produces a result. When an AI Gateway key is present,
-          the highest-scoring ~25 items are additionally sent to an LLM which writes the
-          &ldquo;why it matters&rdquo; line and can adjust the tier if it disagrees with the rules
-          — it never sees the full weekly volume, only the shortlist the rules already narrowed
-          down, which keeps cost and latency bounded regardless of how busy a given week is.
+          Every scanned item runs through a deterministic Latvian keyword/taxonomy engine — the
+          three axes above, each with its own weighted patterns, plus the boosters and exclusions
+          — producing the relevance score and the ranked list. This alone decides what surfaces
+          and is all that runs if no LLM key is configured, so the digest always produces a
+          result. When an AI Gateway key is present, the highest-scoring ~25 items are
+          additionally sent to an LLM which writes the &ldquo;why it matters&rdquo; line — it
+          never decides relevance, ranking, or whether something has a real deadline, only
+          explains in plain language why an already-surfaced item matters, and it never sees the
+          full weekly volume, only the shortlist the rules already narrowed down.
         </p>
       </section>
     </div>

@@ -124,7 +124,7 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const freshItems = allItems.filter(isWithinRecencyWindow);
 
   const ruleScored = scoreItems(freshItems);
-  const surfaced = ruleScored.filter((i) => i.tier !== "excluded");
+  const surfaced = ruleScored.filter((i) => i.relevant);
 
   const shortlist: LlmShortlistItem[] = [...surfaced]
     .sort((a, b) => b.score - a.score)
@@ -139,7 +139,6 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
       dateIsApproximate: i.dateIsApproximate,
       deadline: i.deadline,
       sourceLabel: i.sourceLabel,
-      tier: i.tier,
     }));
 
   const { scores: llmResults, ok: llmOk } = await scoreWithLlm(shortlist);
@@ -147,24 +146,21 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const scored: ScoredItem[] = surfaced
     .map((i): ScoredItem => {
       const llm = llmResults.get(i.id);
-      // The LLM may re-rank, but it may not invent urgency: "act now" stays
-      // gated on the same date condition the rules engine checked. Without
-      // this clamp a vote that already happened can be promoted straight back
-      // into Act now, undoing the deterministic guarantee.
-      const llmTier =
-        llm && llm.tier === "act_now" && !i.actionable ? "watch" : llm?.tier;
+      // `relevant` was only ever needed to decide inclusion, above; the final
+      // ScoredItem doesn't carry it. `actionable` is untouched by the LLM
+      // pass — it only ever supplies prose, never a decision that changes
+      // what surfaces or what reads as having a real deadline.
+      const { relevant, ...rest } = i;
+      void relevant;
       return {
-        ...i,
-        tier: llmTier ?? i.tier,
+        ...rest,
         whyItMatters: llm?.whyItMatters,
         llmScored: Boolean(llm),
       };
     })
-    .sort((a, b) => {
-      const tierOrder: Record<string, number> = { act_now: 0, watch: 1, fyi: 2, excluded: 3 };
-      if (tierOrder[a.tier] !== tierOrder[b.tier]) return tierOrder[a.tier] - tierOrder[b.tier];
-      return b.score - a.score;
-    });
+    // A flat, ranked list: highest relevance first. No tier bucketing — the
+    // brief asked for a relevance filter, not an urgency taxonomy.
+    .sort((a, b) => b.score - a.score);
 
   const { start, end } = weekBounds();
 

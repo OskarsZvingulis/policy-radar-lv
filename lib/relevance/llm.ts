@@ -1,9 +1,13 @@
 /**
- * LLM layer: writes the "why it matters" line and can nudge the tier the
- * rules engine already assigned. Only ever sees the shortlist the rules
- * prefilter already narrowed things down to (bounded, see route.ts) —
- * keeps latency and cost predictable regardless of how many items a given
- * week's scan turns up.
+ * LLM layer: writes the "why it matters" line for the highest-scoring
+ * shortlist only (bounded, see run.ts) — keeps latency and cost predictable
+ * regardless of how many items a given week's scan turns up.
+ *
+ * The LLM does not decide relevance, ranking, or whether something is
+ * actionable — those are deterministic (see score.ts). It only explains, in
+ * plain language, why an already-surfaced item matters. That keeps the one
+ * genuinely subjective piece of writing bounded to a shortlist while every
+ * decision that affects what appears at all stays inspectable rule logic.
  *
  * Uses the Vercel AI Gateway as the default provider (a plain
  * "provider/model" string, no provider SDK import) per this project's
@@ -32,7 +36,6 @@ const ResultSchema = z.object({
         .describe(
           "1-2 concrete sentences in English naming the actual mechanism (what changes, what it costs/opens up) — never a restatement of the title",
         ),
-      tier: z.enum(["act_now", "watch", "fyi"]),
     }),
   ),
 });
@@ -48,7 +51,6 @@ export type LlmShortlistItem = Pick<
   | "dateIsApproximate"
   | "deadline"
   | "sourceLabel"
-  | "tier"
 >;
 
 function hasGatewayCredentials(): boolean {
@@ -83,19 +85,17 @@ function buildPrompt(items: LlmShortlistItem[]): string {
   return (
     `${definition}\n\nFor each of the following ${items.length} items from a Latvian policy ` +
     `monitoring digest, write a concrete 1-2 sentence explanation of why it matters to a ` +
-    `startup founder — name the actual mechanism, not the title again. Also assign a tier: ` +
-    `"act_now" ONLY if action is still possible as of today — a deadline that has not passed, `
-    + `or a vote still ahead. A sitting or reading whose date is already past is never "act_now". `
-    + `Use "watch" for something moving through the process but not yet actionable, ` +
-    `"watch" if it is moving through the process but not yet actionable, "fyi" if it is useful ` +
-    `context with nothing to do. Return exactly one entry per item id, ids copied verbatim.\n\n` +
+    `startup founder — name the actual mechanism, not the title again. Do not invent or imply ` +
+    `an action the reader can take (e.g. "submit feedback", "apply now") unless the item's own ` +
+    `deadline field says a submission window is genuinely open — a reading stage or vote date ` +
+    `alone is never something a reader can act on, only something to be aware of. Return exactly ` +
+    `one entry per item id, ids copied verbatim.\n\n` +
     `Items:\n${list}`
   );
 }
 
 export interface LlmScore {
   whyItMatters: string;
-  tier: ScoredItem["tier"];
 }
 
 export interface LlmRunResult {
@@ -121,14 +121,14 @@ export async function scoreWithLlm(shortlist: LlmShortlistItem[]): Promise<LlmRu
     const validIds = new Set(shortlist.map((i) => i.id));
     for (const r of object.items) {
       if (validIds.has(r.id)) {
-        scores.set(r.id, { whyItMatters: r.whyItMatters, tier: r.tier });
+        scores.set(r.id, { whyItMatters: r.whyItMatters });
       }
     }
     return { scores, ok: true };
   } catch {
     // Network hiccup, timeout, quota, malformed output — any of these fall
-    // back to the rule-based tier and matchedRules silently. The digest
-    // must always render something.
+    // back to plain matchedRules silently. The digest must always render
+    // something.
     return { scores, ok: false };
   }
 }
