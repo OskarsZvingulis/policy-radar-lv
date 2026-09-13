@@ -1,7 +1,7 @@
 # Policy Radar LV — Weekly Digest
 
 Week of 2026-09-07 – 2026-09-13
-Generated 2026-09-13T17:27:01.202Z
+Generated 2026-09-13T17:46:15.795Z
 
 Scanned **316** items across 8 sources → surfaced **93** as startup-relevant. _(rules-only mode — no LLM key configured)_
 
@@ -272,24 +272,6 @@ _Matched:_ Fintech / payments
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/eab9f463-424c-42e0-b2c0-393ee0b6679f)
 
 
-### 26-TA-1249: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Informatīvais ziņojums "Par atļauju Iekšlietu ministrijai (Nodokļu un muitas policijai) uzņemties valsts budžeta ilgtermiņa saistības un īstenot Eiropas Savienības programmas "Savienības Krāpšanas apkarošanas programma" (Union Anti-Fraud Programme (EUAF)) līdzfinansēto projektu "Pārliecinošu pierādījumu iegūšana, izmantojot jaunākās novērošanas sistēmas""
-
-**Source:** Ministru kabineta sēde · **Stage:** Ministru kabineta sēde · **Score:** 30/100
-
-_Matched:_ Taxation
-
-[Open source →](https://tapportals.mk.gov.lv/legal_acts/e13306a6-b8c8-4d90-89bc-7f9888c5f00e)
-
-
-### 26-TA-2113: Atbildes projekts Saeimas Budžeta un finanšu (nodokļu) komisijai (par informatīvā ziņojuma sniegšanu saistībā ar Naftas produktu cenu pieauguma ierobežošanas likuma īstenošanu)
-
-**Source:** Ministru kabineta sēde · **Stage:** Ministru kabineta sēde · **Score:** 30/100
-
-_Matched:_ Taxation
-
-[Open source →](https://tapportals.mk.gov.lv/legal_acts/685189af-f388-4d28-9a3d-da00f487d79b)
-
-
 ### Budžeta un finanšu (nodokļu) komisijas sēde: Par apropriācij u pārdalēm un palielināšanu.
 
 **Source:** Saeima — komisiju sēdes · **Stage:** Budžeta un finanšu (nodokļu) komisijas sēde · **Score:** 30/100
@@ -353,76 +335,22 @@ _Matched:_ Taxation
 [Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/ECC79249FC0FABA7C2258E66004945CA?OpenDocument)
 
 
-### Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem
+### 26-TA-1249: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Informatīvais ziņojums "Par atļauju Iekšlietu ministrijai (Nodokļu un muitas policijai) uzņemties valsts budžeta ilgtermiņa saistības un īstenot Eiropas Savienības programmas "Savienības Krāpšanas apkarošanas programma" (Union Anti-Fraud Programme (EUAF)) līdzfinansēto projektu "Pārliecinošu pierādījumu iegūšana, izmantojot jaunākās novērošanas sistēmas""
 
-**Source:** Altum · **Score:** 25/100
+**Source:** Ministru kabineta sēde · **Stage:** Ministru kabineta sēde · **Score:** 30/100
 
-_Matched:_ Altum instrument
+_Matched:_ Taxation
 
-[Open source →](https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/)
-
-
-### ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/)
+[Open source →](https://tapportals.mk.gov.lv/legal_acts/e13306a6-b8c8-4d90-89bc-7f9888c5f00e)
 
 
-### ALTUM padome turpina darbu jaunā sastāvā
+### 26-TA-2113: Atbildes projekts Saeimas Budžeta un finanšu (nodokļu) komisijai (par informatīvā ziņojuma sniegšanu saistībā ar Naftas produktu cenu pieauguma ierobežošanas likuma īstenošanu)
 
-**Source:** Altum · **Score:** 25/100
+**Source:** Ministru kabineta sēde · **Stage:** Ministru kabineta sēde · **Score:** 30/100
 
-_Matched:_ Altum instrument
+_Matched:_ Taxation
 
-[Open source →](https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/)
-
-
-### 22.augustā iespējami traucējumi ALTUM sistēmu darbībā
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/)
-
-
-### Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/)
-
-
-### Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/)
-
-
-### Vilvi Group atklāj siera ražotni Bauskā; projekts līdzfinansēts no lielo investīciju aizdevumu programmas
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/vilvi-group-atklaj-jaunu-siera-razotni-bauska-projekts-lidzfinansets-no-lielo-investiciju-aizdevumu-programmas/)
-
-
-### Ar lielo investīciju programmas līdzfinansējumu Tukumā darbu sāk “Stiga RM” akustisko plātņu rūpnīca
-
-**Source:** Altum · **Score:** 25/100
-
-_Matched:_ Altum instrument
-
-[Open source →](https://www.altum.lv/ar-lielo-investiciju-programmas-lidzfinansejumu-tukuma-darbu-sak-stiga-rm-akustisko-platnu-rupnica/)
+[Open source →](https://tapportals.mk.gov.lv/legal_acts/685189af-f388-4d28-9a3d-da00f487d79b)
 
 
 ### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
@@ -513,6 +441,78 @@ _Matched:_ LIAA instrument
 _Matched:_ LIAA instrument
 
 [Open source →](https://www.liaa.gov.lv/lv/jaunums/700-skolotaji-un-izglitibas-nozares-parstavji-sodien-pulcejas-gada-lielakaja-izglitibas-konference-izaugsmes-kods)
+
+
+### Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/)
+
+
+### ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/)
+
+
+### ALTUM padome turpina darbu jaunā sastāvā
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/)
+
+
+### 22.augustā iespējami traucējumi ALTUM sistēmu darbībā
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/)
+
+
+### Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/)
+
+
+### Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/)
+
+
+### Vilvi Group atklāj siera ražotni Bauskā; projekts līdzfinansēts no lielo investīciju aizdevumu programmas
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/vilvi-group-atklaj-jaunu-siera-razotni-bauska-projekts-lidzfinansets-no-lielo-investiciju-aizdevumu-programmas/)
+
+
+### Ar lielo investīciju programmas līdzfinansējumu Tukumā darbu sāk “Stiga RM” akustisko plātņu rūpnīca
+
+**Source:** Altum · **Score:** 25/100
+
+_Matched:_ Altum instrument
+
+[Open source →](https://www.altum.lv/ar-lielo-investiciju-programmas-lidzfinansejumu-tukuma-darbu-sak-stiga-rm-akustisko-platnu-rupnica/)
 
 
 ### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
@@ -758,6 +758,24 @@ _Matched:_ EU funds
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/365b86a4-b505-4c1f-80af-d2643c79d360)
 
 
+### Publisko izdevumu un revīzijas komisijas sēde
+
+**Source:** Saeima — komisiju sēdes · **Stage:** Publisko izdevumu un revīzijas komisijas sēde · **Score:** 20/100
+
+_Matched:_ Accounting/reporting burden
+
+[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/C55BB1DA59D73DE4C2258E6700481E6B?OpenDocument)
+
+
+### Publisko izdevumu un revīzijas komisijas sēde
+
+**Source:** Saeima — komisiju sēdes · **Stage:** Publisko izdevumu un revīzijas komisijas sēde · **Score:** 20/100
+
+_Matched:_ Accounting/reporting burden
+
+[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/AC2732929FAFAD1FC2258E670042A1B7?OpenDocument)
+
+
 ### 26-TA-2026: Noteikumu projekts "Grozījumi Ministru kabineta 2022. gada 13. septembra noteikumos Nr. 577 "Latvijas Atveseļošanas un noturības mehānisma plāna 2. komponentes "Digitālā transformācija" 2.2. reformu un investīciju virziena "Uzņēmumu digitālā transformācija un inovācijas" 2.2.1.r. "Uzņēmējdarbības digitālās transformācijas pilna cikla atbalsta izveide ar reģionālo tvērumu" 2.2.1.1.i. investīcijas "Atbalsts Digitālo inovāciju centru un reģionālo kontaktpunktu izveidei" īstenošanas noteikumi""
 
 **Source:** Ministru kabineta sēde · **Stage:** Ministru kabineta sēde · **Score:** 20/100
@@ -812,22 +830,13 @@ _Matched:_ EU funds
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1)
 
 
-### Publisko izdevumu un revīzijas komisijas sēde
+### Ilgtspējīgas attīstības komisijas sēde: Latvijas cilvēkkapitāla attīstīb a. Ziņo : Ekonomikas ministrija
 
-**Source:** Saeima — komisiju sēdes · **Stage:** Publisko izdevumu un revīzijas komisijas sēde · **Score:** 20/100
+**Source:** Saeima — komisiju sēdes · **Stage:** Ilgtspējīgas attīstības komisijas sēde · **Score:** 15/100
 
-_Matched:_ Accounting/reporting burden
+_Matched:_ Ecosystem stakeholder named
 
-[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/C55BB1DA59D73DE4C2258E6700481E6B?OpenDocument)
-
-
-### Publisko izdevumu un revīzijas komisijas sēde
-
-**Source:** Saeima — komisiju sēdes · **Stage:** Publisko izdevumu un revīzijas komisijas sēde · **Score:** 20/100
-
-_Matched:_ Accounting/reporting burden
-
-[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/AC2732929FAFAD1FC2258E670042A1B7?OpenDocument)
+[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/2C9E520120E30C40C2258E680042F23B?OpenDocument)
 
 
 ### 26-TA-1136: Informatīvais ziņojums "Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu"
@@ -839,24 +848,15 @@ _Matched:_ Public procurement
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/bf3e8ed7-e37d-4b7e-a4c6-2a2be41b2c3f)
 
 
-### Ilgtspējīgas attīstības komisijas sēde: Latvijas cilvēkkapitāla attīstīb a. Ziņo : Ekonomikas ministrija
-
-**Source:** Saeima — komisiju sēdes · **Stage:** Ilgtspējīgas attīstības komisijas sēde · **Score:** 15/100
-
-_Matched:_ Ecosystem stakeholder named
-
-[Open source →](https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/2C9E520120E30C40C2258E680042F23B?OpenDocument)
-
-
 ## Sources scanned
 
 | Source | Status | Items | Time |
 |---|---|---|---|
-| Altum | ok | 10 | 0.2s |
-| LIAA | ok | 20 | 0.2s |
-| TAP portāls — Sabiedrības līdzdalība | ok | 25 | 0.4s |
-| Ekonomikas ministrija | ok | 20 | 0.4s |
-| TAP portāls — Tiesību aktu projekti | ok | 100 | 2.0s |
-| Valsts sekretāru sanāksme | ok | 6 | 2.8s |
-| Ministru kabineta sēdes | ok | 87 | 5.3s |
-| Saeima — komisiju sēdes | ok | 48 | 6.3s |
+| LIAA | ok | 20 | 0.6s |
+| TAP portāls — Sabiedrības līdzdalība | ok | 25 | 0.7s |
+| Altum | ok | 10 | 1.1s |
+| Ekonomikas ministrija | ok | 20 | 1.7s |
+| TAP portāls — Tiesību aktu projekti | ok | 100 | 1.9s |
+| Valsts sekretāru sanāksme | ok | 6 | 3.4s |
+| Saeima — komisiju sēdes | ok | 48 | 5.1s |
+| Ministru kabineta sēdes | ok | 87 | 6.9s |

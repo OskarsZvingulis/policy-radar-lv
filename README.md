@@ -3,7 +3,7 @@
 A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
 sources for startup-relevant news with a digest that runs in minutes.
 
-**Live app:** _(filled in after deploy — see below)_
+**Live app:** https://policy-radar-lv.vercel.app
 
 ## The problem, reframed
 
@@ -80,11 +80,16 @@ Refresh (SSE)  ──►  /api/digest/stream  ──►  8 collectors, parallel,
   matters" explanation — bounds LLM cost/latency regardless of how busy a
   given week is.
 - **LLM**: Vercel AI Gateway via a plain `"anthropic/claude-sonnet-5"` model
-  string — no provider SDK pinned. On a Vercel deployment this authenticates
-  automatically via the project's own `VERCEL_OIDC_TOKEN`, no key to set.
-  Locally, set `AI_GATEWAY_API_KEY` in `.env.local` to get the same behavior
-  (see `.env.example`); without it the app runs rules-only and still
-  produces a complete digest — this was verified, not assumed.
+  string — no provider SDK pinned. The AI SDK docs describe deployed Vercel
+  projects auto-authenticating via a `VERCEL_OIDC_TOKEN` the platform injects,
+  with no key to set — the code checks for it — but on this actual deployment
+  (Hobby-plan team, deployed via direct file upload rather than a git-linked
+  project) that token isn't present at runtime, confirmed by testing against
+  the live URL rather than assumed. Set `AI_GATEWAY_API_KEY` as a project
+  environment variable (or in `.env.local` for local dev, see `.env.example`)
+  to turn on LLM-written summaries. Either way the app runs rules-only and
+  still produces a complete, correctly-tiered digest — this was the explicit
+  design goal, not a fallback bolted on after the fact.
 - **Streaming**: `/api/digest/stream` (SSE) reports each collector's status
   as it resolves, which is what the UI's live "Refresh" view is actually
   showing — proof the data is live, not a canned screen.
@@ -106,8 +111,11 @@ npm run build   # type-checks + production build
 
 ## Verification
 
-- `curl http://localhost:3000/api/digest` returns all 8 source statuses as
-  `"ok"` against live data (checked 2026-09-13).
+- `curl http://localhost:3000/api/digest` and, after deploy,
+  `curl https://policy-radar-lv.vercel.app/api/digest?refresh=1` both return
+  all 8 source statuses as `"ok"` against live data (checked 2026-09-13) —
+  the deployed run finished in ~9s, so the datacenter-IP-blocking risk noted
+  below didn't materialize.
 - Ground-truth check: the Budget Committee's 09.09.2026 agenda item
   *"Grozījumi Kolektīvās finansēšanas pakalpojumu likumā"* (crowdfunding law,
   3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100
@@ -127,3 +135,7 @@ npm run build   # type-checks + production build
 - The Saeima collector scans a fixed trailing 7-day window; committees that
   meet on an unusual day outside that window would be missed until the next
   run.
+- The deployed app currently runs rules-only (see the LLM note above) —
+  automatic OIDC auth for the AI Gateway didn't activate on this Hobby-plan,
+  file-upload-deployed project. Setting `AI_GATEWAY_API_KEY` turns on the
+  LLM-written "why it matters" lines without any code change.
