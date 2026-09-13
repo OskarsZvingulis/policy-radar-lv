@@ -5,6 +5,10 @@ sources for startup-relevant news with a digest that runs in minutes.
 
 **Live app:** https://policy-radar-lv-seven.vercel.app
 
+This repo also contains the Task 2 submission, in a sibling `../task2/`
+folder — a separate deliverable, kept out of this README since it's not
+part of what this app does.
+
 ## The problem, reframed
 
 The team's actual bottleneck isn't reading — it's triage. Most of the 5

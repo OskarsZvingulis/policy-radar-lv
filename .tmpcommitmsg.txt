@@ -1,0 +1,26 @@
+Reorganize repo: task1/ and task2/ as the only top-level folders
+
+Housekeeping request: the two tasks were mixed together at repo root.
+Moved every Task 1 file (the Next.js app, all git history preserved via
+git mv) into task1/, and both Task 2 deliverables (the markdown-sourced
+PDF and the newer Word-based docx/pdf pair) into task2/. Root now contains
+only task1/, task2/, and .git.
+
+- task1/.gitignore's root-anchored patterns (/node_modules, /.next/, etc.)
+  needed no rewriting: git evaluates a nested .gitignore relative to its
+  own directory, so they already correctly mean "inside task1/".
+- Removed task1/README.md's "Task 2 submission" section, which pointed at
+  output/pdf/... paths that no longer exist now that Task 2 lives in a
+  sibling folder — replaced with a one-line pointer instead.
+- Re-ran npm install and relinked the Vercel project from task1/ (same
+  project, same live URL) rather than editing the local link file by hand.
+  Verified: typecheck, lint, and production build all pass from the new
+  location, and a redeploy from task1/ is live and behaving identically
+  to before the move.
+- Killed a leftover `next dev` process from earlier in the session that
+  kept regenerating .next/, AGENTS.md and CLAUDE.md at the old root path
+  mid-move; also caught Word actively re-saving the docx/pdf at the old
+  root path during the move (moved the newer versions it produced, not
+  the ones captured a moment earlier).
+
+Co-Authored-By: Claude Sonnet 5 <noreply@anthropic.com>
