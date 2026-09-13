@@ -128,16 +128,29 @@ function lvMonthNumber(word: string): number | undefined {
   return undefined;
 }
 
+// Application/registration verbs that must appear near a "līdz DD. month"
+// phrase for it to count as a deadline. Without this, the same phrasing used
+// for "no 14. līdz 17. septembrim ... delegācija ... tirdzniecības misijā"
+// (a trade mission's travel dates — verified as a real false positive
+// against the live EM feed) would misread an event's date range as
+// something you can still apply to.
+const APPLICATION_CONTEXT = /pieteik|reģistrē|iesniegt|aicina/i;
+const PROXIMITY_CHARS = 120;
+
 /**
  * Extract a "līdz DD. mēnesis" (until DD month) deadline from free text —
  * the phrasing LIAA/Altum/EM use in prose for application and consultation
  * windows ("No 9. līdz 24. septembrim ... aicina piesakīties"), which never
- * appears as a structured field the way TAP's deadline column does. Anchored
- * to the item's own publish year; if the resulting date falls more than ~60
- * days before publication it is assumed to roll into the following year (a
- * December post referencing a January close). Returns undefined — never a
- * guess — when nothing matches, so an item without this phrasing simply
- * keeps showing its publish date instead of a fabricated deadline.
+ * appears as a structured field the way TAP's deadline column does. Only
+ * counted when an application/registration verb appears within the same
+ * sentence-ish window — the identical date-range phrasing is also used for
+ * plain event duration ("delegation travels 14 to 17 September"), which is
+ * not a deadline. Anchored to the item's own publish year; if the resulting
+ * date falls more than ~60 days before publication it is assumed to roll
+ * into the following year (a December post referencing a January close).
+ * Returns undefined — never a guess — when nothing matches, so an item
+ * without this phrasing simply keeps showing its publish date instead of a
+ * fabricated deadline.
  */
 export function extractDeadlinePhrase(text: string, publishedIso: string): string | undefined {
   const re = /līdz\s+(\d{1,2})\.\s*([A-Za-zĀ-ž]+)/gi;
@@ -145,7 +158,12 @@ export function extractDeadlinePhrase(text: string, publishedIso: string): strin
   let last: { day: number; month: number } | undefined;
   while ((match = re.exec(text))) {
     const month = lvMonthNumber(match[2]);
-    if (month) last = { day: Number(match[1]), month };
+    if (!month) continue;
+    const windowStart = Math.max(0, match.index - PROXIMITY_CHARS);
+    const windowEnd = Math.min(text.length, match.index + match[0].length + PROXIMITY_CHARS);
+    if (APPLICATION_CONTEXT.test(text.slice(windowStart, windowEnd))) {
+      last = { day: Number(match[1]), month };
+    }
   }
   if (!last) return undefined;
 

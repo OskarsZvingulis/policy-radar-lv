@@ -3,9 +3,9 @@
 Week of 2026-09-07 – 2026-09-13
 Generated 2026-09-13T21:06:13.228Z
 
-Scanned **316** items across 8 sources → surfaced **55** as startup-relevant (**12** with an open feedback window). _(rules-only mode — no LLM key configured)_
+Scanned **316** items across 8 sources → surfaced **68** as startup-relevant (**10** with an open feedback window). _(rules-only mode — no LLM key configured)_
 
-## Startup-relevant items (55)
+## Startup-relevant items (68)
 
 ### Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Kolektīvās finansēšanas pakalpojumu likumā” (Nr.1393/Lp14; 3.lasījums).
 
@@ -79,22 +79,13 @@ _Matched:_ EU funds, Startup-relevant ministry, Consultation window open
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/bb99bade-e198-4090-87a3-06d1e4eb0dc2)
 
 
-### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
+### Informācija Latvijas zemes fonda klientiem par LVM kiberdrošības incidentu
 
-**Source:** Ekonomikas ministrija · **Application deadline:** 2026-09-28 · **Published:** 2026-09-10 · **Relevance:** 45/100
+**Source:** Altum · **Published:** 2026-07-06 · **Relevance:** 45/100
 
-_Matched:_ LIAA instrument, Application window open
+_Matched:_ EU funds, Cybersecurity
 
-[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv)
-
-
-### Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem
-
-**Source:** Ekonomikas ministrija · **Application deadline:** 2026-09-17 · **Published:** 2026-09-07 · **Relevance:** 45/100
-
-_Matched:_ LIAA instrument, Application window open
-
-[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem)
+[Open source →](https://www.altum.lv/informacija-latvijas-zemes-fonda-klientiem-par-lvm-kiberdrosibas-incidentu/)
 
 
 ### 26-TA-2121: Par konceptuālā ziņojuma "Par māksliniecisko kolektīvu vadītāju darba samaksas finansēšanas kārtības maiņu" pirmā risinājuma varianta izvērtēšanu un reformas turpināšanu
@@ -295,6 +286,24 @@ _Matched:_ IP, Consultation window open
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/89c2784d-6581-4ef9-b422-ab302a0482ac)
 
 
+### 26-TA-1830: Grozījumi Nacionālās kiberdrošības likumā
+
+**Source:** TAP portāls — Sabiedrības līdzdalība · **Institution:** Aizsardzības ministrija · **Stage:** Publiskā apspriešana · **Consultation deadline:** 2026-08-28 · **Submitted:** 2026-07-29 · **Relevance:** 35/100
+
+_Matched:_ Cybersecurity, In public consultation
+
+[Open source →](https://tapportals.mk.gov.lv/public_participation/aad3f00b-a797-4097-9469-9851f65949b5)
+
+
+### 26-TA-1884: Grozījumi Ministru kabineta 2015. gada 15. decembra noteikumos Nr. 720 "Patentu valdes nolikums"
+
+**Source:** TAP portāls — Sabiedrības līdzdalība · **Institution:** Tieslietu ministrija · **Stage:** Publiskā apspriešana · **Consultation deadline:** 2026-08-17 · **Submitted:** 2026-08-03 · **Relevance:** 30/100
+
+_Matched:_ IP, In public consultation
+
+[Open source →](https://tapportals.mk.gov.lv/public_participation/740b73e2-6874-419e-9f56-c67d2aa7f1d2)
+
+
 ### “NestAI” paplašina darbību Latvijā, lai attīstītu aizsardzības mākslīgo intelektu NATO austrumu flangā
 
 **Source:** LIAA · **Published:** 2026-09-11 · **Relevance:** 30/100
@@ -367,6 +376,69 @@ _Matched:_ Taxation
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/685189af-f388-4d28-9a3d-da00f487d79b)
 
 
+### Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai
+
+**Source:** Altum · **Published:** 2026-08-03 · **Relevance:** 25/100
+
+_Matched:_ Open application round
+
+[Open source →](https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/)
+
+
+### ALTUM paplašina uzņēmumu zaļināšanas programmu
+
+**Source:** Altum · **Published:** 2026-07-20 · **Relevance:** 25/100
+
+_Matched:_ State aid / grants
+
+[Open source →](https://www.altum.lv/altum-paplasina-uznemumu-zalinasanas-programmu-atverot-energoefektivitates-atbalstu-mazajiem-un-videjiem-uznemumiem-vel-cetros-regionos/)
+
+
+### Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV
+
+**Source:** Ekonomikas ministrija · **Published:** 2026-09-10 · **Relevance:** 25/100
+
+_Matched:_ LIAA instrument
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv)
+
+
+### Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem
+
+**Source:** Ekonomikas ministrija · **Published:** 2026-09-07 · **Relevance:** 25/100
+
+_Matched:_ LIAA instrument
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem)
+
+
+### EM rosina paplašināt atbalstu mājsaimniecību apkurei
+
+**Source:** Ekonomikas ministrija · **Published:** 2026-08-17 · **Relevance:** 25/100
+
+_Matched:_ State aid / grants
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/em-rosina-paplasinat-atbalstu-majsaimniecibu-apkurei)
+
+
+### Vēl līdz 10. septembrim var pieteikties “Eksporta un inovācijas balvai 2026”
+
+**Source:** LIAA · **Application deadline:** 2026-09-10 · **Published:** 2026-09-04 · **Relevance:** 25/100
+
+_Matched:_ Open application round
+
+[Open source →](https://www.liaa.gov.lv/lv/jaunums/vel-lidz-10-septembrim-var-pieteikties-eksporta-un-inovacijas-balvai-2026)
+
+
+### Pieteikšanās “Eksporta un inovācijas balvai 2026” turpināsies līdz 10. septembrim
+
+**Source:** LIAA · **Application deadline:** 2026-09-10 · **Published:** 2026-09-02 · **Relevance:** 25/100
+
+_Matched:_ Open application round
+
+[Open source →](https://www.liaa.gov.lv/lv/jaunums/pieteiksanas-eksporta-un-inovacijas-balvai-2026-turpinasies-lidz-10-septembrim)
+
+
 ### 26-TA-2216: Par administratīvā sloga mazināšanas stratēģisko mērķi un pasākumiem
 
 **Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Valsts kanceleja · **Stage:** Saskaņošana · **Submitted:** 2026-09-09 · **Relevance:** 25/100
@@ -403,6 +475,24 @@ _Matched:_ State aid / grants
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/c72e26b8-5718-4b4b-8e50-5380dc0a889b)
 
 
+### Valainis ar piecu ES valstu kolēģiem pārrunā Digitālā omnibusa ietekmi uz uzņēmējdarbību
+
+**Source:** Ekonomikas ministrija · **Published:** 2026-09-03 · **Relevance:** 20/100
+
+_Matched:_ Digital services
+
+[Open source →](https://www.em.gov.lv/lv/jaunums/valainis-ar-piecu-es-valstu-kolegiem-parruna-digitala-omnibusa-ietekmi-uz-uznemejdarbibu)
+
+
+### LIAA aicina pieredzējušus uzņēmējus un nozaru profesionāļus kļūt par mentoriem jauno uzņēmumu izaugsmei
+
+**Source:** LIAA · **Published:** 2026-09-01 · **Relevance:** 20/100
+
+_Matched:_ Young companies addressed
+
+[Open source →](https://www.liaa.gov.lv/lv/jaunums/liaa-aicina-pieredzejusus-uznemejus-un-nozaru-profesionalus-klut-par-mentoriem-jauno-uznemumu-izaugsmei)
+
+
 ### 26-TA-2141: Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa "Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību" 4.1.1.1. pasākuma "Ārstniecības iestāžu infrastruktūras attīstība" pirmās un piektās kārtas un 4.1.1.5. pasākuma "Neatliekamās medicīniskās palīdzības dienesta attīstība" īstenošanas noteikumi"
 
 **Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Veselības ministrija · **Stage:** Iesniegts · **Submitted:** 2026-09-10 · **Relevance:** 20/100
@@ -410,6 +500,24 @@ _Matched:_ State aid / grants
 _Matched:_ EU funds
 
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/77492050-fd26-4ddc-b42a-7b08fc539817)
+
+
+### 26-TA-2081: Grozījumi Ministru kabineta 2023. gada 12. decembra noteikumos Nr. 751 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.3.5. specifiskā atbalsta mērķa "Uzlabot vienlīdzīgu un savlaicīgu piekļuvi kvalitatīviem, ilgtspējīgiem un izmaksu ziņā pieejamiem pakalpojumiem; pilnveidot sociālās aizsardzības sistēmas, tostarp veicināt sociālās aizsardzības pieejamību; uzlabot ilgtermiņa aprūpes pakalpojumu pieejamību, efektivitāti un izturētspēju" 4.3.5.4. pasākuma "Profesionāla un mūsdienīga sociālā darba attīstība" īstenošanas noteikumi"
+
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Labklājības ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-08 · **Submitted:** 2026-08-25 · **Relevance:** 20/100
+
+_Matched:_ EU funds
+
+[Open source →](https://tapportals.mk.gov.lv/legal_acts/4a18bd05-aea0-491b-85d8-5ee7b37407d9)
+
+
+### 26-TA-2061: Grozījumi Ministru kabineta 2024. gada 25. jūnija noteikumos Nr. 407 "Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 1.1.1. specifiskā atbalsta mērķa "Pētniecības un inovāciju kapacitātes stiprināšana un progresīvu tehnoloģiju ieviešana kopējā P&A sistēmā" 1.1.1.3. pasākuma "Praktiskas ievirzes pētījumi" īstenošanas noteikumi"
+
+**Source:** TAP portāls — Tiesību aktu projekti · **Institution:** Izglītības un zinātnes ministrija · **Stage:** Saskaņošana · **Comment deadline:** 2026-09-02 · **Submitted:** 2026-08-28 · **Relevance:** 20/100
+
+_Matched:_ EU funds
+
+[Open source →](https://tapportals.mk.gov.lv/legal_acts/365b86a4-b505-4c1f-80af-d2643c79d360)
 
 
 ### Publisko izdevumu un revīzijas komisijas sēde
@@ -482,6 +590,15 @@ _Matched:_ EU funds
 _Matched:_ EU funds
 
 [Open source →](https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1)
+
+
+### LIAA: procesa paredzamība un tiesiskā vide ir izšķirošas nākamo investoru piesaistei
+
+**Source:** LIAA · **Published:** 2026-08-28 · **Relevance:** 15/100
+
+_Matched:_ Ecosystem stakeholder named
+
+[Open source →](https://www.liaa.gov.lv/lv/jaunums/liaa-procesa-paredzamiba-un-tiesiska-vide-ir-izskirosas-nakamo-investoru-piesaistei)
 
 
 ### Ilgtspējīgas attīstības komisijas sēde: Latvijas cilvēkkapitāla attīstīb a. Ziņo : Ekonomikas ministrija
