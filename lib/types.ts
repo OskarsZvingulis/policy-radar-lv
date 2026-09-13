@@ -1,0 +1,66 @@
+/**
+ * The single normalised shape every source collector produces.
+ * The relevance engine, UI, and markdown export all operate on this only —
+ * no source-specific fields leak past normalise.ts.
+ */
+export type SourceId =
+  | "tap_legal_acts"
+  | "tap_consultations"
+  | "tap_vss"
+  | "tap_mk"
+  | "saeima_committees"
+  | "em_news"
+  | "liaa_news"
+  | "altum_news";
+
+export interface Item {
+  /** Stable id: `${source}:${sourceLocalId}` */
+  id: string;
+  source: SourceId;
+  sourceLabel: string;
+  title: string;
+  /** Link back to the original page — required so the recording can click through. */
+  url: string;
+  /** ISO date this item was published / submitted / happened. */
+  date: string;
+  /** ISO date this item requires action by, if any (consultation close, vote date). */
+  deadline?: string;
+  institution?: string;
+  /** e.g. "3.lasījums", "Saskaņošana", "Iesniegts" */
+  stage?: string;
+  /** Extra plain-text body used for relevance scoring (annotation text, agenda item text). */
+  text?: string;
+}
+
+export type Tier = "act_now" | "watch" | "fyi" | "excluded";
+
+export interface ScoredItem extends Item {
+  score: number;
+  tier: Tier;
+  /** Which keyword/taxonomy rules fired — shown for transparency. */
+  matchedRules: string[];
+  /** LLM-written explanation, 1-2 sentences. Absent when running rules-only. */
+  whyItMatters?: string;
+  llmScored: boolean;
+}
+
+export interface SourceResult {
+  source: SourceId;
+  label: string;
+  status: "ok" | "error" | "timeout";
+  count: number;
+  durationMs: number;
+  error?: string;
+  items: Item[];
+}
+
+export interface DigestResult {
+  generatedAt: string;
+  weekStart: string;
+  weekEnd: string;
+  sources: SourceResult[];
+  scored: ScoredItem[];
+  totalScanned: number;
+  totalSurfaced: number;
+  llmAvailable: boolean;
+}

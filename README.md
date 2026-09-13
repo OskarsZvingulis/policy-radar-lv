@@ -1,36 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Policy Radar LV
 
-## Getting Started
+A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
+sources for startup-relevant news with a digest that runs in minutes.
 
-First, run the development server:
+**Live app:** _(filled in after deploy — see below)_
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## The problem, reframed
+
+The team's actual bottleneck isn't reading — it's triage. Most of the 5
+hours goes into opening long documents just to decide whether they matter.
+So this isn't a search tool; it's a weekly briefing that answers three
+questions per item: **does this matter, why, and by when do you need to act.**
+
+## What counts as "startup-relevant"
+
+> An item is startup-relevant if it plausibly changes the cost, legality,
+> funding, or market access of building and scaling a young technology
+> company in Latvia.
+
+Full definition, with the three scoring axes, boosters, and exclusions, is
+in the app at `/methodology` and in [`lib/relevance/keywords.ts`](lib/relevance/keywords.ts)
+(the executable version of the same rules).
+
+## Sources covered — all 7
+
+| Source | How |
+|---|---|
+| **TAP portāls** (mandatory) — Tiesību aktu projekti | Scrapes the same server-rendered listing a human sees at tapportals.mk.gov.lv/legal_acts |
+| TAP portāls — Sabiedrības līdzdalība (public consultations) | Same site, `/public_participation` — carries the actual deadline |
+| Valsts sekretāru sanāksme | TAP site, `/meetings/state_secretaries` + per-meeting agenda |
+| Ministru kabineta sēdes | TAP site, `/meetings/cabinet_ministers` + per-meeting agenda |
+| Saeima komisiju sēdes | titania.saeima.lv's Domino-rendered daily agenda view |
+| Ekonomikas ministrija | RSS 2.0, `/lv/rss/articles` |
+| LIAA | RSS 2.0, `/lv/rss/articles` |
+| Altum | RSS 2.0, WordPress default `/feed/` |
+
+### What probing them turned up
+
+- TAP's own [open-data page](https://tapportals.mk.gov.lv/help/open_data) tells you to
+  email support for API access. The API (`/api/v1/legal_acts`, JSON:API) is
+  actually live and unauthenticated — the docs are just stale. We ended up
+  **not** using it for the main listing anyway: its default sort order is
+  lexicographic-by-code, not chronological (`26-TA-999` sorts above
+  `26-TA-2254`), and `sort=` is silently ignored. The human-facing HTML
+  listing *is* correctly newest-first, so that's what the collector scrapes.
+- An F5 WAF in front of tapportals.mk.gov.lv rejects any query string
+  containing `[]=` — including percent-encoded — with an HTTP 200 whose body
+  is a "Request Rejected" page. `lib/sources/fetch-utils.ts` detects and
+  throws on this explicitly rather than treating it as an empty result.
+- Altum doesn't advertise an RSS feed on its news page, but it's a WordPress
+  site with the default `/feed/` — same shape as EM/LIAA's own feeds, so one
+  parser (`lib/sources/rss.ts`) covers all three.
+- The two Saeima and MK/VSS "meeting" sources only get interesting once you
+  open each meeting's own detail page: the listing itself just says
+  "sitting on 10.09.2026", the actual agenda (which bills, which reading
+  stage, who's invited) is embedded Domino/Lotus-Notes markup on the detail
+  page. Both collectors dig one level in rather than surfacing the
+  meeting-as-a-whole.
+
+## Architecture
+
+Next.js (App Router) on Vercel, no database. Every source already carries
+its own dates, so "this week's digest" is a rolling window computed fresh,
+not stored state.
+
+```
+Refresh (SSE)  ──►  /api/digest/stream  ──►  8 collectors, parallel, ~20s timeout each
+                                                    │
+                                          rules-based scoring (always runs)
+                                                    │
+                                     top ~25 by score → LLM (if available)
+                                                    │
+                                          cached per ISO week, UI + /api/digest/markdown
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Relevance**: deterministic Latvian keyword/taxonomy engine
+  (`lib/relevance/score.ts`) always runs and alone decides the tier if no LLM
+  is available. When it is, only the shortlist gets sent for a "why it
+  matters" explanation — bounds LLM cost/latency regardless of how busy a
+  given week is.
+- **LLM**: Vercel AI Gateway via a plain `"anthropic/claude-sonnet-5"` model
+  string — no provider SDK pinned. On a Vercel deployment this authenticates
+  automatically via the project's own `VERCEL_OIDC_TOKEN`, no key to set.
+  Locally, set `AI_GATEWAY_API_KEY` in `.env.local` to get the same behavior
+  (see `.env.example`); without it the app runs rules-only and still
+  produces a complete digest — this was verified, not assumed.
+- **Streaming**: `/api/digest/stream` (SSE) reports each collector's status
+  as it resolves, which is what the UI's live "Refresh" view is actually
+  showing — proof the data is live, not a canned screen.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Running it locally
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open `http://localhost:3000` — the page auto-runs a live scan on first load
+(same code path as the Refresh button). Optionally copy `.env.example` to
+`.env.local` and set `AI_GATEWAY_API_KEY` for LLM-written summaries locally.
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build   # type-checks + production build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Verification
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `curl http://localhost:3000/api/digest` returns all 8 source statuses as
+  `"ok"` against live data (checked 2026-09-13).
+- Ground-truth check: the Budget Committee's 09.09.2026 agenda item
+  *"Grozījumi Kolektīvās finansēšanas pakalpojumu likumā"* (crowdfunding law,
+  3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100
+  and lands in **🔴 Act now**. A routine Ārlietu ministrija EU position paper
+  from the same run does not surface at all.
+- `samples/` has a real digest generated from a live run, both as Markdown
+  and as the JSON the app itself produces.
 
-## Deploy on Vercel
+## Known limitations
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- No persistent store: a cold Vercel instance re-runs the full scan (~15-30s
+  observed locally, longer with the LLM step) rather than serving instantly.
+  Acceptable for a prototype; a real deployment would want a KV cache warmed
+  by the weekly cron (`vercel.json`) in front of this.
+- Saeima and Altum are HTML/Domino scrapes, not APIs — they'll break if
+  either site redesigns. Both are isolated to one file each.
+- The Saeima collector scans a fixed trailing 7-day window; committees that
+  meet on an unusual day outside that window would be missed until the next
+  run.
