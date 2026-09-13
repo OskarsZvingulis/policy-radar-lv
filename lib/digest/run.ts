@@ -13,6 +13,7 @@ import { collectEmNews, collectLiaaNews, collectAltumNews } from "../sources/rss
 import { scoreItems } from "../relevance/score";
 import { scoreWithLlm, type LlmShortlistItem } from "../relevance/llm";
 import { weekBounds } from "./week";
+import { isDeadlineStillOpen, isWithinTrailingDays } from "../dates";
 
 const PER_SOURCE_TIMEOUT_MS = 20_000;
 const LLM_SHORTLIST_SIZE = 25;
@@ -54,9 +55,10 @@ const SOURCES: SourceDef[] = [
  * limitation of that collector, not something this filter fixes.
  */
 function isWithinRecencyWindow(item: Item): boolean {
-  const cutoff = Date.now() - RECENCY_WINDOW_DAYS * 86_400_000;
-  if (new Date(item.date).getTime() >= cutoff) return true;
-  if (item.deadline && new Date(item.deadline).getTime() >= Date.now()) return true;
+  if (isWithinTrailingDays(item.date, RECENCY_WINDOW_DAYS)) return true;
+  // A consultation is still worth showing on its closing day, however long ago
+  // it opened — deadlines are calendar days, so this compares whole days.
+  if (isDeadlineStillOpen(item.deadline)) return true;
   return false;
 }
 
@@ -133,6 +135,8 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
       text: i.text,
       stage: i.stage,
       institution: i.institution,
+      date: i.date,
+      dateIsApproximate: i.dateIsApproximate,
       deadline: i.deadline,
       sourceLabel: i.sourceLabel,
       tier: i.tier,
@@ -143,9 +147,15 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const scored: ScoredItem[] = surfaced
     .map((i): ScoredItem => {
       const llm = llmResults.get(i.id);
+      // The LLM may re-rank, but it may not invent urgency: "act now" stays
+      // gated on the same date condition the rules engine checked. Without
+      // this clamp a vote that already happened can be promoted straight back
+      // into Act now, undoing the deterministic guarantee.
+      const llmTier =
+        llm && llm.tier === "act_now" && !i.actionable ? "watch" : llm?.tier;
       return {
         ...i,
-        tier: llm?.tier ?? i.tier,
+        tier: llmTier ?? i.tier,
         whyItMatters: llm?.whyItMatters,
         llmScored: Boolean(llm),
       };

@@ -32,10 +32,17 @@ const AXIS_CAPITAL: KeywordRule[] = [
   { id: "capital.crowdfunding", label: "Crowdfunding", pattern: /kolektīv.{0,10}finansēš/i, weight: 40 },
   { id: "capital.altum", label: "Altum instrument", pattern: /\baltum\b/i, weight: 25 },
   { id: "capital.liaa", label: "LIAA instrument", pattern: /\bliaa\b/i, weight: 25 },
-  { id: "capital.state_aid", label: "State aid / grants", pattern: /valsts atbalst|grant[su]?\b|dotācij|subsīdij/i, weight: 25 },
+  { id: "capital.state_aid", label: "State aid / grants", pattern: /valsts atbalst|atbalsta programm|atbalsta instrument|grant[su]?\b|dotācij|subsīdij/i, weight: 25 },
   { id: "capital.eu_funds", label: "EU funds", pattern: /ES fond|Eiropas Savienības fond|Atveseļošan.{0,15}fond|kohēzij/i, weight: 20 },
   { id: "capital.startup_law", label: "Startup Law", pattern: /jaunuzņēmum/i, weight: 45 },
   { id: "capital.talent", label: "Immigration / work permits for talent", pattern: /darba atļauj|imigrāc|starta vīz|augsti kvalificēt.{0,15}(darbiniek|nodarbināt)/i, weight: 30 },
+  // Substantive programme signals. These are what should carry an incubator or
+  // funding-round announcement, rather than the publishing agency's own name —
+  // suppressing self-mentions on an agency's own feed otherwise left a real
+  // LIAA incubator call (applications open 9–24 Sept) scoring zero.
+  { id: "capital.incubation", label: "Incubator / accelerator programme", pattern: /inkubācij|inkubator|akcelerat|starta programm/i, weight: 35 },
+  { id: "capital.application_round", label: "Open application round", pattern: /pieteikt\w{0,5}\s+\w{0,12}\s*(?:programm|atlas|konkurs)|uzņemšan\w{0,3}\s+\w{0,12}\s*programm|izsludina\s+\w{0,15}\s*atlas|projektu iesniegum\w{0,3}\s+atlas|aicina\s+\w{0,15}\s*pieteikties/i, weight: 25 },
+  { id: "capital.young_companies", label: "Young companies addressed", pattern: /jaun\w{0,4}\s+uzņēmum|topoš\w{0,4}\s+uzņēm/i, weight: 20 },
   { id: "capital.employment", label: "Employment law", pattern: /darba likum|darba attiecīb|attālināt.{0,10}darb/i, weight: 15 },
 ];
 
@@ -47,7 +54,7 @@ const AXIS_MARKET: KeywordRule[] = [
   { id: "market.fintech", label: "Fintech / payments", pattern: /fintech|maksājum.{0,10}pakalpojum|elektronisk.{0,10}nauda/i, weight: 30 },
   { id: "market.platform", label: "Platform rules", pattern: /platform|digitālo pakalpojumu akt/i, weight: 20 },
   { id: "market.cyber", label: "Cybersecurity", pattern: /kiberdrošīb|informācij.{0,10}tehnoloģij.{0,10}drošīb/i, weight: 25 },
-  { id: "market.ip", label: "IP", pattern: /intelektuāl.{0,10}īpašum|patent|preču zīm/i, weight: 20 },
+  { id: "market.ip", label: "IP", pattern: /intelektuāl.{0,10}īpašum|rūpniecisk.{0,10}īpašum|patent|preču zīm/i, weight: 20 },
   { id: "market.procurement", label: "Public procurement", pattern: /iepirkum/i, weight: 15 },
   { id: "market.sandbox", label: "Regulatory sandbox", pattern: /regulatīv.{0,15}smilšukast|izmēģinājum.{0,10}vid/i, weight: 30 },
 ];
@@ -62,7 +69,10 @@ export const ECOSYSTEM_ENTITIES: RegExp =
 export const RESPONSIBLE_INSTITUTION_BOOST: RegExp =
   /ekonomikas ministrij|finanšu ministrij|klimata un enerģētikas ministrij|viedās administrācijas un reģionālās attīstības ministrij/i;
 
-export const READING_STAGE_BOOST: RegExp = /3\.\s*lasījum|2\.\s*lasījum|galīgais lasījum/i;
+// Saeima's Domino export is inconsistent about spacing: real agendas contain
+// both “3.lasījums” and “3 .lasījums”. Eight items in one sampled week used
+// the spaced form and silently lost this boost.
+export const READING_STAGE_BOOST: RegExp = /[23]\s*\.\s*lasījum|galīgais\s+lasījum/i;
 
 export const CONSULTATION_STAGE = /sabiedrīb.{0,10}(apspriešan|līdzdalīb)|publiskā apspriešan/i;
 

@@ -1,4 +1,5 @@
 import type { Item, ScoredItem, Tier } from "../types";
+import { isDeadlineStillOpen, isTodayOrLater } from "../dates";
 import {
   ALL_AXES,
   ECOSYSTEM_ENTITIES,
@@ -7,26 +8,6 @@ import {
   CONSULTATION_STAGE,
   isExcluded,
 } from "./keywords";
-
-function isDeadlineOpen(item: Item): boolean {
-  if (!item.deadline) return false;
-  return new Date(item.deadline).getTime() >= Date.now();
-}
-
-/**
- * "Upcoming" at day granularity: true for a sitting/reading scheduled today
- * or later. Source dates (e.g. Saeima committee sittings) are stored as UTC
- * midnight of the sitting day, so compare against the start of today rather
- * than the current instant — otherwise a same-day sitting reads as already past.
- */
-function isUpcoming(isoDate: string | undefined): boolean {
-  if (!isoDate) return false;
-  const d = new Date(isoDate);
-  if (Number.isNaN(d.getTime())) return false;
-  const now = new Date();
-  const startOfToday = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
-  return d.getTime() >= startOfToday;
-}
 
 /**
  * Deterministic rules pass. Runs on every scanned item — cheap, explainable,
@@ -47,10 +28,12 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
     return true;
   });
 
+  let topicalMatches = 0;
   for (const rule of applicableAxes) {
     if (rule.pattern.test(haystack)) {
       matchedRules.push(rule.label);
       score += rule.weight;
+      topicalMatches++;
     }
   }
 
@@ -60,6 +43,7 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
   if (ECOSYSTEM_ENTITIES.test(haystack)) {
     matchedRules.push("Ecosystem stakeholder named");
     score += 15;
+    topicalMatches++;
   }
   if (item.institution && RESPONSIBLE_INSTITUTION_BOOST.test(item.institution)) {
     matchedRules.push("Startup-relevant ministry");
@@ -67,7 +51,8 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
   }
   const readingStageMatch =
     READING_STAGE_BOOST.test(haystack) || Boolean(item.stage && READING_STAGE_BOOST.test(item.stage));
-  const readingUpcoming = isUpcoming(item.date);
+  // A synthetic scrape-time date is not evidence that a vote is still ahead.
+  const readingUpcoming = !item.dateIsApproximate && isTodayOrLater(item.date);
   if (readingStageMatch) {
     matchedRules.push(
       readingUpcoming
@@ -76,7 +61,7 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
     );
     score += 15;
   }
-  const deadlineOpen = isDeadlineOpen(item);
+  const deadlineOpen = isDeadlineStillOpen(item.deadline);
   if (deadlineOpen) {
     matchedRules.push("Consultation window open");
     score += 20;
@@ -91,10 +76,18 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
 
   score = Math.min(100, score);
 
+  // Timing is urgency, not relevance. An open submission window says when you
+  // could act, never that the subject matters to a startup — without this gate
+  // a consultation boost alone (20pts) clears the 15pt surfacing floor, which
+  // put juvenile-justice and clinical-trial bills into a startup digest.
+  const actionable = deadlineOpen || (readingStageMatch && readingUpcoming);
+
   let tier: Tier;
   if (excluded && !hasStrongOverride) {
     tier = "excluded";
-  } else if (score >= 65 && (deadlineOpen || (readingStageMatch && readingUpcoming))) {
+  } else if (topicalMatches === 0) {
+    tier = "excluded";
+  } else if (score >= 65 && actionable) {
     tier = "act_now";
   } else if (score >= 45) {
     tier = "watch";
@@ -104,7 +97,7 @@ export function scoreItem(item: Item): Omit<ScoredItem, "whyItMatters" | "llmSco
     tier = "excluded";
   }
 
-  return { ...item, score, tier, matchedRules };
+  return { ...item, score, tier, matchedRules, actionable };
 }
 
 export function scoreItems(items: Item[]): Omit<ScoredItem, "whyItMatters" | "llmScored">[] {

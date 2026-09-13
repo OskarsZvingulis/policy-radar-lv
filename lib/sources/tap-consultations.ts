@@ -11,6 +11,11 @@ import { parseFlextable, parseLvDateRange, absoluteUrl, TAP_BASE } from "./tap-h
 export async function collectTapConsultations(): Promise<Item[]> {
   const html = await fetchText(`${TAP_BASE}/public_participation`);
   const rows = parseFlextable(html);
+  // Highest-value feed of the seven; a silent parse failure here would hide
+  // every open consultation deadline behind an “all clear”.
+  if (rows.length === 0) {
+    throw new Error("TAP public_participation returned no parseable rows (markup changed?)");
+  }
   const items: Item[] = [];
 
   for (const row of rows) {

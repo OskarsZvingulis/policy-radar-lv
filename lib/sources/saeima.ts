@@ -112,6 +112,8 @@ function extractAgendaPoints(detailHtml: string): AgendaPoint[] {
 export async function collectSaeimaCommittees(): Promise<Item[]> {
   const items: Item[] = [];
   const today = new Date();
+  let daysFetched = 0;
+  let daysFailed = 0;
 
   for (let back = 0; back < DAYS_BACK; back++) {
     const day = new Date(today);
@@ -123,7 +125,12 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
       listingHtml = await fetchText(
         `${BASE}/webComisDK?OpenView&count=1000&restricttocategory=${lvDate}`,
       );
+      daysFetched++;
     } catch {
+      // One unreachable day is normal (weekends 404 in some views); every day
+      // failing is an outage, and reporting that as “0 items, ok” would present
+      // a dead source as a calm week — the worst failure mode for a monitor.
+      daysFailed++;
       continue;
     }
     const entries = parseDayListing(listingHtml).slice(0, MAX_COMMITTEES_PER_DAY);
@@ -178,5 +185,10 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
       }
     });
   }
+
+  if (daysFetched === 0 && daysFailed > 0) {
+    throw new Error(`Saeima unreachable: all ${daysFailed} day listings failed`);
+  }
+
   return items;
 }

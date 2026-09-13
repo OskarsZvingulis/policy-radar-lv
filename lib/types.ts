@@ -23,6 +23,12 @@ export interface Item {
   url: string;
   /** ISO date this item was published / submitted / happened. */
   date: string;
+  /**
+   * True when `date` is a scrape-time placeholder rather than a real source
+   * date (some TAP listing rows carry no date). Relevance logic must not read
+   * a placeholder as evidence that something is still upcoming.
+   */
+  dateIsApproximate?: boolean;
   /** ISO date this item requires action by, if any (consultation close, vote date). */
   deadline?: string;
   institution?: string;
@@ -39,6 +45,11 @@ export interface ScoredItem extends Item {
   tier: Tier;
   /** Which keyword/taxonomy rules fired — shown for transparency. */
   matchedRules: string[];
+  /**
+   * Whether action is still possible: an open deadline, or a reading still
+   * ahead. Act now requires this; the LLM pass may not override it.
+   */
+  actionable: boolean;
   /** LLM-written explanation, 1-2 sentences. Absent when running rules-only. */
   whyItMatters?: string;
   llmScored: boolean;

@@ -61,12 +61,17 @@ function extractAgendaItems(html: string): { path: string; identificator: string
 export async function collectTapMeetings(kind: MeetingKind): Promise<Item[]> {
   const cfg = CONFIG[kind];
   const listingHtml = await fetchText(`${TAP_BASE}${cfg.listingPath}`);
-  const rows = parseFlextable(listingHtml).slice(0, RECENT_MEETINGS);
+  const allRows = parseFlextable(listingHtml);
+  if (allRows.length === 0) {
+    throw new Error(`TAP ${cfg.listingPath} returned no parseable rows (markup changed?)`);
+  }
+  const rows = allRows.slice(0, RECENT_MEETINGS);
 
   const items: Item[] = [];
   for (const row of rows) {
     const dateText = row.cells["Datums"] ?? "";
-    const meetingDate = parseLvDate(dateText) ?? new Date().toISOString();
+    const parsedDate = parseLvDate(dateText);
+    const meetingDate = parsedDate ?? new Date().toISOString();
     let detailHtml: string;
     try {
       detailHtml = await fetchText(absoluteUrl(row.path));
@@ -85,6 +90,7 @@ export async function collectTapMeetings(kind: MeetingKind): Promise<Item[]> {
         title: row.cells["Nosaukums"] || cfg.label,
         url: absoluteUrl(row.path),
         date: meetingDate,
+        dateIsApproximate: parsedDate ? undefined : true,
         stage: cfg.stage,
       });
       continue;
@@ -98,6 +104,7 @@ export async function collectTapMeetings(kind: MeetingKind): Promise<Item[]> {
         title: `${a.identificator}: ${a.question || row.cells["Nosaukums"] || ""}`,
         url: absoluteUrl(a.path),
         date: meetingDate,
+        dateIsApproximate: parsedDate ? undefined : true,
         stage: cfg.stage,
         text: a.question,
       });

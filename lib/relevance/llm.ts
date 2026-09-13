@@ -39,7 +39,16 @@ const ResultSchema = z.object({
 
 export type LlmShortlistItem = Pick<
   ScoredItem,
-  "id" | "title" | "text" | "stage" | "institution" | "deadline" | "sourceLabel" | "tier"
+  | "id"
+  | "title"
+  | "text"
+  | "stage"
+  | "institution"
+  | "date"
+  | "dateIsApproximate"
+  | "deadline"
+  | "sourceLabel"
+  | "tier"
 >;
 
 function hasGatewayCredentials(): boolean {
@@ -62,6 +71,7 @@ function buildPrompt(items: LlmShortlistItem[]): string {
         `source: ${it.sourceLabel}`,
         it.stage ? `stage: ${it.stage}` : null,
         it.institution ? `institution: ${it.institution}` : null,
+        `date: ${it.date}${it.dateIsApproximate ? " (approximate)" : ""}`,
         it.deadline ? `deadline: ${it.deadline}` : null,
         `title: ${it.title}`,
         it.text ? `detail: ${it.text.slice(0, 500)}` : null,
@@ -74,7 +84,9 @@ function buildPrompt(items: LlmShortlistItem[]): string {
     `${definition}\n\nFor each of the following ${items.length} items from a Latvian policy ` +
     `monitoring digest, write a concrete 1-2 sentence explanation of why it matters to a ` +
     `startup founder — name the actual mechanism, not the title again. Also assign a tier: ` +
-    `"act_now" only if there is a real closing deadline or the item is at a near-final vote, ` +
+    `"act_now" ONLY if action is still possible as of today — a deadline that has not passed, `
+    + `or a vote still ahead. A sitting or reading whose date is already past is never "act_now". `
+    + `Use "watch" for something moving through the process but not yet actionable, ` +
     `"watch" if it is moving through the process but not yet actionable, "fyi" if it is useful ` +
     `context with nothing to do. Return exactly one entry per item id, ids copied verbatim.\n\n` +
     `Items:\n${list}`

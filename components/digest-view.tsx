@@ -48,12 +48,14 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       : SOURCE_PLACEHOLDERS.map((s) => ({ ...s, status: "pending" as const })),
   );
   const [refreshing, setRefreshing] = useState(false);
+  const [runError, setRunError] = useState<string | null>(null);
   const [tierFilter, setTierFilter] = useState<Tier | "all">("all");
   const [sourceFilter, setSourceFilter] = useState<string>("all");
   const started = useRef(false);
 
   function handleRefresh() {
     setRefreshing(true);
+    setRunError(null);
     setLiveSources(SOURCE_PLACEHOLDERS.map((s) => ({ ...s, status: "pending" as const })));
 
     const es = new EventSource("/api/digest/stream");
@@ -85,9 +87,20 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       es.close();
     });
 
+    es.addEventListener("done", () => setRunError(null));
+
+    // A failed or dropped stream previously just closed the connection: with no
+    // digest yet, the page went on claiming it was scanning, pending dots still
+    // pulsing, with nothing actually running. Surface it and stop pretending.
     es.addEventListener("error", () => {
       setRefreshing(false);
       es.close();
+      setRunError(
+        "The scan stopped before it finished — the connection dropped or a source hung. Nothing is running now.",
+      );
+      setLiveSources((prev) =>
+        prev.map((s) => (s.status === "pending" ? { ...s, status: "error" as const } : s)),
+      );
     });
   }
 
@@ -150,8 +163,22 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
           </p>
         ) : (
           <p className="text-sm text-muted-foreground">
-            Running the first scan of the week against the live sources…
+            {runError
+              ? "No digest to show — the scan above did not complete."
+              : "Running the first scan of the week against the live sources…"}
           </p>
+        )}
+
+        {runError && (
+          <Alert variant="destructive">
+            <AlertTitle>Scan did not complete</AlertTitle>
+            <AlertDescription>
+              {runError}{" "}
+              <button onClick={handleRefresh} className="underline underline-offset-4">
+                Try again
+              </button>
+            </AlertDescription>
+          </Alert>
         )}
 
         {digest && !digest.llmAvailable && (
