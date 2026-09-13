@@ -211,6 +211,11 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       {digest && (
         <>
           <div className="flex flex-col gap-3">
+            <p className="text-xs text-muted-foreground">
+              Tiers rank by <strong>urgency</strong> — can you still act? — not by relevance
+              score. An Act now item with a lower score but a live deadline outranks a Watch item
+              stuck at a higher score because its vote already happened.
+            </p>
             <div className="flex flex-wrap gap-1.5">
               {TIER_TABS.map((t) => (
                 <Button
