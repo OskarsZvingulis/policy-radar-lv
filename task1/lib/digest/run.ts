@@ -1,5 +1,5 @@
 /**
- * Orchestrator: runs all 7 collectors in parallel (bounded by a per-source
+ * Orchestrator: runs all 8 collectors in parallel (bounded by a per-source
  * timeout so one slow gov.lv server can't sink the whole digest), scores
  * every item deterministically, hands the top slice to the LLM for a
  * "why it matters" line, and assembles the final DigestResult.

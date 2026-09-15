@@ -1,17 +1,19 @@
 # Policy Radar LV
 
-A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
+A prototype that replaces ~5 hours/week of manually checking Latvian policy
 sources for startup-relevant news with a digest that runs in minutes.
 
-A real run today (2026-09-14 week) scanned **325 items** across all 8
-collector surfaces, kept **218** inside the 7-day recency window, and
-surfaced **51** as at least minimally relevant — took **9.7 seconds**,
-end to end, against live government sites. The "Read this first" box at the
-top of the digest narrows that to the 5 items worth reading first (soonest
-deadline first); the full 49 are still there for anyone who wants to scan
-everything. See `samples/digest-2026-09-14.md` for the exact output and
-`npm run eval` for how well the relevance engine actually performs against
-hand-labelled real items.
+It reads **8 feeds** — the brief's seven sources, with TAP portāls split into
+the four separate listings it actually publishes (draft acts, public
+consultations, state secretaries' meetings, Cabinet meetings), because they
+carry different documents and different deadlines.
+
+A real run scanned **326 items**, kept the ones inside a 7-day recency window,
+and surfaced **46** as startup-relevant — in under 10 seconds, against live
+government sites. Nine of those had a submission window still open, which is
+the only part of the digest that asks the reader to do anything. See
+`samples/` for exact output and `npm run eval` for how well the relevance
+engine performs against hand-labelled real items.
 
 **Live app:** https://policy-radar-lv-seven.vercel.app
 
@@ -42,7 +44,7 @@ Full definition, with the three scoring axes, boosters, and exclusions, is
 in the app at `/methodology` and in [`lib/relevance/keywords.ts`](lib/relevance/keywords.ts)
 (the executable version of the same rules).
 
-## Sources covered — all 7
+## Sources covered — all 8
 
 | Source | How |
 |---|---|
@@ -234,7 +236,7 @@ can't see those before a first build), and `npm test` on every push/PR.
 schedule: it runs the full pipeline standalone (no Vercel project needed)
 and uploads the digest as a build artifact — a second, Vercel-independent
 proof this runs from CI alone, alongside the Vercel Cron already live in
-production (`vercel.json`, Monday 06:00 UTC).
+production (`vercel.json`, Monday 07:00 UTC).
 
 ## Logging and run report
 

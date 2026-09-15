@@ -24,6 +24,18 @@ const SOURCE_PLACEHOLDERS: { source: SourceId; label: string }[] = [
   { source: "altum_news", label: "Altum" },
 ];
 
+/** One figure of the scanned / relevant / open-to-submissions headline. */
+function Stat({ n, label }: { n: number; label: string }) {
+  return (
+    // Reversed so the number reads first visually while the DOM keeps the
+    // term-then-definition order a screen reader announces.
+    <div className="flex flex-col-reverse">
+      <dt className="text-xs text-muted-foreground">{label}</dt>
+      <dd className="font-heading text-2xl font-semibold tabular-nums">{n}</dd>
+    </div>
+  );
+}
+
 function toLiveSources(digest: DigestResult): LiveSourceState[] {
   return digest.sources.map((s) => ({
     source: s.source,
@@ -45,6 +57,8 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
   const [refreshing, setRefreshing] = useState(false);
   const [runError, setRunError] = useState<string | null>(null);
   const [sourceFilter, setSourceFilter] = useState<string>("all");
+  const [openOnly, setOpenOnly] = useState(false);
+  const [sortBy, setSortBy] = useState<"deadline" | "relevance">("deadline");
   const started = useRef(false);
 
   function handleRefresh() {
@@ -126,14 +140,41 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
    * because that is the decision); the rest sort by relevance.
    */
   const { openItems, awarenessItems } = useMemo(() => {
-    const open = visibleItems
-      .filter((i) => i.actionable && i.deadline)
-      .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
+    const open = visibleItems.filter((i) => i.actionable && i.deadline);
+    open.sort(
+      sortBy === "deadline"
+        ? (a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime()
+        : (a, b) => b.score - a.score,
+    );
+    // Nothing in the other half has a deadline, so sorting it by deadline
+    // degrades to most recent first — the closest thing to a clock it has.
     const rest = visibleItems.filter((i) => !(i.actionable && i.deadline));
-    return { openItems: open, awarenessItems: rest };
-  }, [visibleItems]);
+    rest.sort(
+      sortBy === "deadline"
+        ? (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+        : (a, b) => b.score - a.score,
+    );
+    return { openItems: open, awarenessItems: openOnly ? [] : rest };
+  }, [visibleItems, sortBy, openOnly]);
 
   const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
+
+  /** Per-source contribution to the digest, so a chip can read "3 of 100". */
+  const surfacedBySource = useMemo(() => {
+    const out: Record<string, number> = {};
+    for (const item of digest?.scored ?? []) out[item.source] = (out[item.source] ?? 0) + 1;
+    return out;
+  }, [digest]);
+
+  /**
+   * Sources whose data is missing or suspect. A source that fetched fine but
+   * parsed nothing belongs here too: the server logs that case, but a reader
+   * looking at the page could not tell a broken parser from a quiet week.
+   */
+  const degraded = useMemo(
+    () => (digest?.sources ?? []).filter((s) => s.status !== "ok" || s.count === 0),
+    [digest],
+  );
 
   // The 30-second version for a reader who will not scroll: whatever closes
   // soonest, which is the only thing with a clock on it.
@@ -146,13 +187,16 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
   }, [digest]);
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8">
+    // ~75ch: the measure prose stays readable at. The page was 768px wide,
+    // which at this body size ran to roughly 95 characters a line.
+    <div className="mx-auto flex w-full max-w-[75ch] flex-col gap-6 px-4 py-8 leading-relaxed">
       <header className="flex flex-col gap-3">
         <div className="flex items-start justify-between gap-3">
           <div>
             <h1 className="font-heading text-2xl font-semibold">Policy Radar LV</h1>
             <p className="text-sm text-muted-foreground">
-              Weekly startup-relevance digest across 7 Latvian policy sources.
+              Weekly startup-relevance digest across {SOURCE_PLACEHOLDERS.length} Latvian policy
+              sources.
             </p>
           </div>
           <Button onClick={handleRefresh} disabled={refreshing}>
@@ -160,22 +204,19 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
           </Button>
         </div>
 
-        <SourceStatusRow sources={liveSources} />
+        <SourceStatusRow sources={liveSources} surfacedBySource={surfacedBySource} />
 
         {digest ? (
-          <p className="text-sm">
-            Scanned <strong className="tabular-nums">{digest.totalScanned}</strong> items across{" "}
-            {digest.sources.length} sources → surfaced{" "}
-            <strong className="tabular-nums">{digest.totalSurfaced}</strong> as startup-relevant
-            {actionableCount > 0 && (
-              <>
-                {" "}
-                (<strong className="tabular-nums">{actionableCount}</strong> with an open
-                submission window)
-              </>
-            )}
-            . That&apos;s minutes of reading instead of the ~5 hours this used to take manually.
-          </p>
+          <div className="flex flex-col gap-1">
+            <dl className="flex flex-wrap gap-x-8 gap-y-2">
+              <Stat n={digest.totalScanned} label="scanned" />
+              <Stat n={digest.totalSurfaced} label="startup-relevant" />
+              <Stat n={actionableCount} label="open to submissions" />
+            </dl>
+            <p className="text-sm text-muted-foreground">
+              Minutes of reading instead of the ~5 hours this used to take manually.
+            </p>
+          </div>
         ) : (
           <p className="text-sm text-muted-foreground">
             {runError
@@ -196,28 +237,48 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
           </Alert>
         )}
 
-        {digest && !digest.llmAvailable && (
-          <Alert>
-            <AlertTitle>Running rules-only</AlertTitle>
+        {/* A partial digest that looks complete is the failure mode worth
+            shouting about: the reader has no way to know a source is missing. */}
+        {digest && degraded.length > 0 && (
+          <Alert variant="destructive">
+            <AlertTitle>
+              This digest is incomplete — {degraded.length} of {digest.sources.length} sources did
+              not deliver
+            </AlertTitle>
             <AlertDescription>
-              No AI Gateway key configured — matches below come from the deterministic
-              keyword/taxonomy engine only, no LLM-written explanations.{" "}
-              <Link href="/methodology" className="underline">
-                See the definition
-              </Link>
-              .
+              <ul className="flex flex-col gap-0.5">
+                {degraded.map((s) => (
+                  <li key={s.source}>
+                    <strong>{s.label}</strong> —{" "}
+                    {s.status === "timeout"
+                      ? "timed out"
+                      : s.status === "error"
+                        ? (s.error ?? "failed")
+                        : "fetched successfully but returned no items, which may mean the page changed shape"}
+                  </li>
+                ))}
+              </ul>
+              Items from these sources are missing below.
             </AlertDescription>
           </Alert>
         )}
 
-        <div className="flex flex-wrap items-center gap-2 pt-1 text-sm">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-1 text-sm text-muted-foreground">
           <Link href="/methodology" className="underline underline-offset-4">
             Methodology
           </Link>
-          <span className="opacity-40">·</span>
+          <span aria-hidden>·</span>
           <a href="/api/digest/markdown" className="underline underline-offset-4" target="_blank">
             Export as Markdown
           </a>
+          {/* Rules-only is the designed default, not a fault — it belongs in
+              the same muted line as the other metadata, not in a banner. */}
+          {digest && !digest.llmAvailable && (
+            <>
+              <span aria-hidden>·</span>
+              <span>Rules-only: no LLM key set, so no written explanations</span>
+            </>
+          )}
         </div>
       </header>
 
@@ -245,29 +306,56 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
       {digest && (
         <>
-          <div className="flex flex-wrap gap-1.5">
-            <Button
-              size="sm"
-              variant={sourceFilter === "all" ? "secondary" : "ghost"}
-              onClick={() => setSourceFilter("all")}
-            >
-              All sources
-            </Button>
-            {sourceOptions.map((s) => (
+          <div className="flex flex-col gap-2">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+              <label className="flex items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={openOnly}
+                  onChange={(e) => setOpenOnly(e.target.checked)}
+                  className="size-4 accent-foreground"
+                />
+                Open deadlines only
+              </label>
+              <label className="flex items-center gap-2">
+                Sort by
+                <select
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value as "deadline" | "relevance")}
+                  className="rounded-md border bg-background px-2 py-1"
+                >
+                  <option value="deadline">deadline</option>
+                  <option value="relevance">relevance</option>
+                </select>
+              </label>
+            </div>
+
+            <div className="flex flex-wrap gap-1.5">
               <Button
-                key={s.id}
                 size="sm"
-                variant={sourceFilter === s.id ? "secondary" : "ghost"}
-                onClick={() => setSourceFilter(s.id)}
+                variant={sourceFilter === "all" ? "secondary" : "ghost"}
+                onClick={() => setSourceFilter("all")}
               >
-                {s.label}
+                All sources
               </Button>
-            ))}
+              {sourceOptions.map((s) => (
+                <Button
+                  key={s.id}
+                  size="sm"
+                  variant={sourceFilter === s.id ? "secondary" : "ghost"}
+                  onClick={() => setSourceFilter(s.id)}
+                >
+                  {s.label}
+                </Button>
+              ))}
+            </div>
           </div>
 
-          {visibleItems.length === 0 ? (
+          {openItems.length + awarenessItems.length === 0 ? (
             <p className="py-10 text-center text-sm text-muted-foreground">
-              No startup-relevant items from this source this week.
+              {openOnly
+                ? "Nothing here has an open submission window right now."
+                : "No startup-relevant items from this source this week."}
             </p>
           ) : (
             <div className="flex flex-col gap-6">
