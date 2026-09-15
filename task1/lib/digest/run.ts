@@ -198,13 +198,15 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const runStart = Date.now();
   logger.info("run started", { runId, stage: "run", sourceCount: SOURCES.length });
 
-  const sources: SourceResult[] = [];
-
-  await Promise.all(
+  // Collected by index, not by push order: pushing as each collector settles
+  // ordered the array by response time, so two runs of the same week produced
+  // samples that would not diff cleanly. `onSource` still fires in whatever
+  // order they land — that is the live progress the stream is there to show.
+  const sources: SourceResult[] = await Promise.all(
     SOURCES.map(async (def) => {
       const result = await runSource(def, runId);
-      sources.push(result);
       onSource?.(result);
+      return result;
     }),
   );
 

@@ -7,7 +7,11 @@ function fmtDate(iso: string): string {
 }
 
 function renderItem(item: ScoredItem): string {
-  const lines: string[] = [`### ${item.title}`, ""];
+  // Heading is the scannable title; markdown has no expand affordance, so the
+  // full legal title follows as its own line rather than being dropped.
+  const title = displayTitle(item.title);
+  const lines: string[] = [`### ${title.text}`, ""];
+  if (title.shortened) lines.push(`_${item.title}_`, "");
   const meta: string[] = [`**Source:** ${item.sourceLabel}`];
   if (item.institution) meta.push(`**Institution:** ${item.institution}`);
   if (item.stage) meta.push(`**Stage:** ${item.stage}`);
@@ -84,7 +88,7 @@ export function renderDigestMarkdown(digest: DigestResult): string {
   lines.push(
     `Scanned **${digest.totalScanned}** items across ${digest.sources.length} sources → surfaced ` +
       `**${digest.totalSurfaced}** as startup-relevant` +
-      (actionableCount > 0 ? ` (**${actionableCount}** with an open feedback window)` : "") +
+      (actionableCount > 0 ? ` (**${actionableCount}** with an open submission window)` : "") +
       "." +
       (digest.llmAvailable ? "" : " _(rules-only mode — no LLM key configured)_"),
   );

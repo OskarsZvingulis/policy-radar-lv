@@ -103,16 +103,15 @@ Refresh (SSE)  ──►  /api/digest/stream  ──►  8 collectors, parallel,
   how busy a given week is, and the LLM never touches ranking or which dates
   count as a real deadline.
 - **LLM**: Vercel AI Gateway via a plain `"anthropic/claude-sonnet-5"` model
-  string — no provider SDK pinned. The AI SDK docs describe deployed Vercel
-  projects auto-authenticating via a `VERCEL_OIDC_TOKEN` the platform injects,
-  with no key to set — the code checks for it — but on this actual deployment
-  (Hobby-plan team, deployed via direct file upload rather than a git-linked
-  project) that token isn't present at runtime, confirmed by testing against
-  the live URL rather than assumed. Set `AI_GATEWAY_API_KEY` as a project
-  environment variable (or in `.env.local` for local dev, see `.env.example`)
-  to turn on LLM-written summaries. Either way the app runs rules-only and
-  still produces a complete, correctly-ranked digest — this was the explicit
-  design goal, not a fallback bolted on after the fact.
+  string — no provider SDK pinned. Set `AI_GATEWAY_API_KEY` as a project
+  environment variable (or in `.env.local` locally, see `.env.example`) to
+  turn on LLM-written summaries. Without one the app runs rules-only and
+  still produces a complete, correctly-ranked digest. The AI SDK docs say a
+  deployed Vercel project auto-authenticates via an injected
+  `VERCEL_OIDC_TOKEN` and the code checks for it, but on this deployment
+  (Hobby-plan team, deployed by file upload rather than a git link) that
+  token isn't present at runtime — measured against the live URL, not
+  assumed.
 - **Streaming**: `/api/digest/stream` (SSE) reports each collector's status
   as it resolves, which is what the UI's live "Refresh" view is actually
   showing — proof the data is live, not a canned screen.
@@ -148,14 +147,11 @@ npm run collect-eval-set       # re-scrapes all 8 sources and dumps every
                                 # fresh labelled sample later
 ```
 
-There is no CLI in the brief's sense (`--since`, `--sources`, `--no-llm`,
-`--dry-run`) since this ships as a web app, not a command-line tool. The
-closest equivalents: `?refresh=1` on `/api/digest` forces a fresh run past
-the weekly cache (brief's `--dry-run`-adjacent "run it now"); omitting
-`AI_GATEWAY_API_KEY` is the `--no-llm` case and is the default, not a flag;
-`--since`/`--sources` don't apply because every collector already
-self-windows to "new this week" (see `lib/digest/run.ts`'s recency filter)
-and all 8 run on every request — there's no need to scope a run to a subset.
+This ships as a web app, so there's no CLI with the brief's flags. Their
+equivalents: `?refresh=1` on `/api/digest` forces a run past the weekly
+cache, and running without `AI_GATEWAY_API_KEY` is the `--no-llm` case (the
+default). `--since` and `--sources` have no equivalent — every collector
+self-windows to "new this week", and all 8 run on every request.
 
 ## Verification
 
@@ -167,13 +163,13 @@ and all 8 run on every request — there's no need to scope a run to a subset.
 - Ground-truth check: the Budget Committee's 09.09.2026 agenda item
   *"Grozījumi Kolektīvās finansēšanas pakalpojumu likumā"* (crowdfunding law,
   3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100,
-  ranks at the top of the list, and correctly carries no deadline badge —
-  the reading already happened, so there is nothing left to submit. A
-  routine Ārlietu ministrija EU position paper from the same run does not
-  surface at all.
+  ranks at the top, and lands under "Worth knowing about" rather than "You
+  can still submit on these" — the reading already happened, so there is
+  nothing left to submit. A routine Ārlietu ministrija EU position paper from
+  the same run does not surface at all.
 - `samples/digest-2026-09-14.{md,html,json}` is a real digest generated from
-  a live run (`npm run generate-digest`) — 325 scanned, 218 fresh, 51
-  surfaced, all 8 sources `ok`, 9.7s total, rules-only (no LLM key set in
+  a live run (`npm run generate-digest`) — 326 scanned, 219 fresh, 46
+  surfaced, all 8 sources `ok`, 6.9s total, rules-only (no LLM key set in
   this environment — see "Cost per run" below for what the LLM step costs
   when one is).
 
@@ -186,13 +182,19 @@ one-line rationale. `npm run eval` re-scores every item with whatever the
 rules engine currently does (also run as `tests/eval.test.ts` in CI, with a
 recall floor so a regression fails the build):
 
-| Metric | Value |
-|---|---|
-| Precision | 65% (15 TP / 8 FP) |
-| Recall | 100% (15 TP / 0 FN) |
+| Split | n | Precision | Recall |
+|---|---|---|---|
+| **Holdout** — the number to read | 16 | 67% (6 TP / 3 FP) | 100% (0 FN) |
+| Train — keywords were tuned against these | 24 | 64% | 100% |
+
+The split was drawn retrospectively, after the keywords had already been
+tuned against all 40 items, so today's holdout figure is still partly
+contaminated. It becomes a clean generalization estimate only for changes
+made from here on, and only if the holdout is never consulted while tuning.
+At n=16, one item moves recall by about 17 points.
 
 Recall is the metric that matters per §3's own rule — a missed relevant item
-costs far more than an extra line — so it's the hard floor; the 8 false
+costs far more than an extra line — so it's the hard floor; the false
 positives are the accepted cost of that, and are almost all one shape:
 generic government process (an internal ministry budget reallocation, one
 state company's asset-acquisition authority, a committee-name keyword
@@ -214,7 +216,7 @@ founder spot-checking the 8 false positives and confirming the label calls.
 
 ## Testing and CI
 
-`npm test` (vitest) runs entirely offline — 48 tests across:
+`npm test` (vitest) runs entirely offline — 120 tests across:
 
 - date-window and deadline-boundary logic (`tests/dates.test.ts`)
 - Latvian date/deadline-phrase parsing, including the real false positive
@@ -225,7 +227,7 @@ founder spot-checking the 8 false positives and confirming the label calls.
   2026-09-15) for the TAP flextable parser and the Saeima Domino day-listing
   parser — a site markup change fails these, not silently empties a digest
 - the digest Markdown renderer's structure — never blank at zero relevant
-  items, "read this first" ordering, footer content (`tests/digest-markdown.test.ts`)
+  items, "closing soonest" admitting only open windows, footer content (`tests/digest-markdown.test.ts`)
 - the hand-labelled eval set as a recall-floor regression test
   (`tests/eval.test.ts`)
 
