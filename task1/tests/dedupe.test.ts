@@ -11,6 +11,7 @@ type TestItem = {
   id: string;
   title: string;
   source: string;
+  sourceLabel: string;
   score: number;
   deadline?: string;
   matchedRules: string[];
@@ -19,6 +20,7 @@ type TestItem = {
 
 const item = (over: Partial<TestItem> & { id: string; source: string }): TestItem => ({
   title: over.title ?? over.id,
+  sourceLabel: over.source,
   score: 50,
   matchedRules: [],
   ...over,

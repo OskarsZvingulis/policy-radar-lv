@@ -1,5 +1,6 @@
 import type { DigestResult, ScoredItem } from "../types";
 import { describeItemDates } from "../dates";
+import { displayTitle } from "../display-title";
 
 function fmtDate(iso: string): string {
   return new Date(iso).toISOString().slice(0, 10);
@@ -24,20 +25,21 @@ function renderItem(item: ScoredItem): string {
   return lines.join("\n");
 }
 
-/** Top of the digest: the 3-5 items a reader with 30 seconds should see —
- * open deadlines first (soonest closing first), then highest relevance. */
+/** Top of the digest for a reader with 30 seconds: only items with an open
+ * submission window, soonest closing first. Nothing else has a clock on it,
+ * so nothing else belongs in a block the reader will treat as a to-do list. */
 function renderTldr(digest: DigestResult): string[] {
-  const withOpenDeadline = digest.scored
+  const bullets = digest.scored
     .filter((i) => i.actionable && i.deadline)
-    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
-  const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
-  const bullets = [...withOpenDeadline, ...rest].slice(0, 5);
+    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime())
+    .slice(0, 5);
   if (bullets.length === 0) return [];
 
-  const lines = [`## Read this first — the 5 most important items`, ""];
+  const lines = [`## Closing soonest`, ""];
   for (const item of bullets) {
-    const deadlineNote = item.actionable && item.deadline ? ` — deadline ${fmtDate(item.deadline)}` : "";
-    lines.push(`- **${item.title}** (${item.sourceLabel}, ${item.score}/100)${deadlineNote}`);
+    lines.push(
+      `- **${displayTitle(item.title).text}** — closes ${fmtDate(item.deadline!)} (${item.sourceLabel})`,
+    );
   }
   lines.push("");
   return lines;

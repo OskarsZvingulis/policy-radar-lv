@@ -1,64 +1,119 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+"use client";
+
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import type { ScoredItem } from "@/lib/types";
 import { describeItemDates } from "@/lib/dates";
+import { displayTitle } from "@/lib/display-title";
+import { deadlinePhrase, pastPhrase } from "@/lib/relative-date";
 
-function daysUntil(iso: string): number {
-  return Math.ceil((new Date(iso).getTime() - Date.now()) / 86_400_000);
-}
+const MAX_VISIBLE_AXES = 3;
 
-function relativeDay(iso: string, isDeadline: boolean): string | null {
-  if (!isDeadline) return null;
-  const days = daysUntil(iso);
-  if (days < 0) return "closed";
-  if (days === 0) return "closes today";
-  if (days === 1) return "closes tomorrow";
-  return `closes in ${days} days`;
-}
-
+/**
+ * One item, ordered by what a founder decides on: what it is, by when, on
+ * what grounds, and only then where it came from and how strongly it scored.
+ *
+ * Colour is spent on exactly one thing — an open deadline. Everything that
+ * was previously coloured (urgency borders, score emphasis) competed with it
+ * and left the page with no focal point.
+ *
+ * Collapsed by default: the full Latvian legal title runs to five lines and
+ * buries the next card. It stays one click away rather than being discarded.
+ */
 export function ItemCard({ item }: { item: ScoredItem }) {
+  const [expanded, setExpanded] = useState(false);
+  const title = displayTitle(item.title);
   const dates = describeItemDates(item);
+  const deadline = dates.find((d) => d.isDeadline);
+  const context = dates.find((d) => !d.isDeadline);
+
+  const axes = item.matchedRules;
+  const visibleAxes = expanded ? axes : axes.slice(0, MAX_VISIBLE_AXES);
+  const hiddenAxes = axes.length - visibleAxes.length;
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="text-balance">
-          <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-            {item.title}
-          </a>
-        </CardTitle>
-        <div className="flex flex-wrap items-center gap-1.5 pt-1 text-xs text-muted-foreground">
-          <Badge variant="secondary">{item.sourceLabel}</Badge>
-          {item.institution && <Badge variant="outline">{item.institution}</Badge>}
-          {item.stage && <Badge variant="outline">{item.stage}</Badge>}
-          {dates.map((d) => {
-            const rel = relativeDay(d.iso, d.isDeadline);
-            const days = daysUntil(d.iso);
-            const urgent = d.isDeadline && days <= 5 && days >= 0;
-            return (
-              <Badge
-                key={d.label}
-                variant="outline"
-                className={urgent ? "border-red-500/40 text-red-600 dark:text-red-400" : ""}
-                title={d.label}
-              >
-                {d.isDeadline ? "⏰ " : ""}
-                {d.label}: {new Date(d.iso).toISOString().slice(0, 10)}
-                {rel ? ` (${rel})` : ""}
-              </Badge>
-            );
-          })}
-          <span className="ml-auto tabular-nums opacity-60">relevance {item.score}</span>
-        </div>
-      </CardHeader>
-      <CardContent>
-        {item.whyItMatters ? (
-          <p className="text-sm">{item.whyItMatters}</p>
-        ) : item.matchedRules.length > 0 ? (
-          <p className="text-sm text-muted-foreground">
-            Matched: {item.matchedRules.join(", ")}
+      <CardContent className="flex flex-col gap-2 py-4">
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-balance font-heading text-base leading-snug font-medium hover:underline"
+        >
+          {title.text}
+        </a>
+
+        {deadline && (
+          <p className="text-sm font-medium text-red-700 dark:text-red-400">
+            {deadline.label} — {deadlinePhrase(deadline.iso)}
           </p>
-        ) : null}
+        )}
+
+        {item.whyItMatters && <p className="text-sm">{item.whyItMatters}</p>}
+
+        {visibleAxes.length > 0 && (
+          <div className="flex flex-wrap gap-1">
+            {visibleAxes.map((axis) => (
+              <Badge key={axis} variant="outline" className="font-normal">
+                {axis}
+              </Badge>
+            ))}
+            {hiddenAxes > 0 && (
+              <span className="self-center text-xs text-muted-foreground">+{hiddenAxes} more</span>
+            )}
+          </div>
+        )}
+
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
+          <span>{item.sourceLabel}</span>
+          {item.institution && (
+            <>
+              <span aria-hidden>·</span>
+              <span>{item.institution}</span>
+            </>
+          )}
+          {item.stage && (
+            <>
+              <span aria-hidden>·</span>
+              <span>{item.stage}</span>
+            </>
+          )}
+          {context && (
+            <>
+              <span aria-hidden>·</span>
+              <span>
+                {context.label} {pastPhrase(context.iso)}
+              </span>
+            </>
+          )}
+          <span aria-hidden>·</span>
+          <span className="tabular-nums">relevance {item.score}</span>
+          {(title.shortened || axes.length > 0) && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="ml-auto underline underline-offset-2 hover:text-foreground"
+            >
+              {expanded ? "Less" : "Details"}
+            </button>
+          )}
+        </div>
+
+        {expanded && (
+          <div className="flex flex-col gap-2 border-t pt-2 text-xs text-muted-foreground">
+            {title.shortened && (
+              <p>
+                <span className="font-medium text-foreground">Full title: </span>
+                {item.title}
+              </p>
+            )}
+            {item.alsoSeenIn && item.alsoSeenIn.length > 0 && (
+              <p>Also listed by: {item.alsoSeenIn.join(", ")}</p>
+            )}
+          </div>
+        )}
       </CardContent>
     </Card>
   );

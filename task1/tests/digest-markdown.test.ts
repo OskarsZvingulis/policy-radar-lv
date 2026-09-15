@@ -53,26 +53,34 @@ describe("renderDigestMarkdown — golden structure", () => {
     expect(md.trim().length).toBeGreaterThan(0);
   });
 
-  it("puts an item with an open deadline ahead of a higher-score item with no deadline, in the read-this-first block", () => {
-    const withDeadline = scoredItem({
+  it("admits only items with an open window to the closing-soonest block, soonest first", () => {
+    const closesLater = scoredItem({
       id: "a",
-      title: "Konsultācija ar termiņu",
+      title: "Konsultācija ar vēlāku termiņu",
       score: 40,
       actionable: true,
-      deadline: "2026-09-20T00:00:00Z",
+      deadline: "2026-09-25T00:00:00Z",
     });
+    const closesSooner = scoredItem({
+      id: "c",
+      title: "Konsultācija ar tuvāku termiņu",
+      score: 20,
+      actionable: true,
+      deadline: "2026-09-18T00:00:00Z",
+    });
+    // Scores higher than either, but nothing to submit into — a reader who
+    // treats this block as a to-do list must not find it here.
     const noDeadline = scoredItem({ id: "b", title: "Augstāks skalojums", score: 90 });
+
     const md = renderDigestMarkdown({
       ...BASE,
-      scored: [noDeadline, withDeadline],
-      totalSurfaced: 2,
+      scored: [noDeadline, closesLater, closesSooner],
+      totalSurfaced: 3,
     });
-    const readFirstSection = md
-      .split("## Read this first")[1]
-      .split("## All startup-relevant items")[0];
-    expect(readFirstSection.indexOf("Konsultācija ar termiņu")).toBeLessThan(
-      readFirstSection.indexOf("Augstāks skalojums"),
-    );
+    const block = md.split("## Closing soonest")[1].split("## All startup-relevant items")[0];
+
+    expect(block).not.toContain("Augstāks skalojums");
+    expect(block.indexOf("tuvāku termiņu")).toBeLessThan(block.indexOf("vēlāku termiņu"));
   });
 
   it("includes run id, model, and a cost figure in the footer", () => {

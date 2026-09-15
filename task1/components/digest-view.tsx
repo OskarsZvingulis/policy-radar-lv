@@ -7,6 +7,8 @@ import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ItemCard } from "@/components/item-card";
 import { SourceStatusRow, type LiveSourceState } from "@/components/source-status";
+import { displayTitle } from "@/lib/display-title";
+import { absoluteDay, deadlinePhrase } from "@/lib/relative-date";
 import type { DigestResult, ScoredItem, SourceId } from "@/lib/types";
 
 // Must mirror the SOURCES list in lib/digest/run.ts — used only to render
@@ -110,29 +112,37 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
     [digest],
   );
 
-  // A single list ranked by relevance — no urgency tiers. Buckets like
-  // "Act now" implied a reader could influence a vote or reading they have
-  // no part in; the only thing genuinely actionable is a real, open
-  // submission window, which each item states for itself (see actionableCount
-  // and the per-item date badges) rather than a whole category implying it.
   const visibleItems: ScoredItem[] = useMemo(() => {
     if (!digest) return [];
     if (sourceFilter === "all") return digest.scored;
     return digest.scored.filter((i) => i.source === sourceFilter);
   }, [digest, sourceFilter]);
 
-  const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
-
-  // Same ordering rule as the markdown export's "read this first" block:
-  // open deadlines soonest-first, then whatever's left by relevance — the
-  // 30-second version of the digest for a reader who won't scroll the full list.
-  const tldrItems: ScoredItem[] = useMemo(() => {
-    if (!digest) return [];
-    const withDeadline = digest.scored
+  /**
+   * The one split that survives: an item either has an open window you can
+   * submit into, or it does not. That is a fact about the source, unlike the
+   * urgency tiers this replaced, which asked the reader to act on votes they
+   * have no part in. Items you can act on sort by deadline (soonest first,
+   * because that is the decision); the rest sort by relevance.
+   */
+  const { openItems, awarenessItems } = useMemo(() => {
+    const open = visibleItems
       .filter((i) => i.actionable && i.deadline)
       .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
-    const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
-    return [...withDeadline, ...rest].slice(0, 5);
+    const rest = visibleItems.filter((i) => !(i.actionable && i.deadline));
+    return { openItems: open, awarenessItems: rest };
+  }, [visibleItems]);
+
+  const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
+
+  // The 30-second version for a reader who will not scroll: whatever closes
+  // soonest, which is the only thing with a clock on it.
+  const closingSoonest: ScoredItem[] = useMemo(() => {
+    if (!digest) return [];
+    return digest.scored
+      .filter((i) => i.actionable && i.deadline)
+      .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime())
+      .slice(0, 5);
   }, [digest]);
 
   return (
@@ -160,8 +170,8 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
             {actionableCount > 0 && (
               <>
                 {" "}
-                (<strong className="text-red-600 dark:text-red-400">{actionableCount}</strong>{" "}
-                with an open feedback window)
+                (<strong className="tabular-nums">{actionableCount}</strong> with an open
+                submission window)
               </>
             )}
             . That&apos;s minutes of reading instead of the ~5 hours this used to take manually.
@@ -213,21 +223,19 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
       <Separator />
 
-      {digest && tldrItems.length > 0 && (
+      {digest && closingSoonest.length > 0 && (
         <div className="rounded-lg border bg-muted/30 p-4">
-          <h2 className="mb-2 text-sm font-semibold">Read this first — the 5 most important items</h2>
+          <h2 className="mb-2 text-sm font-semibold">Closing soonest</h2>
           <ul className="flex flex-col gap-1.5 text-sm">
-            {tldrItems.map((item) => (
+            {closingSoonest.map((item) => (
               <li key={item.id}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                  {item.title}
+                  {displayTitle(item.title).text}
                 </a>
-                <span className="text-muted-foreground">
+                <span className="text-muted-foreground"> — {item.sourceLabel}</span>
+                <span className="text-red-700 dark:text-red-400">
                   {" "}
-                  — {item.sourceLabel}, {item.score}/100
-                  {item.actionable && item.deadline
-                    ? `, deadline ${new Date(item.deadline).toISOString().slice(0, 10)}`
-                    : ""}
+                  · {deadlinePhrase(item.deadline!)}
                 </span>
               </li>
             ))}
@@ -257,22 +265,50 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
             ))}
           </div>
 
-          <div className="flex flex-col gap-4">
-            {visibleItems.length === 0 ? (
-              <p className="py-10 text-center text-sm text-muted-foreground">
-                No startup-relevant items from this source this week.
-              </p>
-            ) : (
-              visibleItems.map((item) => <ItemCard key={item.id} item={item} />)
-            )}
-          </div>
+          {visibleItems.length === 0 ? (
+            <p className="py-10 text-center text-sm text-muted-foreground">
+              No startup-relevant items from this source this week.
+            </p>
+          ) : (
+            <div className="flex flex-col gap-6">
+              {openItems.length > 0 && (
+                <section className="flex flex-col gap-3">
+                  <h2 className="text-sm font-semibold">
+                    You can still submit on these{" "}
+                    <span className="font-normal text-muted-foreground">({openItems.length})</span>
+                  </h2>
+                  {openItems.map((item) => (
+                    <ItemCard key={item.id} item={item} />
+                  ))}
+                </section>
+              )}
+
+              {awarenessItems.length > 0 && (
+                <section className="flex flex-col gap-3">
+                  <h2 className="text-sm font-semibold">
+                    Worth knowing about{" "}
+                    <span className="font-normal text-muted-foreground">
+                      ({awarenessItems.length})
+                    </span>
+                  </h2>
+                  <p className="-mt-2 text-xs text-muted-foreground">
+                    No open submission window — these are moving through the process or already
+                    decided.
+                  </p>
+                  {awarenessItems.map((item) => (
+                    <ItemCard key={item.id} item={item} />
+                  ))}
+                </section>
+              )}
+            </div>
+          )}
 
           <Separator />
           <footer className="flex flex-col gap-1 pb-6 text-xs text-muted-foreground">
             <span>
               Digest generated{" "}
               {new Date(digest.generatedAt).toLocaleString("en-GB", { timeZone: "Europe/Riga" })}{" "}
-              (Europe/Riga) · week of {new Date(digest.weekStart).toISOString().slice(0, 10)}
+              (Europe/Riga) · week of {absoluteDay(digest.weekStart)}
             </span>
             <span>
               Run <code className="rounded bg-muted px-1 py-0.5">{digest.runId}</code>

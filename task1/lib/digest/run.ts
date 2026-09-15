@@ -87,7 +87,7 @@ export function taIdentificator(item: { id: string; title: string }): string | u
   return item.id.match(TA_CODE)?.[1] ?? item.title.match(TA_CODE)?.[1];
 }
 
-export function dedupeByAct<T extends { id: string; title: string; score: number; deadline?: string; matchedRules: string[]; source: string }>(
+export function dedupeByAct<T extends { id: string; title: string; score: number; deadline?: string; matchedRules: string[]; sourceLabel: string }>(
   items: T[],
 ): T[] {
   const byAct = new Map<string, T>();
@@ -111,7 +111,7 @@ export function dedupeByAct<T extends { id: string; title: string; score: number
       ...winner,
       score: Math.max(seen.score, item.score),
       matchedRules: [...new Set([...winner.matchedRules, ...loser.matchedRules])],
-      alsoSeenIn: [...new Set([...(asAlsoSeen(seen) ?? []), ...(asAlsoSeen(item) ?? []), loser.source])],
+      alsoSeenIn: [...new Set([...(asAlsoSeen(seen) ?? []), ...(asAlsoSeen(item) ?? []), loser.sourceLabel])],
     } as T;
     byAct.set(code, merged);
     out.splice(out.indexOf(seen), 1, merged);

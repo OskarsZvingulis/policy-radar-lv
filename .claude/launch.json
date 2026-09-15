@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "policy-radar-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "task1", "run", "dev"],
+      "port": 3000
+    }
+  ]
+}

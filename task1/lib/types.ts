@@ -51,6 +51,12 @@ export interface ScoredItem extends Item {
    * plain informational dates ("meeting: ...").
    */
   actionable: boolean;
+  /**
+   * Other sources that listed the same act, when copies were merged on the TA
+   * identificator. Shown on expand so a reader can tell "one document, three
+   * listings" from "three documents".
+   */
+  alsoSeenIn?: string[];
   /** LLM-written explanation, 1-2 sentences. Absent when running rules-only. */
   whyItMatters?: string;
   llmScored: boolean;
