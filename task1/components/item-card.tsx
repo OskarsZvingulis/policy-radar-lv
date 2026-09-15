@@ -25,8 +25,14 @@ export function ItemCard({ item }: { item: ScoredItem }) {
   const [expanded, setExpanded] = useState(false);
   const title = displayTitle(item.title);
   const dates = describeItemDates(item);
-  const deadline = dates.find((d) => d.isDeadline);
-  const context = dates.find((d) => !d.isDeadline);
+  // describeItemDates only marks a window `isDeadline` while it is still open,
+  // so the red line below can never render a date nobody can act on. A closed
+  // window comes back as ordinary context instead.
+  const deadline = item.actionable ? dates.find((d) => d.isDeadline) : undefined;
+  const context = dates.filter((d) => d !== deadline);
+  const otherWindows = (item.appearances ?? []).filter(
+    (a) => a.deadline && a.url !== item.url,
+  );
 
   const axes = item.matchedRules;
   const visibleAxes = expanded ? axes : axes.slice(0, MAX_VISIBLE_AXES);
@@ -35,10 +41,13 @@ export function ItemCard({ item }: { item: ScoredItem }) {
   return (
     <Card>
       <CardContent className="flex flex-col gap-2 py-4">
+        {/* lang="lv" so a screen reader uses Latvian pronunciation rules for
+            the title rather than reading it as mangled English. */}
         <a
           href={item.url}
           target="_blank"
           rel="noopener noreferrer"
+          lang="lv"
           className="text-balance font-heading text-base leading-snug font-medium hover:underline"
         >
           {title.text}
@@ -66,27 +75,27 @@ export function ItemCard({ item }: { item: ScoredItem }) {
         )}
 
         <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground">
-          <span>{item.sourceLabel}</span>
+          <span lang="lv">{item.sourceLabel}</span>
           {item.institution && (
             <>
               <span aria-hidden>·</span>
-              <span>{item.institution}</span>
+              <span lang="lv">{item.institution}</span>
             </>
           )}
           {item.stage && (
             <>
               <span aria-hidden>·</span>
-              <span>{item.stage}</span>
+              <span lang="lv">{item.stage}</span>
             </>
           )}
-          {context && (
-            <>
+          {context.map((d) => (
+            <span key={d.label} className="flex items-center gap-2">
               <span aria-hidden>·</span>
               <span>
-                {context.label} {pastPhrase(context.iso)}
+                {d.label} {pastPhrase(d.iso)}
               </span>
-            </>
-          )}
+            </span>
+          ))}
           <span aria-hidden>·</span>
           <span className="tabular-nums">relevance {item.score}</span>
           {(title.shortened || axes.length > 0) && (
@@ -94,7 +103,7 @@ export function ItemCard({ item }: { item: ScoredItem }) {
               type="button"
               onClick={() => setExpanded((v) => !v)}
               aria-expanded={expanded}
-              className="ml-auto underline underline-offset-2 hover:text-foreground"
+              className="ml-auto -m-2 p-2 underline underline-offset-2 hover:text-foreground"
             >
               {expanded ? "Less" : "Details"}
             </button>
@@ -106,10 +115,30 @@ export function ItemCard({ item }: { item: ScoredItem }) {
             {title.shortened && (
               <p>
                 <span className="font-medium text-foreground">Full title: </span>
-                {item.title}
+                <span lang="lv">{item.title}</span>
               </p>
             )}
-            {item.alsoSeenIn && item.alsoSeenIn.length > 0 && (
+            {otherWindows.length > 0 && (
+              <div>
+                <span className="font-medium text-foreground">Other dates for this act: </span>
+                <ul className="mt-0.5 flex flex-col gap-0.5">
+                  {otherWindows.map((a) => (
+                    <li key={a.url}>
+                      {a.sourceLabel}: {deadlinePhrase(a.deadline!)}{" "}
+                      <a
+                        href={a.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline underline-offset-2"
+                      >
+                        open
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {item.alsoSeenIn && item.alsoSeenIn.length > 0 && otherWindows.length === 0 && (
               <p>Also listed by: {item.alsoSeenIn.join(", ")}</p>
             )}
           </div>

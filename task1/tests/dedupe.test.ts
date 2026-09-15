@@ -12,8 +12,10 @@ type TestItem = {
   title: string;
   source: string;
   sourceLabel: string;
+  url: string;
   score: number;
   deadline?: string;
+  actionable: boolean;
   matchedRules: string[];
   alsoSeenIn?: string[];
 };
@@ -21,7 +23,9 @@ type TestItem = {
 const item = (over: Partial<TestItem> & { id: string; source: string }): TestItem => ({
   title: over.title ?? over.id,
   sourceLabel: over.source,
+  url: `https://example.lv/${over.id}`,
   score: 50,
+  actionable: Boolean(over.deadline),
   matchedRules: [],
   ...over,
 });
@@ -46,6 +50,8 @@ describe("taIdentificator", () => {
   });
 });
 
+const NOW = new Date("2026-09-15T10:00:00Z");
+
 describe("dedupeByAct", () => {
   it("collapses the same act seen from two collectors", () => {
     const out = dedupeByAct([
@@ -65,7 +71,7 @@ describe("dedupeByAct", () => {
         score: 40,
         deadline: "2026-09-25T00:00:00.000Z",
       }),
-    ]);
+    ], NOW);
     expect(out).toHaveLength(1);
     expect(out[0].id).toBe("tap_consultations:26-TA-2087");
     expect(out[0].deadline).toBe("2026-09-25T00:00:00.000Z");
@@ -87,7 +93,7 @@ describe("dedupeByAct", () => {
       item({ id: "tap_legal_acts:26-TA-2087", source: "tap_legal_acts" }),
       item({ id: "tap_consultations:26-TA-2087", source: "tap_consultations", deadline: "2026-09-25T00:00:00.000Z" }),
       item({ id: "tap_vss:26-TA-2087:/m/2", source: "tap_vss" }),
-    ]);
+    ], NOW);
     expect(out).toHaveLength(1);
     expect(out[0].alsoSeenIn).toEqual(expect.arrayContaining(["tap_legal_acts", "tap_vss"]));
   });
@@ -108,6 +114,12 @@ describe("dedupeByAct", () => {
       item({ id: "tap_consultations:26-TA-1", source: "tap_consultations", title: "dupe of second" }),
       item({ id: "liaa_news:b", source: "liaa_news", title: "third" }),
     ]);
-    expect(out.map((i) => i.title)).toEqual(["first", "second", "third"]);
+    // The merged act holds the slot its first copy occupied. Which copy leads
+    // the merge is decided on its own merits, not on arrival order, so this
+    // asserts position rather than whose title survived.
+    expect(out).toHaveLength(3);
+    expect(out[0].title).toBe("first");
+    expect(taIdentificator(out[1])).toBe("26-TA-1");
+    expect(out[2].title).toBe("third");
   });
 });

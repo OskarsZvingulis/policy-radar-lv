@@ -4,7 +4,7 @@
  * every item deterministically, hands the top slice to the LLM for a
  * "why it matters" line, and assembles the final DigestResult.
  */
-import type { DigestResult, Item, ScoredItem, SourceId, SourceResult } from "../types";
+import type { Appearance, DigestResult, Item, ScoredItem, SourceId, SourceResult } from "../types";
 import { collectTapLegalActs } from "../sources/tap";
 import { collectTapConsultations } from "../sources/tap-consultations";
 import { collectTapMeetings } from "../sources/tap-meetings";
@@ -13,6 +13,7 @@ import { collectEmNews, collectLiaaNews, collectAltumNews } from "../sources/rss
 import { scoreItems } from "../relevance/score";
 import { scoreWithLlm, PROMPT_VERSION, LLM_MODEL, type LlmShortlistItem } from "../relevance/llm";
 import { weekBounds } from "./week";
+import { SOURCE_REGISTRY } from "./registry";
 import { isDeadlineStillOpen, isWithinTrailingDays } from "../dates";
 import { logger, newRunId } from "../logging";
 
@@ -25,19 +26,27 @@ const RECENCY_WINDOW_DAYS = 7;
 interface SourceDef {
   id: SourceId;
   label: string;
-  run: () => Promise<Item[]>;
+  /** Receives the deadline signal so it can stop early and cancel in-flight requests. */
+  run: (signal: AbortSignal) => Promise<Item[]>;
 }
 
-const SOURCES: SourceDef[] = [
-  { id: "tap_legal_acts", label: "TAP portāls: Tiesību aktu projekti", run: collectTapLegalActs },
-  { id: "tap_consultations", label: "TAP portāls: Sabiedrības līdzdalība", run: collectTapConsultations },
-  { id: "tap_vss", label: "Valsts sekretāru sanāksme", run: () => collectTapMeetings("state_secretaries") },
-  { id: "tap_mk", label: "Ministru kabineta sēdes", run: () => collectTapMeetings("cabinet_ministers") },
-  { id: "saeima_committees", label: "Saeima: komisiju sēdes", run: collectSaeimaCommittees },
-  { id: "em_news", label: "Ekonomikas ministrija", run: collectEmNews },
-  { id: "liaa_news", label: "LIAA", run: collectLiaaNews },
-  { id: "altum_news", label: "Altum", run: collectAltumNews },
-];
+/** Labels come from the registry; this only binds each id to its collector. */
+const COLLECTORS: Record<SourceId, (signal: AbortSignal) => Promise<Item[]>> = {
+  tap_legal_acts: collectTapLegalActs,
+  tap_consultations: collectTapConsultations,
+  tap_vss: (s) => collectTapMeetings("state_secretaries", s),
+  tap_mk: (s) => collectTapMeetings("cabinet_ministers", s),
+  saeima_committees: collectSaeimaCommittees,
+  em_news: collectEmNews,
+  liaa_news: collectLiaaNews,
+  altum_news: collectAltumNews,
+};
+
+const SOURCES: SourceDef[] = SOURCE_REGISTRY.map(({ id, label }) => ({
+  id,
+  label,
+  run: COLLECTORS[id],
+}));
 
 /**
  * Only the Saeima collector self-limits to a trailing date window. Every
@@ -71,83 +80,186 @@ function isWithinRecencyWindow(item: Item): boolean {
  * /public_participation, and can also sit on a VSS or MK agenda. Each
  * collector mints its own id (tap_legal_acts:26-TA-2087 vs
  * tap_consultations:26-TA-2087), so nothing downstream saw them as the same
- * document — 26-TA-2087 took two of the five slots at the top of a real
- * digest. Deduping on the TA identificator is the fix; the whole promise of
- * the product is that the reader doesn't have to notice this themselves.
+ * document, and 26-TA-2087 took two of the five slots at the top of a real
+ * digest.
  *
- * Which copy wins: the one carrying a real deadline, since that is the record
- * that can actually be acted on. Ties break on score. matchedRules are
- * unioned so the surviving card still shows every axis that fired anywhere,
- * and the score is the max of the copies — the winner keeps its own fields
- * otherwise.
+ * The first attempt at this fix picked one copy and discarded the rest, which
+ * turned a visible duplicate into an invisible wrong answer. On the committed
+ * sample it merged away the public consultation closing that same day and
+ * showed the ministry coordination deadline of the next day instead, linking
+ * to the wrong page. Worse, because every consultation was absorbed into a
+ * legal-act card, the one source a reader can actually submit to reported
+ * "0 of 25".
+ *
+ * So nothing is discarded now. Every copy is kept as an `appearance` carrying
+ * its own deadline and URL, and the merged card leads with the appearance a
+ * reader can still act on:
+ *
+ *   1. Among copies whose deadline is still open, a public consultation wins,
+ *      because that is a window the public may submit into. A legal-act
+ *      "deadline" is inter-ministry coordination, which a founder cannot file
+ *      against.
+ *   2. Within that, soonest close first.
+ *   3. If nothing is open, highest score, then lowest id.
+ *
+ * The card's deadline and its link come from the same appearance, so it can
+ * never say "1 day left" while pointing at a page about a different date.
+ * Every tie-break is total, so the merge does not depend on the order the
+ * collectors happened to return in.
  */
 const TA_CODE = /\b(\d{2}-TA-\d+)\b/;
+
+const CONSULTATION_SOURCE = "tap_consultations";
 
 export function taIdentificator(item: { id: string; title: string }): string | undefined {
   return item.id.match(TA_CODE)?.[1] ?? item.title.match(TA_CODE)?.[1];
 }
 
-export function dedupeByAct<T extends { id: string; title: string; score: number; deadline?: string; matchedRules: string[]; sourceLabel: string }>(
-  items: T[],
-): T[] {
-  const byAct = new Map<string, T>();
-  const out: T[] = [];
+interface Dedupable {
+  id: string;
+  title: string;
+  source: string;
+  sourceLabel: string;
+  url: string;
+  score: number;
+  deadline?: string;
+  actionable: boolean;
+  matchedRules: string[];
+  appearances?: Appearance[];
+  alsoSeenIn?: string[];
+}
+
+function compareByText(a: string, b: string): number {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
+/** Soonest actionable window first; a public consultation outranks a tie. */
+function compareOpenCopies(a: Dedupable, b: Dedupable): number {
+  const aConsult = a.source === CONSULTATION_SOURCE ? 0 : 1;
+  const bConsult = b.source === CONSULTATION_SOURCE ? 0 : 1;
+  if (aConsult !== bConsult) return aConsult - bConsult;
+  const at = new Date(a.deadline!).getTime();
+  const bt = new Date(b.deadline!).getTime();
+  if (at !== bt) return at - bt;
+  return compareByText(a.id, b.id);
+}
+
+function compareClosedCopies(a: Dedupable, b: Dedupable): number {
+  return b.score - a.score || compareByText(a.id, b.id);
+}
+
+function mergeGroup<T extends Dedupable>(copies: T[], now: Date): T {
+  if (copies.length === 1) return copies[0];
+
+  const open = copies.filter((c) => isDeadlineStillOpen(c.deadline, now));
+  const lead =
+    open.length > 0
+      ? [...open].sort(compareOpenCopies)[0]
+      : [...copies].sort(compareClosedCopies)[0];
+
+  const appearances: Appearance[] = copies.map((c) => ({
+    source: c.source,
+    sourceLabel: c.sourceLabel,
+    url: c.url,
+    deadline: c.deadline,
+    actionable: c.actionable,
+  }));
+
+  const others = new Set(appearances.map((a) => a.sourceLabel));
+  others.delete(lead.sourceLabel);
+
+  return {
+    ...lead,
+    score: Math.max(...copies.map((c) => c.score)),
+    // Actionable if any listing of this act has an open window, since the
+    // reader can act on that listing even if the lead copy is not the one.
+    actionable: copies.some((c) => c.actionable),
+    matchedRules: [...new Set(copies.flatMap((c) => c.matchedRules))],
+    appearances,
+    alsoSeenIn: [...others].sort(compareByText),
+  };
+}
+
+export function dedupeByAct<T extends Dedupable>(items: T[], now: Date = new Date()): T[] {
+  // Group first, merge once. The previous version merged pairwise as it went,
+  // which made the result depend on arrival order.
+  const groups = new Map<string, T[]>();
+  const slots: (string | T)[] = [];
 
   for (const item of items) {
     const code = taIdentificator(item);
     if (!code) {
-      out.push(item); // nothing to key on (news, committee agendas) — keep as-is
+      slots.push(item); // nothing to key on (news, committee agendas)
       continue;
     }
-    const seen = byAct.get(code);
-    if (!seen) {
-      byAct.set(code, item);
-      out.push(item);
-      continue;
+    const existing = groups.get(code);
+    if (existing) {
+      existing.push(item);
+    } else {
+      groups.set(code, [item]);
+      slots.push(code); // hold this act's position in the output
     }
-    const winner = pickPreferred(seen, item);
-    const loser = winner === seen ? item : seen;
-    const merged = {
-      ...winner,
-      score: Math.max(seen.score, item.score),
-      matchedRules: [...new Set([...winner.matchedRules, ...loser.matchedRules])],
-      alsoSeenIn: [...new Set([...(asAlsoSeen(seen) ?? []), ...(asAlsoSeen(item) ?? []), loser.sourceLabel])],
-    } as T;
-    byAct.set(code, merged);
-    out.splice(out.indexOf(seen), 1, merged);
   }
-  return out;
+
+  return slots.map((slot) => (typeof slot === "string" ? mergeGroup(groups.get(slot)!, now) : slot));
 }
 
-function asAlsoSeen(item: { alsoSeenIn?: string[] } | unknown): string[] | undefined {
-  return (item as { alsoSeenIn?: string[] }).alsoSeenIn;
-}
+/**
+ * Races a collector against its own deadline, and actually cancels it.
+ *
+ * The previous version only rejected the outer promise. The collector kept
+ * running, and so did its in-flight requests against gov.lv: a source that
+ * "timed out" carried on making the very calls the timeout existed to stop.
+ * Now the timeout aborts a controller the collector has been handed, so the
+ * current request is cancelled and the loops stop between pages.
+ */
+async function runWithDeadline(
+  def: SourceDef,
+  ms: number,
+): Promise<{ items: Item[]; timedOut: boolean }> {
+  const controller = new AbortController();
+  let timedOut = false;
+  const timer = setTimeout(() => {
+    timedOut = true;
+    controller.abort();
+  }, ms);
 
-function pickPreferred<T extends { score: number; deadline?: string }>(a: T, b: T): T {
-  const aHasDeadline = Boolean(a.deadline);
-  const bHasDeadline = Boolean(b.deadline);
-  if (aHasDeadline !== bHasDeadline) return aHasDeadline ? a : b;
-  return b.score > a.score ? b : a;
-}
-
-function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
-  return new Promise((resolve, reject) => {
-    const timer = setTimeout(() => reject(new Error(`timed out after ${ms}ms`)), ms);
-    p.then((v) => {
-      clearTimeout(timer);
-      resolve(v);
-    }).catch((e) => {
-      clearTimeout(timer);
-      reject(e);
-    });
-  });
+  try {
+    const items = await def.run(controller.signal);
+    // A collector that returns what it had when the signal fired is a partial
+    // success, not a failure: some agendas beat the clock, and half a digest
+    // beats none.
+    return { items, timedOut };
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 async function runSource(def: SourceDef, runId: string): Promise<SourceResult> {
   const start = Date.now();
   try {
-    const items = await withTimeout(def.run(), PER_SOURCE_TIMEOUT_MS);
+    const { items, timedOut } = await runWithDeadline(def, PER_SOURCE_TIMEOUT_MS);
     const durationMs = Date.now() - start;
+
+    if (timedOut) {
+      logger.warn("source hit its deadline and returned what it had", {
+        runId,
+        source: def.id,
+        stage: "collect",
+        count: items.length,
+        durationMs,
+      });
+      return {
+        source: def.id,
+        label: def.label,
+        status: items.length > 0 ? "partial" : "timeout",
+        count: items.length,
+        durationMs,
+        error: `Stopped after ${Math.round(durationMs / 1000)}s`,
+        items,
+      };
+    }
+
     if (items.length === 0) {
       // A successful fetch that yields nothing is either a genuinely quiet
       // source or a parser that silently stopped matching — worth a WARNING
@@ -165,7 +277,9 @@ async function runSource(def: SourceDef, runId: string): Promise<SourceResult> {
     return { source: def.id, label: def.label, status: "ok", count: items.length, durationMs, items };
   } catch (err) {
     const durationMs = Date.now() - start;
-    const timedOut = err instanceof Error && err.message.startsWith("timed out");
+    // A collector that throws rather than returning early on abort still
+    // reads as a timeout, since the deadline is what stopped it.
+    const timedOut = err instanceof Error && /abort/i.test(err.message);
     const message = err instanceof Error ? err.message : String(err);
     logger.error("source failed", {
       runId,

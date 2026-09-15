@@ -58,9 +58,9 @@ function extractAgendaItems(html: string): { path: string; identificator: string
   return out;
 }
 
-export async function collectTapMeetings(kind: MeetingKind): Promise<Item[]> {
+export async function collectTapMeetings(kind: MeetingKind, signal?: AbortSignal): Promise<Item[]> {
   const cfg = CONFIG[kind];
-  const listingHtml = await fetchText(`${TAP_BASE}${cfg.listingPath}`);
+  const listingHtml = await fetchText(`${TAP_BASE}${cfg.listingPath}`, { signal });
   const allRows = parseFlextable(listingHtml);
   if (allRows.length === 0) {
     throw new Error(`TAP ${cfg.listingPath} returned no parseable rows (markup changed?)`);
@@ -74,7 +74,7 @@ export async function collectTapMeetings(kind: MeetingKind): Promise<Item[]> {
     const meetingDate = parsedDate ?? new Date().toISOString();
     let detailHtml: string;
     try {
-      detailHtml = await fetchText(absoluteUrl(row.path));
+      detailHtml = await fetchText(absoluteUrl(row.path), { signal });
     } catch {
       continue; // one bad meeting page shouldn't sink the whole source
     }

@@ -8,8 +8,8 @@ import type { Item } from "../types";
 import { fetchText } from "./fetch-utils";
 import { parseFlextable, parseLvDateRange, absoluteUrl, TAP_BASE } from "./tap-html";
 
-export async function collectTapConsultations(): Promise<Item[]> {
-  const html = await fetchText(`${TAP_BASE}/public_participation`);
+export async function collectTapConsultations(signal?: AbortSignal): Promise<Item[]> {
+  const html = await fetchText(`${TAP_BASE}/public_participation`, { signal });
   const rows = parseFlextable(html);
   // Highest-value feed of the seven; a silent parse failure here would hide
   // every open consultation deadline behind an “all clear”.
@@ -33,6 +33,9 @@ export async function collectTapConsultations(): Promise<Item[]> {
       title: `${identificator}: ${title}`,
       url: absoluteUrl(row.path),
       date: from ?? new Date().toISOString(),
+      // Without this flag the scrape-time fallback reads downstream as a real
+      // publication date, so an undated row always sorts as "today".
+      dateIsApproximate: from ? undefined : true,
       deadline: to,
       institution: c["Atbildīgā ministrija"] || undefined,
       stage: c["Līdzdalības veids"] || undefined,

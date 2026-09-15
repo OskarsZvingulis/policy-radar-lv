@@ -109,13 +109,17 @@ function extractAgendaPoints(detailHtml: string): AgendaPoint[] {
   return points;
 }
 
-export async function collectSaeimaCommittees(): Promise<Item[]> {
+export async function collectSaeimaCommittees(signal?: AbortSignal): Promise<Item[]> {
   const items: Item[] = [];
   const today = new Date();
   let daysFetched = 0;
   let daysFailed = 0;
 
   for (let back = 0; back < DAYS_BACK; back++) {
+    // This walks 7 day listings plus up to 15 detail pages each, so it is the
+    // collector most likely to outlive its timeout. Stop between days and
+    // return what was gathered rather than throwing all of it away.
+    if (signal?.aborted) break;
     const day = new Date(today);
     day.setUTCDate(day.getUTCDate() - back);
     const lvDate = formatLvDate(day);
@@ -124,6 +128,7 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
     try {
       listingHtml = await fetchText(
         `${BASE}/webComisDK?OpenView&count=1000&restricttocategory=${lvDate}`,
+        { signal },
       );
       daysFetched++;
     } catch {
@@ -141,7 +146,7 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
     ).toISOString();
 
     const details = await Promise.allSettled(
-      entries.map((e) => fetchText(`${BASE}/0/${e.unid}?OpenDocument`)),
+      entries.map((e) => fetchText(`${BASE}/0/${e.unid}?OpenDocument`, { signal })),
     );
 
     entries.forEach((entry, i) => {

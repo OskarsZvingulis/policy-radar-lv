@@ -23,6 +23,7 @@ const MARK: Record<LiveStatus, { glyph: string; tone: string; word: string }> = 
   ok: { glyph: "✓", tone: "text-emerald-700 dark:text-emerald-400", word: "ok" },
   error: { glyph: "✕", tone: "text-red-700 dark:text-red-400", word: "failed" },
   timeout: { glyph: "!", tone: "text-amber-700 dark:text-amber-400", word: "timed out" },
+  partial: { glyph: "~", tone: "text-amber-700 dark:text-amber-400", word: "partial" },
 };
 
 export function SourceStatusRow({
@@ -34,7 +35,13 @@ export function SourceStatusRow({
   surfacedBySource?: Record<string, number>;
 }) {
   return (
-    <div className="flex flex-wrap gap-2">
+    // aria-live so a scan in progress is announced as sources land, not only
+    // shown. This row is the page's only signal that anything is happening.
+    <div
+      className="flex flex-wrap gap-2"
+      aria-live="polite"
+      aria-busy={sources.some((s) => s.status === "pending")}
+    >
       {sources.map((s) => {
         const mark = MARK[s.status];
         // A successful fetch that parsed nothing is not the same as a source
@@ -49,7 +56,7 @@ export function SourceStatusRow({
               {empty ? "!" : mark.glyph}
             </span>
             <span className="sr-only">{empty ? "returned nothing" : mark.word}:</span>
-            {s.label}
+            <span lang="lv">{s.label}</span>
             {s.status === "ok" &&
               (empty ? (
                 <span className="text-amber-700 dark:text-amber-400">nothing returned</span>
@@ -58,6 +65,11 @@ export function SourceStatusRow({
                   {surfaced ?? 0} of {s.count}
                 </span>
               ))}
+            {s.status === "partial" && (
+              <span className="text-amber-700 dark:text-amber-400">
+                partial, {surfaced ?? 0} of {s.count}
+              </span>
+            )}
             {s.status === "timeout" && (
               <span className="text-amber-700 dark:text-amber-400">timed out</span>
             )}

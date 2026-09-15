@@ -7,22 +7,24 @@ import { Separator } from "@/components/ui/separator";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ItemCard } from "@/components/item-card";
 import { SourceStatusRow, type LiveSourceState } from "@/components/source-status";
-import { displayTitle } from "@/lib/display-title";
-import { absoluteDay, deadlinePhrase } from "@/lib/relative-date";
+import { absoluteDay } from "@/lib/relative-date";
+import { SOURCE_REGISTRY } from "@/lib/digest/registry";
+import { groupDigest } from "@/lib/digest/group";
 import type { DigestResult, ScoredItem, SourceId } from "@/lib/types";
 
-// Must mirror the SOURCES list in lib/digest/run.ts — used only to render
-// pending placeholders before the first live event for that source arrives.
-const SOURCE_PLACEHOLDERS: { source: SourceId; label: string }[] = [
-  { source: "tap_legal_acts", label: "TAP portāls: Tiesību aktu projekti" },
-  { source: "tap_consultations", label: "TAP portāls: Sabiedrības līdzdalība" },
-  { source: "tap_vss", label: "Valsts sekretāru sanāksme" },
-  { source: "tap_mk", label: "Ministru kabineta sēdes" },
-  { source: "saeima_committees", label: "Saeima: komisiju sēdes" },
-  { source: "em_news", label: "Ekonomikas ministrija" },
-  { source: "liaa_news", label: "LIAA" },
-  { source: "altum_news", label: "Altum" },
-];
+// Pending placeholders shown before the first live event for a source lands.
+// Derived from the shared registry rather than a hand-kept copy, which is
+// what let the subtitle count and the chips disagree.
+const SOURCE_PLACEHOLDERS: { source: SourceId; label: string }[] = SOURCE_REGISTRY.map((s) => ({
+  source: s.id,
+  label: s.label,
+}));
+
+function minutesAgo(ms: number): string {
+  const minutes = Math.floor(ms / 60_000);
+  if (minutes < 1) return "moments ago";
+  return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
+}
 
 /** One figure of the scanned / relevant / open-to-submissions headline. */
 function Stat({ n, label }: { n: number; label: string }) {
@@ -59,11 +61,15 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
   const [sourceFilter, setSourceFilter] = useState<string>("all");
   const [openOnly, setOpenOnly] = useState(false);
   const [sortBy, setSortBy] = useState<"deadline" | "relevance">("deadline");
+  // Non-null when the digest on screen was replayed from cache rather than
+  // scanned just now, so Refresh returning instantly doesn't look broken.
+  const [cacheAgeMs, setCacheAgeMs] = useState<number | null>(null);
   const started = useRef(false);
 
   function handleRefresh() {
     setRefreshing(true);
     setRunError(null);
+    setCacheAgeMs(null);
     setLiveSources(SOURCE_PLACEHOLDERS.map((s) => ({ ...s, status: "pending" as const })));
 
     const es = new EventSource("/api/digest/stream");
@@ -88,26 +94,45 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
     });
 
     es.addEventListener("done", (ev) => {
-      const data: DigestResult = JSON.parse((ev as MessageEvent).data);
+      const data: DigestResult & { fromCache?: boolean; ageMs?: number } = JSON.parse(
+        (ev as MessageEvent).data,
+      );
       setDigest(data);
       setLiveSources(toLiveSources(data));
       setRefreshing(false);
       setRunError(null);
+      setCacheAgeMs(data.fromCache ? (data.ageMs ?? 0) : null);
       es.close();
     });
 
-    // A failed or dropped stream previously just closed the connection: with no
-    // digest yet, the page went on claiming it was scanning, pending dots still
-    // pulsing, with nothing actually running. Surface it and stop pretending.
-    es.addEventListener("error", () => {
+    const stop = (message: string) => {
       setRefreshing(false);
       es.close();
-      setRunError(
-        "The scan stopped before it finished. The connection dropped, or a source hung. Nothing is running now.",
-      );
+      setRunError(message);
       setLiveSources((prev) =>
         prev.map((s) => (s.status === "pending" ? { ...s, status: "error" as const } : s)),
       );
+    };
+
+    // The server's own failure event. Named `failed` rather than `error`
+    // because EventSource fires `error` itself for transport problems, so the
+    // two landed on one listener and the server's message was discarded in
+    // favour of a guess about the connection.
+    es.addEventListener("failed", (ev) => {
+      let message = "The scan could not be completed.";
+      try {
+        const data = JSON.parse((ev as MessageEvent).data);
+        if (typeof data?.message === "string") message = data.message;
+      } catch {
+        // keep the generic message
+      }
+      stop(message);
+    });
+
+    // Transport-level failure. With no digest yet, the page used to go on
+    // claiming it was scanning, pending dots still pulsing, nothing running.
+    es.addEventListener("error", () => {
+      stop("The connection to the scan dropped before it finished. Nothing is running now.");
     });
   }
 
@@ -140,24 +165,14 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
    * because that is the decision); the rest sort by relevance.
    */
   const { openItems, awarenessItems } = useMemo(() => {
-    const open = visibleItems.filter((i) => i.actionable && i.deadline);
-    open.sort(
-      sortBy === "deadline"
-        ? (a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime()
-        : (a, b) => b.score - a.score,
-    );
-    // Nothing in the other half has a deadline, so sorting it by deadline
-    // degrades to most recent first — the closest thing to a clock it has.
-    const rest = visibleItems.filter((i) => !(i.actionable && i.deadline));
-    rest.sort(
-      sortBy === "deadline"
-        ? (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-        : (a, b) => b.score - a.score,
-    );
-    return { openItems: open, awarenessItems: openOnly ? [] : rest };
+    const { open, awareness } = groupDigest(visibleItems, { sortBy });
+    return { openItems: open, awarenessItems: openOnly ? [] : awareness };
   }, [visibleItems, sortBy, openOnly]);
 
-  const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
+  const actionableCount = useMemo(
+    () => (digest ? groupDigest(digest.scored).open.length : 0),
+    [digest],
+  );
 
   /** Per-source contribution to the digest, so a chip can read "3 of 100". */
   const surfacedBySource = useMemo(() => {
@@ -176,15 +191,10 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
     [digest],
   );
 
-  // The 30-second version for a reader who will not scroll: whatever closes
-  // soonest, which is the only thing with a clock on it.
-  const closingSoonest: ScoredItem[] = useMemo(() => {
-    if (!digest) return [];
-    return digest.scored
-      .filter((i) => i.actionable && i.deadline)
-      .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime())
-      .slice(0, 5);
-  }, [digest]);
+  // There is deliberately no separate "Closing soonest" box here. With the
+  // default sort it listed the same five items as the section immediately
+  // below it, so the page opened by saying everything twice. The markdown
+  // export keeps its version, where there is no list underneath to repeat.
 
   return (
     // ~75ch: the measure prose stays readable at. The page was 768px wide,
@@ -214,7 +224,9 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
               <Stat n={actionableCount} label="open to submissions" />
             </dl>
             <p className="text-sm text-muted-foreground">
-              Minutes of reading instead of the ~5 hours this used to take manually.
+              {cacheAgeMs === null
+                ? "Minutes of reading instead of the ~5 hours this used to take manually."
+                : `Showing results from ${minutesAgo(cacheAgeMs)}. The sources are only re-scanned every few minutes.`}
             </p>
           </div>
         ) : (
@@ -251,10 +263,12 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
                   <li key={s.source}>
                     <strong>{s.label}</strong>:{" "}
                     {s.status === "timeout"
-                      ? "timed out"
-                      : s.status === "error"
-                        ? (s.error ?? "failed")
-                        : "fetched successfully but returned no items, which may mean the page changed shape"}
+                      ? "timed out before returning anything"
+                      : s.status === "partial"
+                        ? `hit its time limit after ${s.count} items, so later ones are missing`
+                        : s.status === "error"
+                          ? (s.error ?? "failed")
+                          : "fetched successfully but returned no items, which may mean the page changed shape"}
                   </li>
                 ))}
               </ul>
@@ -283,26 +297,6 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       </header>
 
       <Separator />
-
-      {digest && closingSoonest.length > 0 && (
-        <div className="rounded-lg border bg-muted/30 p-4">
-          <h2 className="mb-2 text-sm font-semibold">Closing soonest</h2>
-          <ul className="flex flex-col gap-1.5 text-sm">
-            {closingSoonest.map((item) => (
-              <li key={item.id}>
-                <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                  {displayTitle(item.title).text}
-                </a>
-                <span className="text-muted-foreground"> · {item.sourceLabel}</span>
-                <span className="text-red-700 dark:text-red-400">
-                  {" "}
-                  · {deadlinePhrase(item.deadline!)}
-                </span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {digest && (
         <>
@@ -334,6 +328,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
               <Button
                 size="sm"
                 variant={sourceFilter === "all" ? "secondary" : "ghost"}
+                aria-pressed={sourceFilter === "all"}
                 onClick={() => setSourceFilter("all")}
               >
                 All sources
@@ -343,9 +338,10 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
                   key={s.id}
                   size="sm"
                   variant={sourceFilter === s.id ? "secondary" : "ghost"}
+                  aria-pressed={sourceFilter === s.id}
                   onClick={() => setSourceFilter(s.id)}
                 >
-                  {s.label}
+                  <span lang="lv">{s.label}</span>
                 </Button>
               ))}
             </div>

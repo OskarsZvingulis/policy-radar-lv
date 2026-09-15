@@ -3,6 +3,15 @@
  * The relevance engine, UI, and markdown export all operate on this only —
  * no source-specific fields leak past normalise.ts.
  */
+/** One listing of an act: where it was seen, and what it said was due. */
+export interface Appearance {
+  source: string;
+  sourceLabel: string;
+  url: string;
+  deadline?: string;
+  actionable: boolean;
+}
+
 export type SourceId =
   | "tap_legal_acts"
   | "tap_consultations"
@@ -57,6 +66,13 @@ export interface ScoredItem extends Item {
    * listings" from "three documents".
    */
   alsoSeenIn?: string[];
+  /**
+   * Every listing of this act, each with its own deadline and link. Present
+   * only on merged items. The card leads with one of these; the rest are what
+   * lets the detail view show "consultation closes 15 Sep, ministry
+   * coordination 16 Sep" instead of silently picking one.
+   */
+  appearances?: Appearance[];
   /** LLM-written explanation, 1-2 sentences. Absent when running rules-only. */
   whyItMatters?: string;
   llmScored: boolean;
@@ -65,7 +81,12 @@ export interface ScoredItem extends Item {
 export interface SourceResult {
   source: SourceId;
   label: string;
-  status: "ok" | "error" | "timeout";
+  /**
+   * "partial" means the source hit its deadline but returned what it had
+   * gathered. Distinguished from "timeout" (deadline, nothing gathered) so a
+   * reader can tell a slow source from a dead one.
+   */
+  status: "ok" | "error" | "timeout" | "partial";
   count: number;
   durationMs: number;
   error?: string;

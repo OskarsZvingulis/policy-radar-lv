@@ -10,8 +10,7 @@
  * warm, not a guarantee, and a durable cache is the real fix.
  */
 import { NextResponse } from "next/server";
-import { runDigest } from "@/lib/digest/run";
-import { setCached } from "@/lib/digest/cache";
+import { getOrStartRun } from "@/lib/digest/cache";
 
 export const maxDuration = 60;
 
@@ -31,10 +30,24 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  const result = await runDigest();
-  setCached(result);
+  // Warming is the whole job, so force a fresh run rather than accepting a
+  // cached one, but still join an in-flight run if a visitor beat the cron to
+  // it. Either way the finished result lands in the cache.
+  const outcome = getOrStartRun({ force: true });
+  if (outcome.status === "cooldown") {
+    return NextResponse.json(
+      { ok: false, reason: "cooldown", retryAfterSeconds: outcome.cooldown.retryAfterSeconds },
+      { status: 429, headers: { "Retry-After": String(outcome.cooldown.retryAfterSeconds) } },
+    );
+  }
+  // `force` skips a servable cache, but the cooldown path can still hand one
+  // back rather than scrape again. That is a successful warm too: the cache
+  // this route exists to populate is populated.
+  const result = outcome.status === "cached" ? outcome.result : await outcome.run.promise;
+
   return NextResponse.json({
     ok: true,
+    fromCache: outcome.status === "cached",
     totalScanned: result.totalScanned,
     totalSurfaced: result.totalSurfaced,
   });

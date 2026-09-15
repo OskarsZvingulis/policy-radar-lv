@@ -13,11 +13,14 @@ import { parseFlextable, absoluteUrl, TAP_BASE } from "./tap-html";
  * anything outside the window that actually matters for the digest. */
 const PAGES = 4;
 
-export async function collectTapLegalActs(): Promise<Item[]> {
+export async function collectTapLegalActs(signal?: AbortSignal): Promise<Item[]> {
   const items: Item[] = [];
   for (let page = 1; page <= PAGES; page++) {
+    // Between pages, not mid-request: the caller has given up, so return what
+    // was gathered instead of spending another round trip on gov.lv.
+    if (signal?.aborted) break;
     const url = page === 1 ? `${TAP_BASE}/legal_acts` : `${TAP_BASE}/legal_acts?page=${page}`;
-    const html = await fetchText(url);
+    const html = await fetchText(url, { signal });
     const rows = parseFlextable(html);
     // The listing always has rows. Zero parsed rows after a successful fetch
     // means the markup moved under us — report that instead of quietly

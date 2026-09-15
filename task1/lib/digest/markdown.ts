@@ -1,6 +1,7 @@
 import type { DigestResult, ScoredItem } from "../types";
 import { describeItemDates } from "../dates";
 import { displayTitle } from "../display-title";
+import { closingSoonest, hasOpenWindow } from "./group";
 
 function fmtDate(iso: string): string {
   return new Date(iso).toISOString().slice(0, 10);
@@ -33,10 +34,7 @@ function renderItem(item: ScoredItem): string {
  * submission window, soonest closing first. Nothing else has a clock on it,
  * so nothing else belongs in a block the reader will treat as a to-do list. */
 function renderTldr(digest: DigestResult): string[] {
-  const bullets = digest.scored
-    .filter((i) => i.actionable && i.deadline)
-    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime())
-    .slice(0, 5);
+  const bullets = closingSoonest(digest.scored);
   if (bullets.length === 0) return [];
 
   const lines = [`## Closing soonest`, ""];
@@ -81,7 +79,7 @@ export function renderDigestMarkdown(digest: DigestResult): string {
   lines.push(`Generated ${new Date(digest.generatedAt).toISOString()}`);
   lines.push("");
 
-  const actionableCount = digest.scored.filter((i) => i.actionable).length;
+  const actionableCount = digest.scored.filter((i) => hasOpenWindow(i)).length;
   // Never a blank file, even at zero relevant items. The count line always
   // states scanned/surfaced/sources explicitly rather than silently omitting
   // sections, since an empty digest and a broken run must not look the same.

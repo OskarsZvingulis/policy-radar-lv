@@ -58,7 +58,19 @@ export function claimLiveRun(now = Date.now()): CooldownState {
   return state;
 }
 
-/** Test seam — not used in request handling. */
+/**
+ * Gives the cooldown back after a run that produced nothing.
+ *
+ * The cooldown exists to stop repeated *successful* scrapes of gov.lv. A run
+ * that threw did not produce a digest, so holding the window shut for five
+ * more minutes just leaves the app with no data and no way to retry, which is
+ * the opposite of what the limit is for.
+ */
+export function releaseLiveRun(): void {
+  lastRunStartedAt = 0;
+}
+
+/** Test seam. Not used in request handling. */
 export function resetCooldownForTests(): void {
   lastRunStartedAt = 0;
 }

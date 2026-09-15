@@ -70,9 +70,17 @@ const AXIS_MARKET: KeywordRule[] = [
   // the base "mākslīg" stem's own ī), so `\S*` — any non-whitespace — is
   // used instead of a word-character class to cover every inflected form.
   // Deliberately NOT /i: with the flag, \bAI\b also matched the Latvian
-  // interjection "ai". The Latvian phrase spells its own capitalisation
-  // variants out instead, so only the real acronym matches.
-  { id: "market.ai", label: "AI", pattern: /[Mm]ākslīg\S*\s+[Ii]ntelekt|\bAI\b/, weight: 30 },
+  // interjection "ai" ("Ai, cik skaisti"). But dropping the flag made the
+  // spelled-out form miss ALL-CAPS headlines, which RSS titles and agenda
+  // headings do use, so the real casings are listed instead. The all-caps
+  // branch cannot leak into \bAI\b: in "MĀKSLĪGAIS" the diacritics are
+  // non-word characters to JS, so the embedded "AI" has no word boundary.
+  {
+    id: "market.ai",
+    label: "AI",
+    pattern: /[Mm]ākslīg\S*\s+[Ii]ntelekt|MĀKSLĪG\S*\s+INTELEKT|\bAI\b/,
+    weight: 30,
+  },
   { id: "market.data", label: "Data", pattern: /datu aizsardzīb|personas datu|datu apstrād/i, weight: 20 },
   { id: "market.fintech", label: "Fintech / payments", pattern: /fintech|maksājum.{0,10}pakalpojum|elektronisk.{0,10}nauda/i, weight: 30 },
   { id: "market.platform", label: "Platform rules", pattern: /platform|digitālo pakalpojumu akt/i, weight: 20 },
@@ -107,7 +115,16 @@ export const EXCLUSION_PATTERNS: RegExp[] = [
   /apbalvojum|goda rakst|jubilej/i, // ceremonial
   /aizsardzīb.{0,15}iepirkum|Nacionālo bruņoto spēku/i, // defence procurement
   /zvejniecīb|zivsaimniecīb/i, // fisheries
-  /^(?!.*atbalst)(?!.*fond)(?!.*grant).{0,200}lauksaimniecīb/i, // agriculture w/o funding angle
+  // Agriculture with no funding angle.
+  //
+  // `[\s\S]` rather than `.` because the haystack joins title, body and stage
+  // with newlines: with `.`, the lookaheads stopped at the first newline, so a
+  // "valsts atbalsts" mentioned in the body was invisible to them and the item
+  // was excluded anyway. (`.` plus the `s` flag would read better but needs an
+  // ES2018 target, which this project does not set.) Stating it as
+  // "agriculture appears somewhere, support/fund/grant appears nowhere" also
+  // drops the arbitrary 200-character window, which only ever saw the title.
+  /^(?![\s\S]*atbalst)(?![\s\S]*fond)(?![\s\S]*grant)(?=[\s\S]*lauksaimniecīb)/i,
   /pašvaldīb.{0,10}(teritorij|robež|administratīvi)/i, // pure municipal boundary matters
 ];
 

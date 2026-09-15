@@ -217,7 +217,7 @@ founder spot-checking the 8 false positives and confirming the label calls.
 
 ## Testing and CI
 
-`npm test` (vitest) runs entirely offline, 120 tests across:
+`npm test` (vitest) runs entirely offline, 155 tests across:
 
 - date-window and deadline-boundary logic (`tests/dates.test.ts`)
 - Latvian date/deadline-phrase parsing, including the real false positive
@@ -231,6 +231,9 @@ founder spot-checking the 8 false positives and confirming the label calls.
   items, "closing soonest" admitting only open windows, footer content (`tests/digest-markdown.test.ts`)
 - the hand-labelled eval set as a recall-floor regression test
   (`tests/eval.test.ts`)
+- the second review's reproductions: act dedupe keeping the actionable
+  deadline, single-flight runs, defensive RSS dates, Riga day boundaries
+  (`tests/review-2.test.ts`, `tests/single-flight.test.ts`, `tests/group.test.ts`)
 
 `.github/workflows/ci.yml` runs lint, `next build` (type-checks the whole
 project, including Next's generated route types, which a bare `tsc --noEmit`
