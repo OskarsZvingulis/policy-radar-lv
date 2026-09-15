@@ -11,9 +11,24 @@
  *    minute so a screen recording stays inside its time budget).
  */
 
-const DEFAULT_TIMEOUT_MS = 10_000;
-const MAX_RETRIES = 2;
+/**
+ * Per-attempt timeout, retry count and the hard ceiling for one fetchText
+ * call including backoff. The ceiling exists because run.ts kills a whole
+ * source at PER_SOURCE_TIMEOUT_MS: previously one fetchText could burn
+ * 10s x 3 attempts + backoff (~31s) against a 20s source budget, so the
+ * final retry was mathematically unable to finish — it only ever fired
+ * under exactly the slow-server conditions it was added for, and was then
+ * killed mid-flight. Two attempts that can both actually complete beat
+ * three where the last is guaranteed to be cut off.
+ *
+ * Worst case now: 8s + ~0.8s backoff + 8s = ~16.8s, inside MAX_FETCH_BUDGET_MS,
+ * which is itself inside run.ts's 20s per-source timeout. tests/fetch-utils
+ * asserts that ordering so the two can't silently drift apart again.
+ */
+const DEFAULT_TIMEOUT_MS = 8_000;
+const MAX_RETRIES = 1;
 const RETRY_BASE_DELAY_MS = 400;
+export const MAX_FETCH_BUDGET_MS = 18_000;
 
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -25,11 +40,11 @@ function sleep(ms: number): Promise<void> {
 function isRetryable(err: unknown): boolean {
   if (err instanceof SourceTimeoutError) return true;
   if (err instanceof SourceFetchError) {
-    const status = err.message.match(/^HTTP (\d+)/)?.[1];
-    if (status) return status === "429" || status.startsWith("5");
-    // No HTTP status parsed at all means the fetch itself failed
-    // (DNS/connection reset/etc.) — also worth one retry.
-    return !err.message.startsWith("HTTP");
+    // Read the structured status, never the message: the message is
+    // presentation and reformatting it used to silently change retry
+    // behaviour.
+    if (err.status === undefined) return true; // transport failure (DNS, reset)
+    return err.status === 429 || err.status >= 500;
   }
   return false;
 }
@@ -39,6 +54,9 @@ export class SourceFetchError extends Error {
     message: string,
     public readonly url: string,
     public readonly cause?: unknown,
+    /** HTTP status when the request completed with one; undefined for a
+     * transport-level failure (DNS, connection reset, abort). */
+    public readonly status?: number,
   ) {
     super(message);
     this.name = "SourceFetchError";
@@ -52,17 +70,32 @@ export class SourceTimeoutError extends SourceFetchError {
   }
 }
 
-function looksLikeWafRejection(body: string): boolean {
-  return body.startsWith("<html><head><title>Request Rejected");
+/**
+ * The F5 WAF in front of tapportals returns its rejection page with HTTP 200,
+ * so it parses as a legitimately empty result unless detected explicitly.
+ * Matching had to stop using startsWith: a leading BOM or any whitespace in
+ * front of the doctype defeated it, and that is precisely the case this check
+ * exists to catch.
+ */
+export function looksLikeWafRejection(body: string): boolean {
+  const head = body.replace(/^﻿/, "").trimStart().slice(0, 400).toLowerCase();
+  return head.includes("<title>request rejected") || head.includes("the requested url was rejected");
 }
 
 async function fetchTextOnce(url: string, init: RequestInit, timeoutMs: number): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
+  // Honour a caller-supplied signal as well as our own timeout, so when the
+  // orchestrator gives up on a source the in-flight request is actually
+  // cancelled rather than left running against a government server that we
+  // have already stopped waiting for.
+  const signal = init.signal
+    ? AbortSignal.any([controller.signal, init.signal])
+    : controller.signal;
   try {
     const res = await fetch(url, {
       ...init,
-      signal: controller.signal,
+      signal,
       headers: {
         "User-Agent": "PolicyRadarLV/0.1 (startup policy digest prototype)",
         ...init.headers,
@@ -74,15 +107,22 @@ async function fetchTextOnce(url: string, init: RequestInit, timeoutMs: number):
       throw new SourceFetchError(
         "WAF rejected request (query string likely contains an unsupported pattern like [])",
         url,
+        undefined,
+        res.status,
       );
     }
     if (!res.ok) {
-      throw new SourceFetchError(`HTTP ${res.status} from ${url}`, url);
+      throw new SourceFetchError(`HTTP ${res.status} from ${url}`, url, undefined, res.status);
     }
     return body;
   } catch (err) {
     if (err instanceof SourceFetchError) throw err;
     if (err instanceof Error && err.name === "AbortError") {
+      // An external abort is the caller giving up, not a slow server —
+      // don't dress it up as a timeout that retry logic would retry.
+      if (init.signal?.aborted) {
+        throw new SourceFetchError(`Aborted fetching ${url}`, url, err, undefined);
+      }
       throw new SourceTimeoutError(url);
     }
     throw new SourceFetchError(`Fetch failed for ${url}: ${String(err)}`, url, err);
@@ -96,15 +136,22 @@ export async function fetchText(
   init: RequestInit = {},
   timeoutMs = DEFAULT_TIMEOUT_MS,
 ): Promise<string> {
+  const deadline = Date.now() + MAX_FETCH_BUDGET_MS;
   let lastErr: unknown;
   for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    // Never start an attempt that the budget can't let finish.
+    const remaining = deadline - Date.now();
+    if (remaining <= 0) break;
     try {
-      return await fetchTextOnce(url, init, timeoutMs);
+      return await fetchTextOnce(url, init, Math.min(timeoutMs, remaining));
     } catch (err) {
       lastErr = err;
+      if (init.signal?.aborted) throw err; // caller gave up; stop immediately
       if (attempt === MAX_RETRIES || !isRetryable(err)) throw err;
       const jitter = Math.random() * RETRY_BASE_DELAY_MS;
-      await sleep(RETRY_BASE_DELAY_MS * 2 ** attempt + jitter);
+      const backoff = RETRY_BASE_DELAY_MS * 2 ** attempt + jitter;
+      if (Date.now() + backoff >= deadline) throw err;
+      await sleep(backoff);
     }
   }
   throw lastErr;

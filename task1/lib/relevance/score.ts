@@ -40,7 +40,10 @@ export function scoreItem(
   }
 
   const excluded = isExcluded(haystack);
-  const hasStrongOverride = /kolektīv.{0,10}finansēš|jaunuzņēmum|\baltum\b|\bliaa\b/i.test(haystack);
+  // Must use the same inflection-tolerant forms as capital.altum/capital.liaa
+  // above: with a trailing \b, an item mentioning "Altuma programma" failed
+  // to escape an exclusion it should have escaped.
+  const hasStrongOverride = /kolektīv.{0,10}finansēš|jaunuzņēmum|\baltum|\bliaa/i.test(haystack);
 
   if (ECOSYSTEM_ENTITIES.test(haystack)) {
     matchedRules.push("Ecosystem stakeholder named");

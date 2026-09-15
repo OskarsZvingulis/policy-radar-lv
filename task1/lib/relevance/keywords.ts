@@ -34,8 +34,13 @@ const AXIS_COST: KeywordRule[] = [
 const AXIS_CAPITAL: KeywordRule[] = [
   { id: "capital.vc", label: "Venture capital", pattern: /riska kapitāl|ventūras fond|investīciju fond/i, weight: 35 },
   { id: "capital.crowdfunding", label: "Crowdfunding", pattern: /kolektīv.{0,10}finansēš/i, weight: 40 },
-  { id: "capital.altum", label: "Altum instrument", pattern: /\baltum\b/i, weight: 25 },
-  { id: "capital.liaa", label: "LIAA instrument", pattern: /\bliaa\b/i, weight: 25 },
+  // No trailing \b: Latvian declines these names — "Altuma programma",
+  // "Altumam", "Altumu", "LIAAīs" are the forms that actually occur in
+  // prose, and a trailing word boundary matched only the nominative. Same
+  // root cause as the mākslīgā intelekta miss. A leading \b is kept, so
+  // this still won't fire inside an unrelated longer word.
+  { id: "capital.altum", label: "Altum instrument", pattern: /\baltum/i, weight: 25 },
+  { id: "capital.liaa", label: "LIAA instrument", pattern: /\bliaa/i, weight: 25 },
   // "de minimis" added after the eval set caught a miss: a de minimis aid
   // threshold change directly gates how much Altum/LIAA grant support a
   // startup can receive before triggering full state-aid rules, but never
@@ -64,7 +69,10 @@ const AXIS_MARKET: KeywordRule[] = [
   // the four forms. JS's `\w` doesn't match diacritics at all (excludes even
   // the base "mākslīg" stem's own ī), so `\S*` — any non-whitespace — is
   // used instead of a word-character class to cover every inflected form.
-  { id: "market.ai", label: "AI", pattern: /mākslīg\S*\s+intelekt|\bAI\b/i, weight: 30 },
+  // Deliberately NOT /i: with the flag, \bAI\b also matched the Latvian
+  // interjection "ai". The Latvian phrase spells its own capitalisation
+  // variants out instead, so only the real acronym matches.
+  { id: "market.ai", label: "AI", pattern: /[Mm]ākslīg\S*\s+[Ii]ntelekt|\bAI\b/, weight: 30 },
   { id: "market.data", label: "Data", pattern: /datu aizsardzīb|personas datu|datu apstrād/i, weight: 20 },
   { id: "market.fintech", label: "Fintech / payments", pattern: /fintech|maksājum.{0,10}pakalpojum|elektronisk.{0,10}nauda/i, weight: 30 },
   { id: "market.platform", label: "Platform rules", pattern: /platform|digitālo pakalpojumu akt/i, weight: 20 },

@@ -5,7 +5,8 @@
  * just show a page appearing, which doesn't prove anything is running live.
  */
 import { runDigest } from "@/lib/digest/run";
-import { setCached } from "@/lib/digest/cache";
+import { getCached, setCached } from "@/lib/digest/cache";
+import { claimLiveRun } from "@/lib/rate-limit";
 
 export const maxDuration = 60;
 
@@ -15,6 +16,29 @@ function sseEvent(event: string, data: unknown): string {
 
 export async function GET() {
   const encoder = new TextEncoder();
+
+  // Same outbound-scrape guard as /api/digest — this endpoint is public and
+  // each call is ~100 requests to gov.lv. During the cooldown the stream
+  // still completes normally from cache so the UI never hangs waiting.
+  const claim = claimLiveRun();
+  if (!claim.allowed) {
+    const cached = getCached();
+    const body =
+      sseEvent("start", { at: new Date().toISOString(), fromCache: true }) +
+      (cached
+        ? (cached.sources ?? []).map((s) => sseEvent("source", s)).join("") + sseEvent("done", cached)
+        : sseEvent("error", {
+            message: `A live scan ran recently. Retry in ${claim.retryAfterSeconds}s.`,
+            retryAfterSeconds: claim.retryAfterSeconds,
+          }));
+    return new Response(body, {
+      headers: {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache, no-transform",
+        "Retry-After": String(claim.retryAfterSeconds),
+      },
+    });
+  }
 
   const stream = new ReadableStream({
     async start(controller) {

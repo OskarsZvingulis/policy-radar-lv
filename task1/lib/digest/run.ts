@@ -16,7 +16,9 @@ import { weekBounds } from "./week";
 import { isDeadlineStillOpen, isWithinTrailingDays } from "../dates";
 import { logger, newRunId } from "../logging";
 
-const PER_SOURCE_TIMEOUT_MS = 20_000;
+/** Exported so tests can assert it stays above fetch-utils' MAX_FETCH_BUDGET_MS —
+ *  the two drifting apart is what made the last retry unreachable. */
+export const PER_SOURCE_TIMEOUT_MS = 20_000;
 const LLM_SHORTLIST_SIZE = 25;
 const RECENCY_WINDOW_DAYS = 7;
 
@@ -61,6 +63,71 @@ function isWithinRecencyWindow(item: Item): boolean {
   // it opened — deadlines are calendar days, so this compares whole days.
   if (isDeadlineStillOpen(item.deadline)) return true;
   return false;
+}
+
+/**
+ * The same draft act legitimately appears in more than one collector: a TAP
+ * act under public consultation is listed both on /legal_acts and on
+ * /public_participation, and can also sit on a VSS or MK agenda. Each
+ * collector mints its own id (tap_legal_acts:26-TA-2087 vs
+ * tap_consultations:26-TA-2087), so nothing downstream saw them as the same
+ * document — 26-TA-2087 took two of the five slots at the top of a real
+ * digest. Deduping on the TA identificator is the fix; the whole promise of
+ * the product is that the reader doesn't have to notice this themselves.
+ *
+ * Which copy wins: the one carrying a real deadline, since that is the record
+ * that can actually be acted on. Ties break on score. matchedRules are
+ * unioned so the surviving card still shows every axis that fired anywhere,
+ * and the score is the max of the copies — the winner keeps its own fields
+ * otherwise.
+ */
+const TA_CODE = /\b(\d{2}-TA-\d+)\b/;
+
+export function taIdentificator(item: { id: string; title: string }): string | undefined {
+  return item.id.match(TA_CODE)?.[1] ?? item.title.match(TA_CODE)?.[1];
+}
+
+export function dedupeByAct<T extends { id: string; title: string; score: number; deadline?: string; matchedRules: string[]; source: string }>(
+  items: T[],
+): T[] {
+  const byAct = new Map<string, T>();
+  const out: T[] = [];
+
+  for (const item of items) {
+    const code = taIdentificator(item);
+    if (!code) {
+      out.push(item); // nothing to key on (news, committee agendas) — keep as-is
+      continue;
+    }
+    const seen = byAct.get(code);
+    if (!seen) {
+      byAct.set(code, item);
+      out.push(item);
+      continue;
+    }
+    const winner = pickPreferred(seen, item);
+    const loser = winner === seen ? item : seen;
+    const merged = {
+      ...winner,
+      score: Math.max(seen.score, item.score),
+      matchedRules: [...new Set([...winner.matchedRules, ...loser.matchedRules])],
+      alsoSeenIn: [...new Set([...(asAlsoSeen(seen) ?? []), ...(asAlsoSeen(item) ?? []), loser.source])],
+    } as T;
+    byAct.set(code, merged);
+    out.splice(out.indexOf(seen), 1, merged);
+  }
+  return out;
+}
+
+function asAlsoSeen(item: { alsoSeenIn?: string[] } | unknown): string[] | undefined {
+  return (item as { alsoSeenIn?: string[] }).alsoSeenIn;
+}
+
+function pickPreferred<T extends { score: number; deadline?: string }>(a: T, b: T): T {
+  const aHasDeadline = Boolean(a.deadline);
+  const bHasDeadline = Boolean(b.deadline);
+  if (aHasDeadline !== bHasDeadline) return aHasDeadline ? a : b;
+  return b.score > a.score ? b : a;
 }
 
 function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
@@ -147,13 +214,14 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const freshItems = allItems.filter(isWithinRecencyWindow);
 
   const ruleScored = scoreItems(freshItems);
-  const surfaced = ruleScored.filter((i) => i.relevant);
+  const surfaced = dedupeByAct(ruleScored.filter((i) => i.relevant));
   logger.info("scoring finished", {
     runId,
     stage: "score",
     totalScanned,
     freshCount: freshItems.length,
     surfacedCount: surfaced.length,
+    dedupedCount: ruleScored.filter((i) => i.relevant).length - surfaced.length,
   });
 
   const shortlist: LlmShortlistItem[] = [...surfaced]
