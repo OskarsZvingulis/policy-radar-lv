@@ -55,8 +55,37 @@ function renderItemHtml(item: ScoredItem): string {
     </article>`;
 }
 
+/** Same ordering as the Markdown/UI "read this first" block: open deadlines
+ * soonest-first, then whatever's left by relevance — kept in sync by hand
+ * across the three renderers since none of them share a template engine. */
+function renderReadFirstHtml(digest: DigestResult): string {
+  const withDeadline = digest.scored
+    .filter((i) => i.actionable && i.deadline)
+    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
+  const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
+  const bullets = [...withDeadline, ...rest].slice(0, 5);
+  if (bullets.length === 0) return "";
+
+  const rows = bullets
+    .map((item) => {
+      const href = safeHref(item.url);
+      const titleHtml = escapeHtml(item.title);
+      const deadlineNote =
+        item.actionable && item.deadline ? ` — deadline ${fmtDate(item.deadline)}` : "";
+      return `<li>${href ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${titleHtml}</a>` : titleHtml} <span class="score">(${escapeHtml(item.sourceLabel)}, ${item.score}/100${deadlineNote})</span></li>`;
+    })
+    .join("\n");
+
+  return `
+  <section class="read-first">
+    <h2>Read this first — the 5 most important items</h2>
+    <ul>${rows}</ul>
+  </section>`;
+}
+
 export function renderDigestHtml(digest: DigestResult): string {
   const actionableCount = digest.scored.filter((i) => i.actionable).length;
+  const readFirst = renderReadFirstHtml(digest);
   const items = digest.scored.map(renderItemHtml).join("\n");
   const sourceRows = digest.sources
     .map(
@@ -79,6 +108,11 @@ export function renderDigestHtml(digest: DigestResult): string {
   .tag { border: 1px solid #ccc; border-radius: 4px; padding: 0.1rem 0.4rem; }
   .tag.deadline { border-color: #c00; color: #c00; }
   .score { margin-left: auto; opacity: 0.6; }
+  .read-first { border: 1px solid #ddd; border-radius: 8px; padding: 0.8rem 1rem; margin-bottom: 1.2rem; background: #fafafa; }
+  .read-first h2 { margin: 0 0 0.5rem; font-size: 0.95rem; }
+  .read-first ul { margin: 0; padding-left: 1.2rem; font-size: 0.9rem; }
+  .read-first li { margin-bottom: 0.3rem; }
+  .read-first .score { margin-left: 0; opacity: 0.65; font-size: 0.85rem; }
   .why { font-size: 0.9rem; }
   .matched { font-size: 0.85rem; color: #666; }
   table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
@@ -92,7 +126,7 @@ export function renderDigestHtml(digest: DigestResult): string {
   <p>Scanned <strong>${digest.totalScanned}</strong> items across ${digest.sources.length} sources → surfaced
     <strong>${digest.totalSurfaced}</strong> as startup-relevant${actionableCount > 0 ? ` (<strong>${actionableCount}</strong> with an open feedback window)` : ""}.
     ${digest.llmAvailable ? "" : "<em>(rules-only mode — no LLM key configured)</em>"}</p>
-
+  ${readFirst}
   <h2>All startup-relevant items (${digest.scored.length})</h2>
   ${items}
 

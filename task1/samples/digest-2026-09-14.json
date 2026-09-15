@@ -1,310 +1,34 @@
 {
-  "runId": "6cddbbfd-5902-4251-86e5-afa9b3c616e6",
-  "generatedAt": "2026-09-15T08:33:57.341Z",
+  "runId": "03cf183a-59b4-401a-9978-48e253ccf403",
+  "generatedAt": "2026-09-15T14:09:40.866Z",
   "weekStart": "2026-09-14T00:00:00.000Z",
   "weekEnd": "2026-09-20T00:00:00.000Z",
   "sources": [
-    {
-      "source": "liaa_news",
-      "label": "LIAA",
-      "status": "ok",
-      "count": 20,
-      "durationMs": 327,
-      "items": [
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/kad-satiekas-pieredze-zinatkare-un-velme-augt-tiek-uzsakts-mentors-biznesa-izaugsmei-3-posms",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Kad satiekas pieredze, zinātkāre un vēlme augt - tiek uzsākts “MENTORS BIZNESA IZAUGSMEI” 3. posms!",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/kad-satiekas-pieredze-zinatkare-un-velme-augt-tiek-uzsakts-mentors-biznesa-izaugsmei-3-posms",
-          "date": "2026-09-15T06:01:41.000Z",
-          "text": "10. septembrī LIAA Business Lounge (Krišjāņa Barona ielā 30A, Rīgā) pulcējās biznesa pirmsinkubācijas un inkubācijas programmu dalībnieki, kā arī dažādu jomu…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-atbalstitas-filmas-nezinama-sieviete-triumfs-venecija-apliecina-latvijas-konkuretspeju-starptautiskaja-kino-industrija",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "LIAA atbalstītās filmas “Nezināmā sieviete” triumfs Venēcijā apliecina Latvijas konkurētspēju starptautiskajā kino industrijā",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-atbalstitas-filmas-nezinama-sieviete-triumfs-venecija-apliecina-latvijas-konkuretspeju-starptautiskaja-kino-industrija",
-          "date": "2026-09-14T11:58:13.000Z",
-          "text": "Venēcijas Starptautiskā kinofestivāla galveno balvu – “Zelta lauvu” – ieguvusī dāņu režisores Majas el-Tukī filma “Nezināmā sieviete” ir Dānijas un Zviedrijas…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "“NestAI” paplašina darbību Latvijā, lai attīstītu aizsardzības mākslīgo intelektu NATO austrumu flangā",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
-          "date": "2026-09-11T07:24:45.000Z",
-          "text": "Eiropas aizsardzības mākslīgā intelekta laboratorija “NestAI” Latvijā atklāj pētniecības un attīstības centru, lai kopā ar NATO austrumu flangā strādājošajiem…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/norvegijas-finansu-instrumenta-2021-2028-gada-planosanas-periods",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Norvēģijas finanšu instrumenta 2021.-2028. gada plānošanas periods",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/norvegijas-finansu-instrumenta-2021-2028-gada-planosanas-periods",
-          "date": "2026-09-11T06:50:55.000Z",
-          "text": "2025. gada 9. oktobrī starp Latvijas Republiku un Norvēģijas Karalisti tika parakstīts Saprašanās memorands par Norvēģijas finanšu instrumenta 2021.–2028. gada…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv",
-          "date": "2026-09-10T12:33:23.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) no 20. līdz 28. septembrim organizēs Latvijas uzņēmēju tirdzniecības misiju uz Amerikas Savienotajām Valstīm…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "LIAA piedāvā rīku, kas palīdz uzņēmējiem atrast piemērotāko atbalstu",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
-          "date": "2026-09-10T06:36:15.000Z",
-          "text": "Lai uzņēmējiem atvieglotu orientēšanos plašajā pieejamo atbalsta iespēju klāstā, valsts platformā biznesa attīstībai business.gov.lv LIAA piedāvā digitālu rīku…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "No prototipa līdz eksporta tirgum: LIAA atver rudens uzņemšanu Biznesa inkubācijas programmā",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma",
-          "date": "2026-09-09T08:47:58.000Z",
-          "deadline": "2026-09-24T00:00:00.000Z",
-          "text": "No 9. līdz 24. septembrim Latvijas Investīciju un attīstības aģentūra (LIAA) aicina jaunos uzņēmumus pieteikties Biznesa inkubācijas programmai. Tās…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem",
-          "date": "2026-09-07T10:40:10.000Z",
-          "text": "No 14. līdz 17. septembrim Latvijas uzņēmēju delegācija Latvijas Investīciju un attīstības aģentūras (LIAA) organizētā tirdzniecības misijā Berlīnē tiksies ar…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/sakusies-pieteiksanas-jauno-uznemeju-skola-2026-piecas-latvijas-pilsetas",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Sākusies pieteikšanās “Jauno uzņēmēju skolā 2026” piecās Latvijas pilsētās",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/sakusies-pieteiksanas-jauno-uznemeju-skola-2026-piecas-latvijas-pilsetas",
-          "date": "2026-09-07T06:22:55.000Z",
-          "text": "Ir sākusies skolēnu un pedagogu pieteikšanās reģionālajām darbnīcām par inovāciju un ideju ģenerēšanu “Jauno uzņēmēju skola 2026”, ko rīko Latvijas Investīciju…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/vel-lidz-10-septembrim-var-pieteikties-eksporta-un-inovacijas-balvai-2026",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Vēl līdz 10. septembrim var pieteikties “Eksporta un inovācijas balvai 2026”",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/vel-lidz-10-septembrim-var-pieteikties-eksporta-un-inovacijas-balvai-2026",
-          "date": "2026-09-04T09:39:13.000Z",
-          "deadline": "2026-09-10T00:00:00.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un Ekonomikas ministrija līdz 10. septembrim aicina pieteikt pretendentus konkursa “Eksporta un inovācijas…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/pieteiksanas-eksporta-un-inovacijas-balvai-2026-turpinasies-lidz-10-septembrim",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Pieteikšanās “Eksporta un inovācijas balvai 2026” turpināsies līdz 10. septembrim",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/pieteiksanas-eksporta-un-inovacijas-balvai-2026-turpinasies-lidz-10-septembrim",
-          "date": "2026-09-02T13:23:35.000Z",
-          "deadline": "2026-09-10T00:00:00.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un Ekonomikas ministrija vēl līdz 10. septembrim aicina uzņēmumus pieteikties konkursam “Eksporta un…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-aicina-pieredzejusus-uznemejus-un-nozaru-profesionalus-klut-par-mentoriem-jauno-uznemumu-izaugsmei",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "LIAA aicina pieredzējušus uzņēmējus un nozaru profesionāļus kļūt par mentoriem jauno uzņēmumu izaugsmei",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-aicina-pieredzejusus-uznemejus-un-nozaru-profesionalus-klut-par-mentoriem-jauno-uznemumu-izaugsmei",
-          "date": "2026-09-01T08:42:06.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) aicina pieredzējušus uzņēmējus, vadītājus un dažādu nozaru profesionāļus pievienoties programmas “Mentors…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/atklata-pieteiksanas-venture-catalysts-6-un-nosledzosajam-celienam-iespeja-attistit-zinatne-balstitas-inovacijas-un-deep-tech-uznemejdarbibu",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Atklāta pieteikšanās “Venture Catalysts” 6. un noslēdzošajam cēlienam: iespēja attīstīt zinātnē balstītas inovācijas un deep tech uzņēmējdarbību",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/atklata-pieteiksanas-venture-catalysts-6-un-nosledzosajam-celienam-iespeja-attistit-zinatne-balstitas-inovacijas-un-deep-tech-uznemejdarbibu",
-          "date": "2026-09-01T05:35:10.000Z",
-          "deadline": "2026-11-12T00:00:00.000Z",
-          "text": "Ir sākusies pieteikšanās “Venture Catalysts” 6. un noslēdzošajam cēlienam, kas norisināsies no 2026. gada 13. oktobra līdz 12. novembrim. Praktiskā apmācību…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-procesa-paredzamiba-un-tiesiska-vide-ir-izskirosas-nakamo-investoru-piesaistei",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "LIAA: procesa paredzamība un tiesiskā vide ir izšķirošas nākamo investoru piesaistei",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-procesa-paredzamiba-un-tiesiska-vide-ir-izskirosas-nakamo-investoru-piesaistei",
-          "date": "2026-08-28T11:22:54.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA), Latvijas Tirdzniecības un rūpniecības kamera (LTRK), Latvijas Darba devēju konfederācija (LDDK) un Ārvalstu…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-un-turisma-nozare-vienojas-par-kopigu-ricibu-turisma-konkuretspejas-stiprinasanai",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "LIAA un tūrisma nozare vienojas par kopīgu rīcību tūrisma konkurētspējas stiprināšanai",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-un-turisma-nozare-vienojas-par-kopigu-ricibu-turisma-konkuretspejas-stiprinasanai",
-          "date": "2026-08-27T13:13:10.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un tūrisma nozares organizācijas 27. augustā vienojās par trim turpmākās rīcības virzieniem – kopīgi…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursa-ideju-kauss-balvu-fonds-sogad-40-000-eiro",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Biznesa ideju konkursa “Ideju Kauss” balvu fonds šogad 40 000 eiro",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursa-ideju-kauss-balvu-fonds-sogad-40-000-eiro",
-          "date": "2026-08-26T06:20:55.000Z",
-          "deadline": "2026-09-13T00:00:00.000Z",
-          "text": "Biznesa ideju konkurss “Ideju kauss” ir sasniedzis pilngadību un gatavs sākt 18. sezonu. Līdz 13. septembrim ikviens interesents ir aicināts iesniegt savu…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/pieteikumu-limits-liaa-mini-mba-programmai-sasniegts-28-minutes",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Pieteikumu limits LIAA Mini MBA programmai sasniegts 28 minūtēs",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/pieteikumu-limits-liaa-mini-mba-programmai-sasniegts-28-minutes",
-          "date": "2026-08-24T10:25:44.000Z",
-          "text": "Latvijas Investīciju un attīstības aģentūras (LIAA) īstenotās Mini MBA programmas “Inovāciju vadība” septītajai mācību grupai maksimālais pieteikumu skaits…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/no-radiosakariem-starp-pasaules-birzu-centriem-lidz-viedajam-siltumnicam-liaa-delegacija-apmekle-saf-tehnika",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "No radiosakariem starp pasaules biržu centriem līdz viedajām siltumnīcām – LIAA delegācija apmeklē “SAF Tehnika”",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/no-radiosakariem-starp-pasaules-birzu-centriem-lidz-viedajam-siltumnicam-liaa-delegacija-apmekle-saf-tehnika",
-          "date": "2026-08-21T13:48:52.000Z",
-          "text": "Latvijā radītas “SAF Tehnika” radioiekārtas nodrošina īpaši ātru datu pārraidi starp lielākajiem ASV un Eiropas finanšu centriem, savukārt uzņēmuma sensoru…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/700-skolotaji-un-izglitibas-nozares-parstavji-sodien-pulcejas-gada-lielakaja-izglitibas-konference-izaugsmes-kods",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "700 skolotāji un izglītības nozares pārstāvji šodien pulcējas gada lielākajā izglītības konferencē “Izaugsmes kods”",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/700-skolotaji-un-izglitibas-nozares-parstavji-sodien-pulcejas-gada-lielakaja-izglitibas-konference-izaugsmes-kods",
-          "date": "2026-08-20T10:23:16.000Z",
-          "text": "Šodien Rīgā norisinās ikgadējā uzņēmējdarbības izglītības konference “Izaugsmes kods”, ko rīko Latvijas Investīciju un attīstības aģentūra (LIAA) sadarbībā ar…"
-        },
-        {
-          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/latvija-arvalstu-investiciju-projekti-radijusi-gandriz-pusi-no-jaunajam-darbavietam-baltija",
-          "source": "liaa_news",
-          "sourceLabel": "LIAA",
-          "title": "Latvijā ārvalstu investīciju projekti radījuši gandrīz pusi no jaunajām darbavietām Baltijā",
-          "url": "https://www.liaa.gov.lv/lv/jaunums/latvija-arvalstu-investiciju-projekti-radijusi-gandriz-pusi-no-jaunajam-darbavietam-baltija",
-          "date": "2026-08-17T10:31:37.000Z",
-          "text": "Latvijā 2025. gadā uzsāktie ārvalstu investīciju projekti radījuši 1015 jaunas darbavietas jeb 46% no visām šādu projektu radītajām darbavietām Baltijas…"
-        }
-      ]
-    },
-    {
-      "source": "altum_news",
-      "label": "Altum",
-      "status": "ok",
-      "count": 10,
-      "durationMs": 344,
-      "items": [
-        {
-          "id": "altum_news:https://www.altum.lv/darbu-uzsacis-jaunais-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "Darbu uzsācis jaunais ALTUM klientu portāls jauniem aizdevumu pieteikumiem",
-          "url": "https://www.altum.lv/darbu-uzsacis-jaunais-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
-          "date": "2026-09-15T06:00:42.000Z",
-          "deadline": "2026-09-15T00:00:00.000Z",
-          "text": "Informējam, ka no 15. septembra jaunajā ALTUM klientu portālā var iesniegt jaunus aizdevumu programmu pieteikumus (izņemot DMR). &#160; Visi aizdevumu pieteikumi un darījumi, kas līdz 15. septembrim jau bija aktīvi [&#8230;] \n The post  Darbu uzsācis jaunais ALTUM klientu portāls jauniem aizdevumu pieteikumiem  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā",
-          "url": "https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
-          "date": "2026-09-14T09:44:04.000Z",
-          "text": "ALTUM piešķīrusi finansējumu 842 300 eiro apmērā Latvijas uzņēmumam “FORTES”, kas ražo un piegādā koģenerācijas stacijas klientiem Ukrainā. Uzņēmums izmantojis ALTUM piedāvāto atbalsta programmu uzņēmumiem, kas iesaistās Ukrainas infrastruktūras rekonstrukcijā [&#8230;] \n The post  ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem",
-          "url": "https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
-          "date": "2026-09-05T15:01:50.000Z",
-          "text": "No 15. septembra ALTUM klientiem būs pieejams jauns, mūsdienīgāks un lietošanai ērtāks klientu portāls jaunu aizdevumu pieteikumu iesniegšanai un turpmākai apstrādei. &#160; Jauni aizdevumu pieteikumi turpmāk būs jāiesniedz jaunajā portālā. [&#8230;] \n The post  Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem   appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem",
-          "url": "https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/",
-          "date": "2026-09-02T16:09:54.000Z",
-          "text": "Informējam, ka ALTUM pārtrauc atbalsta pieteikumu pieņemšanu Daudzdzīvokļu māju energoefektivitātes programmā 2021–2027 (DME 3) vispārējās atjaunošanas projektiem, jo ar līdz šim iesniegtajiem pieteikumiem ir sasniegts programmai pieejamā finansējuma limits šajā [&#8230;] \n The post  ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "ALTUM padome turpina darbu jaunā sastāvā",
-          "url": "https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/",
-          "date": "2026-09-02T10:53:29.000Z",
-          "text": "Šā gada 1.septembrī ALTUM akcionāru sapulcē apstiprināts jaunais padomes sastāvs. Par ALTUM padomes priekšsēdētāju uz trim gadiem iecelta Ieva Jansone-Buka, savukārt kā padomes loceklis pievienojas Uldis Upenieks. Darbu ALTUM padomē [&#8230;] \n The post  ALTUM padome turpina darbu jaunā sastāvā  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "22.augustā iespējami traucējumi ALTUM sistēmu darbībā",
-          "url": "https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/",
-          "date": "2026-08-17T07:13:57.000Z",
-          "text": "Cienījamie klienti! &#160; Šā gada 22.augustā notiks ALTUM IT sistēmu uzlabošanas darbi un laikā no plkst. 7.00 līdz 18.00 iespējami īslaicīgi traucējumi to darbībā. &#160; Paldies par sapratni! &#160; Jūsu [&#8230;] \n The post  22.augustā iespējami traucējumi ALTUM sistēmu darbībā  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai",
-          "url": "https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/",
-          "date": "2026-08-03T05:00:10.000Z",
-          "text": "2026. gada 3. augustā atklāta projektu iesniegumu atlases kārta atbalstam projektiem rūpniecisko spēju uzlabošanai, kas tiek īstenota saskaņā ar Ministru kabineta 2026. gada 3. februāra noteikumiem Nr. 48 “Noteikumi par [&#8230;] \n The post  Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/altum-paplasina-uznemumu-zalinasanas-programmu-atverot-energoefektivitates-atbalstu-mazajiem-un-videjiem-uznemumiem-vel-cetros-regionos/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "ALTUM paplašina uzņēmumu zaļināšanas programmu",
-          "url": "https://www.altum.lv/altum-paplasina-uznemumu-zalinasanas-programmu-atverot-energoefektivitates-atbalstu-mazajiem-un-videjiem-uznemumiem-vel-cetros-regionos/",
-          "date": "2026-07-20T07:57:53.000Z",
-          "text": "ALTUM paplašina uzņēmējdarbības zaļināšanas programmu, no šā gada 24. augusta atverot pieteikšanos valsts atbalstam energoefektivitātei ar kapitāla atlaidi Tukuma, Limbažu, Saulkrastu un Ogres novada mazajiem un vidējiem uzņēmējiem. Pieteikumiem no [&#8230;] \n The post  ALTUM paplašina uzņēmumu zaļināšanas programmu  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas",
-          "url": "https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/",
-          "date": "2026-07-06T10:46:29.000Z",
-          "text": "Lai atbalstītu Latvijas uzņēmumu eksportu uz Ukrainu un palīdzētu mazināt darījumu riskus sarežģītajā ģeopolitiskajā situācijā, ALTUM no 2026. gada 2. jūlija par 80 % samazina eksporta kredīta garantijas prēmiju darījumiem [&#8230;] \n The post  Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas  appeared first on  Altum ."
-        },
-        {
-          "id": "altum_news:https://www.altum.lv/informacija-latvijas-zemes-fonda-klientiem-par-lvm-kiberdrosibas-incidentu/",
-          "source": "altum_news",
-          "sourceLabel": "Altum",
-          "title": "Informācija Latvijas zemes fonda klientiem par LVM kiberdrošības incidentu",
-          "url": "https://www.altum.lv/informacija-latvijas-zemes-fonda-klientiem-par-lvm-kiberdrosibas-incidentu/",
-          "date": "2026-07-06T09:53:17.000Z",
-          "text": "Šā gada 3.jūlijā ALTUM ir saņēmis paziņojumu no AS “Latvijas Valsts meži” (LVM) par kiberdrošības incidentu un iespējamu datu noplūdi LVM IT infrastruktūrā. Paziņojumā norādīts, ka iespējamais incidents  ir saistīts [&#8230;] \n The post  Informācija Latvijas zemes fonda klientiem par LVM kiberdrošības incidentu  appeared first on  Altum ."
-        }
-      ]
-    },
     {
       "source": "em_news",
       "label": "Ekonomikas ministrija",
       "status": "ok",
       "count": 20,
-      "durationMs": 587,
+      "durationMs": 550,
       "items": [
+        {
+          "id": "em_news:https://www.em.gov.lv/lv/jaunums/altum-vares-piesaistit-papildu-finansejumu-daudzdzivoklu-maju-remontiem",
+          "source": "em_news",
+          "sourceLabel": "Ekonomikas ministrija",
+          "title": "ALTUM varēs piesaistīt papildu finansējumu daudzdzīvokļu māju remontiem",
+          "url": "https://www.em.gov.lv/lv/jaunums/altum-vares-piesaistit-papildu-finansejumu-daudzdzivoklu-maju-remontiem",
+          "date": "2026-09-15T14:00:28.000Z",
+          "text": "Ministru kabinets 15. septembrī pieņēma Ekonomikas ministrijas (EM) sagatavotos grozījumus, kas dos iespēju akciju sabiedrībai “Attīstības finanšu institūcija…"
+        },
+        {
+          "id": "em_news:https://www.em.gov.lv/lv/jaunums/em-sasniegusi-lielako-birokratiska-sloga-samazinajumu-1358-miljoni-eiro",
+          "source": "em_news",
+          "sourceLabel": "Ekonomikas ministrija",
+          "title": "EM sasniegusi lielāko birokrātiskā sloga samazinājumu – 135,8 miljoni eiro",
+          "url": "https://www.em.gov.lv/lv/jaunums/em-sasniegusi-lielako-birokratiska-sloga-samazinajumu-1358-miljoni-eiro",
+          "date": "2026-09-15T13:02:21.000Z",
+          "text": "Ekonomikas ministrija (EM) laika posmā no 2025. gada 1. decembra līdz 2026. gada 31. augustam sasniegusi lielāko birokrātiskā sloga samazinājumu starp…"
+        },
         {
           "id": "em_news:https://www.em.gov.lv/lv/jaunums/precize-arvalstnieku-deklaraciju-aizpildisanas-kartibu-turistu-mitnes",
           "source": "em_news",
@@ -467,24 +191,6 @@
           "url": "https://www.em.gov.lv/lv/jaunums/ekonomikas-ministrs-latgale-tiksies-ar-pasvaldibu-parstavjiem-un-apmekles-pulsar-optics-razotni",
           "date": "2026-08-27T11:28:26.000Z",
           "text": "Piektdien, 28. augustā, ekonomikas ministrs Viktors Valainis dosies darba vizītē uz Latgali, lai klātienē izvērtētu vētras radītās sekas, tiktos ar Daugavpils…"
-        },
-        {
-          "id": "em_news:https://www.em.gov.lv/lv/jaunums/jekabpils-novada-prezente-200-miljonu-eiro-investiciju-programmu-kaujas-ladinu-razosanas-attistibai",
-          "source": "em_news",
-          "sourceLabel": "Ekonomikas ministrija",
-          "title": "Jēkabpils novadā prezentē 200 miljonu eiro investīciju programmu kaujas lādiņu ražošanas attīstībai",
-          "url": "https://www.em.gov.lv/lv/jaunums/jekabpils-novada-prezente-200-miljonu-eiro-investiciju-programmu-kaujas-ladinu-razosanas-attistibai",
-          "date": "2026-08-26T10:42:59.000Z",
-          "text": "Trešdien, 26. augustā, ekonomikas ministrs Viktors Valainis un valsts sekretārs Raivis Bremšmits Jēkabpilī apmeklēja uzņēmuma “Wolfram Europa” rīkoto pasākumu,…"
-        },
-        {
-          "id": "em_news:https://www.em.gov.lv/lv/jaunums/tet-kiberuzbrukums-csdd-noticis-caur-pasas-iestades-parzina-esosu-lietotni-kuras-kiberuzraudziba-nav-tet-parzina",
-          "source": "em_news",
-          "sourceLabel": "Ekonomikas ministrija",
-          "title": "Tet: kiberuzbrukums CSDD noticis caur pašas iestādes pārziņā esošu lietotni, kuras kiberuzraudzība nav Tet pārziņā",
-          "url": "https://www.em.gov.lv/lv/jaunums/tet-kiberuzbrukums-csdd-noticis-caur-pasas-iestades-parzina-esosu-lietotni-kuras-kiberuzraudziba-nav-tet-parzina",
-          "date": "2026-08-21T13:36:05.000Z",
-          "text": "Pēdējo dienu laikā tehnoloģiju un inovāciju uzņēmuma Tet ekspertu komanda ir analizējusi CSDD datu zādzības apstākļus tik tālu, cik tas attiecas uz savstarpēji…"
         }
       ]
     },
@@ -493,7 +199,7 @@
       "label": "TAP portāls — Sabiedrības līdzdalība",
       "status": "ok",
       "count": 25,
-      "durationMs": 754,
+      "durationMs": 721,
       "items": [
         {
           "id": "tap_consultations:26-TA-2228",
@@ -798,11 +504,305 @@
       ]
     },
     {
+      "source": "altum_news",
+      "label": "Altum",
+      "status": "ok",
+      "count": 10,
+      "durationMs": 804,
+      "items": [
+        {
+          "id": "altum_news:https://www.altum.lv/darbu-uzsacis-jaunais-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "Darbu uzsācis jaunais ALTUM klientu portāls jauniem aizdevumu pieteikumiem",
+          "url": "https://www.altum.lv/darbu-uzsacis-jaunais-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
+          "date": "2026-09-15T06:00:42.000Z",
+          "deadline": "2026-09-15T00:00:00.000Z",
+          "text": "Informējam, ka no 15. septembra jaunajā ALTUM klientu portālā var iesniegt jaunus aizdevumu programmu pieteikumus (izņemot DMR). &#160; Visi aizdevumu pieteikumi un darījumi, kas līdz 15. septembrim jau bija aktīvi [&#8230;] \n The post  Darbu uzsācis jaunais ALTUM klientu portāls jauniem aizdevumu pieteikumiem  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā",
+          "url": "https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
+          "date": "2026-09-14T09:44:04.000Z",
+          "text": "ALTUM piešķīrusi finansējumu 842 300 eiro apmērā Latvijas uzņēmumam “FORTES”, kas ražo un piegādā koģenerācijas stacijas klientiem Ukrainā. Uzņēmums izmantojis ALTUM piedāvāto atbalsta programmu uzņēmumiem, kas iesaistās Ukrainas infrastruktūras rekonstrukcijā [&#8230;] \n The post  ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem",
+          "url": "https://www.altum.lv/jauns-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
+          "date": "2026-09-05T15:01:50.000Z",
+          "text": "No 15. septembra ALTUM klientiem būs pieejams jauns, mūsdienīgāks un lietošanai ērtāks klientu portāls jaunu aizdevumu pieteikumu iesniegšanai un turpmākai apstrādei. &#160; Jauni aizdevumu pieteikumi turpmāk būs jāiesniedz jaunajā portālā. [&#8230;] \n The post  Jauns ALTUM klientu portāls jauniem aizdevumu pieteikumiem   appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem",
+          "url": "https://www.altum.lv/altum-uz-laiku-partrauc-pienemt-atbalsta-pieteikumus-dme-3-programmas-visparejas-atjaunosanas-projektiem/",
+          "date": "2026-09-02T16:09:54.000Z",
+          "text": "Informējam, ka ALTUM pārtrauc atbalsta pieteikumu pieņemšanu Daudzdzīvokļu māju energoefektivitātes programmā 2021–2027 (DME 3) vispārējās atjaunošanas projektiem, jo ar līdz šim iesniegtajiem pieteikumiem ir sasniegts programmai pieejamā finansējuma limits šajā [&#8230;] \n The post  ALTUM uz laiku pārtrauc pieņemt atbalsta pieteikumus DME 3 programmas vispārējās atjaunošanas projektiem  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "ALTUM padome turpina darbu jaunā sastāvā",
+          "url": "https://www.altum.lv/altum-padome-turpina-darbu-jauna-sastava/",
+          "date": "2026-09-02T10:53:29.000Z",
+          "text": "Šā gada 1.septembrī ALTUM akcionāru sapulcē apstiprināts jaunais padomes sastāvs. Par ALTUM padomes priekšsēdētāju uz trim gadiem iecelta Ieva Jansone-Buka, savukārt kā padomes loceklis pievienojas Uldis Upenieks. Darbu ALTUM padomē [&#8230;] \n The post  ALTUM padome turpina darbu jaunā sastāvā  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "22.augustā iespējami traucējumi ALTUM sistēmu darbībā",
+          "url": "https://www.altum.lv/22-augusta-iespejami-traucejumi-altum-sistemu-darbiba/",
+          "date": "2026-08-17T07:13:57.000Z",
+          "text": "Cienījamie klienti! &#160; Šā gada 22.augustā notiks ALTUM IT sistēmu uzlabošanas darbi un laikā no plkst. 7.00 līdz 18.00 iespējami īslaicīgi traucējumi to darbībā. &#160; Paldies par sapratni! &#160; Jūsu [&#8230;] \n The post  22.augustā iespējami traucējumi ALTUM sistēmu darbībā  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai",
+          "url": "https://www.altum.lv/ekonomikas-ministrija-izsludina-atklatu-projektu-iesniegumu-atlases-kartu-projektiem-rupniecisko-speju-uzlabosanai/",
+          "date": "2026-08-03T05:00:10.000Z",
+          "text": "2026. gada 3. augustā atklāta projektu iesniegumu atlases kārta atbalstam projektiem rūpniecisko spēju uzlabošanai, kas tiek īstenota saskaņā ar Ministru kabineta 2026. gada 3. februāra noteikumiem Nr. 48 “Noteikumi par [&#8230;] \n The post  Ekonomikas ministrija izsludina atklātu projektu iesniegumu atlases kārtu projektiem rūpniecisko spēju uzlabošanai  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/altum-paplasina-uznemumu-zalinasanas-programmu-atverot-energoefektivitates-atbalstu-mazajiem-un-videjiem-uznemumiem-vel-cetros-regionos/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "ALTUM paplašina uzņēmumu zaļināšanas programmu",
+          "url": "https://www.altum.lv/altum-paplasina-uznemumu-zalinasanas-programmu-atverot-energoefektivitates-atbalstu-mazajiem-un-videjiem-uznemumiem-vel-cetros-regionos/",
+          "date": "2026-07-20T07:57:53.000Z",
+          "text": "ALTUM paplašina uzņēmējdarbības zaļināšanas programmu, no šā gada 24. augusta atverot pieteikšanos valsts atbalstam energoefektivitātei ar kapitāla atlaidi Tukuma, Limbažu, Saulkrastu un Ogres novada mazajiem un vidējiem uzņēmējiem. Pieteikumiem no [&#8230;] \n The post  ALTUM paplašina uzņēmumu zaļināšanas programmu  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas",
+          "url": "https://www.altum.lv/eksporta-kredita-garantijas-darijumiem-ar-ukrainu-klust-par-80-letakas/",
+          "date": "2026-07-06T10:46:29.000Z",
+          "text": "Lai atbalstītu Latvijas uzņēmumu eksportu uz Ukrainu un palīdzētu mazināt darījumu riskus sarežģītajā ģeopolitiskajā situācijā, ALTUM no 2026. gada 2. jūlija par 80 % samazina eksporta kredīta garantijas prēmiju darījumiem [&#8230;] \n The post  Eksporta kredīta garantijas darījumiem ar Ukrainu kļūst par 80 % lētākas  appeared first on  Altum ."
+        },
+        {
+          "id": "altum_news:https://www.altum.lv/informacija-latvijas-zemes-fonda-klientiem-par-lvm-kiberdrosibas-incidentu/",
+          "source": "altum_news",
+          "sourceLabel": "Altum",
+          "title": "Informācija Latvijas zemes fonda klientiem par LVM kiberdrošības incidentu",
+          "url": "https://www.altum.lv/informacija-latvijas-zemes-fonda-klientiem-par-lvm-kiberdrosibas-incidentu/",
+          "date": "2026-07-06T09:53:17.000Z",
+          "text": "Šā gada 3.jūlijā ALTUM ir saņēmis paziņojumu no AS “Latvijas Valsts meži” (LVM) par kiberdrošības incidentu un iespējamu datu noplūdi LVM IT infrastruktūrā. Paziņojumā norādīts, ka iespējamais incidents  ir saistīts [&#8230;] \n The post  Informācija Latvijas zemes fonda klientiem par LVM kiberdrošības incidentu  appeared first on  Altum ."
+        }
+      ]
+    },
+    {
+      "source": "liaa_news",
+      "label": "LIAA",
+      "status": "ok",
+      "count": 20,
+      "durationMs": 1498,
+      "items": [
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursam-ideju-kauss-pieteiktas-gandriz-400-idejas",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Biznesa ideju konkursam \"Ideju kauss\" pieteiktas gandrīz 400 idejas",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursam-ideju-kauss-pieteiktas-gandriz-400-idejas",
+          "date": "2026-09-15T09:01:00.000Z",
+          "text": "Biznesa ideju konkursa \"Ideju kauss\" šī gada sauklis \"Varbūt (ne)sanāks. A ja nu?\" ir iedrošinājis pieteikties 374 biznesa ideju autorus. Tas nozīmē, ka cīņa…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/kad-satiekas-pieredze-zinatkare-un-velme-augt-tiek-uzsakts-mentors-biznesa-izaugsmei-3-posms",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Kad satiekas pieredze, zinātkāre un vēlme augt - tiek uzsākts “MENTORS BIZNESA IZAUGSMEI” 3. posms!",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/kad-satiekas-pieredze-zinatkare-un-velme-augt-tiek-uzsakts-mentors-biznesa-izaugsmei-3-posms",
+          "date": "2026-09-15T06:01:41.000Z",
+          "text": "10. septembrī LIAA Business Lounge (Krišjāņa Barona ielā 30A, Rīgā) pulcējās biznesa pirmsinkubācijas un inkubācijas programmu dalībnieki, kā arī dažādu jomu…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-atbalstitas-filmas-nezinama-sieviete-triumfs-venecija-apliecina-latvijas-konkuretspeju-starptautiskaja-kino-industrija",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "LIAA atbalstītās filmas “Nezināmā sieviete” triumfs Venēcijā apliecina Latvijas konkurētspēju starptautiskajā kino industrijā",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-atbalstitas-filmas-nezinama-sieviete-triumfs-venecija-apliecina-latvijas-konkuretspeju-starptautiskaja-kino-industrija",
+          "date": "2026-09-14T11:58:13.000Z",
+          "text": "Venēcijas Starptautiskā kinofestivāla galveno balvu – “Zelta lauvu” – ieguvusī dāņu režisores Majas el-Tukī filma “Nezināmā sieviete” ir Dānijas un Zviedrijas…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "“NestAI” paplašina darbību Latvijā, lai attīstītu aizsardzības mākslīgo intelektu NATO austrumu flangā",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
+          "date": "2026-09-11T07:24:45.000Z",
+          "text": "Eiropas aizsardzības mākslīgā intelekta laboratorija “NestAI” Latvijā atklāj pētniecības un attīstības centru, lai kopā ar NATO austrumu flangā strādājošajiem…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/norvegijas-finansu-instrumenta-2021-2028-gada-planosanas-periods",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Norvēģijas finanšu instrumenta 2021.-2028. gada plānošanas periods",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/norvegijas-finansu-instrumenta-2021-2028-gada-planosanas-periods",
+          "date": "2026-09-11T06:50:55.000Z",
+          "text": "2025. gada 9. oktobrī starp Latvijas Republiku un Norvēģijas Karalisti tika parakstīts Saprašanās memorands par Norvēģijas finanšu instrumenta 2021.–2028. gada…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Latvijas uzņēmēji Valsts prezidenta vizītes laikā dosies tirdzniecības misijā uz ASV",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-valsts-prezidenta-vizites-laika-dosies-tirdzniecibas-misija-uz-asv",
+          "date": "2026-09-10T12:33:23.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) no 20. līdz 28. septembrim organizēs Latvijas uzņēmēju tirdzniecības misiju uz Amerikas Savienotajām Valstīm…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "LIAA piedāvā rīku, kas palīdz uzņēmējiem atrast piemērotāko atbalstu",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
+          "date": "2026-09-10T06:36:15.000Z",
+          "text": "Lai uzņēmējiem atvieglotu orientēšanos plašajā pieejamo atbalsta iespēju klāstā, valsts platformā biznesa attīstībai business.gov.lv LIAA piedāvā digitālu rīku…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "No prototipa līdz eksporta tirgum: LIAA atver rudens uzņemšanu Biznesa inkubācijas programmā",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/no-prototipa-lidz-eksporta-tirgum-liaa-atver-rudens-uznemsanu-biznesa-inkubacijas-programma",
+          "date": "2026-09-09T08:47:58.000Z",
+          "deadline": "2026-09-24T00:00:00.000Z",
+          "text": "No 9. līdz 24. septembrim Latvijas Investīciju un attīstības aģentūra (LIAA) aicina jaunos uzņēmumus pieteikties Biznesa inkubācijas programmai. Tās…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Latvijas uzņēmēji Berlīnē stiprinās sadarbību ar Vācijas tehnoloģiju un rūpniecības līderiem",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/latvijas-uznemeji-berline-stiprinas-sadarbibu-ar-vacijas-tehnologiju-un-rupniecibas-lideriem",
+          "date": "2026-09-07T10:40:10.000Z",
+          "text": "No 14. līdz 17. septembrim Latvijas uzņēmēju delegācija Latvijas Investīciju un attīstības aģentūras (LIAA) organizētā tirdzniecības misijā Berlīnē tiksies ar…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/sakusies-pieteiksanas-jauno-uznemeju-skola-2026-piecas-latvijas-pilsetas",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Sākusies pieteikšanās “Jauno uzņēmēju skolā 2026” piecās Latvijas pilsētās",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/sakusies-pieteiksanas-jauno-uznemeju-skola-2026-piecas-latvijas-pilsetas",
+          "date": "2026-09-07T06:22:55.000Z",
+          "text": "Ir sākusies skolēnu un pedagogu pieteikšanās reģionālajām darbnīcām par inovāciju un ideju ģenerēšanu “Jauno uzņēmēju skola 2026”, ko rīko Latvijas Investīciju…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/vel-lidz-10-septembrim-var-pieteikties-eksporta-un-inovacijas-balvai-2026",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Vēl līdz 10. septembrim var pieteikties “Eksporta un inovācijas balvai 2026”",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/vel-lidz-10-septembrim-var-pieteikties-eksporta-un-inovacijas-balvai-2026",
+          "date": "2026-09-04T09:39:13.000Z",
+          "deadline": "2026-09-10T00:00:00.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un Ekonomikas ministrija līdz 10. septembrim aicina pieteikt pretendentus konkursa “Eksporta un inovācijas…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/pieteiksanas-eksporta-un-inovacijas-balvai-2026-turpinasies-lidz-10-septembrim",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Pieteikšanās “Eksporta un inovācijas balvai 2026” turpināsies līdz 10. septembrim",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/pieteiksanas-eksporta-un-inovacijas-balvai-2026-turpinasies-lidz-10-septembrim",
+          "date": "2026-09-02T13:23:35.000Z",
+          "deadline": "2026-09-10T00:00:00.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un Ekonomikas ministrija vēl līdz 10. septembrim aicina uzņēmumus pieteikties konkursam “Eksporta un…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-aicina-pieredzejusus-uznemejus-un-nozaru-profesionalus-klut-par-mentoriem-jauno-uznemumu-izaugsmei",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "LIAA aicina pieredzējušus uzņēmējus un nozaru profesionāļus kļūt par mentoriem jauno uzņēmumu izaugsmei",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-aicina-pieredzejusus-uznemejus-un-nozaru-profesionalus-klut-par-mentoriem-jauno-uznemumu-izaugsmei",
+          "date": "2026-09-01T08:42:06.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) aicina pieredzējušus uzņēmējus, vadītājus un dažādu nozaru profesionāļus pievienoties programmas “Mentors…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/atklata-pieteiksanas-venture-catalysts-6-un-nosledzosajam-celienam-iespeja-attistit-zinatne-balstitas-inovacijas-un-deep-tech-uznemejdarbibu",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Atklāta pieteikšanās “Venture Catalysts” 6. un noslēdzošajam cēlienam: iespēja attīstīt zinātnē balstītas inovācijas un deep tech uzņēmējdarbību",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/atklata-pieteiksanas-venture-catalysts-6-un-nosledzosajam-celienam-iespeja-attistit-zinatne-balstitas-inovacijas-un-deep-tech-uznemejdarbibu",
+          "date": "2026-09-01T05:35:10.000Z",
+          "deadline": "2026-11-12T00:00:00.000Z",
+          "text": "Ir sākusies pieteikšanās “Venture Catalysts” 6. un noslēdzošajam cēlienam, kas norisināsies no 2026. gada 13. oktobra līdz 12. novembrim. Praktiskā apmācību…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-procesa-paredzamiba-un-tiesiska-vide-ir-izskirosas-nakamo-investoru-piesaistei",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "LIAA: procesa paredzamība un tiesiskā vide ir izšķirošas nākamo investoru piesaistei",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-procesa-paredzamiba-un-tiesiska-vide-ir-izskirosas-nakamo-investoru-piesaistei",
+          "date": "2026-08-28T11:22:54.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA), Latvijas Tirdzniecības un rūpniecības kamera (LTRK), Latvijas Darba devēju konfederācija (LDDK) un Ārvalstu…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-un-turisma-nozare-vienojas-par-kopigu-ricibu-turisma-konkuretspejas-stiprinasanai",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "LIAA un tūrisma nozare vienojas par kopīgu rīcību tūrisma konkurētspējas stiprināšanai",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-un-turisma-nozare-vienojas-par-kopigu-ricibu-turisma-konkuretspejas-stiprinasanai",
+          "date": "2026-08-27T13:13:10.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūra (LIAA) un tūrisma nozares organizācijas 27. augustā vienojās par trim turpmākās rīcības virzieniem – kopīgi…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursa-ideju-kauss-balvu-fonds-sogad-40-000-eiro",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Biznesa ideju konkursa “Ideju Kauss” balvu fonds šogad 40 000 eiro",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursa-ideju-kauss-balvu-fonds-sogad-40-000-eiro",
+          "date": "2026-08-26T06:20:55.000Z",
+          "deadline": "2026-09-13T00:00:00.000Z",
+          "text": "Biznesa ideju konkurss “Ideju kauss” ir sasniedzis pilngadību un gatavs sākt 18. sezonu. Līdz 13. septembrim ikviens interesents ir aicināts iesniegt savu…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/pieteikumu-limits-liaa-mini-mba-programmai-sasniegts-28-minutes",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "Pieteikumu limits LIAA Mini MBA programmai sasniegts 28 minūtēs",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/pieteikumu-limits-liaa-mini-mba-programmai-sasniegts-28-minutes",
+          "date": "2026-08-24T10:25:44.000Z",
+          "text": "Latvijas Investīciju un attīstības aģentūras (LIAA) īstenotās Mini MBA programmas “Inovāciju vadība” septītajai mācību grupai maksimālais pieteikumu skaits…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/no-radiosakariem-starp-pasaules-birzu-centriem-lidz-viedajam-siltumnicam-liaa-delegacija-apmekle-saf-tehnika",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "No radiosakariem starp pasaules biržu centriem līdz viedajām siltumnīcām – LIAA delegācija apmeklē “SAF Tehnika”",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/no-radiosakariem-starp-pasaules-birzu-centriem-lidz-viedajam-siltumnicam-liaa-delegacija-apmekle-saf-tehnika",
+          "date": "2026-08-21T13:48:52.000Z",
+          "text": "Latvijā radītas “SAF Tehnika” radioiekārtas nodrošina īpaši ātru datu pārraidi starp lielākajiem ASV un Eiropas finanšu centriem, savukārt uzņēmuma sensoru…"
+        },
+        {
+          "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/700-skolotaji-un-izglitibas-nozares-parstavji-sodien-pulcejas-gada-lielakaja-izglitibas-konference-izaugsmes-kods",
+          "source": "liaa_news",
+          "sourceLabel": "LIAA",
+          "title": "700 skolotāji un izglītības nozares pārstāvji šodien pulcējas gada lielākajā izglītības konferencē “Izaugsmes kods”",
+          "url": "https://www.liaa.gov.lv/lv/jaunums/700-skolotaji-un-izglitibas-nozares-parstavji-sodien-pulcejas-gada-lielakaja-izglitibas-konference-izaugsmes-kods",
+          "date": "2026-08-20T10:23:16.000Z",
+          "text": "Šodien Rīgā norisinās ikgadējā uzņēmējdarbības izglītības konference “Izaugsmes kods”, ko rīko Latvijas Investīciju un attīstības aģentūra (LIAA) sadarbībā ar…"
+        }
+      ]
+    },
+    {
       "source": "tap_legal_acts",
       "label": "TAP portāls — Tiesību aktu projekti",
       "status": "ok",
       "count": 100,
-      "durationMs": 2335,
+      "durationMs": 2072,
       "items": [
         {
           "id": "tap_legal_acts:26-TA-2276",
@@ -810,7 +810,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2276: Par Kopīgu paziņojumu Eiropas Parlamentam un Padomei “Aizstāvēt vērtības, virzīt reformas, panākt ietekmi: ES humanitārā rīcība mainīgā pasaules kārtībā”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7a46885e-a87b-48df-b437-879ebbe30e34",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -822,7 +822,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2275: Pavadvēstule par Latvijas Republikas nacionālo pozīciju Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Iesniegts",
@@ -834,7 +834,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2274: Par Latvijas Republikas nacionālo pozīciju Nr. 1 “Par priekšlikumu Eiropas Parlamenta un Padomes Regulai, ar ko groza Regulu (ES) 2019/943 attiecībā uz elektroenerģijas rēķinu pielāgošanu nākotnes vajadzībām Savienībā, samazinot sistēmas izmaksas un veicinot elektrifikāciju un digitalizāciju”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d8f01269-44f0-4028-a397-695ecc0ea94f",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Klimata un enerģētikas ministrija",
           "stage": "Iesniegts",
@@ -858,11 +858,23 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2261: Pavadvēstule \"Par Eiropas Savienības neformālajā Transporta ministru sanāksmē 2026. gada 20.-21. septembrī izskatāmajiem jautājumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/169c1525-1663-4b43-9ffc-3b11bdc5275d",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
           "text": "Pavadvēstule \"Par Eiropas Savienības neformālajā Transporta ministru sanāksmē 2026. gada 20.-21. septembrī izskatāmajiem jautājumiem\". ESVIS projekts"
+        },
+        {
+          "id": "tap_legal_acts:26-TA-2257",
+          "source": "tap_legal_acts",
+          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "title": "26-TA-2257: Par valsts nekustamo īpašumu pārdošanu izsolē",
+          "url": "https://tapportals.mk.gov.lv/legal_acts/0758e326-b00f-4a95-98c1-f01266d14604",
+          "date": "2026-09-15T00:00:00.000Z",
+          "deadline": "2026-09-29T00:00:00.000Z",
+          "institution": "Finanšu ministrija",
+          "stage": "Saskaņošana",
+          "text": "Par valsts nekustamo īpašumu pārdošanu izsolē. Rīkojuma projekts"
         },
         {
           "id": "tap_legal_acts:26-TA-2256",
@@ -870,7 +882,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2256: Par Euro grupas 2026. gada 18. septembra un neformālās Eiropas Savienības Ekonomisko un finanšu jautājumu padomes 2026. gada 18.-19. septembra sanāksmes izskatāmajiem jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4aefce0e-0da6-4602-964f-8fc5309cab17",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Iesniegts",
@@ -882,7 +894,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2254: Informatīvais ziņojums par Ministru kabineta 2026.gada 4.septembra ārkārtas sēdes protokola Nr.50 1.§ 4., 5. un 8.punkta un Ministru kabineta 8.septembra sēdes protokola Nr.51 35.§ 3. un 4.punkta izpildi",
           "url": "https://tapportals.mk.gov.lv/legal_acts/82d95dc9-76b4-496c-b1d1-754ca504df83",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -906,7 +918,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2252: Sākotnējais izvērtējums par ekonomisko, fiskālo un loģistikas ietekmi, kā arī iespējamām sekām, paaugstinot Krievijas izcelsmes tranzīta graudu kravām piemērojamo dzelzceļa infrastruktūras un ostu maksu vai aizliedzot lauksaimniecības un lopbarības produktu tranzītu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/af76102d-766f-4bb9-b28f-4dd8245a400d",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -918,7 +930,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2251: Pavadvēstule: Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas “Pārtikas drošība, veterinārā un fitosanitārā politika”, 18. sadaļas “Statistika” un 19. sadaļas “Sociālā politika un nodarbinātība” slēgšanu Melnkalnei\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d2bd354d-b19f-431a-81bb-41075c03ad0d",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -930,7 +942,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2250: Par informatīvo ziņojumu “Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a6cf4b23-8895-4878-b7a0-bedc61c09f9c",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -942,7 +954,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2241: Par valsts aizsardzības dienesta sistēmas daļas ieviešanu Valsts robežsardzē",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0b314ad1-20af-40c7-a987-bdac3bf39e05",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Saskaņošana",
@@ -954,7 +966,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2239: Ministru kabineta atbildes raksts Satversmes tiesai lietā Nr. 2026-12-03",
           "url": "https://tapportals.mk.gov.lv/legal_acts/745ec1a6-e315-44c3-88cc-5af7d1e5d792",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Labklājības ministrija",
           "stage": "Iesniegts",
@@ -966,7 +978,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2237: Par risinājumiem graudu tranzīta jomā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a36d14b0-3452-4481-a04b-8912ff21ea45",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Iesniegts",
@@ -978,7 +990,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2234: Par aktuālo situāciju airBaltic",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dca555b0-3459-476a-8d10-6842c262cd51",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -1013,7 +1025,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2228: Likumprojekts \"Grozījumi likumā \"Par audzinoša rakstura piespiedu līdzekļu piemērošanu bērniem\"\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/41b854b7-fbda-4c83-b637-ceac4b3bb941",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1025,7 +1037,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2227: Likumprojekts \"Grozījumi Kriminālprocesa likumā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/610dd78b-67d1-4a71-a793-8b3e9567653f",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1061,7 +1073,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2217: Likumprojekts \"Grozījumi Krimināllikumā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c8159bd5-2891-438b-bdce-ac3afc75a0f4",
-          "date": "2026-09-15T08:33:49.504Z",
+          "date": "2026-09-15T14:09:31.987Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1096,10 +1108,9 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2209: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/2cb18c13-656d-4b72-b93e-375e58243e1d",
-          "date": "2026-09-11T00:00:00.000Z",
-          "deadline": "2026-09-16T00:00:00.000Z",
+          "date": "2026-09-15T00:00:00.000Z",
           "institution": "Iekšlietu ministrija",
-          "stage": "Saskaņošana",
+          "stage": "Iesniegts",
           "text": "Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\". Rīkojuma projekts"
         },
         {
@@ -1108,7 +1119,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2206: Par aktuālo situāciju Liepājas speciālā ekonomiskā zonā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d81b51a5-b8e0-416b-9d0f-2fb8e877db68",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -1120,7 +1131,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2204: Informatīvais ziņojums par Eiropas Savienības kohēzijas politikas ministru neformālo sanāksmi 2026. gada 14. un 15. septembrī Dublinā, Īrijā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Izskatīts",
@@ -1132,7 +1143,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2203: Par aktuālo situāciju Ventspils brīvostā un nepieciešamajiem risinājumiem termiņa pagarinājumam noslēgtajos valsts aizdevuma līgumos",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0b8a8789-5dc7-47ae-a21d-6f9132f0402e",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -1168,7 +1179,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2195: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai, ar ko attiecībā uz tādu pasažieru aizsardzību, kuriem ir vienotas biļetes, groza Regulu (ES) 2021/782\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/86e465bf-d168-481f-8de0-5f149da161ef",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -1180,7 +1191,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2194: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai par dzelzceļa biļešu pārdošanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4347e0e4-88bd-44b1-82d6-a0f42982cadc",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -1192,7 +1203,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2193: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai par multimodālu rezervēšanu un ar ko atceļ Regulu (EK) Nr. 80/2009\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a0fe9aaf-ca7c-45a6-ad27-e3b5e12fa544",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -1204,7 +1215,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2191: Par aktuālo situāciju airBaltic",
           "url": "https://tapportals.mk.gov.lv/legal_acts/5e9973cd-abb0-49bd-9d9a-f69b17840726",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -1323,7 +1334,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2172: Progresa ziņojums par vēlēšanu platformas pilnveidi Latvijas Republikas Saeimas 2026. gada vēlēšanām",
           "url": "https://tapportals.mk.gov.lv/legal_acts/71c00359-b05a-4cd3-a9b5-139a7dd6260e",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Viedās administrācijas un reģionālās attīstības ministrija",
           "stage": "Izskatīts",
@@ -1357,7 +1368,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2168: Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Visaptverošo ekonomisko partnerattiecību nolīguma starp Eiropas Savienību un Indonēziju un Ieguldījumu aizsardzības nolīguma starp Eiropas Savienību un Indonēziju parakstīšanu un noslēgšanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/116c710f-a042-4684-b36a-3058479d94c9",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Izskatīts",
@@ -1369,7 +1380,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2167: Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par priekšlikumu Padomes lēmumam par Nolīguma par elektronisko komerciju noslēgšanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d4e97478-c0c1-43eb-8932-5440e8026767",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.418Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Izskatīts",
@@ -1392,7 +1403,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2165: Par risinājumiem graudu tranzīta jomā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/74747950-4ff3-4adf-8a6a-cdb530c3d703",
-          "date": "2026-09-15T08:33:49.941Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Pieņemts",
@@ -1427,7 +1438,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2156: Grozījumi Ārstniecības likumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/99945844-8d16-4163-a53f-e719cc45e435",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Atsaukts",
@@ -1450,7 +1461,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2151: Par vispārēju atļauju valsts akciju sabiedrībai “Valsts nekustamie īpašumi\" iegūt līdzdalību vai izšķirošo ietekmi kapitālsabiedrībās",
           "url": "https://tapportals.mk.gov.lv/legal_acts/628e4d7a-15c0-4189-b801-b181ccbcd1a5",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Saskaņošana",
@@ -1474,7 +1485,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2149: Ministru kabineta paskaidrojums lietā Nr. A420146920 par Sarmītes Veides, Paula Prinča, Ligitas Vulfas, Ingunas Ločmeles un biedrības \"Latvijas Ģimenes ārstu asociācija\" sūdzību par Administratīvās apgabaltiesas 2022. gada 3. februāra sprieduma nepienācīgu un neatbilstošu izpildi",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4938b268-ccb7-4884-90fb-1394bcd55e83",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Izskatīts",
@@ -1498,7 +1509,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2145: Par darījuma attīstības progresu un papildus jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/118f24fe-6ffd-4a95-95e0-8063a3c3ae66",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Iesniegts",
@@ -1544,7 +1555,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2139: Par ziedojuma Ukrainai īstenošanas gaitu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/1407c323-b61d-4238-8cc3-c1c5134adf96",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Klimata un enerģētikas ministrija",
           "stage": "Iesniegts",
@@ -1556,7 +1567,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2137: Par uzņemšanu Latvijas pilsonībā naturalizācijas kārtībā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f6d3cb95-b1c3-4ea5-9897-1ac80e6b045a",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Iesniegts",
@@ -1604,7 +1615,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2124: Par starpinstitūciju grupas darbu, lai novērstu iespējamus drošības apdraudējumus demokrātiskai un godīgai 2026. gada 3. oktobrī paredzēto Latvijas Republikas Saeimas vēlēšanu norisei",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0902765d-e025-46cf-95ed-d36c7da0d846",
-          "date": "2026-09-15T08:33:50.381Z",
+          "date": "2026-09-15T14:09:32.887Z",
           "dateIsApproximate": true,
           "institution": "Valsts kanceleja",
           "stage": "Izskatīts",
@@ -1721,7 +1732,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2107: Informatīvais ziņojums par neformālajā Eiropas Savienības Lauksaimniecības ministru 2026. gada 8. septembra sanāksmē izskatāmajiem jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/60549741-72ab-45b5-8de9-8bcf7900c54a",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Zemkopības ministrija",
           "stage": "Pieņemts",
@@ -1745,7 +1756,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2104: Grozījumi Ministru kabineta 2020. gada 30. jūnija noteikumos Nr. 422 \"Kārtība, kādā paziņo lēmumu par soda piemērošanu par apstāšanās vai stāvēšanas noteikumu pārkāpumiem, ja transportlīdzekļa vadītājs neatrodas pārkāpuma izdarīšanas vietā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d6e5c5fd-84e6-4a88-bc79-df8fd1fc6ad0",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1768,7 +1779,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2098: Apelācijas sūdzība par spriedumu Administratīvās rajona tiesas lietā Nr. A420231224",
           "url": "https://tapportals.mk.gov.lv/legal_acts/e21a57d7-9175-4f85-abdf-38bf302312c6",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Izglītības un zinātnes ministrija",
           "stage": "Izskatīts",
@@ -1780,7 +1791,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2097: Ministru kabineta atbildes raksts Satversmes tiesai lietā Nr. 2026-11-0103 \"Par Farmācijas likuma 5. panta 20. punkta, ciktāl tas pilnvaro Ministru kabinetu noteikt ambulatorajai ārstēšanai paredzēto zāļu iegādes izdevumu kompensācijas kārtību, un Ministru kabineta 2018. gada 28. augusta noteikumu Nr. 555 \"Veselības aprūpes pakalpojumu organizēšanas un samaksas kārtība\" 8. pielikuma 2.1. apakšpunkta un 3. punkta atbilstību Latvijas Republikas Satversmes 1., 64. un 111. pantam\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/8834d5db-f6fd-422d-a9d7-1e6a0e6265f2",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Pieņemts",
@@ -1792,7 +1803,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2095: Kritisko izejvielu likums",
           "url": "https://tapportals.mk.gov.lv/legal_acts/74eebeb6-5223-4d01-ad2a-3f3503025c8b",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1816,7 +1827,7 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2092: Informatīvais ziņojums (starpziņojums) \"Par Naftas produktu cenu pieauguma ierobežošanas likuma darbības rezultātiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c84325ee-e60f-4e6d-a24b-750cffc07656",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Atsaukts",
@@ -1968,22 +1979,11 @@
           "sourceLabel": "TAP portāls — Tiesību aktu projekti",
           "title": "26-TA-2070: Latvijas Republikas nacionālā pozīcija \"Par priekšlikumu Eiropas Parlamenta un Padomes regulai, ar ko groza Direktīvu 2003/87/EK attiecībā uz pārskatītajām siltuma un kurināmā līmeņatzīmju vērtībām 2026.-2030. gada periodam\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/89b45ccf-6c1e-4b46-840f-a9affa7b241b",
-          "date": "2026-09-15T08:33:50.910Z",
+          "date": "2026-09-15T14:09:33.223Z",
           "dateIsApproximate": true,
           "institution": "Klimata un enerģētikas ministrija",
           "stage": "Pieņemts",
           "text": "Latvijas Republikas nacionālā pozīcija \"Par priekšlikumu Eiropas Parlamenta un Padomes regulai, ar ko groza Direktīvu 2003/87/EK attiecībā uz pārskatītajām siltuma un kurināmā līmeņatzīmju vērtībām 2026.-2030. gada periodam\". ESVIS projekts"
-        },
-        {
-          "id": "tap_legal_acts:26-TA-2069",
-          "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
-          "title": "26-TA-2069: Par nekustamā īpašuma “Dorotpoles klēts”, Dorotpolē, Pušas pagastā, Rēzeknes novadā, pārņemšanu valsts īpašumā Finanšu ministrijas valdījumā un pārdošanu izsolē",
-          "url": "https://tapportals.mk.gov.lv/legal_acts/fe5741f2-7d7e-439b-b55e-b58d0c4f56ec",
-          "date": "2026-09-14T00:00:00.000Z",
-          "institution": "Finanšu ministrija",
-          "stage": "Iesniegts",
-          "text": "Par nekustamā īpašuma “Dorotpoles klēts”, Dorotpolē, Pušas pagastā, Rēzeknes novadā, pārņemšanu valsts īpašumā Finanšu ministrijas valdījumā un pārdošanu izsolē. Rīkojuma projekts"
         }
       ]
     },
@@ -1992,7 +1992,7 @@
       "label": "Valsts sekretāru sanāksme",
       "status": "ok",
       "count": 6,
-      "durationMs": 4447,
+      "durationMs": 3822,
       "items": [
         {
           "id": "tap_vss:26-TA-1997:/meetings/state_secretaries/0af02db6-1ed3-4cac-af5c-20608e3fc500",
@@ -2060,8 +2060,8 @@
       "source": "tap_mk",
       "label": "Ministru kabineta sēdes",
       "status": "ok",
-      "count": 97,
-      "durationMs": 8156,
+      "count": 100,
+      "durationMs": 7580,
       "items": [
         {
           "id": "tap_mk:26-TA-1173:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
@@ -2304,6 +2304,16 @@
           "text": "(iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2019. gada 10. decembra noteikumos Nr. 599 \"Noteikumi par oficiālās statistikas veidlapu paraugiem izglītības jomā\"\""
         },
         {
+          "id": "tap_mk:26-TA-2209:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
+          "source": "tap_mk",
+          "sourceLabel": "Ministru kabineta sēde",
+          "title": "26-TA-2209: (iekļauts papildus) Rīkojuma projekts \"Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"\"",
+          "url": "https://tapportals.mk.gov.lv/legal_acts/2cb18c13-656d-4b72-b93e-375e58243e1d",
+          "date": "2026-09-15T00:00:00.000Z",
+          "stage": "Ministru kabineta sēde",
+          "text": "(iekļauts papildus) Rīkojuma projekts \"Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"\""
+        },
+        {
           "id": "tap_mk:26-TA-799:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
@@ -2377,21 +2387,21 @@
           "id": "tap_mk:26-TA-2141:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2141: (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
+          "title": "26-TA-2141: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/77492050-fd26-4ddc-b42a-7b08fc539817",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "(iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\""
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\""
         },
         {
           "id": "tap_mk:26-TA-2142:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2142: (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2022. gada 19. aprīļa noteikumos Nr. 254 \" Noteikumi par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna investīciju 4.1.1.2.i. \"Atbalsts slimnīcu infrastruktūrai vai aprīkojumam\" \"\"",
+          "title": "26-TA-2142: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2022. gada 19. aprīļa noteikumos Nr. 254 \" Noteikumi par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna investīciju 4.1.1.2.i. \"Atbalsts slimnīcu infrastruktūrai vai aprīkojumam\" \"\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/ea68435b-e2e6-478c-a81f-a04e33a7f22d",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "(iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2022. gada 19. aprīļa noteikumos Nr. 254 \" Noteikumi par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna investīciju 4.1.1.2.i. \"Atbalsts slimnīcu infrastruktūrai vai aprīkojumam\" \"\""
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2022. gada 19. aprīļa noteikumos Nr. 254 \" Noteikumi par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna investīciju 4.1.1.2.i. \"Atbalsts slimnīcu infrastruktūrai vai aprīkojumam\" \"\""
         },
         {
           "id": "tap_mk:26-TA-1540:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
@@ -2407,51 +2417,51 @@
           "id": "tap_mk:26-TA-1831:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-1831: Informatīvais ziņojums \"Par aktualitāti zaudējušiem uzdevumiem Ārlietu ministrijas kompetencē\"",
+          "title": "26-TA-1831: (jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par aktualitāti zaudējušiem uzdevumiem Ārlietu ministrijas kompetencē\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/bcfd8e5d-4676-4505-abc0-e26a9e0e2976",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Informatīvais ziņojums \"Par aktualitāti zaudējušiem uzdevumiem Ārlietu ministrijas kompetencē\""
+          "text": "(jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par aktualitāti zaudējušiem uzdevumiem Ārlietu ministrijas kompetencē\""
         },
         {
           "id": "tap_mk:26-TA-1136:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-1136: Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
+          "title": "26-TA-1136: (jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/bf3e8ed7-e37d-4b7e-a4c6-2a2be41b2c3f",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\""
+          "text": "(jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\""
         },
         {
           "id": "tap_mk:26-TA-1794:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-1794: Informatīvais ziņojums \"Par ārkārtas iekšējā audita rezultātiem informācijas un komunikāciju tehnoloģiju projektu ieviešanas, vadības un kontroles sistēmu efektivitātes izvērtēšanā\"",
+          "title": "26-TA-1794: (jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par ārkārtas iekšējā audita rezultātiem informācijas un komunikāciju tehnoloģiju projektu ieviešanas, vadības un kontroles sistēmu efektivitātes izvērtēšanā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7260783a-1141-46f4-9c4b-74c6336bee79",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Informatīvais ziņojums \"Par ārkārtas iekšējā audita rezultātiem informācijas un komunikāciju tehnoloģiju projektu ieviešanas, vadības un kontroles sistēmu efektivitātes izvērtēšanā\""
+          "text": "(jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par ārkārtas iekšējā audita rezultātiem informācijas un komunikāciju tehnoloģiju projektu ieviešanas, vadības un kontroles sistēmu efektivitātes izvērtēšanā\""
         },
         {
           "id": "tap_mk:26-TA-1254:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-1254: Informatīvais ziņojums \"Par budžeta nefinansētu dzelzceļa nozares iestāžu – Valsts dzelzceļa tehniskās inspekcijas un Valsts dzelzceļa administrācijas – apvienošanu\"",
+          "title": "26-TA-1254: (jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par budžeta nefinansētu dzelzceļa nozares iestāžu – Valsts dzelzceļa tehniskās inspekcijas un Valsts dzelzceļa administrācijas – apvienošanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/060f6e0e-bc8c-47d5-8344-f7834da9d272",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Informatīvais ziņojums \"Par budžeta nefinansētu dzelzceļa nozares iestāžu – Valsts dzelzceļa tehniskās inspekcijas un Valsts dzelzceļa administrācijas – apvienošanu\""
+          "text": "(jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par budžeta nefinansētu dzelzceļa nozares iestāžu – Valsts dzelzceļa tehniskās inspekcijas un Valsts dzelzceļa administrācijas – apvienošanu\""
         },
         {
           "id": "tap_mk:26-TA-325:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-325: Informatīvais ziņojums \"Par ceļa zīmēm ar norādēm uz Krievijas Federācijas un Baltkrievijas Republikas apdzīvotajām vietām\"",
+          "title": "26-TA-325: (jautājuma izskatīšana atlikta) Informatīvais ziņojums \"Par ceļa zīmēm ar norādēm uz Krievijas Federācijas un Baltkrievijas Republikas apdzīvotajām vietām\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/942aa6f8-b55a-436c-92a0-47faac529b1e",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Informatīvais ziņojums \"Par ceļa zīmēm ar norādēm uz Krievijas Federācijas un Baltkrievijas Republikas apdzīvotajām vietām\""
+          "text": "(jautājuma izskatīšana atlikta) Informatīvais ziņojums \"Par ceļa zīmēm ar norādēm uz Krievijas Federācijas un Baltkrievijas Republikas apdzīvotajām vietām\""
         },
         {
           "id": "tap_mk:26-TA-208:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
@@ -2477,21 +2487,21 @@
           "id": "tap_mk:26-TA-2250:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2250: (iekļauts papildus) Informatīvais ziņojums \"Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem\"",
+          "title": "26-TA-2250: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Informatīvais ziņojums \"Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a6cf4b23-8895-4878-b7a0-bedc61c09f9c",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "(iekļauts papildus) Informatīvais ziņojums \"Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem\""
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Informatīvais ziņojums \"Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem\""
         },
         {
           "id": "tap_mk:26-TA-2261:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2261: (iekļauts papildus) Par Eiropas Savienības neformālajā Transporta ministru 2026. gada 20.-21. septembra sanāksmē izskatāmajiem jautājumiem",
+          "title": "26-TA-2261: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Par Eiropas Savienības neformālajā Transporta ministru 2026. gada 20.-21. septembra sanāksmē izskatāmajiem jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/169c1525-1663-4b43-9ffc-3b11bdc5275d",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "(iekļauts papildus) Par Eiropas Savienības neformālajā Transporta ministru 2026. gada 20.-21. septembra sanāksmē izskatāmajiem jautājumiem"
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Par Eiropas Savienības neformālajā Transporta ministru 2026. gada 20.-21. septembra sanāksmē izskatāmajiem jautājumiem"
         },
         {
           "id": "tap_mk:26-TA-2166:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
@@ -2517,31 +2527,51 @@
           "id": "tap_mk:26-TA-1834:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-1834: Atbildes projekts Saeimas Ilgtspējīgas attīstības komisijai (par foruma \"Latvijas stratēģiskās attīstības plānošanas arhitektūra: iekļaujoša nākotnēšana mērķtiecīgai pārveidei\" kopsavilkumu)",
+          "title": "26-TA-1834: (jautājums tiks skatīts A sadaļā) Atbildes projekts Saeimas Ilgtspējīgas attīstības komisijai (par foruma \"Latvijas stratēģiskās attīstības plānošanas arhitektūra: iekļaujoša nākotnēšana mērķtiecīgai pārveidei\" kopsavilkumu)",
           "url": "https://tapportals.mk.gov.lv/legal_acts/be4d021f-4e8d-4623-a6af-e6affb8e96e8",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Atbildes projekts Saeimas Ilgtspējīgas attīstības komisijai (par foruma \"Latvijas stratēģiskās attīstības plānošanas arhitektūra: iekļaujoša nākotnēšana mērķtiecīgai pārveidei\" kopsavilkumu)"
+          "text": "(jautājums tiks skatīts A sadaļā) Atbildes projekts Saeimas Ilgtspējīgas attīstības komisijai (par foruma \"Latvijas stratēģiskās attīstības plānošanas arhitektūra: iekļaujoša nākotnēšana mērķtiecīgai pārveidei\" kopsavilkumu)"
         },
         {
           "id": "tap_mk:26-TA-2076:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2076: Latvijas elektroenerģijas pārvades sistēmas attīstības tendences",
+          "title": "26-TA-2076: (jautājums tiks skatīts A sadaļā) Atbildes projekts Saeimas Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas Vides, klimata un enerģētikas apakškomisijai (Latvijas elektroenerģijas pārvades sistēmas attīstības tendences)",
           "url": "https://tapportals.mk.gov.lv/legal_acts/b2cf0b0a-5967-4948-bab8-9dc162effcef",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "Latvijas elektroenerģijas pārvades sistēmas attīstības tendences"
+          "text": "(jautājums tiks skatīts A sadaļā) Atbildes projekts Saeimas Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas Vides, klimata un enerģētikas apakškomisijai (Latvijas elektroenerģijas pārvades sistēmas attīstības tendences)"
         },
         {
           "id": "tap_mk:26-TA-2251:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
           "source": "tap_mk",
           "sourceLabel": "Ministru kabineta sēde",
-          "title": "26-TA-2251: (iekļauts papildus) Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas \"Pārtikas drošība, veterinārā un fitosanitārā politika\", 18. sadaļas \"Statistika\" un 19. sadaļas \"Sociālā politika un nodarbinātība\" slēgšanu Melnkalnei\"",
+          "title": "26-TA-2251: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas \"Pārtikas drošība, veterinārā un fitosanitārā politika\", 18. sadaļas \"Statistika\" un 19. sadaļas \"Sociālā politika un nodarbinātība\" slēgšanu Melnkalnei\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d2bd354d-b19f-431a-81bb-41075c03ad0d",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Ministru kabineta sēde",
-          "text": "(iekļauts papildus) Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas \"Pārtikas drošība, veterinārā un fitosanitārā politika\", 18. sadaļas \"Statistika\" un 19. sadaļas \"Sociālā politika un nodarbinātība\" slēgšanu Melnkalnei\""
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas \"Pārtikas drošība, veterinārā un fitosanitārā politika\", 18. sadaļas \"Statistika\" un 19. sadaļas \"Sociālā politika un nodarbinātība\" slēgšanu Melnkalnei\""
+        },
+        {
+          "id": "tap_mk:26-TA-2274:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
+          "source": "tap_mk",
+          "sourceLabel": "Ministru kabineta sēde",
+          "title": "26-TA-2274: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par priekšlikumu Eiropas Parlamenta un Padomes Regulai, ar ko groza Regulu (ES) 2019/943 attiecībā uz elektroenerģijas rēķinu pielāgošanu nākotnes vajadzībām Savienībā, samazinot sistēmas izmaksas un veicinot elektrifikāciju un digitalizāciju\"",
+          "url": "https://tapportals.mk.gov.lv/legal_acts/d8f01269-44f0-4028-a397-695ecc0ea94f",
+          "date": "2026-09-15T00:00:00.000Z",
+          "stage": "Ministru kabineta sēde",
+          "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par priekšlikumu Eiropas Parlamenta un Padomes Regulai, ar ko groza Regulu (ES) 2019/943 attiecībā uz elektroenerģijas rēķinu pielāgošanu nākotnes vajadzībām Savienībā, samazinot sistēmas izmaksas un veicinot elektrifikāciju un digitalizāciju\""
+        },
+        {
+          "id": "tap_mk:26-TA-2275:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
+          "source": "tap_mk",
+          "sourceLabel": "Ministru kabineta sēde",
+          "title": "26-TA-2275: (iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
+          "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
+          "date": "2026-09-15T00:00:00.000Z",
+          "stage": "Ministru kabineta sēde",
+          "text": "(iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\""
         },
         {
           "id": "tap_mk:/meetings/cabinet_ministers/4d83073f-1814-47e7-8487-222fd7f24667",
@@ -3039,7 +3069,7 @@
       "label": "Saeima — komisiju sēdes",
       "status": "ok",
       "count": 44,
-      "durationMs": 8716,
+      "durationMs": 9665,
       "items": [
         {
           "id": "saeima_committees:1DECF7AFBB1D7211C2258E6E00469D5C",
@@ -3086,7 +3116,7 @@
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Budžeta un finanšu (nodokļu) komisijas sēde",
-          "text": "Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums). Uzaicināti: likumprojekta iesniedzēji, Finanšu ministrijas pārstāvis, Valsts ieņēmumu dienesta pārstāvis, Finanšu izlūkošanas dienesta pārstāvis, Finanšu nozares asociācijas pārstāvis, biedrības “FinTech Latvija Asociācija” pārstāvis, biedrības “Latvijas Blokķēdes attīstības asociācija ” pārstāv is. var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var dbPathLmArchive=new Array(); var ELDIS_NrPrefix=new Array(); var ELDIS_NrPostfix=new Array(); dbPathLp=\"https://titania.saeima.lv/LIVS14/saeimalivs14.nsf\"; dbPathLm=\"https://titania.saeima.lv/LIV…"
+          "text": "Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums). Uzaicināti: likumprojekta iesniedzēji, Finanšu ministrijas pārstāvis, Valsts ieņēmumu dienesta pārstāvis, Finanšu izlūkošanas dienesta pārstāvis, Finanšu nozares asociācijas pārstāvis, biedrības “FinTech Latvija Asociācija” pārstāvis, biedrības “Latvijas Blokķēdes attīstības asociācija ” pārstāv is. 2026_09_15_1000_BFNK.mp3 var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var dbPathLmArchive=new Array(); var ELDIS_NrPrefix=new Array(); var ELDIS_NrPostfix=new Array(); dbPathLp=\"https://titania.saeima.lv/LIVS14/saeimalivs14.nsf\"; dbPathLm=\"http…"
         },
         {
           "id": "saeima_committees:8E8CFD584B19456EC2258E6E0046B469",
@@ -3173,11 +3203,11 @@
           "id": "saeima_committees:7B9C082578D825AAC2258E6B00272AE1:1",
           "source": "saeima_committees",
           "sourceLabel": "Saeima — komisiju sēdes",
-          "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf",
+          "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/7B9C082578D825AAC2258E6B00272AE1?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
           "stage": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde",
-          "text": "Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf Uzaicināti: Satiksmes ministrijas pārstāvis, Aizsardzības ministrijas pārstāvis , Finanšu ministrijas pārstāvis, Air Baltic Corporation AS pārstāvis , Liepājas valstspilsētas pašvaldība s pārstāvis, Ventspils valstspilsētas pašvaldības pārstāvis, SIA “Aviasabiedrība “Liepāja” pārstāvis, SIA “Ventspils lidosta” pārstāvis, Latvijas Darba devēju konfederācijas pārstāvis, Latvijas Tirdzniecības un rūpniecības kameras pārstāvis, Latvijas Eksportētāju asociācija s “The Red Jackets” pārstāvis . var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var d…"
+          "text": "Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3 Uzaicināti: Satiksmes ministrijas pārstāvis, Aizsardzības ministrijas pārstāvis , Finanšu ministrijas pārstāvis, Air Baltic Corporation AS pārstāvis , Liepājas valstspilsētas pašvaldība s pārstāvis, Ventspils valstspilsētas pašvaldības pārstāvis, SIA “Aviasabiedrība “Liepāja” pārstāvis, SIA “Ventspils lidosta” pārstāvis, Latvijas Darba devēju konfederācijas pārstāvis, Latvijas Tirdzniecības un rūpniecības kameras pārstāvis"
         },
         {
           "id": "saeima_committees:1F90B29D1C671B83C2258E72004942B3",
@@ -3503,7 +3533,7 @@
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
       "date": "2026-09-15T00:00:00.000Z",
       "stage": "Budžeta un finanšu (nodokļu) komisijas sēde",
-      "text": "Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums). Uzaicināti: likumprojekta iesniedzēji, Finanšu ministrijas pārstāvis, Valsts ieņēmumu dienesta pārstāvis, Finanšu izlūkošanas dienesta pārstāvis, Finanšu nozares asociācijas pārstāvis, biedrības “FinTech Latvija Asociācija” pārstāvis, biedrības “Latvijas Blokķēdes attīstības asociācija ” pārstāv is. var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var dbPathLmArchive=new Array(); var ELDIS_NrPrefix=new Array(); var ELDIS_NrPostfix=new Array(); dbPathLp=\"https://titania.saeima.lv/LIVS14/saeimalivs14.nsf\"; dbPathLm=\"https://titania.saeima.lv/LIV…",
+      "text": "Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums). Uzaicināti: likumprojekta iesniedzēji, Finanšu ministrijas pārstāvis, Valsts ieņēmumu dienesta pārstāvis, Finanšu izlūkošanas dienesta pārstāvis, Finanšu nozares asociācijas pārstāvis, biedrības “FinTech Latvija Asociācija” pārstāvis, biedrības “Latvijas Blokķēdes attīstības asociācija ” pārstāv is. 2026_09_15_1000_BFNK.mp3 var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var dbPathLmArchive=new Array(); var ELDIS_NrPrefix=new Array(); var ELDIS_NrPostfix=new Array(); dbPathLp=\"https://titania.saeima.lv/LIVS14/saeimalivs14.nsf\"; dbPathLm=\"http…",
       "score": 75,
       "matchedRules": [
         "Taxation",
@@ -3617,11 +3647,11 @@
       "id": "saeima_committees:7B9C082578D825AAC2258E6B00272AE1:1",
       "source": "saeima_committees",
       "sourceLabel": "Saeima — komisiju sēdes",
-      "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf",
+      "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/7B9C082578D825AAC2258E6B00272AE1?OpenDocument",
       "date": "2026-09-15T00:00:00.000Z",
       "stage": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde",
-      "text": "Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf Uzaicināti: Satiksmes ministrijas pārstāvis, Aizsardzības ministrijas pārstāvis , Finanšu ministrijas pārstāvis, Air Baltic Corporation AS pārstāvis , Liepājas valstspilsētas pašvaldība s pārstāvis, Ventspils valstspilsētas pašvaldības pārstāvis, SIA “Aviasabiedrība “Liepāja” pārstāvis, SIA “Ventspils lidosta” pārstāvis, Latvijas Darba devēju konfederācijas pārstāvis, Latvijas Tirdzniecības un rūpniecības kameras pārstāvis, Latvijas Eksportētāju asociācija s “The Red Jackets” pārstāvis . var dbPathLp=\"\"; var dbPathLm=\"\"; var dbPathELDISPubl=\"\"; var dbPathLpArchive=new Array(); var d…",
+      "text": "Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3 Uzaicināti: Satiksmes ministrijas pārstāvis, Aizsardzības ministrijas pārstāvis , Finanšu ministrijas pārstāvis, Air Baltic Corporation AS pārstāvis , Liepājas valstspilsētas pašvaldība s pārstāvis, Ventspils valstspilsētas pašvaldības pārstāvis, SIA “Aviasabiedrība “Liepāja” pārstāvis, SIA “Ventspils lidosta” pārstāvis, Latvijas Darba devēju konfederācijas pārstāvis, Latvijas Tirdzniecības un rūpniecības kameras pārstāvis",
       "score": 45,
       "matchedRules": [
         "Taxation",
@@ -3784,22 +3814,6 @@
       "llmScored": false
     },
     {
-      "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
-      "source": "liaa_news",
-      "sourceLabel": "LIAA",
-      "title": "LIAA piedāvā rīku, kas palīdz uzņēmējiem atrast piemērotāko atbalstu",
-      "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
-      "date": "2026-09-10T06:36:15.000Z",
-      "text": "Lai uzņēmējiem atvieglotu orientēšanos plašajā pieejamo atbalsta iespēju klāstā, valsts platformā biznesa attīstībai business.gov.lv LIAA piedāvā digitālu rīku…",
-      "score": 40,
-      "matchedRules": [
-        "Digital services",
-        "Platform rules"
-      ],
-      "actionable": false,
-      "llmScored": false
-    },
-    {
       "id": "tap_consultations:26-TA-2087",
       "source": "tap_consultations",
       "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
@@ -3816,6 +3830,22 @@
         "Consultation window open"
       ],
       "actionable": true,
+      "llmScored": false
+    },
+    {
+      "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
+      "source": "liaa_news",
+      "sourceLabel": "LIAA",
+      "title": "LIAA piedāvā rīku, kas palīdz uzņēmējiem atrast piemērotāko atbalstu",
+      "url": "https://www.liaa.gov.lv/lv/jaunums/liaa-piedava-riku-kas-palidz-uznemejiem-atrast-piemerotako-atbalstu",
+      "date": "2026-09-10T06:36:15.000Z",
+      "text": "Lai uzņēmējiem atvieglotu orientēšanos plašajā pieejamo atbalsta iespēju klāstā, valsts platformā biznesa attīstībai business.gov.lv LIAA piedāvā digitālu rīku…",
+      "score": 40,
+      "matchedRules": [
+        "Digital services",
+        "Platform rules"
+      ],
+      "actionable": false,
       "llmScored": false
     },
     {
@@ -3843,7 +3873,7 @@
       "sourceLabel": "TAP portāls — Tiesību aktu projekti",
       "title": "26-TA-2151: Par vispārēju atļauju valsts akciju sabiedrībai “Valsts nekustamie īpašumi\" iegūt līdzdalību vai izšķirošo ietekmi kapitālsabiedrībās",
       "url": "https://tapportals.mk.gov.lv/legal_acts/628e4d7a-15c0-4189-b801-b181ccbcd1a5",
-      "date": "2026-09-15T08:33:50.381Z",
+      "date": "2026-09-15T14:09:32.887Z",
       "dateIsApproximate": true,
       "institution": "Finanšu ministrija",
       "stage": "Saskaņošana",
@@ -3915,7 +3945,7 @@
       "sourceLabel": "TAP portāls — Tiesību aktu projekti",
       "title": "26-TA-2275: Pavadvēstule par Latvijas Republikas nacionālo pozīciju Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
-      "date": "2026-09-15T08:33:49.504Z",
+      "date": "2026-09-15T14:09:31.987Z",
       "dateIsApproximate": true,
       "institution": "Ekonomikas ministrija",
       "stage": "Iesniegts",
@@ -3924,21 +3954,6 @@
       "matchedRules": [
         "State aid / grants",
         "Startup-relevant ministry"
-      ],
-      "actionable": false,
-      "llmScored": false
-    },
-    {
-      "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
-      "source": "liaa_news",
-      "sourceLabel": "LIAA",
-      "title": "“NestAI” paplašina darbību Latvijā, lai attīstītu aizsardzības mākslīgo intelektu NATO austrumu flangā",
-      "url": "https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
-      "date": "2026-09-11T07:24:45.000Z",
-      "text": "Eiropas aizsardzības mākslīgā intelekta laboratorija “NestAI” Latvijā atklāj pētniecības un attīstības centru, lai kopā ar NATO austrumu flangā strādājošajiem…",
-      "score": 30,
-      "matchedRules": [
-        "AI"
       ],
       "actionable": false,
       "llmScored": false
@@ -3974,12 +3989,27 @@
       "llmScored": false
     },
     {
+      "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
+      "source": "liaa_news",
+      "sourceLabel": "LIAA",
+      "title": "“NestAI” paplašina darbību Latvijā, lai attīstītu aizsardzības mākslīgo intelektu NATO austrumu flangā",
+      "url": "https://www.liaa.gov.lv/lv/jaunums/nestai-paplasina-darbibu-latvija-lai-attistitu-aizsardzibas-maksligo-intelektu-nato-austrumu-flanga",
+      "date": "2026-09-11T07:24:45.000Z",
+      "text": "Eiropas aizsardzības mākslīgā intelekta laboratorija “NestAI” Latvijā atklāj pētniecības un attīstības centru, lai kopā ar NATO austrumu flangā strādājošajiem…",
+      "score": 30,
+      "matchedRules": [
+        "AI"
+      ],
+      "actionable": false,
+      "llmScored": false
+    },
+    {
       "id": "tap_legal_acts:26-TA-2204",
       "source": "tap_legal_acts",
       "sourceLabel": "TAP portāls — Tiesību aktu projekti",
       "title": "26-TA-2204: Informatīvais ziņojums par Eiropas Savienības kohēzijas politikas ministru neformālo sanāksmi 2026. gada 14. un 15. septembrī Dublinā, Īrijā",
       "url": "https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1",
-      "date": "2026-09-15T08:33:49.941Z",
+      "date": "2026-09-15T14:09:32.418Z",
       "dateIsApproximate": true,
       "institution": "Finanšu ministrija",
       "stage": "Izskatīts",
@@ -3998,7 +4028,7 @@
       "sourceLabel": "TAP portāls — Tiesību aktu projekti",
       "title": "26-TA-2172: Progresa ziņojums par vēlēšanu platformas pilnveidi Latvijas Republikas Saeimas 2026. gada vēlēšanām",
       "url": "https://tapportals.mk.gov.lv/legal_acts/71c00359-b05a-4cd3-a9b5-139a7dd6260e",
-      "date": "2026-09-15T08:33:49.941Z",
+      "date": "2026-09-15T14:09:32.418Z",
       "dateIsApproximate": true,
       "institution": "Viedās administrācijas un reģionālās attīstības ministrija",
       "stage": "Izskatīts",
@@ -4076,16 +4106,16 @@
       "llmScored": false
     },
     {
-      "id": "altum_news:https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
-      "source": "altum_news",
-      "sourceLabel": "Altum",
-      "title": "ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā",
-      "url": "https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
-      "date": "2026-09-14T09:44:04.000Z",
-      "text": "ALTUM piešķīrusi finansējumu 842 300 eiro apmērā Latvijas uzņēmumam “FORTES”, kas ražo un piegādā koģenerācijas stacijas klientiem Ukrainā. Uzņēmums izmantojis ALTUM piedāvāto atbalsta programmu uzņēmumiem, kas iesaistās Ukrainas infrastruktūras rekonstrukcijā [&#8230;] \n The post  ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā  appeared first on  Altum .",
+      "id": "em_news:https://www.em.gov.lv/lv/jaunums/altum-vares-piesaistit-papildu-finansejumu-daudzdzivoklu-maju-remontiem",
+      "source": "em_news",
+      "sourceLabel": "Ekonomikas ministrija",
+      "title": "ALTUM varēs piesaistīt papildu finansējumu daudzdzīvokļu māju remontiem",
+      "url": "https://www.em.gov.lv/lv/jaunums/altum-vares-piesaistit-papildu-finansejumu-daudzdzivoklu-maju-remontiem",
+      "date": "2026-09-15T14:00:28.000Z",
+      "text": "Ministru kabinets 15. septembrī pieņēma Ekonomikas ministrijas (EM) sagatavotos grozījumus, kas dos iespēju akciju sabiedrībai “Attīstības finanšu institūcija…",
       "score": 25,
       "matchedRules": [
-        "State aid / grants"
+        "Altum instrument"
       ],
       "actionable": false,
       "llmScored": false
@@ -4101,6 +4131,21 @@
       "score": 25,
       "matchedRules": [
         "LIAA instrument"
+      ],
+      "actionable": false,
+      "llmScored": false
+    },
+    {
+      "id": "altum_news:https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
+      "source": "altum_news",
+      "sourceLabel": "Altum",
+      "title": "ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā",
+      "url": "https://www.altum.lv/altum-pieskir-842-tukstosus-eiro-latvijas-uznemumam-fortes-energetikas-infrastrukturas-atjaunosanai-ukraina/",
+      "date": "2026-09-14T09:44:04.000Z",
+      "text": "ALTUM piešķīrusi finansējumu 842 300 eiro apmērā Latvijas uzņēmumam “FORTES”, kas ražo un piegādā koģenerācijas stacijas klientiem Ukrainā. Uzņēmums izmantojis ALTUM piedāvāto atbalsta programmu uzņēmumiem, kas iesaistās Ukrainas infrastruktūras rekonstrukcijā [&#8230;] \n The post  ALTUM piešķir 842 tūkstošus eiro Latvijas uzņēmumam “FORTES” enerģētikas infrastruktūras atjaunošanai Ukrainā  appeared first on  Altum .",
+      "score": 25,
+      "matchedRules": [
+        "State aid / grants"
       ],
       "actionable": false,
       "llmScored": false
@@ -4163,6 +4208,22 @@
       "date": "2026-09-15T00:00:00.000Z",
       "stage": "Ministru kabineta sēde",
       "text": "Noteikumu projekts \"Grozījumi Ministru kabineta 2021. gada 6. jūlija noteikumos Nr. 481 \"Atbalsta programmas nosacījumi būvdarbiem daudzdzīvokļu mājās, to teritoriju labiekārtošanai un daudzdzīvokļu mājām noteikto atsavināmo zemju izpirkšanai\"\"",
+      "score": 25,
+      "matchedRules": [
+        "State aid / grants"
+      ],
+      "actionable": false,
+      "llmScored": false
+    },
+    {
+      "id": "tap_mk:26-TA-2275:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
+      "source": "tap_mk",
+      "sourceLabel": "Ministru kabineta sēde",
+      "title": "26-TA-2275: (iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
+      "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
+      "date": "2026-09-15T00:00:00.000Z",
+      "stage": "Ministru kabineta sēde",
+      "text": "(iekļauts papildus) Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
       "score": 25,
       "matchedRules": [
         "State aid / grants"
@@ -4239,11 +4300,11 @@
       "id": "tap_mk:26-TA-2141:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
       "source": "tap_mk",
       "sourceLabel": "Ministru kabineta sēde",
-      "title": "26-TA-2141: (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
+      "title": "26-TA-2141: (jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/77492050-fd26-4ddc-b42a-7b08fc539817",
       "date": "2026-09-15T00:00:00.000Z",
       "stage": "Ministru kabineta sēde",
-      "text": "(iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
+      "text": "(jautājums tiks skatīts A sadaļā) (iekļauts papildus) Noteikumu projekts \"Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"\"",
       "score": 20,
       "matchedRules": [
         "EU funds"
@@ -4270,11 +4331,11 @@
       "id": "tap_mk:26-TA-1136:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
       "source": "tap_mk",
       "sourceLabel": "Ministru kabineta sēde",
-      "title": "26-TA-1136: Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
+      "title": "26-TA-1136: (jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/bf3e8ed7-e37d-4b7e-a4c6-2a2be41b2c3f",
       "date": "2026-09-15T00:00:00.000Z",
       "stage": "Ministru kabineta sēde",
-      "text": "Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
+      "text": "(jautājums tiks skatīts A sadaļā) Informatīvais ziņojums \"Par valstiskas nozīmes IT sistēmu iepirkumu uzraudzību un interešu konflikta novēršanu\"",
       "score": 15,
       "matchedRules": [
         "Public procurement"
@@ -4299,7 +4360,7 @@
       "llmScored": false
     }
   ],
-  "totalScanned": 322,
-  "totalSurfaced": 49,
+  "totalScanned": 325,
+  "totalSurfaced": 51,
   "llmAvailable": false
 }

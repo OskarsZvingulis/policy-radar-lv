@@ -123,9 +123,9 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
   const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
 
-  // Same ordering rule as the markdown export's TL;DR: open deadlines
-  // soonest-first, then whatever's left by relevance — the 30-second version
-  // of the digest for a reader who won't scroll the full list.
+  // Same ordering rule as the markdown export's "read this first" block:
+  // open deadlines soonest-first, then whatever's left by relevance — the
+  // 30-second version of the digest for a reader who won't scroll the full list.
   const tldrItems: ScoredItem[] = useMemo(() => {
     if (!digest) return [];
     const withDeadline = digest.scored
@@ -215,7 +215,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
       {digest && tldrItems.length > 0 && (
         <div className="rounded-lg border bg-muted/30 p-4">
-          <h2 className="mb-2 text-sm font-semibold">TL;DR — 30 seconds</h2>
+          <h2 className="mb-2 text-sm font-semibold">Read this first — the 5 most important items</h2>
           <ul className="flex flex-col gap-1.5 text-sm">
             {tldrItems.map((item) => (
               <li key={item.id}>

@@ -34,7 +34,7 @@ function renderTldr(digest: DigestResult): string[] {
   const bullets = [...withOpenDeadline, ...rest].slice(0, 5);
   if (bullets.length === 0) return [];
 
-  const lines = [`## TL;DR`, ""];
+  const lines = [`## Read this first — the 5 most important items`, ""];
   for (const item of bullets) {
     const deadlineNote = item.actionable && item.deadline ? ` — deadline ${fmtDate(item.deadline)}` : "";
     lines.push(`- **${item.title}** (${item.sourceLabel}, ${item.score}/100)${deadlineNote}`);

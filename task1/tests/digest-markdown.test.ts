@@ -49,11 +49,11 @@ describe("renderDigestMarkdown — golden structure", () => {
     expect(md).toContain("rules-only mode");
     // No item section at all when there's nothing to show, but the counts
     // line above must still be present — never an empty file.
-    expect(md).not.toContain("## TL;DR");
+    expect(md).not.toContain("## Read this first");
     expect(md.trim().length).toBeGreaterThan(0);
   });
 
-  it("puts an item with an open deadline ahead of a higher-score item with no deadline, in the TL;DR", () => {
+  it("puts an item with an open deadline ahead of a higher-score item with no deadline, in the read-this-first block", () => {
     const withDeadline = scoredItem({
       id: "a",
       title: "Konsultācija ar termiņu",
@@ -67,9 +67,11 @@ describe("renderDigestMarkdown — golden structure", () => {
       scored: [noDeadline, withDeadline],
       totalSurfaced: 2,
     });
-    const tldrSection = md.split("## TL;DR")[1].split("## All startup-relevant items")[0];
-    expect(tldrSection.indexOf("Konsultācija ar termiņu")).toBeLessThan(
-      tldrSection.indexOf("Augstāks skalojums"),
+    const readFirstSection = md
+      .split("## Read this first")[1]
+      .split("## All startup-relevant items")[0];
+    expect(readFirstSection.indexOf("Konsultācija ar termiņu")).toBeLessThan(
+      readFirstSection.indexOf("Augstāks skalojums"),
     );
   });
 

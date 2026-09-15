@@ -3,12 +3,12 @@
 A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
 sources for startup-relevant news with a digest that runs in minutes.
 
-A real run today (2026-09-14 week) scanned **322 items** across all 8
-collector surfaces, kept **212** inside the 7-day recency window, and
-surfaced **49** as at least minimally relevant — took **8.8 seconds**,
-end to end, against live government sites. The TL;DR at the top of the
-digest narrows that to the 5 items worth reading first (soonest deadline
-first); the full 49 are still there for anyone who wants to scan
+A real run today (2026-09-14 week) scanned **325 items** across all 8
+collector surfaces, kept **218** inside the 7-day recency window, and
+surfaced **51** as at least minimally relevant — took **9.7 seconds**,
+end to end, against live government sites. The "Read this first" box at the
+top of the digest narrows that to the 5 items worth reading first (soonest
+deadline first); the full 49 are still there for anyone who wants to scan
 everything. See `samples/digest-2026-09-14.md` for the exact output and
 `npm run eval` for how well the relevance engine actually performs against
 hand-labelled real items.
@@ -170,8 +170,8 @@ and all 8 run on every request — there's no need to scope a run to a subset.
   routine Ārlietu ministrija EU position paper from the same run does not
   surface at all.
 - `samples/digest-2026-09-14.{md,html,json}` is a real digest generated from
-  a live run (`npm run generate-digest`) — 322 scanned, 212 fresh, 49
-  surfaced, all 8 sources `ok`, 8.8s total, rules-only (no LLM key set in
+  a live run (`npm run generate-digest`) — 325 scanned, 218 fresh, 51
+  surfaced, all 8 sources `ok`, 9.7s total, rules-only (no LLM key set in
   this environment — see "Cost per run" below for what the LLM step costs
   when one is).
 
@@ -223,7 +223,7 @@ founder spot-checking the 8 false positives and confirming the label calls.
   2026-09-15) for the TAP flextable parser and the Saeima Domino day-listing
   parser — a site markup change fails these, not silently empties a digest
 - the digest Markdown renderer's structure — never blank at zero relevant
-  items, TL;DR ordering, footer content (`tests/digest-markdown.test.ts`)
+  items, "read this first" ordering, footer content (`tests/digest-markdown.test.ts`)
 - the hand-labelled eval set as a recall-floor regression test
   (`tests/eval.test.ts`)
 
