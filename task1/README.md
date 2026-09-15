@@ -9,11 +9,17 @@ consultations, state secretaries' meetings, Cabinet meetings), because they
 carry different documents and different deadlines.
 
 A real run scanned **326 items**, kept the ones inside a 7-day recency window,
-and surfaced **46** as startup-relevant, in under 10 seconds, against live
-government sites. Nine of those had a submission window still open, which is
-the only part of the digest that asks the reader to do anything. See
-`samples/` for exact output and `npm run eval` for how well the relevance
-engine performs against hand-labelled real items.
+and surfaced **33** as startup-relevant, in under 10 seconds, against live
+government sites. Eight of those had a submission window still open, which is
+the only thing the interface treats as actionable. See `samples/` for exact
+output and `npm run eval` for how well the relevance engine performs against
+hand-labelled real items.
+
+The page itself is a three-pane triage tool (sidebar filters, a row list, a
+detail pane), not a scrolling list of cards: search, filter by topic or
+source, sort by deadline or relevance. The view, filters, search term, page
+and open item all live in the URL, so a filtered view is a link you can send
+someone. See "Interface" below for the shape of it.
 
 **Live app:** https://policy-radar-lv-seven.vercel.app
 
@@ -80,6 +86,31 @@ in the app at `/methodology` and in [`lib/relevance/keywords.ts`](lib/relevance/
   stage, who's invited) is embedded Domino/Lotus-Notes markup on the detail
   page. Both collectors dig one level in rather than surfacing the
   meeting-as-a-whole.
+
+## Interface
+
+Three panes on a wide screen (1280px and up): a filter sidebar (which view,
+which topics, which sources, each with a live count), a row list, and a
+detail pane that shows every deadline an act carries, not just the one the
+row leads with. Below that, the sidebar becomes a "Filters" button opening
+the same controls in a sheet, and a selected row opens the same detail
+content full-screen instead of in a third column.
+
+Three views, not the tier system an earlier draft used: **Open for
+input** (an actual submission window is open), **All relevant** (grouped
+into "Closes this week", "Closes later", "No submission window"), and **Not
+relevant**, the roughly 290 scanned items the rules filtered out, each with
+the reason, so a reader who remembers seeing something the digest didn't
+surface can find it and see why rather than just finding it missing. Search
+is diacritic-insensitive (`uznemejdarbiba` finds `uzņēmējdarbība`) and
+matches title, institution, stage, source and topic. Keyboard: `/` focuses
+search, `j`/`k` or the arrow keys move between rows, `Esc` closes the open
+detail. Lists page at 25 rows; the page and the open item both round-trip
+through the URL.
+
+The one thing colour still marks is urgency on the date column: today or
+tomorrow in red, within a week in amber, everything else neutral. A closed
+deadline is never coloured, regardless of where it's shown.
 
 ## Architecture
 
@@ -164,15 +195,16 @@ self-windows to "new this week", and all 8 run on every request.
 - Ground-truth check: the Budget Committee's 09.09.2026 agenda item
   *"Grozījumi Kolektīvās finansēšanas pakalpojumu likumā"* (crowdfunding law,
   3rd reading, Finanšu ministrija + FinTech Latvija invited) scores 100/100,
-  ranks at the top, and lands under "Worth knowing about" rather than "You
-  can still submit on these", because the reading already happened, so there is
-  nothing left to submit. A routine Ārlietu ministrija EU position paper from
-  the same run does not surface at all.
+  ranks at the top of "All relevant", and groups under "No submission
+  window" rather than "Open for input", because the reading already
+  happened, so there is nothing left to submit. A routine Ārlietu ministrija
+  EU position paper from the same run does not surface at all: searching for
+  it under "Not relevant" shows the actual reason it was filtered.
 - `samples/digest-2026-09-14.{md,html,json}` is a real digest generated from
-  a live run (`npm run generate-digest`): 326 scanned, 219 fresh, 46
-  surfaced, all 8 sources `ok`, 6.9s total, rules-only (no LLM key set in
-  this environment, see "Cost per run" below for what the LLM step costs
-  when one is).
+  a live run (`npm run generate-digest`): 326 scanned, 33 surfaced (8 with an
+  open window), 290 not relevant, all 8 sources `ok`, rules-only (no LLM key
+  set in this environment, see "Cost per run" below for what the LLM step
+  costs when one is).
 
 ## Evaluation
 
@@ -217,13 +249,18 @@ founder spot-checking the 8 false positives and confirming the label calls.
 
 ## Testing and CI
 
-`npm test` (vitest) runs entirely offline, 155 tests across:
+`npm test` (vitest) runs entirely offline, 201 tests across:
 
-- date-window and deadline-boundary logic (`tests/dates.test.ts`)
+- date-window and deadline-boundary logic, including the Riga-vs-UTC day
+  boundary (`tests/dates.test.ts`)
 - Latvian date/deadline-phrase parsing, including the real false positive
   found against the live EM feed (`tests/fetch-utils.test.ts`)
 - the relevance engine's boosts, exclusions, and self-mention suppression
   (`tests/relevance-score.test.ts`)
+- the interface's pure logic: filtering and counts, topic mapping, search
+  normalisation, list grouping, and pagination, none of which touch React
+  (`tests/filter.test.ts`, `tests/topics.test.ts`, `tests/search.test.ts`,
+  `tests/group.test.ts`, `tests/paginate.test.ts`, `tests/urgency.test.ts`)
 - fixture tests against saved real pages (`tests/fixtures/`, captured
   2026-09-15) for the TAP flextable parser and the Saeima Domino day-listing
   parser. A site markup change fails these, not silently empties a digest

@@ -36,18 +36,29 @@ export function startOfTodayUtc(now: Date = new Date()): number {
   return Date.UTC(year, month - 1, day);
 }
 
-/** Last millisecond of the calendar day the given ISO date falls on. */
-export function endOfDayUtc(iso: string): number | undefined {
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return undefined;
-  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) + 86_400_000 - 1;
-}
-
-/** True while the deadline's own calendar day has not yet finished. */
+/**
+ * True while the deadline's own calendar day has not yet finished, in Riga
+ * terms.
+ *
+ * This used to compute a real millisecond instant (the deadline's own UTC
+ * day's last millisecond) and compare it against `now.getTime()` — mixing a
+ * "day number" value (every date this app stores is UTC midnight standing in
+ * for a Riga calendar date, per this file's own convention) with a real
+ * instant comparison. Riga runs 2-3 hours ahead of UTC, so for roughly that
+ * many hours after Riga midnight, a deadline already "closed" by every date
+ * label on the page (`daysFromToday`, "closes today" vs "closed") still
+ * measured as open here, because UTC midnight hadn't turned over yet. Found
+ * live: at 21:00 UTC (00:00 Riga, the exact boundary), a 15-Sep deadline
+ * still read `isDeadlineStillOpen === true` while `daysFromToday` already
+ * called it "yesterday". Comparing day numbers instead, the same way
+ * `isTodayOrLater` above already does, removes the mismatch: both now ask
+ * the same question the same way.
+ */
 export function isDeadlineStillOpen(deadlineIso: string | undefined, now: Date = new Date()): boolean {
   if (!deadlineIso) return false;
-  const end = endOfDayUtc(deadlineIso);
-  return end !== undefined && end >= now.getTime();
+  const d = new Date(deadlineIso);
+  if (Number.isNaN(d.getTime())) return false;
+  return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) >= startOfTodayUtc(now);
 }
 
 /** True for a date falling today or later (day granularity). */

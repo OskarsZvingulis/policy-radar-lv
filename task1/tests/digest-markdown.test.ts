@@ -37,6 +37,7 @@ const BASE: DigestResult = {
   weekEnd: "2026-09-13T23:59:59Z",
   sources: [sourceResult({})],
   scored: [],
+  notRelevant: [],
   totalScanned: 10,
   totalSurfaced: 0,
   llmAvailable: false,

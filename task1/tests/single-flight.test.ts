@@ -38,6 +38,7 @@ const digest = (): DigestResult =>
     weekEnd: "2026-09-20T00:00:00.000Z",
     sources: [],
     scored: [],
+    notRelevant: [],
     totalScanned: 10,
     totalSurfaced: 2,
     llmAvailable: false,

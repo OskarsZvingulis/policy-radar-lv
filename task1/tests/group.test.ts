@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { groupDigest, closingSoonest, hasOpenWindow } from "../lib/digest/group";
+import { groupDigest, groupForList, closingSoonest, hasOpenWindow } from "../lib/digest/group";
 import type { ScoredItem } from "../lib/types";
 
 /**
@@ -80,6 +80,33 @@ describe("groupDigest", () => {
     );
     expect(open).toHaveLength(0);
     expect(awareness.map((i) => i.id)).toEqual(["expired"]);
+  });
+});
+
+describe("groupForList", () => {
+  it("splits the open half into this-week and later at the 7-day boundary", () => {
+    const { closingThisWeek, closingLater, noWindow } = groupForList(
+      [
+        item({ id: "in3", actionable: true, deadline: "2026-09-18T00:00:00.000Z" }), // 3 days
+        item({ id: "in7", actionable: true, deadline: "2026-09-22T00:00:00.000Z" }), // 7 days
+        item({ id: "in8", actionable: true, deadline: "2026-09-23T00:00:00.000Z" }), // 8 days
+        item({ id: "no-window" }),
+      ],
+      { now: NOW },
+    );
+    expect(closingThisWeek.map((i) => i.id)).toEqual(["in3", "in7"]);
+    expect(closingLater.map((i) => i.id)).toEqual(["in8"]);
+    expect(noWindow.map((i) => i.id)).toEqual(["no-window"]);
+  });
+
+  it("produces an empty closingLater and noWindow when everything is closing this week", () => {
+    const { closingThisWeek, closingLater, noWindow } = groupForList(
+      [item({ id: "a", actionable: true, deadline: "2026-09-16T00:00:00.000Z" })],
+      { now: NOW },
+    );
+    expect(closingThisWeek).toHaveLength(1);
+    expect(closingLater).toHaveLength(0);
+    expect(noWindow).toHaveLength(0);
   });
 });
 

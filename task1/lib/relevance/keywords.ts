@@ -109,25 +109,35 @@ export const CONSULTATION_STAGE = /sabiedrīb.{0,10}(apspriešan|līdzdalīb)|pu
 
 // Exclusions — matching one of these suppresses the item regardless of axis
 // score, unless a strong capital/market signal (crowdfunding, startup law,
-// Altum/LIAA) is also present.
-export const EXCLUSION_PATTERNS: RegExp[] = [
-  /iecelšan.{0,10}amat|apstiprināšan.{0,10}amat/i, // appointments
-  /apbalvojum|goda rakst|jubilej/i, // ceremonial
-  /aizsardzīb.{0,15}iepirkum|Nacionālo bruņoto spēku/i, // defence procurement
-  /zvejniecīb|zivsaimniecīb/i, // fisheries
-  // Agriculture with no funding angle.
-  //
-  // `[\s\S]` rather than `.` because the haystack joins title, body and stage
-  // with newlines: with `.`, the lookaheads stopped at the first newline, so a
-  // "valsts atbalsts" mentioned in the body was invisible to them and the item
-  // was excluded anyway. (`.` plus the `s` flag would read better but needs an
-  // ES2018 target, which this project does not set.) Stating it as
-  // "agriculture appears somewhere, support/fund/grant appears nowhere" also
-  // drops the arbitrary 200-character window, which only ever saw the title.
-  /^(?![\s\S]*atbalst)(?![\s\S]*fond)(?![\s\S]*grant)(?=[\s\S]*lauksaimniecīb)/i,
-  /pašvaldīb.{0,10}(teritorij|robež|administratīvi)/i, // pure municipal boundary matters
+// Altum/LIAA) is also present. Labelled, not bare regexes, so a reader
+// auditing "why did this get filtered out" sees a real reason rather than a
+// generic "excluded".
+export interface ExclusionRule {
+  label: string;
+  pattern: RegExp;
+}
+
+export const EXCLUSION_RULES: ExclusionRule[] = [
+  { label: "Appointment or ceremonial", pattern: /iecelšan.{0,10}amat|apstiprināšan.{0,10}amat/i },
+  { label: "Appointment or ceremonial", pattern: /apbalvojum|goda rakst|jubilej/i },
+  { label: "Defence procurement", pattern: /aizsardzīb.{0,15}iepirkum|Nacionālo bruņoto spēku/i },
+  { label: "Fisheries", pattern: /zvejniecīb|zivsaimniecīb/i },
+  {
+    // `[\s\S]` rather than `.` because the haystack joins title, body and
+    // stage with newlines: with `.`, the lookaheads stopped at the first
+    // newline, so a "valsts atbalsts" mentioned in the body was invisible to
+    // them and the item was excluded anyway. (`.` plus the `s` flag would
+    // read better but needs an ES2018 target, which this project does not
+    // set.) Stating it as "agriculture appears somewhere, support/fund/grant
+    // appears nowhere" also drops the arbitrary 200-character window, which
+    // only ever saw the title.
+    label: "Agriculture with no funding angle",
+    pattern: /^(?![\s\S]*atbalst)(?![\s\S]*fond)(?![\s\S]*grant)(?=[\s\S]*lauksaimniecīb)/i,
+  },
+  { label: "Purely municipal boundary matter", pattern: /pašvaldīb.{0,10}(teritorij|robež|administratīvi)/i },
 ];
 
-export function isExcluded(text: string): boolean {
-  return EXCLUSION_PATTERNS.some((p) => p.test(text));
+/** The label of the first exclusion rule that matched, if any. */
+export function matchedExclusion(text: string): string | undefined {
+  return EXCLUSION_RULES.find((r) => r.pattern.test(text))?.label;
 }

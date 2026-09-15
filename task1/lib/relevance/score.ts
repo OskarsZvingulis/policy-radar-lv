@@ -6,16 +6,25 @@ import {
   RESPONSIBLE_INSTITUTION_BOOST,
   READING_STAGE_BOOST,
   CONSULTATION_STAGE,
-  isExcluded,
+  matchedExclusion,
 } from "./keywords";
+
+export type RuleScoreResult = Omit<ScoredItem, "whyItMatters" | "llmScored"> & {
+  relevant: boolean;
+  /**
+   * Plain-language reason the item did not surface. Only meaningful when
+   * `relevant` is false: it exists for the "not relevant" search view, so a
+   * reader who remembers an act the rules didn't flag can see why rather than
+   * just seeing it missing.
+   */
+  reason?: string;
+};
 
 /**
  * Deterministic rules pass. Runs on every scanned item — cheap, explainable,
  * and the only thing that runs at all when no LLM key is configured.
  */
-export function scoreItem(
-  item: Item,
-): Omit<ScoredItem, "whyItMatters" | "llmScored"> & { relevant: boolean } {
+export function scoreItem(item: Item): RuleScoreResult {
   const haystack = [item.title, item.text, item.stage].filter(Boolean).join(" \n ");
   const matchedRules: string[] = [];
   let score = 0;
@@ -39,7 +48,8 @@ export function scoreItem(
     }
   }
 
-  const excluded = isExcluded(haystack);
+  const exclusionLabel = matchedExclusion(haystack);
+  const excluded = exclusionLabel !== undefined;
   // Must use the same inflection-tolerant forms as capital.altum/capital.liaa
   // above: with a trailing \b, an item mentioning "Altuma programma" failed
   // to escape an exclusion it should have escaped.
@@ -100,11 +110,18 @@ export function scoreItem(
   // ecosystem match) never overcome an unrelated deadline alone.
   const relevant = !(excluded && !hasStrongOverride) && topicalMatches > 0 && score >= 15;
 
-  return { ...item, score, matchedRules, actionable, relevant };
+  // Only computed for items that didn't make it. A reason on a relevant item
+  // would never be read and would just be one more thing to keep truthful.
+  let reason: string | undefined;
+  if (!relevant) {
+    if (excluded && !hasStrongOverride) reason = `Excluded: ${exclusionLabel}`;
+    else if (topicalMatches === 0) reason = "No topic keywords matched";
+    else reason = `Only timing/context signals matched (score ${score}, floor is 15)`;
+  }
+
+  return { ...item, score, matchedRules, actionable, relevant, reason };
 }
 
-export function scoreItems(
-  items: Item[],
-): (Omit<ScoredItem, "whyItMatters" | "llmScored"> & { relevant: boolean })[] {
+export function scoreItems(items: Item[]): RuleScoreResult[] {
   return items.map(scoreItem);
 }

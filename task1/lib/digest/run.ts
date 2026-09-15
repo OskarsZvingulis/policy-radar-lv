@@ -4,7 +4,15 @@
  * every item deterministically, hands the top slice to the LLM for a
  * "why it matters" line, and assembles the final DigestResult.
  */
-import type { Appearance, DigestResult, Item, ScoredItem, SourceId, SourceResult } from "../types";
+import type {
+  Appearance,
+  DigestResult,
+  Item,
+  NotRelevantItem,
+  ScoredItem,
+  SourceId,
+  SourceResult,
+} from "../types";
 import { collectTapLegalActs } from "../sources/tap";
 import { collectTapConsultations } from "../sources/tap-consultations";
 import { collectTapMeetings } from "../sources/tap-meetings";
@@ -327,17 +335,34 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
   const allItems = sources.flatMap((s) => s.items);
   const totalScanned = allItems.length;
 
-  const freshItems = allItems.filter(isWithinRecencyWindow);
+  // Scored against every scanned item, not just the fresh ones: the "not
+  // relevant" search view is meant to answer "why didn't the rules flag X"
+  // for anything the reader remembers seeing, whether it was filtered by
+  // relevance or by the recency window.
+  const ruleScoredAll = scoreItems(allItems);
+  const qualifies = (i: (typeof ruleScoredAll)[number]) => i.relevant && isWithinRecencyWindow(i);
 
-  const ruleScored = scoreItems(freshItems);
-  const surfaced = dedupeByAct(ruleScored.filter((i) => i.relevant));
+  const surfaced = dedupeByAct(ruleScoredAll.filter(qualifies));
+  const notRelevant: NotRelevantItem[] = ruleScoredAll
+    .filter((i) => !qualifies(i))
+    .map((i) => ({
+      id: i.id,
+      title: i.title,
+      source: i.source,
+      sourceLabel: i.sourceLabel,
+      url: i.url,
+      date: i.date,
+      reason: isWithinRecencyWindow(i) ? (i.reason ?? "Not relevant") : "Outside this week's 7-day window",
+    }));
+
   logger.info("scoring finished", {
     runId,
     stage: "score",
     totalScanned,
-    freshCount: freshItems.length,
+    qualifiedCount: ruleScoredAll.filter(qualifies).length,
     surfacedCount: surfaced.length,
-    dedupedCount: ruleScored.filter((i) => i.relevant).length - surfaced.length,
+    dedupedCount: ruleScoredAll.filter(qualifies).length - surfaced.length,
+    notRelevantCount: notRelevant.length,
   });
 
   const shortlist: LlmShortlistItem[] = [...surfaced]
@@ -404,6 +429,7 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
     weekEnd: end,
     sources,
     scored,
+    notRelevant,
     totalScanned,
     totalSurfaced: scored.length,
     llmAvailable: llmOk,

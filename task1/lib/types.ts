@@ -78,6 +78,22 @@ export interface ScoredItem extends Item {
   llmScored: boolean;
 }
 
+/**
+ * A scanned item that did not surface, kept as a slim record rather than
+ * dropped. Without this the only way to check "why didn't the rules flag
+ * X" was to re-run the scorer by hand; a founder who remembers an act the
+ * digest skipped can now search for it and see the actual reason.
+ */
+export interface NotRelevantItem {
+  id: string;
+  title: string;
+  source: SourceId;
+  sourceLabel: string;
+  url: string;
+  date: string;
+  reason: string;
+}
+
 export interface SourceResult {
   source: SourceId;
   label: string;
@@ -110,6 +126,8 @@ export interface DigestResult {
   weekEnd: string;
   sources: SourceResult[];
   scored: ScoredItem[];
+  /** Everything scanned that did not surface, for the "Not relevant" search view. */
+  notRelevant: NotRelevantItem[];
   totalScanned: number;
   totalSurfaced: number;
   llmAvailable: boolean;

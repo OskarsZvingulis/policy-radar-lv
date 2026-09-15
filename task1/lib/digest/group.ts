@@ -10,6 +10,7 @@
  */
 import type { ScoredItem } from "../types";
 import { isDeadlineStillOpen } from "../dates";
+import { daysFromToday } from "../relative-date";
 
 export type SortKey = "deadline" | "relevance";
 
@@ -56,6 +57,34 @@ export function groupDigest(
   awareness.sort(sortBy === "deadline" ? byRecency : byScore);
 
   return { open, awareness };
+}
+
+export interface ListGroups {
+  /** Open, closing within 7 days. Same threshold deadlinePhrase uses to switch from a countdown to a date. */
+  closingThisWeek: ScoredItem[];
+  /** Open, closing beyond 7 days. */
+  closingLater: ScoredItem[];
+  /** No open submission window. */
+  noWindow: ScoredItem[];
+}
+
+/**
+ * The three row groups the list view actually renders. Splits groupDigest's
+ * "open" half again by urgency, since "closing this week" is the one thing
+ * a reader scans the whole list for.
+ */
+export function groupForList(
+  items: ScoredItem[],
+  { now = new Date(), sortBy = "deadline" as SortKey }: { now?: Date; sortBy?: SortKey } = {},
+): ListGroups {
+  const { open, awareness } = groupDigest(items, { now, sortBy });
+  const closingThisWeek: ScoredItem[] = [];
+  const closingLater: ScoredItem[] = [];
+  for (const item of open) {
+    const days = daysFromToday(item.deadline!, now);
+    (days !== undefined && days <= 7 ? closingThisWeek : closingLater).push(item);
+  }
+  return { closingThisWeek, closingLater, noWindow: awareness };
 }
 
 /**

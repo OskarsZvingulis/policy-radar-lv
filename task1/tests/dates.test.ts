@@ -29,6 +29,18 @@ describe("isDeadlineStillOpen", () => {
   it("is false with no deadline", () => {
     expect(isDeadlineStillOpen(undefined, NOW)).toBe(false);
   });
+
+  it("closes at Riga midnight, not UTC midnight", () => {
+    // 21:00 UTC on the 15th is exactly 00:00 in Riga (UTC+3 in September) —
+    // the day has turned over locally even though the UTC date hasn't. A
+    // deadline stamped for the 15th must already read closed here, the same
+    // moment daysFromToday starts calling it "yesterday".
+    const rigaMidnight = new Date("2026-09-15T21:00:00Z");
+    expect(isDeadlineStillOpen("2026-09-15T00:00:00Z", rigaMidnight)).toBe(false);
+    // One minute earlier it's still the 15th in Riga, so still open.
+    const oneMinuteBefore = new Date("2026-09-15T20:59:00Z");
+    expect(isDeadlineStillOpen("2026-09-15T00:00:00Z", oneMinuteBefore)).toBe(true);
+  });
 });
 
 describe("isTodayOrLater", () => {
