@@ -1,0 +1,43 @@
+name: Weekly digest
+
+# The deployed app already runs this weekly via Vercel Cron (vercel.json) —
+# see the README's Scheduling section. This workflow is the brief's
+# requested GitHub Actions equivalent: it runs the same pipeline standalone
+# (no Vercel project needed) and uploads the digest as a build artifact, so
+# the tool is verifiably runnable from CI alone. It does not use an LLM key,
+# so it always runs the deterministic rules-only pipeline at zero cost;
+# set AI_GATEWAY_API_KEY as a repo secret to also get LLM-written summaries.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # Monday 06:00 UTC
+  workflow_dispatch: {}
+
+defaults:
+  run:
+    working-directory: task1
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: task1/package-lock.json
+
+      - run: npm ci
+
+      - name: Run digest against live sources
+        run: npm run generate-digest -- weekly-output
+        env:
+          AI_GATEWAY_API_KEY: ${{ secrets.AI_GATEWAY_API_KEY }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: policy-radar-digest
+          path: task1/weekly-output/
+          retention-days: 90

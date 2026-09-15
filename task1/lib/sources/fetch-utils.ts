@@ -12,6 +12,27 @@
  */
 
 const DEFAULT_TIMEOUT_MS = 10_000;
+const MAX_RETRIES = 2;
+const RETRY_BASE_DELAY_MS = 400;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/** Jittered exponential backoff: retryable network errors, 429 and 5xx only.
+ * A 4xx other than 429 means the request itself is wrong — retrying it wastes
+ * a government server's time for no benefit, so it's excluded on purpose. */
+function isRetryable(err: unknown): boolean {
+  if (err instanceof SourceTimeoutError) return true;
+  if (err instanceof SourceFetchError) {
+    const status = err.message.match(/^HTTP (\d+)/)?.[1];
+    if (status) return status === "429" || status.startsWith("5");
+    // No HTTP status parsed at all means the fetch itself failed
+    // (DNS/connection reset/etc.) — also worth one retry.
+    return !err.message.startsWith("HTTP");
+  }
+  return false;
+}
 
 export class SourceFetchError extends Error {
   constructor(
@@ -35,11 +56,7 @@ function looksLikeWafRejection(body: string): boolean {
   return body.startsWith("<html><head><title>Request Rejected");
 }
 
-export async function fetchText(
-  url: string,
-  init: RequestInit = {},
-  timeoutMs = DEFAULT_TIMEOUT_MS,
-): Promise<string> {
+async function fetchTextOnce(url: string, init: RequestInit, timeoutMs: number): Promise<string> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
@@ -72,6 +89,25 @@ export async function fetchText(
   } finally {
     clearTimeout(timer);
   }
+}
+
+export async function fetchText(
+  url: string,
+  init: RequestInit = {},
+  timeoutMs = DEFAULT_TIMEOUT_MS,
+): Promise<string> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await fetchTextOnce(url, init, timeoutMs);
+    } catch (err) {
+      lastErr = err;
+      if (attempt === MAX_RETRIES || !isRetryable(err)) throw err;
+      const jitter = Math.random() * RETRY_BASE_DELAY_MS;
+      await sleep(RETRY_BASE_DELAY_MS * 2 ** attempt + jitter);
+    }
+  }
+  throw lastErr;
 }
 
 export async function fetchJson<T>(

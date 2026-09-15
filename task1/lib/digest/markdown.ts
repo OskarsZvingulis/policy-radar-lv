@@ -24,6 +24,49 @@ function renderItem(item: ScoredItem): string {
   return lines.join("\n");
 }
 
+/** Top of the digest: the 3-5 items a reader with 30 seconds should see —
+ * open deadlines first (soonest closing first), then highest relevance. */
+function renderTldr(digest: DigestResult): string[] {
+  const withOpenDeadline = digest.scored
+    .filter((i) => i.actionable && i.deadline)
+    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
+  const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
+  const bullets = [...withOpenDeadline, ...rest].slice(0, 5);
+  if (bullets.length === 0) return [];
+
+  const lines = [`## TL;DR`, ""];
+  for (const item of bullets) {
+    const deadlineNote = item.actionable && item.deadline ? ` — deadline ${fmtDate(item.deadline)}` : "";
+    lines.push(`- **${item.title}** (${item.sourceLabel}, ${item.score}/100)${deadlineNote}`);
+  }
+  lines.push("");
+  return lines;
+}
+
+function renderFooter(digest: DigestResult): string[] {
+  const lines = ["## Run details", ""];
+  lines.push(`- Run id: \`${digest.runId}\``);
+  lines.push(
+    `- LLM: ${digest.llmAvailable && digest.llmUsage ? digest.llmUsage.model : "not used (rules-only)"}` +
+      (digest.llmUsage ? `, prompt version \`${digest.llmUsage.promptVersion}\`` : ""),
+  );
+  if (digest.llmUsage) {
+    lines.push(
+      `- LLM cost this run: **$${digest.llmUsage.estimatedCostUsd.toFixed(4)}** ` +
+        `(${digest.llmUsage.itemsSent} items sent, ${digest.llmUsage.inputTokens} input + ` +
+        `${digest.llmUsage.outputTokens} output tokens)`,
+    );
+  } else {
+    lines.push(`- LLM cost this run: $0.00 (rules-only)`);
+  }
+  const failed = digest.sources.filter((s) => s.status !== "ok");
+  if (failed.length > 0) {
+    lines.push(`- Sources not ok: ${failed.map((s) => `${s.label} (${s.status})`).join(", ")}`);
+  }
+  lines.push("");
+  return lines;
+}
+
 export function renderDigestMarkdown(digest: DigestResult): string {
   const lines: string[] = [];
   lines.push("# Policy Radar LV — Weekly Digest");
@@ -33,6 +76,9 @@ export function renderDigestMarkdown(digest: DigestResult): string {
   lines.push("");
 
   const actionableCount = digest.scored.filter((i) => i.actionable).length;
+  // Never a blank file, even at zero relevant items — the count line always
+  // states scanned/surfaced/sources explicitly rather than silently omitting
+  // sections, since an empty digest and a broken run must not look the same.
   lines.push(
     `Scanned **${digest.totalScanned}** items across ${digest.sources.length} sources → surfaced ` +
       `**${digest.totalSurfaced}** as startup-relevant` +
@@ -42,13 +88,15 @@ export function renderDigestMarkdown(digest: DigestResult): string {
   );
   lines.push("");
 
+  lines.push(...renderTldr(digest));
+
   // A single list, ranked by relevance — not bucketed into urgency tiers.
   // "Act now" style buckets implied a reader could influence outcomes (a
   // vote, a reading) that a startup founder has no part in; the only thing
   // genuinely actionable is a real, open submission window, which each
   // item states for itself via its date labels rather than a category.
   if (digest.scored.length > 0) {
-    lines.push(`## Startup-relevant items (${digest.scored.length})`, "");
+    lines.push(`## All startup-relevant items (${digest.scored.length})`, "");
     for (const item of digest.scored) lines.push(renderItem(item), "");
   }
 
@@ -58,6 +106,8 @@ export function renderDigestMarkdown(digest: DigestResult): string {
     lines.push(`| ${s.label} | ${s.status} | ${s.count} | ${(s.durationMs / 1000).toFixed(1)}s |`);
   }
   lines.push("");
+
+  lines.push(...renderFooter(digest));
 
   return lines.join("\n");
 }

@@ -66,7 +66,18 @@ export interface SourceResult {
   items: Item[];
 }
 
+export interface LlmUsage {
+  model: string;
+  promptVersion: string;
+  itemsSent: number;
+  inputTokens: number;
+  outputTokens: number;
+  /** USD, computed from published per-token pricing at the time this ran. */
+  estimatedCostUsd: number;
+}
+
 export interface DigestResult {
+  runId: string;
   generatedAt: string;
   weekStart: string;
   weekEnd: string;
@@ -75,4 +86,5 @@ export interface DigestResult {
   totalScanned: number;
   totalSurfaced: number;
   llmAvailable: boolean;
+  llmUsage?: LlmUsage;
 }

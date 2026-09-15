@@ -123,6 +123,18 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
   const actionableCount = digest?.scored.filter((i) => i.actionable).length ?? 0;
 
+  // Same ordering rule as the markdown export's TL;DR: open deadlines
+  // soonest-first, then whatever's left by relevance — the 30-second version
+  // of the digest for a reader who won't scroll the full list.
+  const tldrItems: ScoredItem[] = useMemo(() => {
+    if (!digest) return [];
+    const withDeadline = digest.scored
+      .filter((i) => i.actionable && i.deadline)
+      .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
+    const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
+    return [...withDeadline, ...rest].slice(0, 5);
+  }, [digest]);
+
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-8">
       <header className="flex flex-col gap-3">
@@ -201,6 +213,28 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
 
       <Separator />
 
+      {digest && tldrItems.length > 0 && (
+        <div className="rounded-lg border bg-muted/30 p-4">
+          <h2 className="mb-2 text-sm font-semibold">TL;DR — 30 seconds</h2>
+          <ul className="flex flex-col gap-1.5 text-sm">
+            {tldrItems.map((item) => (
+              <li key={item.id}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                  {item.title}
+                </a>
+                <span className="text-muted-foreground">
+                  {" "}
+                  — {item.sourceLabel}, {item.score}/100
+                  {item.actionable && item.deadline
+                    ? `, deadline ${new Date(item.deadline).toISOString().slice(0, 10)}`
+                    : ""}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {digest && (
         <>
           <div className="flex flex-wrap gap-1.5">
@@ -234,10 +268,25 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
           </div>
 
           <Separator />
-          <footer className="pb-6 text-xs text-muted-foreground">
-            Digest generated{" "}
-            {new Date(digest.generatedAt).toLocaleString("en-GB", { timeZone: "Europe/Riga" })}{" "}
-            (Europe/Riga) · week of {new Date(digest.weekStart).toISOString().slice(0, 10)}
+          <footer className="flex flex-col gap-1 pb-6 text-xs text-muted-foreground">
+            <span>
+              Digest generated{" "}
+              {new Date(digest.generatedAt).toLocaleString("en-GB", { timeZone: "Europe/Riga" })}{" "}
+              (Europe/Riga) · week of {new Date(digest.weekStart).toISOString().slice(0, 10)}
+            </span>
+            <span>
+              Run <code className="rounded bg-muted px-1 py-0.5">{digest.runId}</code>
+              {digest.llmUsage ? (
+                <>
+                  {" "}
+                  · LLM: {digest.llmUsage.model} · cost this run: $
+                  {digest.llmUsage.estimatedCostUsd.toFixed(4)} ({digest.llmUsage.inputTokens}+
+                  {digest.llmUsage.outputTokens} tokens)
+                </>
+              ) : (
+                " · rules-only, $0.00"
+              )}
+            </span>
           </footer>
         </>
       )}

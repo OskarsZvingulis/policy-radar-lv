@@ -43,3 +43,7 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# regeneratable eval scratch artifact (npm run collect-eval-set) — the
+# committed eval/labelled_items.jsonl is the one that matters
+/eval/raw-scored-items.json

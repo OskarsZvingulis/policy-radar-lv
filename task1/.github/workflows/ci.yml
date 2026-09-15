@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    paths:
+      - "task1/**"
+  pull_request:
+    paths:
+      - "task1/**"
+
+defaults:
+  run:
+    working-directory: task1
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: task1/package-lock.json
+
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # `next build` type-checks the whole project (including the Next.js
+      # generated route types) — a separate `tsc --noEmit` run before a build
+      # has ever happened can't see those, so build doubles as the type-check
+      # step here.
+      - name: Build (type-checks + compiles)
+        run: npm run build
+
+      - name: Unit + fixture + eval tests (no network)
+        run: npm test

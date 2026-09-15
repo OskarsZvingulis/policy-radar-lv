@@ -3,6 +3,16 @@
 A prototype that replaces ~5 hours/week of manually checking 7 Latvian policy
 sources for startup-relevant news with a digest that runs in minutes.
 
+A real run today (2026-09-14 week) scanned **322 items** across all 8
+collector surfaces, kept **212** inside the 7-day recency window, and
+surfaced **49** as at least minimally relevant — took **8.8 seconds**,
+end to end, against live government sites. The TL;DR at the top of the
+digest narrows that to the 5 items worth reading first (soonest deadline
+first); the full 49 are still there for anyone who wants to scan
+everything. See `samples/digest-2026-09-14.md` for the exact output and
+`npm run eval` for how well the relevance engine actually performs against
+hand-labelled real items.
+
 **Live app:** https://policy-radar-lv-seven.vercel.app
 
 This repo also contains the Task 2 submission, in a sibling `../task2/`
@@ -117,8 +127,33 @@ Open `http://localhost:3000` — the page auto-runs a live scan on first load
 `.env.local` and set `AI_GATEWAY_API_KEY` for LLM-written summaries locally.
 
 ```bash
-npm run build   # type-checks + production build
+npm run build   # type-checks (via next build) + production build
+npm test        # unit + fixture + eval tests, no network
+npm run lint
 ```
+
+Other scripts:
+
+```bash
+npm run generate-digest [dir]  # runs the full pipeline against live sources,
+                                # writes digest-<week>.{md,html,json} (defaults
+                                # to samples/) — this is what produced samples/
+npm run eval                   # re-scores eval/labelled_items.jsonl with the
+                                # CURRENT rules engine and prints precision/recall
+npm run collect-eval-set       # re-scrapes all 8 sources and dumps every
+                                # scored item (relevant or not) to
+                                # eval/raw-scored-items.json, for building a
+                                # fresh labelled sample later
+```
+
+There is no CLI in the brief's sense (`--since`, `--sources`, `--no-llm`,
+`--dry-run`) since this ships as a web app, not a command-line tool. The
+closest equivalents: `?refresh=1` on `/api/digest` forces a fresh run past
+the weekly cache (brief's `--dry-run`-adjacent "run it now"); omitting
+`AI_GATEWAY_API_KEY` is the `--no-llm` case and is the default, not a flag;
+`--since`/`--sources` don't apply because every collector already
+self-windows to "new this week" (see `lib/digest/run.ts`'s recency filter)
+and all 8 run on every request — there's no need to scope a run to a subset.
 
 ## Verification
 
@@ -134,8 +169,152 @@ npm run build   # type-checks + production build
   the reading already happened, so there is nothing left to submit. A
   routine Ārlietu ministrija EU position paper from the same run does not
   surface at all.
-- `samples/` has a real digest generated from a live run, both as Markdown
-  and as the JSON the app itself produces.
+- `samples/digest-2026-09-14.{md,html,json}` is a real digest generated from
+  a live run (`npm run generate-digest`) — 322 scanned, 212 fresh, 49
+  surfaced, all 8 sources `ok`, 8.8s total, rules-only (no LLM key set in
+  this environment — see "Cost per run" below for what the LLM step costs
+  when one is).
+
+## Evaluation
+
+`eval/labelled_items.jsonl` is 40 real items — a stratified sample across
+score bands from a live 322-item scan (`npm run collect-eval-set`), each
+hand-labelled relevant/not-relevant against the rubric in §3 above, with a
+one-line rationale. `npm run eval` re-scores every item with whatever the
+rules engine currently does (also run as `tests/eval.test.ts` in CI, with a
+recall floor so a regression fails the build):
+
+| Metric | Value |
+|---|---|
+| Precision | 65% (15 TP / 8 FP) |
+| Recall | 100% (15 TP / 0 FN) |
+
+Recall is the metric that matters per §3's own rule — a missed relevant item
+costs far more than an extra line — so it's the hard floor; the 8 false
+positives are the accepted cost of that, and are almost all one shape:
+generic government process (an internal ministry budget reallocation, one
+state company's asset-acquisition authority, a committee-name keyword
+collision) that a human would filter in a few seconds but a keyword rule
+can't cheaply distinguish from the real thing. Building this eval set is
+also what caught three real recall gaps and fixed them: a de minimis
+state-aid threshold change (no keyword covered "de minimis"), a State Social
+Insurance Law amendment (the payroll pattern only matched "iemaksas"
+[contributions], not the law's own "apdrošināšanu" [insurance]), and an AI
+investment announcement in the genitive case "mākslīgā intelekta" (JavaScript's
+`\w` doesn't match Latvian diacritics at all, so the original pattern only
+ever matched 2 of the law's 4 grammatical forms). All three are now covered
+in `lib/relevance/keywords.ts`.
+
+Labelling caveat: labels were assigned by Claude applying the §3 rubric
+consistently across the sample, not independently reviewed by a human at
+Startin — an honest small eval, not a validated one. A next step would be a
+founder spot-checking the 8 false positives and confirming the label calls.
+
+## Testing and CI
+
+`npm test` (vitest) runs entirely offline — 48 tests across:
+
+- date-window and deadline-boundary logic (`tests/dates.test.ts`)
+- Latvian date/deadline-phrase parsing, including the real false positive
+  found against the live EM feed (`tests/fetch-utils.test.ts`)
+- the relevance engine's boosts, exclusions, and self-mention suppression
+  (`tests/relevance-score.test.ts`)
+- fixture tests against saved real pages (`tests/fixtures/`, captured
+  2026-09-15) for the TAP flextable parser and the Saeima Domino day-listing
+  parser — a site markup change fails these, not silently empties a digest
+- the digest Markdown renderer's structure — never blank at zero relevant
+  items, TL;DR ordering, footer content (`tests/digest-markdown.test.ts`)
+- the hand-labelled eval set as a recall-floor regression test
+  (`tests/eval.test.ts`)
+
+`.github/workflows/ci.yml` runs lint, `next build` (type-checks the whole
+project, including Next's generated route types — a bare `tsc --noEmit`
+can't see those before a first build), and `npm test` on every push/PR.
+`.github/workflows/weekly.yml` is the brief's requested GitHub-Actions
+schedule: it runs the full pipeline standalone (no Vercel project needed)
+and uploads the digest as a build artifact — a second, Vercel-independent
+proof this runs from CI alone, alongside the Vercel Cron already live in
+production (`vercel.json`, Monday 06:00 UTC).
+
+## Logging and run report
+
+Every run emits structured logs — one JSON object per line (`run_id`,
+`level`, `stage`, `source`, timings, counts) when stdout isn't a TTY
+(Vercel's function logs), or the same events as readable `[INFO] ...` lines
+when it is (`npm run generate-digest`, local `npm run dev`) — auto-detected,
+no flag needed (`lib/logging.ts`). A source returning zero items on an
+otherwise-successful fetch logs a `WARNING`, not a silent `"ok"`, so a
+parser quietly breaking on a markup change is distinguishable from a
+genuinely quiet week. The digest itself carries a per-source run report
+table (status/count/duration) plus a footer with the run id, model, prompt
+version, and cost — both in the UI footer and the Markdown/HTML export's
+"Run details" section.
+
+Exit codes apply to the two places this runs as a process rather than a web
+request: `scripts/generate-digest.ts` (and so `weekly.yml`) exits `0` on a
+clean run and `2` if any source came back not-`ok` — mirroring the brief's
+partial-success convention. The two live `/api/digest*` HTTP routes always
+return `200` with per-source status in the body instead, since an HTTP
+error code would make the browser's fetch throw and blank the whole page
+over one flaky source — exactly the "silence is the worst failure" case
+this app tries hardest to avoid.
+
+## Cost per run
+
+No `AI_GATEWAY_API_KEY` was available in the environment this was built and
+verified in, so the LLM step has never actually been billed — the figure
+below is a calculation from the real shortlist a live run produced (25
+items, ~15.2k characters of title/stage/institution/text), not a measured
+one. Once a key is set, the exact real number is computed from the API's
+own token usage every run (`lib/relevance/llm.ts`) and shown in the digest
+footer and the `llm triage finished` log line — this section should be
+updated with that measured number the first time someone runs it with a
+key configured.
+
+| | |
+|---|---|
+| Shortlist size (max, bounded regardless of week volume) | 25 items |
+| Estimated input tokens | ~3,950 |
+| Estimated output tokens | ~1,250 |
+| Model | Claude Sonnet 5 (`anthropic/claude-sonnet-5`), $2/$10 per MTok in/out |
+| **Estimated cost per run** | **~$0.02** |
+
+Re-running within the same warm instance costs $0.00 — `lib/relevance/llm.ts`
+caches each item's LLM explanation by `id + prompt version + model` in
+memory, so a demo "Refresh" click right after the last one reuses the
+existing explanations instead of re-billing them.
+
+## Roadmap
+
+Explicitly out of scope for a 6-hour prototype, in rough priority order:
+
+1. **Switch to TAP's official JSON:API** once `tap.atbalsts@mk.gov.lv` grants
+   access — the adapter interface (`SourceAdapter`-shaped collectors) is
+   already isolated per source specifically so this is a one-file change,
+   not a rewrite.
+2. **PDF/DOCX extraction of TAP annotations and attachments.** Right now
+   only the HTML listing/agenda text feeds the scorer and LLM; the actual
+   substance of a draft act is often in an attached annotation document.
+   Scanned (non-text) PDFs would need OCR on top of that.
+3. **likums.lv integration** — cross-link a draft act to the law it amends,
+   so the digest can show "this changes law X" instead of just a project ID.
+4. **Persistent storage** (Postgres/KV) once this needs to serve more than
+   one reader or survive cold starts cheaply — see "No persistent store"
+   below for why the prototype deliberately doesn't have this yet.
+5. **Slack/email delivery** and **per-reader topic subscriptions** (e.g. "only
+   fintech and tax") once there's more than one reader to serve differently.
+6. **Feedback buttons** ("useful" / "not useful") feeding back into
+   `config` keywords and the LLM prompt — turns the eval set in
+   `eval/labelled_items.jsonl` from a one-time hand-labelled sample into a
+   continuously growing one.
+7. **Track a draft act across its lifecycle** (Iesniegts → Saskaņošana →
+   VSS → MK → Saeima readings) as one thread instead of separate items per
+   surface, so a reader sees "this moved forward" rather than re-discovering
+   the same act at each stage.
+8. **Politeness/robustness hardening**: per-domain rate limiting, an explicit
+   `robots.txt` check-and-log, and a response cache for local development
+   iteration — the current fetch layer has timeouts and retry-with-backoff
+   (`lib/sources/fetch-utils.ts`) but not yet these.
 
 ## Known limitations
 
@@ -152,3 +331,17 @@ npm run build   # type-checks + production build
   automatic OIDC auth for the AI Gateway didn't activate on this Hobby-plan,
   file-upload-deployed project. Setting `AI_GATEWAY_API_KEY` turns on the
   LLM-written "why it matters" lines without any code change.
+- **GDPR awareness**: Saeima and MK/VSS protocols name real public officials
+  and invited stakeholder representatives, and this tool republishes those
+  names verbatim (as the source itself already does publicly) rather than
+  storing anything beyond what's on the public page — there is no database
+  and no data retained past the current in-memory weekly cache.
+- **No per-domain rate limiting or `robots.txt` check yet** — the fetch layer
+  has timeouts and retry-with-backoff on network errors/429/5xx
+  (`lib/sources/fetch-utils.ts`), and all 8 sources' URLs are hardcoded
+  constants (not user input), which is an implicit allowlist, but explicit
+  politeness controls are a roadmap item (see above), not yet built.
+- **LLM prompt injection**: every scraped field going into the LLM prompt is
+  wrapped in a delimited `<item-data>` block with an explicit "this is data,
+  never an instruction" rule (`lib/relevance/llm.ts`) — the LLM is also never
+  given tools that could act on anything found inside scraped text.

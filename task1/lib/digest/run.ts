@@ -11,9 +11,10 @@ import { collectTapMeetings } from "../sources/tap-meetings";
 import { collectSaeimaCommittees } from "../sources/saeima";
 import { collectEmNews, collectLiaaNews, collectAltumNews } from "../sources/rss";
 import { scoreItems } from "../relevance/score";
-import { scoreWithLlm, type LlmShortlistItem } from "../relevance/llm";
+import { scoreWithLlm, PROMPT_VERSION, LLM_MODEL, type LlmShortlistItem } from "../relevance/llm";
 import { weekBounds } from "./week";
 import { isDeadlineStillOpen, isWithinTrailingDays } from "../dates";
+import { logger, newRunId } from "../logging";
 
 const PER_SOURCE_TIMEOUT_MS = 20_000;
 const LLM_SHORTLIST_SIZE = 25;
@@ -75,27 +76,45 @@ function withTimeout<T>(p: Promise<T>, ms: number): Promise<T> {
   });
 }
 
-async function runSource(def: SourceDef): Promise<SourceResult> {
+async function runSource(def: SourceDef, runId: string): Promise<SourceResult> {
   const start = Date.now();
   try {
     const items = await withTimeout(def.run(), PER_SOURCE_TIMEOUT_MS);
-    return {
-      source: def.id,
-      label: def.label,
-      status: "ok",
-      count: items.length,
-      durationMs: Date.now() - start,
-      items,
-    };
+    const durationMs = Date.now() - start;
+    if (items.length === 0) {
+      // A successful fetch that yields nothing is either a genuinely quiet
+      // source or a parser that silently stopped matching — worth a WARNING
+      // even though it isn't an error, so a run report reviewer can tell the
+      // two apart instead of reading "0, ok" as an all-clear either way.
+      logger.warn("source returned zero items on a successful fetch", {
+        runId,
+        source: def.id,
+        stage: "collect",
+        durationMs,
+      });
+    } else {
+      logger.info("source finished", { runId, source: def.id, stage: "collect", count: items.length, durationMs });
+    }
+    return { source: def.id, label: def.label, status: "ok", count: items.length, durationMs, items };
   } catch (err) {
+    const durationMs = Date.now() - start;
     const timedOut = err instanceof Error && err.message.startsWith("timed out");
+    const message = err instanceof Error ? err.message : String(err);
+    logger.error("source failed", {
+      runId,
+      source: def.id,
+      stage: "collect",
+      durationMs,
+      error: message,
+      status: timedOut ? "timeout" : "error",
+    });
     return {
       source: def.id,
       label: def.label,
       status: timedOut ? "timeout" : "error",
       count: 0,
-      durationMs: Date.now() - start,
-      error: err instanceof Error ? err.message : String(err),
+      durationMs,
+      error: message,
       items: [],
     };
   }
@@ -108,11 +127,15 @@ async function runSource(def: SourceDef): Promise<SourceResult> {
  * credible as "running on real data" rather than a canned demo.
  */
 export async function runDigest(onSource?: (r: SourceResult) => void): Promise<DigestResult> {
+  const runId = newRunId();
+  const runStart = Date.now();
+  logger.info("run started", { runId, stage: "run", sourceCount: SOURCES.length });
+
   const sources: SourceResult[] = [];
 
   await Promise.all(
     SOURCES.map(async (def) => {
-      const result = await runSource(def);
+      const result = await runSource(def, runId);
       sources.push(result);
       onSource?.(result);
     }),
@@ -125,6 +148,13 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
 
   const ruleScored = scoreItems(freshItems);
   const surfaced = ruleScored.filter((i) => i.relevant);
+  logger.info("scoring finished", {
+    runId,
+    stage: "score",
+    totalScanned,
+    freshCount: freshItems.length,
+    surfacedCount: surfaced.length,
+  });
 
   const shortlist: LlmShortlistItem[] = [...surfaced]
     .sort((a, b) => b.score - a.score)
@@ -141,7 +171,17 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
       sourceLabel: i.sourceLabel,
     }));
 
-  const { scores: llmResults, ok: llmOk } = await scoreWithLlm(shortlist);
+  const { scores: llmResults, ok: llmOk, usage } = await scoreWithLlm(shortlist);
+  logger.info("llm triage finished", {
+    runId,
+    stage: "llm",
+    llmOk,
+    shortlistSize: shortlist.length,
+    scoredCount: llmResults.size,
+    inputTokens: usage?.inputTokens,
+    outputTokens: usage?.outputTokens,
+    estimatedCostUsd: usage?.estimatedCostUsd,
+  });
 
   const scored: ScoredItem[] = surfaced
     .map((i): ScoredItem => {
@@ -163,8 +203,18 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
     .sort((a, b) => b.score - a.score);
 
   const { start, end } = weekBounds();
+  const failedSources = sources.filter((s) => s.status !== "ok").map((s) => s.source);
+  logger.info("run finished", {
+    runId,
+    stage: "run",
+    durationMs: Date.now() - runStart,
+    totalScanned,
+    totalSurfaced: scored.length,
+    failedSources: failedSources.length ? failedSources : undefined,
+  });
 
   return {
+    runId,
     generatedAt: new Date().toISOString(),
     weekStart: start,
     weekEnd: end,
@@ -173,5 +223,15 @@ export async function runDigest(onSource?: (r: SourceResult) => void): Promise<D
     totalScanned,
     totalSurfaced: scored.length,
     llmAvailable: llmOk,
+    llmUsage: usage
+      ? {
+          model: LLM_MODEL,
+          promptVersion: PROMPT_VERSION,
+          itemsSent: usage.itemsSent,
+          inputTokens: usage.inputTokens,
+          outputTokens: usage.outputTokens,
+          estimatedCostUsd: usage.estimatedCostUsd,
+        }
+      : undefined,
   };
 }

@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta name="robots" content="noindex">
+<title>Latvijas Republikas Saeima</title>
+<meta name = "format-detection" content = "telephone=no" /> 
+<link rel="shortcut icon" href="/livs/saeimasnotikumi.nsf/logo.ico" type="image/x-icon" />
+<meta name = "format-detection" content = "telephone=no" /> 
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1" />
+<script language="JavaScript" type="text/javascript" src="/livs/saeimasnotikumi.nsf/viewFunctions.js"></script>
+<script language="JavaScript" type="text/javascript" src="/livs/saeimasnotikumi.nsf/Calendar.js"></script>
+<script language="JavaScript" type="text/javascript" src="/livs/saeimasnotikumi.nsf/CommonFunctions.js"></script>
+<link rel="stylesheet" href="/livs/saeimasnotikumi.nsf/viewDocStyles.css?ReadForm" />
+<script language="JavaScript" type="text/javascript" src="/livs/saeimasnotikumi.nsf/SNCalendar.js"></script>
+<script language="JavaScript" type="text/javascript" src="/livs/saeimasnotikumi.nsf/SNCalendarActiveDays.js"></script>
+<link rel="stylesheet" href="/livs/saeimasnotikumi.nsf/SNCalendar.css" />
+<script type="text/javascript">
+	var dbPath="/livs/saeimasnotikumi.nsf/";
+	var dateFMT='dd.mm.yyyy';
+// necessary for calendar
+var calendar = null;
+function selected(cal, date) {
+  cal.sel.value = date; 
+  if (cal.sel.id == "id_startDate" || cal.sel.id == "id_endDate" || cal.sel.id == "pid_startDate" || cal.sel.id == "pid_endDate")
+       cal.callCloseHandler();
+}
+// end calendar
+</script>
+<script type="text/javascript">
+	var dbPath="/livs/saeimasnotikumi.nsf/";
+	var lang="";
+	var LeftMarginWordList="";
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+document._domino_target = "_self";
+function _doClick(v, o, t) {
+  var returnValue = false;
+  var url="/livs/saeimasnotikumi.nsf/webComisDK?OpenView&Count=1000&RestrictToCategory=09.09.2026&Click=" + v;
+  if (o.href != null) {
+    o.href = url;
+    returnValue = true;
+  } else {
+    if (t == null)
+      t = document._domino_target;
+    window.open(url, t);
+  }
+  return returnValue;
+}
+// -->
+</script>
+<link rel="stylesheet" type="text/css" href="/livs/saeimasnotikumi.nsf/calendar-exigen.css?OpenCssResource">
+<link rel="stylesheet" type="text/css" href="/livs/saeimasnotikumi.nsf/noticeOutline.css?OpenCssResource">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" rightmargin="0"  leftmargin="0" marginheight="0" marginwidth="0" topmargin="0" style="background-color: rgb(230, 234, 234); height:100% !important;" >
+
+<form onsubmit="return false;return true;" action=""><div id="waitDialog" style="position:absolute; text-align:center; vertical-align:middle; top:300; width:100%;" align=center>
+<a align=center style="padding:20px;text-align:center; background-color:#F0F0D0;border:1px solid #909090; width:300px;font-family: Default Sans Serif, Sans Serif, Arial;font-size:11pt;">
+Lūdzu uzgaidiet, notiek datu apstrāde...
+</a></div>
+<div style="height: 100%; width: 100%; vertical-align: top; background-color: rgb(230, 234, 234);">
+<input type=hidden name="ViewTitle" id="ViewTitle" value="webComisDK">
+<input type=hidden name="FullWebPath" id="FullWebPath" value="https://titania.saeima.lv/livs/saeimasnotikumi.nsf/">
+<div class="pageHeader" style="height:53px;background-color:white;background-image: url('/livs/saeimasnotikumi.nsf/web_header_btm_bg.gif');background-position:bottom; background-repeat: repeat-x;">
+<div style="margin-top:0px;width:100%;background-image:URL('/livs/saeimasnotikumi.nsf/web_logo_bg.gif');background-repeat:repeat-x">
+<a href="https://www.saeima.lv" style="position:absolute;z-index:99"><img src="/livs/saeimasnotikumi.nsf/ecblank.gif" alt="Blank" style="width:230px; height:58px; border:0px solid white;"></a>
+<img src="/livs/saeimasnotikumi.nsf/ecblank.gif" alt="Blank" height="53" width="1">
+</div>
+<div style="position:absolute;top:2px;left:14px;color:#F5F5F5;font-family:Arial,Trebuchet MS; font-size:11px;">
+<b>LATVIJAS REPUBLIKAS</b>
+</div>
+<div style="position:absolute;top:12px;left:13px;color:#900000;font-family:Arial,Trebuchet MS; font-size:29px;">
+14.SAEIMA
+<!-- Komisijas sedes/Saeimas notikumi -->
+<span style="font-size:28px;font-family:Arial;">&nbsp;</span>
+</div>
+<div style="position:absolute;top:22px;width:100%;">
+
+</div>
+<div class="printButton"  style="position:absolute;top:20px;">
+<span style="margin-top:0px;" ><a  onclick="window.print()" ><span>Drukāt&nbsp;</span><img src="/livs/saeimasnotikumi.nsf/web_bigPrint.jpg"  alt="Print"></a></span>
+</div>
+</div>
+<table class="mainTable" width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr style="vertical-align: top;">
+<!-- OUTLINE start -->
+<td class="outlines" >
+<div class="menuHolder">
+<!-- MENU BLOCK HEAD -->
+<div class="menuHeadHolder">
+<div  class="menuHeadBgHolder">
+<img class="menuHeadIco" src="/livs/saeimasnotikumi.nsf/web_ico_document.gif" alt="Comissions Event Section"> <!-- ICON -->
+<div class="menuHeadTitleHolder">
+Komisiju sēdes
+</div>
+</div>
+</div>
+<!-- MENU BLOCK BODY -->
+<div class="mainOutline";">
+<!-- Šodienas darba kārtības -->
+<div  style="background-image:URL('/livs/saeimasnotikumi.nsf/WEB_scroll5.gif');"><b>
+<a href="/livs/saeimasnotikumi.nsf/webComisDK?OpenView&count=1000&restricttocategory=15.09.2026">Šodienas darba kārtības</a></b></div>
+<!-- Darba kārtības kalendārā formā -->
+<div  style="background-image:URL('/livs/saeimasnotikumi.nsf/WEB_scroll5.gif');"><b>
+<a href="/livs/saeimasnotikumi.nsf/comisWebCalendar?OpenView&Grid=2&Date=2026-09-15">Darba kārtības kalendārā formā</a></b></div>
+<!-- Visas darba kārtības sarakstā -->
+<div  style="background-image:URL('/livs/saeimasnotikumi.nsf/WEB_scroll5.gif');"><b>
+<a href="/livs/saeimasnotikumi.nsf/ComissionsListByDate?ReadForm">Visas darba kārtības sarakstā</a></b></div>
+<!-- Darba kārtības pēc komisijām -->
+<div  style="background-image:URL('/livs/saeimasnotikumi.nsf/WEB_scroll5.gif');"><b>
+<a href="/livs/saeimasnotikumi.nsf/ComissionsList?readform">Darba kārtības pēc komisijām</a></b></div>
+<hr />
+<!-- Saeimas notikumi -->
+<div  style="background-image:URL('/livs/saeimasnotikumi.nsf/WEB_scroll5.gif');"><b>
+<a href="/livs/saeimasnotikumi.nsf/webSNbyDate?OpenView&count=1000&restrictToCategory=15.09.2026">Saeimas notikumi</a></b></div>
+<!-- Setup URLsi -->
+
+</div>
+<!-- MENU BLOCK FOOTER -->
+<div class="menuFootHolder">
+<div class="menuFootCorner">
+<img style="height:8px; width:230px; border:0px;" alt="Blank" src="/livs/saeimasnotikumi.nsf/ecblank.gif">
+</div>
+</div>
+</div>
+<div class="menuHolder">
+<!-- MENU BLOCK HEAD -->
+<div class="menuHeadHolder">
+<div  class="menuHeadBgHolder">
+<img class="menuHeadIco" src="/livs/saeimasnotikumi.nsf/web_ico_document.gif" alt="Search Section"> <!-- ICON -->
+<div class="menuHeadTitleHolder">
+Meklēšana
+</div>
+</div>
+</div>
+<!-- MENU BLOCK BODY -->
+<div class="mainOutline">
+<!-- Mekleshanas lauks-->
+<input value="" align=left name="sFilter" id="sFilter" type=text onkeypress="if (event.keyCode==13 && (this.value!='')) submitSearch('webComisDKSearch')" style="margin:2px 0px 0px 5px; width: 210px;"><br>
+<div style="display:none;text-align:right;margin:0px 5px 0px 3px;padding:0px;font-size:8pt">meklēt visos tekstos</div>
+<div style="display:none;text-align:right;margin:0px 5px 7px 3px;padding:0px;font-size:8pt">meklēt pēc nosaukuma (arī nepilna)</div>
+<div style="display:none;margin:0px 5px 0px 3px;padding:0px;cursor:pointer;font-size:8pt" onclick="srchFullW(this)" id="srchFull" ><img src="/livs/saeimasnotikumi.nsf/WEB_CB_white.gif" alt="White" style="width:7px; height:7px; border:1px solid #909090;"> meklēt pēc pilnā vārda</div>
+<div align="right">
+<div class="myButton"  onclick="submitSearch('webComisDKSearch')">Meklēt<img src="/livs/saeimasnotikumi.nsf/meklet.jpg" alt="Search"></div>
+</div>
+</div>
+<!-- MENU BLOCK FOOTER -->
+<div class="menuFootHolder">
+<div class="menuFootCorner">
+<img style="height:8px; width:230px; border:0px;" alt="Blank" src="/livs/saeimasnotikumi.nsf/ecblank.gif">
+</div>
+</div>
+</div>
+</td>
+<!-- OUTLINE end -->
+<td class="views"><table class="mainTable" cellspacing="0" cellpadding="0" border="0" style="width: 100%; height: 100%; min-height: 100%; margin-top: 3px;">
+<tr style="vertical-align: middle; height: 24px;">
+<td style="background-image: url("/livs/saeimasnotikumi.nsf/web_leftTopCorner_mainTable_bg.gif&quot;); background-repeat: no-repeat; background-position: right top;">&nbsp;</td>
+<td style="background-color: rgb(242, 242, 242); background-image: url("/livs/saeimasnotikumi.nsf/web_rightTopCorner_mainTable_bg.gif&quot;); background-repeat: no-repeat; background-position: left top;"><!-- HEADER start-->
+<div class="viewHeader" id="viewHeader" >
+<div class="viewHeaderButton" id="viewHdrBtn_Expand" onclick="expandAll()">
+<img src="/livs/saeimasnotikumi.nsf/WEB_expandArr.gif" alt="Expand All">
+Izvērst
+</div>
+<div class="viewHeaderButton" id="viewHdrBtn_Expand" onclick="collapseAll()">
+<img src="/livs/saeimasnotikumi.nsf/WEB_collapseArr.gif" alt="Collapse All">
+Savērst
+</div>
+</div>
+<!-- HEADER end-->
+</td>
+</tr>
+<tr style="vertical-align: top; height: 100%; min-height: 100%;">
+<td style="width: 10px; background-image: url("/livs/saeimasnotikumi.nsf/web_leftLine_mainTable_bg.gif&quot;); background-repeat: repeat-y; background-position: right top;">
+<img style="width: 1px; height: 350px; position: relative; float: left;" alt="Blank" src="/livs/saeimasnotikumi.nsf/ecblank_tr.gif" >
+</td>
+<td style="background-color: rgb(255, 255, 255); padding: 6px 9px;">
+<script>
+var WebDBPath="";
+ var dbPathLp="";
+var dbPathLm="";
+var dbPathELDISPubl="";
+var dbPathLpArchive=new Array();
+var dbPathLmArchive=new Array();
+var ELDIS_NrPrefix=new Array();
+var ELDIS_NrPostfix=new Array();
+dbPathLp="https://titania.saeima.lv/LIVS14/saeimalivs14.nsf";
+dbPathLm="https://titania.saeima.lv/LIVS14/saeimalivs_lmp.nsf";
+dbPathELDISPubl="https://titania.saeima.lv/eldis/webpublic.nsf/aDocumentOpener?OpenAgent&doc=";
+ELDIS_NrPrefix.push("Dok.Nr.");
+ELDIS_NrPostfix.push(")");
+dbPathLpArchive[12]="https://titania.saeima.lv/LIVS12/saeimalivs12.nsf";
+dbPathLpArchive[11]="https://titania.saeima.lv/LIVS11/saeimalivs11.nsf";
+dbPathLpArchive[10]="https://titania.saeima.lv/LIVS10/SaeimaLIVS10.nsf";
+dbPathLpArchive[13]="https://titania.saeima.lv/LIVS13/saeimalivs13.nsf";
+dbPathLpArchive[14]="https://titania.saeima.lv/LIVS14/saeimalivs14.nsf";
+dbPathLmArchive[12]="https://titania.saeima.lv/LIVS12/saeimalivs_lmp.nsf";
+dbPathLmArchive[11]="https://titania.saeima.lv/LIVS11/saeimalivs_lmp.nsf";
+dbPathLmArchive[10]="https://titania.saeima.lv/LIVS10/SaeimaLIVS_LmP.nsf";
+dbPathLmArchive[13]="https://titania.saeima.lv/LIVS13/saeimalivs_lmp.nsf";
+dbPathLmArchive[14]="https://titania.saeima.lv/LIVS14/saeimalivs_lmp.nsf";
+
+WebDBPath="/livs/saeimasnotikumi.nsf/" 
+</script>
+<!-- MAIN VIEW start -->
+<!-- date header -->
+<div class="viewTitleHolder">Komisiju sēžu darba kārtības<div class="subTtl"style="font-weight:bold">Trešdiena, 2026.gada 9.septembris</div></div><br /><!-- <div>Unknown -1</div>-->
+<!-- priority flag -->
+<script>showLowPriorityFlag=false;</script>
+<div class="viewHolderText" id="viewHolderText" style="display:none;">
+ draw_PE({srt1:"10900017", time:"09:00..............", title:"Eiropas lietu komisijas sēde", next:"", unid:"A3E83A983EEA92CAC2258E5F002D2CC8"});
+draw_PE({srt1:"10930007", time:"09:30..............", title:"Valsts pārvaldes un pašvaldības komisijas sēde", next:"", unid:"E602BE8BA8E27D94C2258E670048544A"});
+draw_PE({srt1:"11000002", time:"10:00..............", title:"Budžeta un finanšu (nodokļu) komisijas sēde", next:"", unid:"6F7C1AA20FEA7CBCC2258E6600492A62"});
+draw_PE({srt1:"11000003", time:"10:00..............", title:"Juridiskās komisijas sēde", next:"", unid:"157FE7F915AE7059C2258E6700331EDF"});
+draw_PE({srt1:"11000006", time:"10:00..............", title:"Aizsardzības, iekšlietu un korupcijas novēršanas komisijas sēde", next:"", unid:"E36DFC02BD2F99A6C2258E6700321F9A"});
+draw_PE({srt1:"11000008", time:"10:00..............", title:"Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas sēde", next:"", unid:"9CBA09910B3E4F28C2258E67004BF746"});
+draw_PE({srt1:"11000010", time:"10:00..............", title:"Sociālo un darba lietu komisijas sēde", next:"", unid:"868FEDE2536B7D43C2258E67002E5212"});
+draw_PE({srt1:"11015001", time:"10:15..............", title:"Ārlietu komisijas sēde", next:"", unid:"EAC66DC697AF6DC2C2258E660033C085"});
+draw_PE({srt1:"11015004", time:"10:15..............", title:"Cilvēktiesību un sabiedrisko lietu komisijas sēde", next:"", unid:"5A9CEC8B0D845219C2258E67002A9564"});
+draw_PE({srt1:"11200013", time:"12:00..............", title:"Publisko izdevumu un revīzijas komisijas sēde", next:"", unid:"C55BB1DA59D73DE4C2258E6700481E6B"});
+draw_PE({srt1:"11200015", time:"12:00..............", title:"Nacionālās drošības komisijas sēde", next:"", unid:"0694E13BB569A632C2258E66002860EB"});
+draw_PE({srt1:"11200016", time:"12:00..............", title:"Pilsonības, migrācijas un sabiedrības saliedētības komisijas sēde", next:"", unid:"391478FA4C5D0F3DC2258E670039770C"});
+draw_PE({srt1:"11200018", time:"12:00..............", title:"Ilgtspējīgas attīstības komisijas sēde", next:"", unid:"2C9E520120E30C40C2258E680042F23B"});
+draw_PE({srt1:"11310000", time:"13:10..............", title:"Ārlietu komisijas Baltijas lietu apakškomisijas sēde", next:"", unid:"9DB22461AEA075AEC2258E68002CEB22"});
+ 
+</div>
+<div class="viewHolder" id="viewHolder">
+<script language="javascript">
+beforeDrawViewActions();
+try{
+var nodoc=document.getElementById('viewHolderText');
+if(nodoc){
+	if(nodoc.innerHTML.indexOf('<h2>No documents found</h2>')>0){
+		document.write("<div class='searchMsg'>Neviens dokuments nav atrasts</div>");
+	}else{
+		eval(nodoc.innerHTML);
+	}
+}
+}catch(e){ 
+document.write("<div class='searchMsg'>Neviens dokuments nav atrasts</div>");
+}
+afterDrawViewActions();
+</script>
+</div>
+<!-- MAIN VIEW end -->
+	
+<!-- FOOTER start -->
+<!-- FOOTER end -->
+<tr style="vertical-align: top;">
+<td style="width: 5px; background-image: url("/livs/saeimasnotikumi.nsf/web_leftBottCorner_mainTable_bg.gif&quot;); background-repeat: no-repeat; background-position: right top;">&nbsp;</td>
+<td style="height: 25px; background-image: url("/livs/saeimasnotikumi.nsf/web_bottLine_mainTable_bg.gif&quot;); background-repeat: repeat-x;">
+<div style="padding-top: 5px; background-image: url("/livs/saeimasnotikumi.nsf/web_bottCorner_mainTable_bg.gif&quot;); background-repeat: no-repeat; background-position: left top; text-align: center; font-size: 8pt;">&nbsp;</div>
+<img style="width: 780px; height: 0px;" alt="Blank" src="/livs/saeimasnotikumi.nsf/ecblank_tr.gif" id="view:_id1:image2">
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<script language="javascript">
+setStartValues();
+waitDialog(0);
+</script>
+</div></form>
+</body>
+</html>

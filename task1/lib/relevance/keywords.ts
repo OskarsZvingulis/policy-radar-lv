@@ -19,7 +19,11 @@ const AXIS_COST: KeywordRule[] = [
   { id: "cost.company_law", label: "Company/commercial law", pattern: /komercdarbīb|komerclikum|kapitālsabiedrīb|sabiedrīb.{0,15}(dibin|reģistr)/i, weight: 30 },
   { id: "cost.tax", label: "Taxation", pattern: /nodok|iedzīvotāj.{0,10}ienākum|uzņēmum.{0,10}ienākum/i, weight: 30 },
   { id: "cost.options", label: "Employee share options", pattern: /kapitāla daļ.{0,20}(darbiniek|nodarbināt)|akciju opcij|līdzdalīb.{0,15}programm/i, weight: 35 },
-  { id: "cost.payroll", label: "Payroll / social contributions", pattern: /darba samaks|algas nodok|sociāl.{0,10}iemaksas|VSAOI/i, weight: 25 },
+  // Broadened after the eval set (eval/labelled_items.jsonl) surfaced a
+  // missed item: a "Grozījumi likumā Par valsts sociālo apdrošināšanu" title
+  // never matches "sociāl.{0,10}iemaksas" — the law's own name says
+  // "apdrošināšanu" (insurance), not "iemaksas" (contributions).
+  { id: "cost.payroll", label: "Payroll / social contributions", pattern: /darba samaks|algas nodok|sociāl.{0,15}(iemaksas|apdrošināš)|VSAOI/i, weight: 25 },
   { id: "cost.accounting", label: "Accounting/reporting burden", pattern: /grāmatvedīb|gada pārskat|revīzij/i, weight: 20 },
   { id: "cost.insolvency", label: "Insolvency", pattern: /maksātnespēj|likvidācij/i, weight: 20 },
   { id: "cost.licensing", label: "Licensing/permits", pattern: /licenc|atļauj.{0,10}izsniegš|saskaņoš.{0,10}atļauj/i, weight: 20 },
@@ -32,7 +36,11 @@ const AXIS_CAPITAL: KeywordRule[] = [
   { id: "capital.crowdfunding", label: "Crowdfunding", pattern: /kolektīv.{0,10}finansēš/i, weight: 40 },
   { id: "capital.altum", label: "Altum instrument", pattern: /\baltum\b/i, weight: 25 },
   { id: "capital.liaa", label: "LIAA instrument", pattern: /\bliaa\b/i, weight: 25 },
-  { id: "capital.state_aid", label: "State aid / grants", pattern: /valsts atbalst|atbalsta programm|atbalsta instrument|grant[su]?\b|dotācij|subsīdij/i, weight: 25 },
+  // "de minimis" added after the eval set caught a miss: a de minimis aid
+  // threshold change directly gates how much Altum/LIAA grant support a
+  // startup can receive before triggering full state-aid rules, but never
+  // mentions "valsts atbalsts" by name.
+  { id: "capital.state_aid", label: "State aid / grants", pattern: /valsts atbalst|atbalsta programm|atbalsta instrument|grant[su]?\b|dotācij|subsīdij|de minimis/i, weight: 25 },
   { id: "capital.eu_funds", label: "EU funds", pattern: /ES fond|Eiropas Savienības fond|Atveseļošan.{0,15}fond|kohēzij/i, weight: 20 },
   { id: "capital.startup_law", label: "Startup Law", pattern: /jaunuzņēmum/i, weight: 45 },
   { id: "capital.talent", label: "Immigration / work permits for talent", pattern: /darba atļauj|imigrāc|starta vīz|augsti kvalificēt.{0,15}(darbiniek|nodarbināt)/i, weight: 30 },
@@ -49,7 +57,14 @@ const AXIS_CAPITAL: KeywordRule[] = [
 // Axis 3 — market & regulatory access for tech business models.
 const AXIS_MARKET: KeywordRule[] = [
   { id: "market.digital", label: "Digital services", pattern: /digitāl|e-pārvald|e-komercij/i, weight: 20 },
-  { id: "market.ai", label: "AI", pattern: /mākslīg(ais|o) intelekt|\bAI\b/i, weight: 30 },
+  // Latvian adjective agreement means "artificial intelligence" surfaces as
+  // mākslīgais/mākslīgā/mākslīgo/mākslīgu intelekts depending on grammatical
+  // case — the eval set caught a real news item using the genitive
+  // "mākslīgā intelekta" slipping past a pattern that only covered two of
+  // the four forms. JS's `\w` doesn't match diacritics at all (excludes even
+  // the base "mākslīg" stem's own ī), so `\S*` — any non-whitespace — is
+  // used instead of a word-character class to cover every inflected form.
+  { id: "market.ai", label: "AI", pattern: /mākslīg\S*\s+intelekt|\bAI\b/i, weight: 30 },
   { id: "market.data", label: "Data", pattern: /datu aizsardzīb|personas datu|datu apstrād/i, weight: 20 },
   { id: "market.fintech", label: "Fintech / payments", pattern: /fintech|maksājum.{0,10}pakalpojum|elektronisk.{0,10}nauda/i, weight: 30 },
   { id: "market.platform", label: "Platform rules", pattern: /platform|digitālo pakalpojumu akt/i, weight: 20 },

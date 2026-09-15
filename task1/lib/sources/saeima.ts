@@ -33,13 +33,13 @@ function formatLvDate(d: Date): string {
   return `${dd}.${mm}.${d.getUTCFullYear()}`;
 }
 
-interface DayEntry {
+export interface DayEntry {
   title: string;
   time: string;
   unid: string;
 }
 
-function parseDayListing(html: string): DayEntry[] {
+export function parseDayListing(html: string): DayEntry[] {
   const entries: DayEntry[] = [];
   const re = /draw_PE\(\{([\s\S]*?)\}\)/g;
   for (const m of html.matchAll(re)) {
