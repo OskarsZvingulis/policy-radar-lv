@@ -151,7 +151,7 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
         items.push({
           id: `saeima_committees:${entry.unid}`,
           source: "saeima_committees",
-          sourceLabel: "Saeima — komisiju sēdes",
+          sourceLabel: "Saeima: komisiju sēdes",
           title: entry.title,
           url: detailUrl,
           date: isoDate,
@@ -163,7 +163,7 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
         items.push({
           id: `saeima_committees:${entry.unid}`,
           source: "saeima_committees",
-          sourceLabel: "Saeima — komisiju sēdes",
+          sourceLabel: "Saeima: komisiju sēdes",
           title: entry.title,
           url: detailUrl,
           date: isoDate,
@@ -175,7 +175,7 @@ export async function collectSaeimaCommittees(): Promise<Item[]> {
         items.push({
           id: `saeima_committees:${entry.unid}:${p.n}`,
           source: "saeima_committees",
-          sourceLabel: "Saeima — komisiju sēdes",
+          sourceLabel: "Saeima: komisiju sēdes",
           title: `${entry.title}: ${titleSnippet(p.text, 160)}`,
           url: detailUrl,
           date: isoDate,

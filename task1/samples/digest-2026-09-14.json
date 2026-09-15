@@ -1,20 +1,20 @@
 {
-  "runId": "4d851a5f-859e-4faa-a89b-d15462073e6b",
-  "generatedAt": "2026-09-15T19:23:01.151Z",
+  "runId": "d78ad6d7-8864-4ee2-acbd-003795862925",
+  "generatedAt": "2026-09-15T19:39:24.415Z",
   "weekStart": "2026-09-14T00:00:00.000Z",
   "weekEnd": "2026-09-20T00:00:00.000Z",
   "sources": [
     {
       "source": "tap_legal_acts",
-      "label": "TAP portāls — Tiesību aktu projekti",
+      "label": "TAP portāls: Tiesību aktu projekti",
       "status": "ok",
       "count": 100,
-      "durationMs": 4079,
+      "durationMs": 1809,
       "items": [
         {
           "id": "tap_legal_acts:26-TA-2279",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2279: Grozījumi Dzelzceļa likumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/537c0c15-3dbf-4dda-a22d-adbf2dd0e360",
           "date": "2026-09-15T00:00:00.000Z",
@@ -25,10 +25,10 @@
         {
           "id": "tap_legal_acts:26-TA-2276",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2276: Par Kopīgu paziņojumu Eiropas Parlamentam un Padomei “Aizstāvēt vērtības, virzīt reformas, panākt ietekmi: ES humanitārā rīcība mainīgā pasaules kārtībā”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7a46885e-a87b-48df-b437-879ebbe30e34",
-          "date": "2026-09-15T19:22:55.550Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -37,10 +37,10 @@
         {
           "id": "tap_legal_acts:26-TA-2275",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2275: Pavadvēstule par Latvijas Republikas nacionālo pozīciju Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Iesniegts",
@@ -49,10 +49,10 @@
         {
           "id": "tap_legal_acts:26-TA-2274",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2274: Par Latvijas Republikas nacionālo pozīciju Nr. 1 “Par priekšlikumu Eiropas Parlamenta un Padomes Regulai, ar ko groza Regulu (ES) 2019/943 attiecībā uz elektroenerģijas rēķinu pielāgošanu nākotnes vajadzībām Savienībā, samazinot sistēmas izmaksas un veicinot elektrifikāciju un digitalizāciju”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d8f01269-44f0-4028-a397-695ecc0ea94f",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Klimata un enerģētikas ministrija",
           "stage": "Iesniegts",
@@ -61,7 +61,7 @@
         {
           "id": "tap_legal_acts:26-TA-2273",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2273: Informatīvais ziņojumus par bērnu stāvokli Latvijā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/010fdd0f-7366-48dd-ae6b-c707de274da1",
           "date": "2026-09-15T00:00:00.000Z",
@@ -73,10 +73,10 @@
         {
           "id": "tap_legal_acts:26-TA-2261",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2261: Pavadvēstule \"Par Eiropas Savienības neformālajā Transporta ministru sanāksmē 2026. gada 20.-21. septembrī izskatāmajiem jautājumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/169c1525-1663-4b43-9ffc-3b11bdc5275d",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -85,7 +85,7 @@
         {
           "id": "tap_legal_acts:26-TA-2257",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2257: Par valsts nekustamo īpašumu pārdošanu izsolē",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0758e326-b00f-4a95-98c1-f01266d14604",
           "date": "2026-09-15T00:00:00.000Z",
@@ -97,10 +97,10 @@
         {
           "id": "tap_legal_acts:26-TA-2256",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2256: Par Euro grupas 2026. gada 18. septembra un neformālās Eiropas Savienības Ekonomisko un finanšu jautājumu padomes 2026. gada 18.-19. septembra sanāksmes izskatāmajiem jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4aefce0e-0da6-4602-964f-8fc5309cab17",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Iesniegts",
@@ -109,10 +109,10 @@
         {
           "id": "tap_legal_acts:26-TA-2254",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2254: Informatīvais ziņojums par Ministru kabineta 2026.gada 4.septembra ārkārtas sēdes protokola Nr.50 1.§ 4., 5. un 8.punkta un Ministru kabineta 8.septembra sēdes protokola Nr.51 35.§ 3. un 4.punkta izpildi",
           "url": "https://tapportals.mk.gov.lv/legal_acts/82d95dc9-76b4-496c-b1d1-754ca504df83",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -121,7 +121,7 @@
         {
           "id": "tap_legal_acts:26-TA-2253",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2253: Informatīvais ziņojums \"Bērnu, jaunatnes un ģimenes attīstības pamatnostādņu 2022.–2027. gadam starpposma izvērtējums\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7a45b44b-ad43-4c7f-bc2f-596323854be9",
           "date": "2026-09-14T00:00:00.000Z",
@@ -133,10 +133,10 @@
         {
           "id": "tap_legal_acts:26-TA-2252",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2252: Sākotnējais izvērtējums par ekonomisko, fiskālo un loģistikas ietekmi, kā arī iespējamām sekām, paaugstinot Krievijas izcelsmes tranzīta graudu kravām piemērojamo dzelzceļa infrastruktūras un ostu maksu vai aizliedzot lauksaimniecības un lopbarības produktu tranzītu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/af76102d-766f-4bb9-b28f-4dd8245a400d",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -145,10 +145,10 @@
         {
           "id": "tap_legal_acts:26-TA-2251",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2251: Pavadvēstule: Latvijas Republikas nacionālā pozīcija \"Par ES kopējās nostājas projektu par sarunu 12. sadaļas “Pārtikas drošība, veterinārā un fitosanitārā politika”, 18. sadaļas “Statistika” un 19. sadaļas “Sociālā politika un nodarbinātība” slēgšanu Melnkalnei\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d2bd354d-b19f-431a-81bb-41075c03ad0d",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -157,10 +157,10 @@
         {
           "id": "tap_legal_acts:26-TA-2250",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2250: Par informatīvo ziņojumu “Par Eiropas Savienības Vispārējo lietu padomes 2026. gada 22. septembra sanāksmē izskatāmajiem jautājumiem”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a6cf4b23-8895-4878-b7a0-bedc61c09f9c",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Iesniegts",
@@ -169,7 +169,7 @@
         {
           "id": "tap_legal_acts:26-TA-2248",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2248: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d4825e03-bcbb-4d71-b3dc-8ce53d110e4b",
           "date": "2026-09-15T00:00:00.000Z",
@@ -181,10 +181,10 @@
         {
           "id": "tap_legal_acts:26-TA-2241",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2241: Par valsts aizsardzības dienesta sistēmas daļas ieviešanu Valsts robežsardzē",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0b314ad1-20af-40c7-a987-bdac3bf39e05",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.572Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Saskaņošana",
@@ -193,10 +193,10 @@
         {
           "id": "tap_legal_acts:26-TA-2239",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2239: Ministru kabineta atbildes raksts Satversmes tiesai lietā Nr. 2026-12-03",
           "url": "https://tapportals.mk.gov.lv/legal_acts/745ec1a6-e315-44c3-88cc-5af7d1e5d792",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Labklājības ministrija",
           "stage": "Iesniegts",
@@ -205,10 +205,10 @@
         {
           "id": "tap_legal_acts:26-TA-2237",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2237: Par risinājumiem graudu tranzīta jomā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a36d14b0-3452-4481-a04b-8912ff21ea45",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Iesniegts",
@@ -217,10 +217,10 @@
         {
           "id": "tap_legal_acts:26-TA-2234",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2234: Par aktuālo situāciju airBaltic",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dca555b0-3459-476a-8d10-6842c262cd51",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -229,7 +229,7 @@
         {
           "id": "tap_legal_acts:26-TA-2231",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2231: Par medicīnisko ierīču nodrošināšanu pacientiem ar 1.tipa cukura diabētu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/6b8ca269-538c-4640-8f7e-09cb13df50c0",
           "date": "2026-09-15T00:00:00.000Z",
@@ -240,7 +240,7 @@
         {
           "id": "tap_legal_acts:26-TA-2230",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2230: Par Latvijas priekšlikumiem Eiropas Savienības Biodaudzveidības stratēģijas 2030 mērķu sasniegšanai, nodrošinot līdz 30% Latvijas teritorijas bioloģiskās daudzveidības aizsardzībai, tostarp līdz 2030. gadam ietverot 10% stingri aizsargātās platības, un nosakot jaunas īpaši aizsargājamas dabas teritorijas",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d646b963-f5d4-4bff-8460-176e1bce7692",
           "date": "2026-09-11T00:00:00.000Z",
@@ -252,10 +252,10 @@
         {
           "id": "tap_legal_acts:26-TA-2228",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2228: Likumprojekts \"Grozījumi likumā \"Par audzinoša rakstura piespiedu līdzekļu piemērošanu bērniem\"\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/41b854b7-fbda-4c83-b637-ceac4b3bb941",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -264,10 +264,10 @@
         {
           "id": "tap_legal_acts:26-TA-2227",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2227: Likumprojekts \"Grozījumi Kriminālprocesa likumā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/610dd78b-67d1-4a71-a793-8b3e9567653f",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -276,7 +276,7 @@
         {
           "id": "tap_legal_acts:26-TA-2225",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2225: Progresa ziņojums par integrēta palīdzības modeļa īstenošanu nepilngadīgajiem ar psihoaktīvo vielu lietošanas traucējumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7f365633-ed4e-4a80-a3f9-b16ed822d69f",
           "date": "2026-09-11T00:00:00.000Z",
@@ -288,7 +288,7 @@
         {
           "id": "tap_legal_acts:26-TA-2222",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2222: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/542a234a-390c-4557-800e-0d46d5986355",
           "date": "2026-09-14T00:00:00.000Z",
@@ -300,10 +300,10 @@
         {
           "id": "tap_legal_acts:26-TA-2217",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2217: Likumprojekts \"Grozījumi Krimināllikumā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c8159bd5-2891-438b-bdce-ac3afc75a0f4",
-          "date": "2026-09-15T19:22:55.551Z",
+          "date": "2026-09-15T19:39:17.573Z",
           "dateIsApproximate": true,
           "institution": "Tieslietu ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -312,7 +312,7 @@
         {
           "id": "tap_legal_acts:26-TA-2216",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2216: Par administratīvā sloga mazināšanas stratēģisko mērķi un pasākumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c28d0f1b-c058-4965-b260-c734d364e2bc",
           "date": "2026-09-09T00:00:00.000Z",
@@ -323,7 +323,7 @@
         {
           "id": "tap_legal_acts:26-TA-2210",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2210: Informatīvais ziņojums par Latvijas dalību OECD laika periodā no 2025. gada jūlija līdz 2026. gada jūlijam",
           "url": "https://tapportals.mk.gov.lv/legal_acts/6d70be78-a707-4617-a1d5-8a9b90217dec",
           "date": "2026-09-09T00:00:00.000Z",
@@ -335,7 +335,7 @@
         {
           "id": "tap_legal_acts:26-TA-2209",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2209: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/2cb18c13-656d-4b72-b93e-375e58243e1d",
           "date": "2026-09-15T00:00:00.000Z",
@@ -346,10 +346,10 @@
         {
           "id": "tap_legal_acts:26-TA-2206",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2206: Par aktuālo situāciju Liepājas speciālā ekonomiskā zonā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d81b51a5-b8e0-416b-9d0f-2fb8e877db68",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -358,10 +358,10 @@
         {
           "id": "tap_legal_acts:26-TA-2204",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2204: Informatīvais ziņojums par Eiropas Savienības kohēzijas politikas ministru neformālo sanāksmi 2026. gada 14. un 15. septembrī Dublinā, Īrijā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Izskatīts",
@@ -370,10 +370,10 @@
         {
           "id": "tap_legal_acts:26-TA-2203",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2203: Par aktuālo situāciju Ventspils brīvostā un nepieciešamajiem risinājumiem termiņa pagarinājumam noslēgtajos valsts aizdevuma līgumos",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0b8a8789-5dc7-47ae-a21d-6f9132f0402e",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Iesniegts",
@@ -382,7 +382,7 @@
         {
           "id": "tap_legal_acts:26-TA-2200",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2200: Par ierobežojuma noteikšanu Latvijas Republikas–Baltkrievijas Republikas un Latvijas Republikas–Krievijas Federācijas robežas šķērsošanai, veicot starptautiskos neregulāros pasažieru pārvadājumus ar autobusiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0ab3ddc0-d262-48ee-a890-f7b38d892ab0",
           "date": "2026-09-15T00:00:00.000Z",
@@ -394,7 +394,7 @@
         {
           "id": "tap_legal_acts:26-TA-2199",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2199: Par finansējuma piešķiršanu sabiedrībai ar ierobežotu atbildību \"Elektroniskie sakari\" konferences \"Techritory\" organizēšanai 2026. gadā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dcb857e0-1abd-41ac-b46c-d471f7310be5",
           "date": "2026-09-09T00:00:00.000Z",
@@ -406,10 +406,10 @@
         {
           "id": "tap_legal_acts:26-TA-2195",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2195: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai, ar ko attiecībā uz tādu pasažieru aizsardzību, kuriem ir vienotas biļetes, groza Regulu (ES) 2021/782\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/86e465bf-d168-481f-8de0-5f149da161ef",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -418,10 +418,10 @@
         {
           "id": "tap_legal_acts:26-TA-2194",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2194: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai par dzelzceļa biļešu pārdošanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4347e0e4-88bd-44b1-82d6-a0f42982cadc",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -430,10 +430,10 @@
         {
           "id": "tap_legal_acts:26-TA-2193",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2193: Latvijas Republikas nacionālā pozīcija \"Priekšlikums Eiropas Parlamenta un Padomes Regulai par multimodālu rezervēšanu un ar ko atceļ Regulu (EK) Nr. 80/2009\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/a0fe9aaf-ca7c-45a6-ad27-e3b5e12fa544",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -442,10 +442,10 @@
         {
           "id": "tap_legal_acts:26-TA-2191",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2191: Par aktuālo situāciju airBaltic",
           "url": "https://tapportals.mk.gov.lv/legal_acts/5e9973cd-abb0-49bd-9d9a-f69b17840726",
-          "date": "2026-09-15T19:22:57.338Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Izskatīts",
@@ -454,7 +454,7 @@
         {
           "id": "tap_legal_acts:26-TA-2190",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2190: Par institucionālā risinājuma Dziesmu un deju svētku procesa ilgtspējīgai pārvaldībai izstrādes gaitu un sagaidāmajiem rezultātiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/2ce6ace2-61e3-46dc-a7a9-422723a9593d",
           "date": "2026-09-08T00:00:00.000Z",
@@ -466,7 +466,7 @@
         {
           "id": "tap_legal_acts:26-TA-2189",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2189: Par nekustamā īpašuma “Upmalas iela 8”, Bauskā, Bauskas novadā, valstij piederošo 1859/37500 domājamo daļu pārdošanu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/5be1a6ee-f2ad-446a-8b2e-9214be3e34ce",
           "date": "2026-09-09T00:00:00.000Z",
@@ -478,7 +478,7 @@
         {
           "id": "tap_legal_acts:26-TA-2187",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2187: Par nekustamā īpašuma \"Saulrieši\" Baldones pagastā, Ķekavas novadā, daļas pirkšanu projekta \"Eiropas standarta platuma 1435 mm dzelzceļa līnijas izbūve \"Rail Baltica\" koridorā caur Igauniju, Latviju un Lietuvu\" īstenošanai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/6ceb8a81-b211-4a35-9ef7-1e144c4afa54",
           "date": "2026-09-11T00:00:00.000Z",
@@ -490,7 +490,7 @@
         {
           "id": "tap_legal_acts:26-TA-2183",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2183: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c468708a-4c8b-47d7-820d-3189a14bc519",
           "date": "2026-09-10T00:00:00.000Z",
@@ -502,7 +502,7 @@
         {
           "id": "tap_legal_acts:26-TA-2181",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2181: Grozījumi Ministru kabineta 2023. gada 12. septembra noteikumos Nr. 530 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa \"Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās\" 5.1.1.5. pasākuma \"Unikāla Eiropas mēroga kultūras mantojuma atjaunošana, lai veicinātu to piekļūstamību, attīstot kultūras pakalpojumus\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/fa9f0b3b-78d2-4b1d-8d2c-f5b3a54a05e7",
           "date": "2026-09-08T00:00:00.000Z",
@@ -514,7 +514,7 @@
         {
           "id": "tap_legal_acts:26-TA-2180",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2180: Par apropriācijas pārdali labklājības nozares neatliekamu un nozīmīgu pasākumu īstenošanai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/71eb12ed-eda8-417c-b594-73dc95601421",
           "date": "2026-09-08T00:00:00.000Z",
@@ -526,7 +526,7 @@
         {
           "id": "tap_legal_acts:26-TA-2179",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2179: Grozījums Ministru kabineta 2019. gada 17. decembra noteikumos Nr. 681 \"Noteikumi par kārtību, kādā aprēķina un veic maksājumus par Pārtikas un veterinārā dienesta valsts uzraudzības un kontroles darbībām, un maksas pakalpojumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/b4f84b49-7f38-459d-ac63-49c886927dfc",
           "date": "2026-09-08T00:00:00.000Z",
@@ -537,7 +537,7 @@
         {
           "id": "tap_legal_acts:26-TA-2176",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2176: Par iemaksu veikšanu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/5d6745f7-2514-4624-ab6f-04808d52d55a",
           "date": "2026-09-09T00:00:00.000Z",
@@ -549,7 +549,7 @@
         {
           "id": "tap_legal_acts:26-TA-2174",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2174: Grozījumi Ministru kabineta 2009. gada 6. oktobra noteikumos Nr. 1141 \"Dzīvnieku barības kravu kontroles kārtība uz valsts robežas, brīvajās zonās, brīvajās un muitas noliktavās\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/7eedb966-95c3-4da6-b967-93e5092f4ace",
           "date": "2026-09-04T00:00:00.000Z",
@@ -561,10 +561,10 @@
         {
           "id": "tap_legal_acts:26-TA-2172",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2172: Progresa ziņojums par vēlēšanu platformas pilnveidi Latvijas Republikas Saeimas 2026. gada vēlēšanām",
           "url": "https://tapportals.mk.gov.lv/legal_acts/71c00359-b05a-4cd3-a9b5-139a7dd6260e",
-          "date": "2026-09-15T19:22:57.339Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Viedās administrācijas un reģionālās attīstības ministrija",
           "stage": "Izskatīts",
@@ -573,7 +573,7 @@
         {
           "id": "tap_legal_acts:26-TA-2170",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2170: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/cfa2b739-12e1-4442-954b-e37a90482035",
           "date": "2026-09-14T00:00:00.000Z",
@@ -584,7 +584,7 @@
         {
           "id": "tap_legal_acts:26-TA-2169",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2169: Grozījumi Ministru kabineta 2020. gada 21. janvāra noteikumos Nr. 46 \"Prasības un robežkontroles kārtība tādai no trešajām valstīm ievedamajai pārtikai un saskarei ar pārtiku paredzētajiem materiāliem un izstrādājumiem, kam nepiemēro oficiālo robežkontroli\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/08fc91dc-dbb2-4189-99d7-92140dbe7939",
           "date": "2026-09-08T00:00:00.000Z",
@@ -595,10 +595,10 @@
         {
           "id": "tap_legal_acts:26-TA-2168",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2168: Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par Visaptverošo ekonomisko partnerattiecību nolīguma starp Eiropas Savienību un Indonēziju un Ieguldījumu aizsardzības nolīguma starp Eiropas Savienību un Indonēziju parakstīšanu un noslēgšanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/116c710f-a042-4684-b36a-3058479d94c9",
-          "date": "2026-09-15T19:22:57.339Z",
+          "date": "2026-09-15T19:39:17.874Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Izskatīts",
@@ -607,10 +607,10 @@
         {
           "id": "tap_legal_acts:26-TA-2167",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2167: Latvijas Republikas nacionālā pozīcija Nr. 1 \"Par priekšlikumu Padomes lēmumam par Nolīguma par elektronisko komerciju noslēgšanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d4e97478-c0c1-43eb-8932-5440e8026767",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Ārlietu ministrija",
           "stage": "Izskatīts",
@@ -619,7 +619,7 @@
         {
           "id": "tap_legal_acts:26-TA-2166",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2166: Par nepieciešamo papildu finansējumu sabiedriskā transporta pakalpojumu sniegšanai 2026. gadā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4dad673b-ec24-4903-b6ed-1df53940e41b",
           "date": "2026-09-14T00:00:00.000Z",
@@ -630,10 +630,10 @@
         {
           "id": "tap_legal_acts:26-TA-2165",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2165: Par risinājumiem graudu tranzīta jomā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/74747950-4ff3-4adf-8a6a-cdb530c3d703",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Pieņemts",
@@ -642,7 +642,7 @@
         {
           "id": "tap_legal_acts:26-TA-2159",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2159: Grozījums Ministru kabineta 2022. gada 11. janvāra noteikumos Nr. 11 \"Kārtība, kādā izglītojamie tiek uzņemti vispārējās izglītības programmās un atskaitīti no tām, kā arī obligātās prasības izglītojamo pārcelšanai nākamajā klasē\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f379a38f-1853-437f-985c-fc20f2d371e3",
           "date": "2026-09-10T00:00:00.000Z",
@@ -654,7 +654,7 @@
         {
           "id": "tap_legal_acts:26-TA-2158",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2158: Par humānās palīdzības sniegšanu Nepālas Federālajai Demokrātiskajai Republikai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/08429ab6-b743-4e16-ae88-d9282e9bab52",
           "date": "2026-09-07T00:00:00.000Z",
@@ -665,10 +665,10 @@
         {
           "id": "tap_legal_acts:26-TA-2156",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2156: Grozījumi Ārstniecības likumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/99945844-8d16-4163-a53f-e719cc45e435",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Atsaukts",
@@ -677,7 +677,7 @@
         {
           "id": "tap_legal_acts:26-TA-2152",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2152: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/696fa1a8-7962-45a1-8ce3-657ab3110b19",
           "date": "2026-09-03T00:00:00.000Z",
@@ -688,10 +688,10 @@
         {
           "id": "tap_legal_acts:26-TA-2151",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2151: Par vispārēju atļauju valsts akciju sabiedrībai “Valsts nekustamie īpašumi\" iegūt līdzdalību vai izšķirošo ietekmi kapitālsabiedrībās",
           "url": "https://tapportals.mk.gov.lv/legal_acts/628e4d7a-15c0-4189-b801-b181ccbcd1a5",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Finanšu ministrija",
           "stage": "Saskaņošana",
@@ -700,7 +700,7 @@
         {
           "id": "tap_legal_acts:26-TA-2150",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2150: Valsts digitālās pārvaldes informācijas un komunikācijas tehnoloģiju resursu attīstības kārtība",
           "url": "https://tapportals.mk.gov.lv/legal_acts/8a4b9a6b-7ef3-4049-9c63-991cc0985ef0",
           "date": "2026-09-07T00:00:00.000Z",
@@ -712,10 +712,10 @@
         {
           "id": "tap_legal_acts:26-TA-2149",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2149: Ministru kabineta paskaidrojums lietā Nr. A420146920 par Sarmītes Veides, Paula Prinča, Ligitas Vulfas, Ingunas Ločmeles un biedrības \"Latvijas Ģimenes ārstu asociācija\" sūdzību par Administratīvās apgabaltiesas 2022. gada 3. februāra sprieduma nepienācīgu un neatbilstošu izpildi",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4938b268-ccb7-4884-90fb-1394bcd55e83",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Izskatīts",
@@ -724,7 +724,7 @@
         {
           "id": "tap_legal_acts:26-TA-2147",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2147: Grozījumi Ministru kabineta 2024. gada 17. decembra noteikumos Nr. 889 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.3.2. specifiskā atbalsta mērķa \"Kultūras un tūrisma lomas palielināšana ekonomiskajā attīstībā, sociālajā iekļaušanā un sociālajās inovācijās\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f76d7554-95e4-4bef-ae63-e608e24db4d6",
           "date": "2026-09-08T00:00:00.000Z",
@@ -736,10 +736,10 @@
         {
           "id": "tap_legal_acts:26-TA-2145",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2145: Par darījuma attīstības progresu un papildus jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/118f24fe-6ffd-4a95-95e0-8063a3c3ae66",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Iesniegts",
@@ -748,7 +748,7 @@
         {
           "id": "tap_legal_acts:26-TA-2142",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2142: Grozījumi Ministru kabineta 2022. gada 19. aprīļa noteikumos Nr. 254 \" Noteikumi par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna investīciju 4.1.1.2.i. \"Atbalsts slimnīcu infrastruktūrai vai aprīkojumam\" \"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/ea68435b-e2e6-478c-a81f-a04e33a7f22d",
           "date": "2026-09-10T00:00:00.000Z",
@@ -759,7 +759,7 @@
         {
           "id": "tap_legal_acts:26-TA-2141",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2141: Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/77492050-fd26-4ddc-b42a-7b08fc539817",
           "date": "2026-09-10T00:00:00.000Z",
@@ -770,7 +770,7 @@
         {
           "id": "tap_legal_acts:26-TA-2140",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2140: Grozījums Ministru kabineta 2021. gada 14. oktobra rīkojumā Nr. 721 \"Par Ģeotelpiskās informācijas koordinācijas padomi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/29dbdf5f-5780-4520-b32d-ebc63cea3c65",
           "date": "2026-09-09T00:00:00.000Z",
@@ -782,10 +782,10 @@
         {
           "id": "tap_legal_acts:26-TA-2139",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2139: Par ziedojuma Ukrainai īstenošanas gaitu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/1407c323-b61d-4238-8cc3-c1c5134adf96",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Klimata un enerģētikas ministrija",
           "stage": "Iesniegts",
@@ -794,10 +794,10 @@
         {
           "id": "tap_legal_acts:26-TA-2137",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2137: Par uzņemšanu Latvijas pilsonībā naturalizācijas kārtībā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f6d3cb95-b1c3-4ea5-9897-1ac80e6b045a",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Iekšlietu ministrija",
           "stage": "Iesniegts",
@@ -806,7 +806,7 @@
         {
           "id": "tap_legal_acts:26-TA-2135",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2135: Par nekustamo īpašumu daļu pirkšanu valsts galvenā autoceļa A7 “Rīga–Bauska-Lietuvas robeža (Grenctāle)” posma Ķekavas apvedceļš–Bauska, ieskaitot Iecavas un Bauskas apvedceļu, būvniecības projekta īstenošanai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/dd1c78c2-c643-407a-b1bf-dd90ec01179c",
           "date": "2026-09-07T00:00:00.000Z",
@@ -818,7 +818,7 @@
         {
           "id": "tap_legal_acts:26-TA-2132",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2132: “Par klīnisko universitāšu slimnīcu padomju apvienošanas procesa virzību”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c51c422a-2ef1-492a-a39d-28fa667af1ae",
           "date": "2026-09-04T00:00:00.000Z",
@@ -830,7 +830,7 @@
         {
           "id": "tap_legal_acts:26-TA-2130",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2130: Informatīvais ziņojums “Par trešo valstu pilsoņu uzturēšanās Latvijā kontroles un tiesiskā regulējuma pilnveidošanas plānā paredzēto pasākumu izpildi”",
           "url": "https://tapportals.mk.gov.lv/legal_acts/57693fdd-83a1-4b67-9516-6b00e48b87c3",
           "date": "2026-08-31T00:00:00.000Z",
@@ -842,10 +842,10 @@
         {
           "id": "tap_legal_acts:26-TA-2124",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2124: Par starpinstitūciju grupas darbu, lai novērstu iespējamus drošības apdraudējumus demokrātiskai un godīgai 2026. gada 3. oktobrī paredzēto Latvijas Republikas Saeimas vēlēšanu norisei",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0902765d-e025-46cf-95ed-d36c7da0d846",
-          "date": "2026-09-15T19:22:57.671Z",
+          "date": "2026-09-15T19:39:18.216Z",
           "dateIsApproximate": true,
           "institution": "Valsts kanceleja",
           "stage": "Izskatīts",
@@ -854,7 +854,7 @@
         {
           "id": "tap_legal_acts:26-TA-2123",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2123: Par nekustamā īpašuma \"Mūri 1\" Salacgrīvas pagastā, Limbažu novadā, daļas pirkšanu projekta \"Eiropas standarta platuma 1435 mm dzelzceļa līnijas izbūve \"Rail Baltica\" koridorā caur Igauniju, Latviju un Lietuvu\" īstenošanai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d791d2e8-f369-48ce-bbff-6a8841b9fb25",
           "date": "2026-09-02T00:00:00.000Z",
@@ -866,7 +866,7 @@
         {
           "id": "tap_legal_acts:26-TA-2122",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2122: Grozījumi Ministru kabineta 2023. gada 7. novembra noteikumos Nr. 635 \"Elektroenerģijas tirdzniecības un lietošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/cddd8a0d-e283-4d4c-b212-743d70d8d6fb",
           "date": "2026-09-01T00:00:00.000Z",
@@ -877,7 +877,7 @@
         {
           "id": "tap_legal_acts:26-TA-2121",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2121: Par konceptuālā ziņojuma \"Par māksliniecisko kolektīvu vadītāju darba samaksas finansēšanas kārtības maiņu\" pirmā risinājuma varianta izvērtēšanu un reformas turpināšanu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/73672701-4910-4702-9603-4f763f59dcfd",
           "date": "2026-08-31T00:00:00.000Z",
@@ -889,7 +889,7 @@
         {
           "id": "tap_legal_acts:26-TA-2119",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2119: Par Sabiedrības integrācijas fonda darbības uzlabojumu priekšlikumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f67df791-bcd4-4768-90a1-44b770a3bf98",
           "date": "2026-08-31T00:00:00.000Z",
@@ -901,7 +901,7 @@
         {
           "id": "tap_legal_acts:26-TA-2117",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2117: Par termiņa pagarināšanu Latvijas Nacionālo bruņoto spēku karavīru dalībai Ziemeļatlantijas līguma organizācijas misijā Irākā (NATO Mission Iraq)",
           "url": "https://tapportals.mk.gov.lv/legal_acts/619e2db3-9773-4952-8f32-159eba323d47",
           "date": "2026-09-02T00:00:00.000Z",
@@ -913,7 +913,7 @@
         {
           "id": "tap_legal_acts:26-TA-2115",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2115: Grozījumi Ministru kabineta 2024. gada 16. janvāra noteikumos Nr. 55 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa \"Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās\" 5.1.1.1. pasākuma \"Infrastruktūra uzņēmējdarbības atbalstam\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/bb99bade-e198-4090-87a3-06d1e4eb0dc2",
           "date": "2026-09-01T00:00:00.000Z",
@@ -925,7 +925,7 @@
         {
           "id": "tap_legal_acts:26-TA-2113",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2113: Par Naftas produktu cenu pieauguma ierobežošanas likuma darbības rezultātiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/685189af-f388-4d28-9a3d-da00f487d79b",
           "date": "2026-09-03T00:00:00.000Z",
@@ -936,7 +936,7 @@
         {
           "id": "tap_legal_acts:26-TA-2112",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2112: Iebildums par Ministru kabineta 2026.gada 18.augusta sēdes protokola Nr.46 45.§ \"Informatīvais ziņojums \"Par Nacionālo dabas atjaunošanas plānu\"\" 2.punktu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/36019826-e4e8-426f-9f1c-b04e16bcf86f",
           "date": "2026-08-28T00:00:00.000Z",
@@ -947,7 +947,7 @@
         {
           "id": "tap_legal_acts:26-TA-2109",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2109: Grozījumi Ministru kabineta 2024. gada 24. jūlija rīkojumā Nr. 627 \"Par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna 2. komponentes \"Digitālā transformācija\" 2.1. reformu un investīciju virziena \"Valsts pārvaldes, tai skaitā pašvaldību, digitālā transformācija\" 2.1.2.1.i. investīcijas \"Centralizētās platformas un sistēmas\" nolūka \"Pašvaldību pakalpojumu digitālā transformācija un pašvaldību atbalsta procesu modernizācija un centralizācija\" programmas \"Pašvaldību koplietošanas platformas\" projekta \"Pašvaldību vēlēšanu un referendumu IS funkcionalitātes pilnveide\" pases, centralizētās funkcijas vai koplietošanas pakalpojumu attīstības plāna apstiprināšanu\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/f3803b76-95da-4921-9faa-6a0e5c69ecc3",
           "date": "2026-09-11T00:00:00.000Z",
@@ -959,10 +959,10 @@
         {
           "id": "tap_legal_acts:26-TA-2107",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2107: Informatīvais ziņojums par neformālajā Eiropas Savienības Lauksaimniecības ministru 2026. gada 8. septembra sanāksmē izskatāmajiem jautājumiem",
           "url": "https://tapportals.mk.gov.lv/legal_acts/60549741-72ab-45b5-8de9-8bcf7900c54a",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Zemkopības ministrija",
           "stage": "Pieņemts",
@@ -971,7 +971,7 @@
         {
           "id": "tap_legal_acts:26-TA-2105",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2105: Par Ludzas novada pašvaldības nekustamā īpašuma \"Lauderi–Streļcova\" pārņemšanu valsts īpašumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/0d21de81-b860-49aa-9347-c4974f8277b8",
           "date": "2026-09-07T00:00:00.000Z",
@@ -983,10 +983,10 @@
         {
           "id": "tap_legal_acts:26-TA-2104",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2104: Grozījumi Ministru kabineta 2020. gada 30. jūnija noteikumos Nr. 422 \"Kārtība, kādā paziņo lēmumu par soda piemērošanu par apstāšanās vai stāvēšanas noteikumu pārkāpumiem, ja transportlīdzekļa vadītājs neatrodas pārkāpuma izdarīšanas vietā\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/d6e5c5fd-84e6-4a88-bc79-df8fd1fc6ad0",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Satiksmes ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -995,7 +995,7 @@
         {
           "id": "tap_legal_acts:26-TA-2102",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2102: Grozījumi Ministru kabineta 2026. gada 5. maija noteikumos Nr. 246 \"Traktortehnikas un tās velkamo transportlīdzekļu atbilstības novērtēšanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4ccb4b6e-7acb-42c3-9bef-2124e0bcc07a",
           "date": "2026-09-14T00:00:00.000Z",
@@ -1006,10 +1006,10 @@
         {
           "id": "tap_legal_acts:26-TA-2098",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2098: Apelācijas sūdzība par spriedumu Administratīvās rajona tiesas lietā Nr. A420231224",
           "url": "https://tapportals.mk.gov.lv/legal_acts/e21a57d7-9175-4f85-abdf-38bf302312c6",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Izglītības un zinātnes ministrija",
           "stage": "Izskatīts",
@@ -1018,10 +1018,10 @@
         {
           "id": "tap_legal_acts:26-TA-2097",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2097: Ministru kabineta atbildes raksts Satversmes tiesai lietā Nr. 2026-11-0103 \"Par Farmācijas likuma 5. panta 20. punkta, ciktāl tas pilnvaro Ministru kabinetu noteikt ambulatorajai ārstēšanai paredzēto zāļu iegādes izdevumu kompensācijas kārtību, un Ministru kabineta 2018. gada 28. augusta noteikumu Nr. 555 \"Veselības aprūpes pakalpojumu organizēšanas un samaksas kārtība\" 8. pielikuma 2.1. apakšpunkta un 3. punkta atbilstību Latvijas Republikas Satversmes 1., 64. un 111. pantam\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/8834d5db-f6fd-422d-a9d7-1e6a0e6265f2",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Veselības ministrija",
           "stage": "Pieņemts",
@@ -1030,10 +1030,10 @@
         {
           "id": "tap_legal_acts:26-TA-2095",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2095: Kritisko izejvielu likums",
           "url": "https://tapportals.mk.gov.lv/legal_acts/74eebeb6-5223-4d01-ad2a-3f3503025c8b",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Sabiedrības līdzdalība",
@@ -1042,7 +1042,7 @@
         {
           "id": "tap_legal_acts:26-TA-2093",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2093: Par Cēsu novada pašvaldībai piederošā nekustamā īpašuma “Brīvības iela” Līgatnē, Cēsu novadā, pārņemšanu valsts īpašumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/be6b82c3-7e10-4ef5-9dcc-6f01b99d357d",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1054,10 +1054,10 @@
         {
           "id": "tap_legal_acts:26-TA-2092",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2092: Informatīvais ziņojums (starpziņojums) \"Par Naftas produktu cenu pieauguma ierobežošanas likuma darbības rezultātiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/c84325ee-e60f-4e6d-a24b-750cffc07656",
-          "date": "2026-09-15T19:22:57.935Z",
+          "date": "2026-09-15T19:39:18.533Z",
           "dateIsApproximate": true,
           "institution": "Ekonomikas ministrija",
           "stage": "Atsaukts",
@@ -1066,7 +1066,7 @@
         {
           "id": "tap_legal_acts:26-TA-2090",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2090: Par valsts nekustamā īpašuma “Mazie Kelņi”, Pededzes pagastā, Alūksnes novadā, pārdošanu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/73e7877b-aaad-4084-8626-c34171fb85d0",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1078,7 +1078,7 @@
         {
           "id": "tap_legal_acts:26-TA-2089",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2089: Par Latvijas Republikas valdības un Armēnijas Republikas valdības protokolu par Nolīguma starp Eiropas Savienību un Armēnijas Republiku par tādu personu atpakaļuzņemšanu, kuras uzturas neatļauti, īstenošanu",
           "url": "https://tapportals.mk.gov.lv/legal_acts/3722a55a-c523-43f1-be86-aca8d70e3d62",
           "date": "2026-08-31T00:00:00.000Z",
@@ -1089,7 +1089,7 @@
         {
           "id": "tap_legal_acts:26-TA-2087",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2087: Grozījumi Rūpnieciskā īpašuma institūciju un procedūru likumā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/89c2784d-6581-4ef9-b422-ab302a0482ac",
           "date": "2026-09-02T00:00:00.000Z",
@@ -1101,7 +1101,7 @@
         {
           "id": "tap_legal_acts:26-TA-2086",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2086: Par finanšu līdzekļu piešķiršanu no valsts budžeta programmas \"Līdzekļi neparedzētiem gadījumiem\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/b6e5b958-8d9c-4aba-a5ec-cde3234a7230",
           "date": "2026-08-26T00:00:00.000Z",
@@ -1113,7 +1113,7 @@
         {
           "id": "tap_legal_acts:26-TA-2084",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2084: Par Ministru kabineta 2024. gada 4. jūnija sēdes protokollēmuma (prot. Nr. 23, 66. §) 5. punktā dotā uzdevuma izpildi",
           "url": "https://tapportals.mk.gov.lv/legal_acts/31fab210-864c-441f-82c4-d0329d46fca8",
           "date": "2026-09-03T00:00:00.000Z",
@@ -1125,7 +1125,7 @@
         {
           "id": "tap_legal_acts:26-TA-2081",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2081: Grozījumi Ministru kabineta 2023. gada 12. decembra noteikumos Nr. 751 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.3.5. specifiskā atbalsta mērķa \"Uzlabot vienlīdzīgu un savlaicīgu piekļuvi kvalitatīviem, ilgtspējīgiem un izmaksu ziņā pieejamiem pakalpojumiem; pilnveidot sociālās aizsardzības sistēmas, tostarp veicināt sociālās aizsardzības pieejamību; uzlabot ilgtermiņa aprūpes pakalpojumu pieejamību, efektivitāti un izturētspēju\" 4.3.5.4. pasākuma \"Profesionāla un mūsdienīga sociālā darba attīstība\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/legal_acts/4a18bd05-aea0-491b-85d8-5ee7b37407d9",
           "date": "2026-08-25T00:00:00.000Z",
@@ -1137,7 +1137,7 @@
         {
           "id": "tap_legal_acts:26-TA-2080",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2080: Par valsts budžeta līdzfinansējuma nodrošināšanu Eiropas Komisijas programmas “ES-veselībai” projektu īstenošanai 2026. - 2030. gadā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/3297d09f-4778-477b-a45d-b346edbae323",
           "date": "2026-09-09T00:00:00.000Z",
@@ -1149,7 +1149,7 @@
         {
           "id": "tap_legal_acts:26-TA-2079",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2079: Par Ministru kabineta atbildes vēstules projektu Saeimas Budžeta un finanšu (nodokļu) komisijas Ēnu ekonomikas apkarošanas apakškomisijai",
           "url": "https://tapportals.mk.gov.lv/legal_acts/026e0cef-0f68-41f6-be8a-027a9ec7e72c",
           "date": "2026-09-03T00:00:00.000Z",
@@ -1161,7 +1161,7 @@
         {
           "id": "tap_legal_acts:26-TA-2078",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2078: Par atļauju Ilzei Skrodelei savienot amatus",
           "url": "https://tapportals.mk.gov.lv/legal_acts/2efdd6ff-a52e-4a58-a249-a25937b137ad",
           "date": "2026-09-04T00:00:00.000Z",
@@ -1172,7 +1172,7 @@
         {
           "id": "tap_legal_acts:26-TA-2077",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2077: Par Ilzes Skrodeles iecelšanu Liepājas speciālās ekonomiskās zonas valdes locekļa amatā",
           "url": "https://tapportals.mk.gov.lv/legal_acts/e1c64955-85fd-4910-9e5a-622751b99a4a",
           "date": "2026-09-07T00:00:00.000Z",
@@ -1183,7 +1183,7 @@
         {
           "id": "tap_legal_acts:26-TA-2076",
           "source": "tap_legal_acts",
-          "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+          "sourceLabel": "TAP portāls: Tiesību aktu projekti",
           "title": "26-TA-2076: Latvijas elektroenerģijas pārvades sistēmas attīstības tendences",
           "url": "https://tapportals.mk.gov.lv/legal_acts/b2cf0b0a-5967-4948-bab8-9dc162effcef",
           "date": "2026-09-04T00:00:00.000Z",
@@ -1195,15 +1195,15 @@
     },
     {
       "source": "tap_consultations",
-      "label": "TAP portāls — Sabiedrības līdzdalība",
+      "label": "TAP portāls: Sabiedrības līdzdalība",
       "status": "ok",
       "count": 25,
-      "durationMs": 619,
+      "durationMs": 673,
       "items": [
         {
           "id": "tap_consultations:26-TA-2228",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2228: Likumprojekts \"Grozījumi likumā \"Par audzinoša rakstura piespiedu līdzekļu piemērošanu bērniem\"\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/068eb73d-d89d-42ff-93c9-13421c4f9b09",
           "date": "2026-09-11T00:00:00.000Z",
@@ -1215,7 +1215,7 @@
         {
           "id": "tap_consultations:26-TA-2227",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2227: Likumprojekts \"Grozījumi Kriminālprocesa likumā\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/42d96ede-af00-4136-b5fe-9a067f5e9737",
           "date": "2026-09-11T00:00:00.000Z",
@@ -1227,7 +1227,7 @@
         {
           "id": "tap_consultations:26-TA-2217",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2217: Likumprojekts \"Grozījumi Krimināllikumā\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/e312eed2-109a-427a-9670-dcf653859495",
           "date": "2026-09-11T00:00:00.000Z",
@@ -1239,7 +1239,7 @@
         {
           "id": "tap_consultations:26-TA-2104",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2104: Grozījumi Ministru kabineta 2020. gada 30. jūnija noteikumos Nr. 422 \"Kārtība, kādā paziņo lēmumu par soda piemērošanu par apstāšanās vai stāvēšanas noteikumu pārkāpumiem, ja transportlīdzekļa vadītājs neatrodas pārkāpuma izdarīšanas vietā\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/fb8e6ca9-2ffd-4f9e-ac2f-9b4558f7b0d6",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1251,7 +1251,7 @@
         {
           "id": "tap_consultations:26-TA-2095",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2095: Kritisko izejvielu likums",
           "url": "https://tapportals.mk.gov.lv/public_participation/900fe3a3-6776-435f-8b1c-a5f859dfb4c8",
           "date": "2026-09-14T00:00:00.000Z",
@@ -1263,7 +1263,7 @@
         {
           "id": "tap_consultations:26-TA-2087",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2087: Grozījumi Rūpnieciskā īpašuma institūciju un procedūru likumā",
           "url": "https://tapportals.mk.gov.lv/public_participation/bd4fa25b-84c5-4463-b3d2-d95789a8bc0f",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1275,7 +1275,7 @@
         {
           "id": "tap_consultations:26-TA-2066",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2066: Cilvēkiem paredzēto zāļu klīnisko pētījumu noteikumi",
           "url": "https://tapportals.mk.gov.lv/public_participation/11b735fe-f972-4f48-aa28-1934ac2c4f5c",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1287,7 +1287,7 @@
         {
           "id": "tap_consultations:26-TA-2037",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2037: Par Zāļu valsts aģentūras 2027. gada budžeta apstiprināšanu",
           "url": "https://tapportals.mk.gov.lv/public_participation/0434271b-9d74-42d0-a1a8-9d0ce3c756da",
           "date": "2026-08-21T00:00:00.000Z",
@@ -1299,7 +1299,7 @@
         {
           "id": "tap_consultations:26-TA-2033",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2033: Kārtība, kādā valsts dibinātas augstskolas un koledžas finansē no valsts budžeta līdzekļiem",
           "url": "https://tapportals.mk.gov.lv/public_participation/8921c9e8-7e65-4a92-a261-db58c6d6df59",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1311,7 +1311,7 @@
         {
           "id": "tap_consultations:26-TA-2028",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2028: Grozījums likumā \"Par interešu konflikta novēršanu valsts amatpersonu darbībā\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/0a2cd2bf-b9fb-48ef-8df8-4a9fec22afd5",
           "date": "2026-09-08T00:00:00.000Z",
@@ -1323,7 +1323,7 @@
         {
           "id": "tap_consultations:26-TA-2002",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2002: Grozījums Ministru kabineta 2014. gada 23. decembra noteikumos Nr. 796 \"Noteikumi par rūpnieciskās zvejas limitiem un to izmantošanas kārtību iekšējos ūdeņos\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/96b17cb1-d586-4981-885c-b66eb9b7a09d",
           "date": "2026-09-01T00:00:00.000Z",
@@ -1335,7 +1335,7 @@
         {
           "id": "tap_consultations:26-TA-2001",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-2001: Nacionālie antidopinga noteikumi",
           "url": "https://tapportals.mk.gov.lv/public_participation/f6a3b624-7be3-4fbd-8b14-8f4f049b005e",
           "date": "2026-08-27T00:00:00.000Z",
@@ -1347,7 +1347,7 @@
         {
           "id": "tap_consultations:26-TA-1986",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1986: Kritēriji un kārtība izglītības apguvei ģimenē, tālmācībā un nepilna laika klātienē",
           "url": "https://tapportals.mk.gov.lv/public_participation/822ded44-6149-4457-81cc-2c8657b5f110",
           "date": "2026-09-10T00:00:00.000Z",
@@ -1359,7 +1359,7 @@
         {
           "id": "tap_consultations:26-TA-1985",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1985: Grozījumi Bērnu tiesību aizsardzības likumā",
           "url": "https://tapportals.mk.gov.lv/public_participation/fd847840-519a-427e-aa83-a72a52aa5d0f",
           "date": "2026-08-25T00:00:00.000Z",
@@ -1371,7 +1371,7 @@
         {
           "id": "tap_consultations:26-TA-1980",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1980: Grozījumi Ministru kabineta 2010. gada 10. augusta noteikumos Nr. 764 \"Noteikumi par sertificēšanas institūcijām, kuras izsniedz sertifikātu ģeodēzisko darbu veicējam, zemes kadastrālajam uzmērītājam un zemes ierīcības darbu veicējam\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/a9d9303b-8a87-4171-8aea-5edd695c02dd",
           "date": "2026-08-14T00:00:00.000Z",
@@ -1383,7 +1383,7 @@
         {
           "id": "tap_consultations:26-TA-1974",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1974: Grozījumi Ministru kabineta 2018. gada 20. februāra noteikumos Nr. 95 \"Noteikumi par valsts palīdzību dzīvojamās telpas iegādei vai būvniecībai\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/1e29542c-0890-4892-a880-174d70c5eb07",
           "date": "2026-09-08T00:00:00.000Z",
@@ -1395,7 +1395,7 @@
         {
           "id": "tap_consultations:26-TA-1919",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1919: Grozījums Ministru kabineta 2024. gada 27. augusta noteikumos Nr. 577 \"Vēja elektrostaciju maksājumu kārtība vietējās kopienas attīstībai\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/0b0eab98-4a5d-4d60-bbe5-cb53ae3df9c3",
           "date": "2026-08-10T00:00:00.000Z",
@@ -1407,7 +1407,7 @@
         {
           "id": "tap_consultations:26-TA-1911",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1911: Grozījumi Ministru kabineta 2022. gada 13. septembra noteikumos Nr. 572 \"Valsts un Eiropas Savienības atbalsta piešķiršanas kārtība pasākumā \"Investīcijas zvejas un akvakultūras produktu apstrādē\"\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/4f4003da-207f-4099-8030-3cf0c26a4437",
           "date": "2026-08-11T00:00:00.000Z",
@@ -1419,7 +1419,7 @@
         {
           "id": "tap_consultations:26-TA-1901",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1901: Grozījumi Ministru kabineta 2018. gada 26. jūnija noteikumos Nr. 354 \"Audžuģimenes noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/a886c048-189e-42d2-9995-c1390e9106bc",
           "date": "2026-08-20T00:00:00.000Z",
@@ -1431,7 +1431,7 @@
         {
           "id": "tap_consultations:26-TA-1895",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1895: Noteikumi par ievešanai (importēšanai) Latvijā aizliegtām rūpniecības precēm",
           "url": "https://tapportals.mk.gov.lv/public_participation/d0d80171-1f68-46ad-9d92-b71604f6dfc2",
           "date": "2026-08-06T00:00:00.000Z",
@@ -1443,7 +1443,7 @@
         {
           "id": "tap_consultations:26-TA-1893",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1893: Grozījumi likumā \"Par valsts sociālo apdrošināšanu\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/05b9bd02-19f0-4cac-bc0c-18b101c9a1b4",
           "date": "2026-08-05T00:00:00.000Z",
@@ -1455,7 +1455,7 @@
         {
           "id": "tap_consultations:26-TA-1884",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1884: Grozījumi Ministru kabineta 2015. gada 15. decembra noteikumos Nr. 720 \"Patentu valdes nolikums\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/740b73e2-6874-419e-9f56-c67d2aa7f1d2",
           "date": "2026-08-03T00:00:00.000Z",
@@ -1467,7 +1467,7 @@
         {
           "id": "tap_consultations:26-TA-1883",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1883: Grozījumi Ministru kabineta 2024. gada 5. novembra noteikumos Nr. 702 \"Vienotā valsts interneta plūsmu apmaiņas punkta darbības noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/c6a0bb40-57a2-411b-a820-07c692e7d0c1",
           "date": "2026-09-03T00:00:00.000Z",
@@ -1479,7 +1479,7 @@
         {
           "id": "tap_consultations:26-TA-1864",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1864: Grozījums Ministru kabineta 2022. gada 20. septembra noteikumos Nr. 594 \"Eiropas Savienības Atveseļošanas un noturības mehānisma plāna 1.2. reformu un investīciju virziena \"Energoefektivitātes uzlabošana\" 1.2.1.2.i. investīcijas \"Energoefektivitātes paaugstināšana uzņēmējdarbībā (ietverot pāreju uz atjaunojamo energoresursu tehnoloģiju izmantošanu siltumapgādē un pētniecības un attīstības aktivitātes (t. sk. bioekonomikā))\" 1.2.1.2.i.1. pasākuma \"Energoefektivitātes paaugstināšana uzņēmējdarbībā (ietverot pāreju uz atjaunojamo energoresursu tehnoloģiju izmantošanu siltumapgādē)\" īstenošanas noteikumi\"",
           "url": "https://tapportals.mk.gov.lv/public_participation/5341f46a-41e8-4aa0-960e-615a2dc98e61",
           "date": "2026-08-18T00:00:00.000Z",
@@ -1491,7 +1491,7 @@
         {
           "id": "tap_consultations:26-TA-1836",
           "source": "tap_consultations",
-          "sourceLabel": "TAP portāls — Sabiedrības līdzdalība",
+          "sourceLabel": "TAP portāls: Sabiedrības līdzdalība",
           "title": "26-TA-1836: Grozījumi Kriminālprocesa likumā",
           "url": "https://tapportals.mk.gov.lv/public_participation/c880ba3d-6789-494e-98c8-6ad8f93ec4cd",
           "date": "2026-07-27T00:00:00.000Z",
@@ -1507,7 +1507,7 @@
       "label": "Valsts sekretāru sanāksme",
       "status": "ok",
       "count": 6,
-      "durationMs": 3144,
+      "durationMs": 3573,
       "items": [
         {
           "id": "tap_vss:26-TA-1997:/meetings/state_secretaries/0af02db6-1ed3-4cac-af5c-20608e3fc500",
@@ -1576,7 +1576,7 @@
       "label": "Ministru kabineta sēdes",
       "status": "ok",
       "count": 101,
-      "durationMs": 6087,
+      "durationMs": 5998,
       "items": [
         {
           "id": "tap_mk:26-TA-1173:/meetings/cabinet_ministers/470933a7-f0c2-4835-a4cc-dd1c9c25fddb",
@@ -2591,15 +2591,15 @@
     },
     {
       "source": "saeima_committees",
-      "label": "Saeima — komisiju sēdes",
+      "label": "Saeima: komisiju sēdes",
       "status": "ok",
       "count": 44,
-      "durationMs": 6945,
+      "durationMs": 7464,
       "items": [
         {
           "id": "saeima_committees:1DECF7AFBB1D7211C2258E6E00469D5C",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Juridiskās komisijas Krimināltiesību un sodu politikas apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1DECF7AFBB1D7211C2258E6E00469D5C?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2608,7 +2608,7 @@
         {
           "id": "saeima_committees:D7FBBD2CECCD6469C2258E6D0038F6C3",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas Vides, klimata un enerģētikas apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/D7FBBD2CECCD6469C2258E6D0038F6C3?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2617,7 +2617,7 @@
         {
           "id": "saeima_committees:FFB4E3F34A136806C2258E6E003C011E",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Ārlietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/FFB4E3F34A136806C2258E6E003C011E?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2626,7 +2626,7 @@
         {
           "id": "saeima_committees:E13809A828576BE2C2258E6E003AE597:1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Par Latvijas Bankas prezidenta vietnieku.",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2636,7 +2636,7 @@
         {
           "id": "saeima_committees:E13809A828576BE2C2258E6E003AE597:2",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2646,7 +2646,7 @@
         {
           "id": "saeima_committees:8E8CFD584B19456EC2258E6E0046B469",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Juridiskās komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/8E8CFD584B19456EC2258E6E0046B469?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2655,7 +2655,7 @@
         {
           "id": "saeima_committees:132CCFDAD620C00DC2258E6E004E371D",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Cilvēktiesību un sabiedrisko lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/132CCFDAD620C00DC2258E6E004E371D?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2664,7 +2664,7 @@
         {
           "id": "saeima_committees:AEAA1AD2BA8C58D1C2258E6C003FA100",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Izglītības, kultūras un zinātnes komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/AEAA1AD2BA8C58D1C2258E6C003FA100?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2673,7 +2673,7 @@
         {
           "id": "saeima_committees:B0C7C72A4C05BFFDC2258E6C003C3240",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Aizsardzības, iekšlietu un korupcijas novēršanas komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/B0C7C72A4C05BFFDC2258E6C003C3240?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2682,7 +2682,7 @@
         {
           "id": "saeima_committees:581A5D4ABF806AD2C2258E6E00497B23",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Valsts pārvaldes un pašvaldības komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/581A5D4ABF806AD2C2258E6E00497B23?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2691,7 +2691,7 @@
         {
           "id": "saeima_committees:D303E02F19656FDEC2258E6F002B0DA4",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/D303E02F19656FDEC2258E6F002B0DA4?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2700,7 +2700,7 @@
         {
           "id": "saeima_committees:ECC74CBB49AE1710C2258E6E002A057B",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Sociālo un darba lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/ECC74CBB49AE1710C2258E6E002A057B?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2709,7 +2709,7 @@
         {
           "id": "saeima_committees:7903A63A2E99DEDCC2258E6E0046E8EB",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Juridiskās komisijas un Juridiskās komisijas Satversmes un tiesu politikas apakškomisijas kopsēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/7903A63A2E99DEDCC2258E6E0046E8EB?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2718,7 +2718,7 @@
         {
           "id": "saeima_committees:6D10ACB658366EB7C2258E6700379316",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Aizsardzības, iekšlietu un korupcijas novēršanas komisijas Visaptverošas valsts aizsardzības apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6D10ACB658366EB7C2258E6700379316?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2727,7 +2727,7 @@
         {
           "id": "saeima_committees:7B9C082578D825AAC2258E6B00272AE1:1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/7B9C082578D825AAC2258E6B00272AE1?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2737,7 +2737,7 @@
         {
           "id": "saeima_committees:1F90B29D1C671B83C2258E72004942B3",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Sociālo un darba lietu komisijas Nevienlīdzības mazināšanas apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1F90B29D1C671B83C2258E72004942B3?OpenDocument",
           "date": "2026-09-15T00:00:00.000Z",
@@ -2746,7 +2746,7 @@
         {
           "id": "saeima_committees:3F342B11D6A3414AC2258E67002BABD6",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Eiropas lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/3F342B11D6A3414AC2258E67002BABD6?OpenDocument",
           "date": "2026-09-11T00:00:00.000Z",
@@ -2755,7 +2755,7 @@
         {
           "id": "saeima_committees:F17CBCCFB748FDD1C2258E6D003F8B62",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Sociālo un darba lietu komisijas Sabiedrības veselības apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/F17CBCCFB748FDD1C2258E6D003F8B62?OpenDocument",
           "date": "2026-09-11T00:00:00.000Z",
@@ -2764,7 +2764,7 @@
         {
           "id": "saeima_committees:99A0B29BD25203F6C2258E60002059D1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Cilvēktiesību un sabiedrisko lietu komisijas Latgales apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/99A0B29BD25203F6C2258E60002059D1?OpenDocument",
           "date": "2026-09-11T00:00:00.000Z",
@@ -2773,7 +2773,7 @@
         {
           "id": "saeima_committees:1B79FCB852603E36C2258E6D004B111F:1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Starptautisko un Latvijas Republikas nacionālo sankciju likumā” (Nr.1390/Lp14; 3.lasījums, atsevišķu normu precizēšana ).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1B79FCB852603E36C2258E6D004B111F?OpenDocument",
           "date": "2026-09-10T00:00:00.000Z",
@@ -2783,7 +2783,7 @@
         {
           "id": "saeima_committees:1B79FCB852603E36C2258E6D004B111F:2",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Noziedzīgi iegūtu līdzekļu legalizācijas un terorisma un proliferācijas finansēšanas novēršanas likumā ” (Nr.1386/Lp14; 3.lasījums , a…",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1B79FCB852603E36C2258E6D004B111F?OpenDocument",
           "date": "2026-09-10T00:00:00.000Z",
@@ -2793,7 +2793,7 @@
         {
           "id": "saeima_committees:A3E83A983EEA92CAC2258E5F002D2CC8",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Eiropas lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/A3E83A983EEA92CAC2258E5F002D2CC8?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2802,7 +2802,7 @@
         {
           "id": "saeima_committees:E602BE8BA8E27D94C2258E670048544A",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Valsts pārvaldes un pašvaldības komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E602BE8BA8E27D94C2258E670048544A?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2811,7 +2811,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Reklāmas likumā” (Nr.1389/Lp14; 3.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2821,7 +2821,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:2",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Starptautisko un Latvijas Republikas nacionālo sankciju likumā” (Nr.1390/Lp14; 3.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2831,7 +2831,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:3",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Privāto pensiju fondu likumā” (Nr.1391/Lp14; 3.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2841,7 +2841,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:4",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Civilprocesa likumā” (Nr.1392/Lp14; Dok.nr.4887; 3.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2851,7 +2851,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:5",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Kolektīvās finansēšanas pakalpojumu likumā” (Nr.1393/Lp14; 3.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2861,7 +2861,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:6",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Par apropriācij u pārdalēm un palielināšanu.",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2871,7 +2871,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:7",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Sauszemes transportlīdzekļu īpašnieku civiltiesiskās atbildības obligātās apdrošināšanas likumā ” (Nr.285/Lp14; 2 .lasījums , turpināj…",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2881,7 +2881,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:8",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Uzņēmumu ienākuma nodokļa likumā ” (Nr.1449/Lp14; Dok.nr.5123; 1 .lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2891,7 +2891,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:9",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Finanšu instrumentu tirgus likumā ” (Nr.1370/Lp14; 2. lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2901,7 +2901,7 @@
         {
           "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:10",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Kredītiestāžu likumā ” (Nr.1337/Lp14; 2.lasījums).",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2911,7 +2911,7 @@
         {
           "id": "saeima_committees:157FE7F915AE7059C2258E6700331EDF",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Juridiskās komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/157FE7F915AE7059C2258E6700331EDF?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2920,7 +2920,7 @@
         {
           "id": "saeima_committees:E36DFC02BD2F99A6C2258E6700321F9A",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Aizsardzības, iekšlietu un korupcijas novēršanas komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E36DFC02BD2F99A6C2258E6700321F9A?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2929,7 +2929,7 @@
         {
           "id": "saeima_committees:9CBA09910B3E4F28C2258E67004BF746",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Tautsaimniecības, agrārās, vides un reģionālās politikas komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/9CBA09910B3E4F28C2258E67004BF746?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2938,7 +2938,7 @@
         {
           "id": "saeima_committees:868FEDE2536B7D43C2258E67002E5212",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Sociālo un darba lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/868FEDE2536B7D43C2258E67002E5212?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2947,7 +2947,7 @@
         {
           "id": "saeima_committees:EAC66DC697AF6DC2C2258E660033C085",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Ārlietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/EAC66DC697AF6DC2C2258E660033C085?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2956,7 +2956,7 @@
         {
           "id": "saeima_committees:5A9CEC8B0D845219C2258E67002A9564",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Cilvēktiesību un sabiedrisko lietu komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/5A9CEC8B0D845219C2258E67002A9564?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2965,7 +2965,7 @@
         {
           "id": "saeima_committees:C55BB1DA59D73DE4C2258E6700481E6B",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Publisko izdevumu un revīzijas komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/C55BB1DA59D73DE4C2258E6700481E6B?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2974,7 +2974,7 @@
         {
           "id": "saeima_committees:0694E13BB569A632C2258E66002860EB",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Nacionālās drošības komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/0694E13BB569A632C2258E66002860EB?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2983,7 +2983,7 @@
         {
           "id": "saeima_committees:391478FA4C5D0F3DC2258E670039770C",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Pilsonības, migrācijas un sabiedrības saliedētības komisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/391478FA4C5D0F3DC2258E670039770C?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -2992,7 +2992,7 @@
         {
           "id": "saeima_committees:2C9E520120E30C40C2258E680042F23B:1",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Ilgtspējīgas attīstības komisijas sēde: Latvijas cilvēkkapitāla attīstīb a. Ziņo : Ekonomikas ministrija",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/2C9E520120E30C40C2258E680042F23B?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -3002,7 +3002,7 @@
         {
           "id": "saeima_committees:9DB22461AEA075AEC2258E68002CEB22",
           "source": "saeima_committees",
-          "sourceLabel": "Saeima — komisiju sēdes",
+          "sourceLabel": "Saeima: komisiju sēdes",
           "title": "Ārlietu komisijas Baltijas lietu apakškomisijas sēde",
           "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/9DB22461AEA075AEC2258E68002CEB22?OpenDocument",
           "date": "2026-09-09T00:00:00.000Z",
@@ -3015,7 +3015,7 @@
       "label": "Ekonomikas ministrija",
       "status": "ok",
       "count": 20,
-      "durationMs": 1206,
+      "durationMs": 619,
       "items": [
         {
           "id": "em_news:https://www.em.gov.lv/lv/jaunums/altum-vares-piesaistit-papildu-finansejumu-daudzdzivoklu-maju-remontiem",
@@ -3205,7 +3205,7 @@
       "label": "LIAA",
       "status": "ok",
       "count": 20,
-      "durationMs": 305,
+      "durationMs": 568,
       "items": [
         {
           "id": "liaa_news:https://www.liaa.gov.lv/lv/jaunums/biznesa-ideju-konkursam-ideju-kauss-pieteiktas-gandriz-400-idejas",
@@ -3399,7 +3399,7 @@
       "label": "Altum",
       "status": "ok",
       "count": 10,
-      "durationMs": 373,
+      "durationMs": 577,
       "items": [
         {
           "id": "altum_news:https://www.altum.lv/darbu-uzsacis-jaunais-altum-klientu-portals-jauniem-aizdevumu-pieteikumiem/",
@@ -3499,7 +3499,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:5",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Kolektīvās finansēšanas pakalpojumu likumā” (Nr.1393/Lp14; 3.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3511,7 +3511,7 @@
         "Crowdfunding",
         "Fintech / payments",
         "Ecosystem stakeholder named",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3519,7 +3519,7 @@
     {
       "id": "saeima_committees:E13809A828576BE2C2258E6E003AE597:2",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi likumā “Par iedzīvotāju ienākuma nodokli” (Nr.1522/Lp14; Dok.nr.5272; 1 .lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
       "date": "2026-09-15T00:00:00.000Z",
@@ -3555,7 +3555,7 @@
     {
       "id": "tap_legal_acts:26-TA-2109",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2109: Grozījumi Ministru kabineta 2024. gada 24. jūlija rīkojumā Nr. 627 \"Par Eiropas Savienības Atveseļošanas un noturības mehānisma plāna 2. komponentes \"Digitālā transformācija\" 2.1. reformu un investīciju virziena \"Valsts pārvaldes, tai skaitā pašvaldību, digitālā transformācija\" 2.1.2.1.i. investīcijas \"Centralizētās platformas un sistēmas\" nolūka \"Pašvaldību pakalpojumu digitālā transformācija un pašvaldību atbalsta procesu modernizācija un centralizācija\" programmas \"Pašvaldību koplietošanas platformas\" projekta \"Pašvaldību vēlēšanu un referendumu IS funkcionalitātes pilnveide\" pases, centralizētās funkcijas vai koplietošanas pakalpojumu attīstības plāna apstiprināšanu\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/f3803b76-95da-4921-9faa-6a0e5c69ecc3",
       "date": "2026-09-11T00:00:00.000Z",
@@ -3576,7 +3576,7 @@
     {
       "id": "tap_legal_acts:26-TA-2079",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2079: Par Ministru kabineta atbildes vēstules projektu Saeimas Budžeta un finanšu (nodokļu) komisijas Ēnu ekonomikas apkarošanas apakškomisijai",
       "url": "https://tapportals.mk.gov.lv/legal_acts/026e0cef-0f68-41f6-be8a-027a9ec7e72c",
       "date": "2026-09-03T00:00:00.000Z",
@@ -3596,7 +3596,7 @@
     {
       "id": "tap_legal_acts:26-TA-2150",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2150: Valsts digitālās pārvaldes informācijas un komunikācijas tehnoloģiju resursu attīstības kārtība",
       "url": "https://tapportals.mk.gov.lv/legal_acts/8a4b9a6b-7ef3-4049-9c63-991cc0985ef0",
       "date": "2026-09-07T00:00:00.000Z",
@@ -3616,7 +3616,7 @@
     {
       "id": "tap_legal_acts:26-TA-2115",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2115: Grozījumi Ministru kabineta 2024. gada 16. janvāra noteikumos Nr. 55 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa \"Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās\" 5.1.1.1. pasākuma \"Infrastruktūra uzņēmējdarbības atbalstam\" īstenošanas noteikumi\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/bb99bade-e198-4090-87a3-06d1e4eb0dc2",
       "date": "2026-09-01T00:00:00.000Z",
@@ -3636,7 +3636,7 @@
     {
       "id": "tap_legal_acts:26-TA-2121",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2121: Par konceptuālā ziņojuma \"Par māksliniecisko kolektīvu vadītāju darba samaksas finansēšanas kārtības maiņu\" pirmā risinājuma varianta izvērtēšanu un reformas turpināšanu",
       "url": "https://tapportals.mk.gov.lv/legal_acts/73672701-4910-4702-9603-4f763f59dcfd",
       "date": "2026-08-31T00:00:00.000Z",
@@ -3655,7 +3655,7 @@
     {
       "id": "saeima_committees:7B9C082578D825AAC2258E6B00272AE1:1",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas Eksporta un konkurētspējas apakškomisijas sēde: Reģionālo lidostu mērķi un konkurētspēja - problēmas un risinājumi . _079_Regionalas_lidostas_SM_2026_0666.pdf 2026_09_15_1300_BFNK_EKA.mp3",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/7B9C082578D825AAC2258E6B00272AE1?OpenDocument",
       "date": "2026-09-15T00:00:00.000Z",
@@ -3672,7 +3672,7 @@
     {
       "id": "saeima_committees:1B79FCB852603E36C2258E6D004B111F:1",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Starptautisko un Latvijas Republikas nacionālo sankciju likumā” (Nr.1390/Lp14; 3.lasījums, atsevišķu normu precizēšana ).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1B79FCB852603E36C2258E6D004B111F?OpenDocument",
       "date": "2026-09-10T00:00:00.000Z",
@@ -3681,7 +3681,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3689,7 +3689,7 @@
     {
       "id": "saeima_committees:1B79FCB852603E36C2258E6D004B111F:2",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Noziedzīgi iegūtu līdzekļu legalizācijas un terorisma un proliferācijas finansēšanas novēršanas likumā ” (Nr.1386/Lp14; 3.lasījums , a…",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/1B79FCB852603E36C2258E6D004B111F?OpenDocument",
       "date": "2026-09-10T00:00:00.000Z",
@@ -3698,7 +3698,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3706,7 +3706,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:1",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Reklāmas likumā” (Nr.1389/Lp14; 3.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3715,7 +3715,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3723,7 +3723,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:2",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Starptautisko un Latvijas Republikas nacionālo sankciju likumā” (Nr.1390/Lp14; 3.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3732,7 +3732,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3740,7 +3740,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:3",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Privāto pensiju fondu likumā” (Nr.1391/Lp14; 3.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3749,7 +3749,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3757,7 +3757,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:4",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “Grozījumi Civilprocesa likumā” (Nr.1392/Lp14; Dok.nr.4887; 3.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3766,7 +3766,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3774,7 +3774,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:7",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Sauszemes transportlīdzekļu īpašnieku civiltiesiskās atbildības obligātās apdrošināšanas likumā ” (Nr.285/Lp14; 2 .lasījums , turpināj…",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3783,7 +3783,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3791,7 +3791,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:9",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Finanšu instrumentu tirgus likumā ” (Nr.1370/Lp14; 2. lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3800,7 +3800,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3808,7 +3808,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:10",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Kredītiestāžu likumā ” (Nr.1337/Lp14; 2.lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -3817,7 +3817,7 @@
       "score": 45,
       "matchedRules": [
         "Taxation",
-        "Near-final reading (2nd/3rd) — already occurred"
+        "Near-final reading (2nd/3rd), already occurred"
       ],
       "actionable": false,
       "llmScored": false
@@ -3825,7 +3825,7 @@
     {
       "id": "tap_legal_acts:26-TA-2181",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2181: Grozījumi Ministru kabineta 2023. gada 12. septembra noteikumos Nr. 530 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 5.1.1. specifiskā atbalsta mērķa \"Vietējās teritorijas integrētās sociālās, ekonomiskās un vides attīstības un kultūras mantojuma, tūrisma un drošības veicināšana pilsētu funkcionālajās teritorijās\" 5.1.1.5. pasākuma \"Unikāla Eiropas mēroga kultūras mantojuma atjaunošana, lai veicinātu to piekļūstamību, attīstot kultūras pakalpojumus\" īstenošanas noteikumi\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/fa9f0b3b-78d2-4b1d-8d2c-f5b3a54a05e7",
       "date": "2026-09-08T00:00:00.000Z",
@@ -3844,10 +3844,10 @@
     {
       "id": "tap_legal_acts:26-TA-2151",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2151: Par vispārēju atļauju valsts akciju sabiedrībai “Valsts nekustamie īpašumi\" iegūt līdzdalību vai izšķirošo ietekmi kapitālsabiedrībās",
       "url": "https://tapportals.mk.gov.lv/legal_acts/628e4d7a-15c0-4189-b801-b181ccbcd1a5",
-      "date": "2026-09-15T19:22:57.671Z",
+      "date": "2026-09-15T19:39:18.216Z",
       "dateIsApproximate": true,
       "institution": "Finanšu ministrija",
       "stage": "Saskaņošana",
@@ -3863,7 +3863,7 @@
     {
       "id": "tap_legal_acts:26-TA-2147",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2147: Grozījumi Ministru kabineta 2024. gada 17. decembra noteikumos Nr. 889 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.3.2. specifiskā atbalsta mērķa \"Kultūras un tūrisma lomas palielināšana ekonomiskajā attīstībā, sociālajā iekļaušanā un sociālajās inovācijās\" īstenošanas noteikumi\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/f76d7554-95e4-4bef-ae63-e608e24db4d6",
       "date": "2026-09-08T00:00:00.000Z",
@@ -3882,7 +3882,7 @@
     {
       "id": "tap_legal_acts:26-TA-2087",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2087: Grozījumi Rūpnieciskā īpašuma institūciju un procedūru likumā",
       "url": "https://tapportals.mk.gov.lv/legal_acts/89c2784d-6581-4ef9-b422-ab302a0482ac",
       "date": "2026-09-02T00:00:00.000Z",
@@ -3897,7 +3897,7 @@
       ],
       "actionable": true,
       "alsoSeenIn": [
-        "TAP portāls — Sabiedrības līdzdalība"
+        "TAP portāls: Sabiedrības līdzdalība"
       ],
       "llmScored": false
     },
@@ -3920,10 +3920,10 @@
     {
       "id": "tap_legal_acts:26-TA-2275",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2275: Pavadvēstule par Latvijas Republikas nacionālo pozīciju Nr. 1 \"Par Eiropas Savienības de minimis atbalsta regulējumā noteikto robežlielumu atbilstību pašreizējai ekonomiskajai situācijai\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/02511c77-553c-4615-9b04-18e3017b2d2c",
-      "date": "2026-09-15T19:22:55.551Z",
+      "date": "2026-09-15T19:39:17.572Z",
       "dateIsApproximate": true,
       "institution": "Ekonomikas ministrija",
       "stage": "Iesniegts",
@@ -3957,10 +3957,10 @@
     {
       "id": "tap_legal_acts:26-TA-2204",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2204: Informatīvais ziņojums par Eiropas Savienības kohēzijas politikas ministru neformālo sanāksmi 2026. gada 14. un 15. septembrī Dublinā, Īrijā",
       "url": "https://tapportals.mk.gov.lv/legal_acts/dfdb77aa-742e-48bf-9d45-e3eea7aad6e1",
-      "date": "2026-09-15T19:22:57.338Z",
+      "date": "2026-09-15T19:39:17.874Z",
       "dateIsApproximate": true,
       "institution": "Finanšu ministrija",
       "stage": "Izskatīts",
@@ -3976,10 +3976,10 @@
     {
       "id": "tap_legal_acts:26-TA-2172",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2172: Progresa ziņojums par vēlēšanu platformas pilnveidi Latvijas Republikas Saeimas 2026. gada vēlēšanām",
       "url": "https://tapportals.mk.gov.lv/legal_acts/71c00359-b05a-4cd3-a9b5-139a7dd6260e",
-      "date": "2026-09-15T19:22:57.339Z",
+      "date": "2026-09-15T19:39:17.874Z",
       "dateIsApproximate": true,
       "institution": "Viedās administrācijas un reģionālās attīstības ministrija",
       "stage": "Izskatīts",
@@ -4011,7 +4011,7 @@
     {
       "id": "saeima_committees:E13809A828576BE2C2258E6E003AE597:1",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Par Latvijas Bankas prezidenta vietnieku.",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/E13809A828576BE2C2258E6E003AE597?OpenDocument",
       "date": "2026-09-15T00:00:00.000Z",
@@ -4027,7 +4027,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:6",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Par apropriācij u pārdalēm un palielināšanu.",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -4043,7 +4043,7 @@
     {
       "id": "saeima_committees:6F7C1AA20FEA7CBCC2258E6600492A62:8",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Budžeta un finanšu (nodokļu) komisijas sēde: Likumprojekts “ Grozījumi Uzņēmumu ienākuma nodokļa likumā ” (Nr.1449/Lp14; Dok.nr.5123; 1 .lasījums).",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/6F7C1AA20FEA7CBCC2258E6600492A62?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -4104,7 +4104,7 @@
     {
       "id": "tap_legal_acts:26-TA-2216",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2216: Par administratīvā sloga mazināšanas stratēģisko mērķi un pasākumiem",
       "url": "https://tapportals.mk.gov.lv/legal_acts/c28d0f1b-c058-4965-b260-c734d364e2bc",
       "date": "2026-09-09T00:00:00.000Z",
@@ -4185,7 +4185,7 @@
     {
       "id": "tap_legal_acts:26-TA-2141",
       "source": "tap_legal_acts",
-      "sourceLabel": "TAP portāls — Tiesību aktu projekti",
+      "sourceLabel": "TAP portāls: Tiesību aktu projekti",
       "title": "26-TA-2141: Grozījumi Ministru kabineta 2023. gada 15. augusta noteikumos Nr. 462 \"Eiropas Savienības kohēzijas politikas programmas 2021.–2027. gadam 4.1.1. specifiskā atbalsta mērķa \"Nodrošināt vienlīdzīgu piekļuvi veselības aprūpei un stiprināt veselības sistēmu, tostarp primārās veselības aprūpes noturību\" 4.1.1.1. pasākuma \"Ārstniecības iestāžu infrastruktūras attīstība\" pirmās un piektās kārtas un 4.1.1.5. pasākuma \"Neatliekamās medicīniskās palīdzības dienesta attīstība\" īstenošanas noteikumi\"",
       "url": "https://tapportals.mk.gov.lv/legal_acts/77492050-fd26-4ddc-b42a-7b08fc539817",
       "date": "2026-09-10T00:00:00.000Z",
@@ -4253,7 +4253,7 @@
     {
       "id": "saeima_committees:C55BB1DA59D73DE4C2258E6700481E6B",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Publisko izdevumu un revīzijas komisijas sēde",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/C55BB1DA59D73DE4C2258E6700481E6B?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",
@@ -4284,7 +4284,7 @@
     {
       "id": "saeima_committees:2C9E520120E30C40C2258E680042F23B:1",
       "source": "saeima_committees",
-      "sourceLabel": "Saeima — komisiju sēdes",
+      "sourceLabel": "Saeima: komisiju sēdes",
       "title": "Ilgtspējīgas attīstības komisijas sēde: Latvijas cilvēkkapitāla attīstīb a. Ziņo : Ekonomikas ministrija",
       "url": "https://titania.saeima.lv/livs/saeimasnotikumi.nsf/0/2C9E520120E30C40C2258E680042F23B?OpenDocument",
       "date": "2026-09-09T00:00:00.000Z",

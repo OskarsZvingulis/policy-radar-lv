@@ -1,5 +1,5 @@
 /**
- * TAP portāls — Sabiedrības līdzdalība (public participation / consultations).
+ * TAP portāls: Sabiedrības līdzdalība (public participation / consultations).
  * This is the most actionable feed of the seven: it carries a hard deadline,
  * which is exactly the "act now, by this date" signal the manual weekly
  * check is too slow to surface reliably.
@@ -29,7 +29,7 @@ export async function collectTapConsultations(): Promise<Item[]> {
     items.push({
       id: `tap_consultations:${identificator}`,
       source: "tap_consultations",
-      sourceLabel: "TAP portāls — Sabiedrības līdzdalība",
+      sourceLabel: "TAP portāls: Sabiedrības līdzdalība",
       title: `${identificator}: ${title}`,
       url: absoluteUrl(row.path),
       date: from ?? new Date().toISOString(),

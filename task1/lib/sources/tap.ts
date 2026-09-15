@@ -1,5 +1,5 @@
 /**
- * TAP portāls — Tiesību aktu projekti (draft legislation).
+ * TAP portāls: Tiesību aktu projekti (draft legislation).
  * The mandatory source. See lib/sources/tap-html.ts for why we scrape the
  * HTML listing rather than the JSON:API for ordering.
  */
@@ -38,7 +38,7 @@ export async function collectTapLegalActs(): Promise<Item[]> {
       items.push({
         id: `tap_legal_acts:${identificator}`,
         source: "tap_legal_acts",
-        sourceLabel: "TAP portāls — Tiesību aktu projekti",
+        sourceLabel: "TAP portāls: Tiesību aktu projekti",
         title: `${identificator}: ${title}`,
         url: absoluteUrl(row.path),
         // The listing does carry real dates for rows that have reached

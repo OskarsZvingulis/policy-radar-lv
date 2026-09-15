@@ -21,7 +21,7 @@ const rule = (id: string) => {
 const baseItem = (title: string, text = ""): Item => ({
   id: `saeima_committees:test:${title.slice(0, 12)}`,
   source: "saeima_committees",
-  sourceLabel: "Saeima — komisiju sēdes",
+  sourceLabel: "Saeima: komisiju sēdes",
   title,
   url: "https://example.lv",
   date: new Date().toISOString(),

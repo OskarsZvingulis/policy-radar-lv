@@ -6,7 +6,7 @@ function scoredItem(overrides: Partial<ScoredItem>): ScoredItem {
   return {
     id: "fixture:1",
     source: "tap_legal_acts",
-    sourceLabel: "TAP portāls — Tiesību aktu projekti",
+    sourceLabel: "TAP portāls: Tiesību aktu projekti",
     title: "Grozījumi Komerclikumā",
     url: "https://tapportals.mk.gov.lv/legal_acts/fixture",
     date: "2026-09-10T00:00:00Z",
@@ -21,7 +21,7 @@ function scoredItem(overrides: Partial<ScoredItem>): ScoredItem {
 function sourceResult(overrides: Partial<SourceResult>): SourceResult {
   return {
     source: "tap_legal_acts",
-    label: "TAP portāls — Tiesību aktu projekti",
+    label: "TAP portāls: Tiesību aktu projekti",
     status: "ok",
     count: 1,
     durationMs: 500,

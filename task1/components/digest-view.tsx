@@ -14,11 +14,11 @@ import type { DigestResult, ScoredItem, SourceId } from "@/lib/types";
 // Must mirror the SOURCES list in lib/digest/run.ts — used only to render
 // pending placeholders before the first live event for that source arrives.
 const SOURCE_PLACEHOLDERS: { source: SourceId; label: string }[] = [
-  { source: "tap_legal_acts", label: "TAP portāls — Tiesību aktu projekti" },
-  { source: "tap_consultations", label: "TAP portāls — Sabiedrības līdzdalība" },
+  { source: "tap_legal_acts", label: "TAP portāls: Tiesību aktu projekti" },
+  { source: "tap_consultations", label: "TAP portāls: Sabiedrības līdzdalība" },
   { source: "tap_vss", label: "Valsts sekretāru sanāksme" },
   { source: "tap_mk", label: "Ministru kabineta sēdes" },
-  { source: "saeima_committees", label: "Saeima — komisiju sēdes" },
+  { source: "saeima_committees", label: "Saeima: komisiju sēdes" },
   { source: "em_news", label: "Ekonomikas ministrija" },
   { source: "liaa_news", label: "LIAA" },
   { source: "altum_news", label: "Altum" },
@@ -103,7 +103,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
       setRefreshing(false);
       es.close();
       setRunError(
-        "The scan stopped before it finished — the connection dropped or a source hung. Nothing is running now.",
+        "The scan stopped before it finished. The connection dropped, or a source hung. Nothing is running now.",
       );
       setLiveSources((prev) =>
         prev.map((s) => (s.status === "pending" ? { ...s, status: "error" as const } : s)),
@@ -220,7 +220,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
         ) : (
           <p className="text-sm text-muted-foreground">
             {runError
-              ? "No digest to show — the scan above did not complete."
+              ? "No digest to show. The scan above did not complete."
               : "Running the first scan of the week against the live sources…"}
           </p>
         )}
@@ -242,14 +242,14 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
         {digest && degraded.length > 0 && (
           <Alert variant="destructive">
             <AlertTitle>
-              This digest is incomplete — {degraded.length} of {digest.sources.length} sources did
+              This digest is incomplete: {degraded.length} of {digest.sources.length} sources did
               not deliver
             </AlertTitle>
             <AlertDescription>
               <ul className="flex flex-col gap-0.5">
                 {degraded.map((s) => (
                   <li key={s.source}>
-                    <strong>{s.label}</strong> —{" "}
+                    <strong>{s.label}</strong>:{" "}
                     {s.status === "timeout"
                       ? "timed out"
                       : s.status === "error"
@@ -293,7 +293,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
                 <a href={item.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
                   {displayTitle(item.title).text}
                 </a>
-                <span className="text-muted-foreground"> — {item.sourceLabel}</span>
+                <span className="text-muted-foreground"> · {item.sourceLabel}</span>
                 <span className="text-red-700 dark:text-red-400">
                   {" "}
                   · {deadlinePhrase(item.deadline!)}
@@ -380,7 +380,7 @@ export function DigestView({ initialData }: { initialData: DigestResult | null }
                     </span>
                   </h2>
                   <p className="-mt-2 text-xs text-muted-foreground">
-                    No open submission window — these are moving through the process or already
+                    No open submission window. These are moving through the process, or already
                     decided.
                   </p>
                   {awarenessItems.map((item) => (

@@ -29,11 +29,11 @@ interface SourceDef {
 }
 
 const SOURCES: SourceDef[] = [
-  { id: "tap_legal_acts", label: "TAP portāls — Tiesību aktu projekti", run: collectTapLegalActs },
-  { id: "tap_consultations", label: "TAP portāls — Sabiedrības līdzdalība", run: collectTapConsultations },
+  { id: "tap_legal_acts", label: "TAP portāls: Tiesību aktu projekti", run: collectTapLegalActs },
+  { id: "tap_consultations", label: "TAP portāls: Sabiedrības līdzdalība", run: collectTapConsultations },
   { id: "tap_vss", label: "Valsts sekretāru sanāksme", run: () => collectTapMeetings("state_secretaries") },
   { id: "tap_mk", label: "Ministru kabineta sēdes", run: () => collectTapMeetings("cabinet_ministers") },
-  { id: "saeima_committees", label: "Saeima — komisiju sēdes", run: collectSaeimaCommittees },
+  { id: "saeima_committees", label: "Saeima: komisiju sēdes", run: collectSaeimaCommittees },
   { id: "em_news", label: "Ekonomikas ministrija", run: collectEmNews },
   { id: "liaa_news", label: "LIAA", run: collectLiaaNews },
   { id: "altum_news", label: "Altum", run: collectAltumNews },

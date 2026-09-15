@@ -61,8 +61,8 @@ export function scoreItem(
   if (readingStageMatch) {
     matchedRules.push(
       readingUpcoming
-        ? "Near-final reading (2nd/3rd) — upcoming"
-        : "Near-final reading (2nd/3rd) — already occurred",
+        ? "Near-final reading (2nd/3rd), upcoming"
+        : "Near-final reading (2nd/3rd), already occurred",
     );
     score += 15;
   }

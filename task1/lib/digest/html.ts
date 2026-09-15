@@ -1,12 +1,13 @@
 import type { DigestResult, ScoredItem } from "../types";
 import { describeItemDates } from "../dates";
+import { displayTitle } from "../display-title";
 
 /**
- * Standalone static HTML export — for the sample committed to samples/ and
+ * Standalone static HTML export, for the sample committed to samples/ and
  * for anyone who wants to open the digest without running the app. The live
  * app (React, auto-escaping) is the primary HTML surface; this is a second,
- * simpler renderer, so everything interpolated here — titles, summaries,
- * institution names — is untrusted scraped/LLM text and must be escaped by
+ * simpler renderer, so everything interpolated here (titles, summaries,
+ * institution names) is untrusted scraped/LLM text and must be escaped by
  * hand exactly like Jinja2 autoescaping would.
  */
 function escapeHtml(s: string): string {
@@ -18,7 +19,7 @@ function escapeHtml(s: string): string {
     .replace(/'/g, "&#39;");
 }
 
-/** Only http(s) links are ever rendered as hrefs — anything else (a stray
+/** Only http(s) links are ever rendered as hrefs. Anything else (a stray
  * `javascript:` scheme smuggled through scraped markup) becomes plain text. */
 function safeHref(url: string): string | null {
   return /^https?:\/\//i.test(url) ? escapeHtml(url) : null;
@@ -30,7 +31,8 @@ function fmtDate(iso: string): string {
 
 function renderItemHtml(item: ScoredItem): string {
   const href = safeHref(item.url);
-  const titleHtml = escapeHtml(item.title);
+  const display = displayTitle(item.title);
+  const titleHtml = escapeHtml(display.text);
   const meta: string[] = [`<span class="tag">${escapeHtml(item.sourceLabel)}</span>`];
   if (item.institution) meta.push(`<span class="tag">${escapeHtml(item.institution)}</span>`);
   if (item.stage) meta.push(`<span class="tag">${escapeHtml(item.stage)}</span>`);
@@ -50,42 +52,43 @@ function renderItemHtml(item: ScoredItem): string {
   return `
     <article class="item">
       <h3>${href ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${titleHtml}</a>` : titleHtml}</h3>
+      ${display.shortened ? `<p class="fulltitle">${escapeHtml(item.title)}</p>` : ""}
       <div class="meta">${meta.join(" ")}</div>
       ${body}
     </article>`;
 }
 
-/** Same ordering as the Markdown/UI "read this first" block: open deadlines
- * soonest-first, then whatever's left by relevance — kept in sync by hand
+/** Same contract as the Markdown/UI "Closing soonest" block: only items with
+ * an open submission window, soonest closing first. Kept in sync by hand
  * across the three renderers since none of them share a template engine. */
-function renderReadFirstHtml(digest: DigestResult): string {
-  const withDeadline = digest.scored
+function renderClosingSoonestHtml(digest: DigestResult): string {
+  const bullets = digest.scored
     .filter((i) => i.actionable && i.deadline)
-    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime());
-  const rest = digest.scored.filter((i) => !(i.actionable && i.deadline));
-  const bullets = [...withDeadline, ...rest].slice(0, 5);
+    .sort((a, b) => new Date(a.deadline!).getTime() - new Date(b.deadline!).getTime())
+    .slice(0, 5);
   if (bullets.length === 0) return "";
 
   const rows = bullets
     .map((item) => {
       const href = safeHref(item.url);
-      const titleHtml = escapeHtml(item.title);
-      const deadlineNote =
-        item.actionable && item.deadline ? ` — deadline ${fmtDate(item.deadline)}` : "";
-      return `<li>${href ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${titleHtml}</a>` : titleHtml} <span class="score">(${escapeHtml(item.sourceLabel)}, ${item.score}/100${deadlineNote})</span></li>`;
+      const titleHtml = escapeHtml(displayTitle(item.title).text);
+      const link = href
+        ? `<a href="${href}" target="_blank" rel="noopener noreferrer">${titleHtml}</a>`
+        : titleHtml;
+      return `<li>${link} <span class="score">closes ${fmtDate(item.deadline!)} (${escapeHtml(item.sourceLabel)})</span></li>`;
     })
     .join("\n");
 
   return `
   <section class="read-first">
-    <h2>Read this first — the 5 most important items</h2>
+    <h2>Closing soonest</h2>
     <ul>${rows}</ul>
   </section>`;
 }
 
 export function renderDigestHtml(digest: DigestResult): string {
   const actionableCount = digest.scored.filter((i) => i.actionable).length;
-  const readFirst = renderReadFirstHtml(digest);
+  const readFirst = renderClosingSoonestHtml(digest);
   const items = digest.scored.map(renderItemHtml).join("\n");
   const sourceRows = digest.sources
     .map(
@@ -98,7 +101,7 @@ export function renderDigestHtml(digest: DigestResult): string {
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Policy Radar LV — Weekly Digest</title>
+<title>Policy Radar LV: Weekly Digest</title>
 <style>
   body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; }
   h1 { font-size: 1.4rem; }
@@ -115,17 +118,18 @@ export function renderDigestHtml(digest: DigestResult): string {
   .read-first .score { margin-left: 0; opacity: 0.65; font-size: 0.85rem; }
   .why { font-size: 0.9rem; }
   .matched { font-size: 0.85rem; color: #666; }
+  .fulltitle { font-size: 0.8rem; color: #666; margin: -0.4rem 0 0.4rem; }
   table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
   td, th { border: 1px solid #ddd; padding: 0.3rem 0.5rem; text-align: left; }
   footer { font-size: 0.75rem; color: #777; margin-top: 1.5rem; }
 </style>
 </head>
 <body>
-  <h1>Policy Radar LV — Weekly Digest</h1>
+  <h1>Policy Radar LV: Weekly Digest</h1>
   <p>Week of ${fmtDate(digest.weekStart)} – ${fmtDate(digest.weekEnd)} · generated ${escapeHtml(new Date(digest.generatedAt).toISOString())}</p>
   <p>Scanned <strong>${digest.totalScanned}</strong> items across ${digest.sources.length} sources → surfaced
-    <strong>${digest.totalSurfaced}</strong> as startup-relevant${actionableCount > 0 ? ` (<strong>${actionableCount}</strong> with an open feedback window)` : ""}.
-    ${digest.llmAvailable ? "" : "<em>(rules-only mode — no LLM key configured)</em>"}</p>
+    <strong>${digest.totalSurfaced}</strong> as startup-relevant${actionableCount > 0 ? ` (<strong>${actionableCount}</strong> with an open submission window)` : ""}.
+    ${digest.llmAvailable ? "" : "<em>(rules-only mode, no LLM key configured)</em>"}</p>
   ${readFirst}
   <h2>All startup-relevant items (${digest.scored.length})</h2>
   ${items}

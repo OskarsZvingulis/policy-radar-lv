@@ -42,7 +42,7 @@ function renderTldr(digest: DigestResult): string[] {
   const lines = [`## Closing soonest`, ""];
   for (const item of bullets) {
     lines.push(
-      `- **${displayTitle(item.title).text}** — closes ${fmtDate(item.deadline!)} (${item.sourceLabel})`,
+      `- **${displayTitle(item.title).text}**, closes ${fmtDate(item.deadline!)} (${item.sourceLabel})`,
     );
   }
   lines.push("");
@@ -75,14 +75,14 @@ function renderFooter(digest: DigestResult): string[] {
 
 export function renderDigestMarkdown(digest: DigestResult): string {
   const lines: string[] = [];
-  lines.push("# Policy Radar LV — Weekly Digest");
+  lines.push("# Policy Radar LV: Weekly Digest");
   lines.push("");
   lines.push(`Week of ${fmtDate(digest.weekStart)} – ${fmtDate(digest.weekEnd)}`);
   lines.push(`Generated ${new Date(digest.generatedAt).toISOString()}`);
   lines.push("");
 
   const actionableCount = digest.scored.filter((i) => i.actionable).length;
-  // Never a blank file, even at zero relevant items — the count line always
+  // Never a blank file, even at zero relevant items. The count line always
   // states scanned/surfaced/sources explicitly rather than silently omitting
   // sections, since an empty digest and a broken run must not look the same.
   lines.push(
@@ -90,13 +90,13 @@ export function renderDigestMarkdown(digest: DigestResult): string {
       `**${digest.totalSurfaced}** as startup-relevant` +
       (actionableCount > 0 ? ` (**${actionableCount}** with an open submission window)` : "") +
       "." +
-      (digest.llmAvailable ? "" : " _(rules-only mode — no LLM key configured)_"),
+      (digest.llmAvailable ? "" : " _(rules-only mode, no LLM key configured)_"),
   );
   lines.push("");
 
   lines.push(...renderTldr(digest));
 
-  // A single list, ranked by relevance — not bucketed into urgency tiers.
+  // A single list, ranked by relevance, not bucketed into urgency tiers.
   // "Act now" style buckets implied a reader could influence outcomes (a
   // vote, a reading) that a startup founder has no part in; the only thing
   // genuinely actionable is a real, open submission window, which each

@@ -46,7 +46,7 @@ export function ItemCard({ item }: { item: ScoredItem }) {
 
         {deadline && (
           <p className="text-sm font-medium text-red-700 dark:text-red-400">
-            {deadline.label} — {deadlinePhrase(deadline.iso)}
+            {deadline.label}: {deadlinePhrase(deadline.iso)}
           </p>
         )}
 

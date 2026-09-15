@@ -6,7 +6,7 @@ function item(overrides: Partial<Item> = {}): Item {
   return {
     id: "test:1",
     source: "tap_legal_acts",
-    sourceLabel: "TAP portāls — Tiesību aktu projekti",
+    sourceLabel: "TAP portāls: Tiesību aktu projekti",
     title: "Neitrāls dokuments",
     url: "https://tapportals.mk.gov.lv/legal_acts/test",
     date: "2026-09-10T00:00:00Z",
