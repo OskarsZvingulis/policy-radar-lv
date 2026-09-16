@@ -112,6 +112,7 @@ export function TopBar({
                   <a
                     href="/api/digest/markdown"
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="rounded px-2 py-1.5 hover:bg-muted"
                   >
                     Export as Markdown
