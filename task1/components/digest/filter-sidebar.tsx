@@ -73,7 +73,7 @@ export function FilterSidebar({
                 onClick={() => onViewChange(v.id)}
                 aria-pressed={view === v.id}
                 className={cn(
-                  "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left hover:bg-muted focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring",
+                  "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left hover:bg-muted focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground",
                   !containSources && "min-h-11",
                   view === v.id && "bg-muted font-medium text-foreground",
                 )}

@@ -61,7 +61,7 @@ export function ItemRow({
       onKeyDown={handleRowKeyDown}
       aria-current={selected ? "true" : undefined}
       className={cn(
-        "flex w-full items-start gap-3 border-b border-border px-4 py-3 text-left last:border-b-0 hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring",
+        "flex w-full items-start gap-3 border-b border-border px-4 py-3 text-left last:border-b-0 hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground",
         selected && "border-l-2 border-l-foreground bg-muted",
       )}
     >
@@ -119,7 +119,7 @@ export function NotRelevantRow({ item, now = new Date() }: { item: NotRelevantIt
       target="_blank"
       rel="noopener noreferrer"
       data-item-row
-      className="flex w-full items-start gap-3 border-b border-border px-4 py-3 last:border-b-0 hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-ring"
+      className="flex w-full items-start gap-3 border-b border-border px-4 py-3 last:border-b-0 hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-foreground"
     >
       <div className="w-16 shrink-0 text-xs tabular-nums text-muted-foreground sm:w-[4.5rem]">
         {absoluteDay(item.date, now)}

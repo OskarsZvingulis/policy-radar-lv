@@ -63,7 +63,11 @@
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
+  /* Darkened from shadcn's default 0.556: that value clears AA (4.5:1) against
+     the plain background but drops to 4.34:1 once it sits on --muted itself,
+     which a selected row or a selected sidebar view button does constantly,
+     not just on hover. 0.52 clears both with margin (5.5:1 / 5.1:1). */
+  --muted-foreground: oklch(0.52 0 0);
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
