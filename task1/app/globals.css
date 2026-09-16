@@ -130,4 +130,17 @@
   html {
     @apply font-sans;
   }
+
+  /* Tailwind v4 dropped the old default button cursor, so every interactive
+     element on the page computed cursor: default, indistinguishable from
+     plain text. */
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  summary,
+  label:has(input:not(:disabled)) {
+    cursor: pointer;
+  }
+  :disabled {
+    cursor: not-allowed;
+  }
 }

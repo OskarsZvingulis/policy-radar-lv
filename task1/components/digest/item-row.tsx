@@ -1,5 +1,6 @@
 "use client";
 
+import type { KeyboardEvent } from "react";
 import { cn } from "cn";
 import type { NotRelevantItem, ScoredItem } from "@/lib/types";
 import { absoluteDay } from "@/lib/relative-date";
@@ -34,11 +35,30 @@ export function ItemRow({
   const visibleTopics = topics.slice(0, MAX_TAGS);
   const hiddenTopics = topics.length - visibleTopics.length;
 
+  // A real <a href> for the title needs to live inside the selectable row,
+  // and nesting an anchor inside a <button> is invalid HTML (and produces
+  // unreliable click/keyboard behaviour), so the row itself is a div with
+  // role="button" plus its own keydown handling instead. The row's onClick
+  // still selects; the anchor's own click stops that from also firing so a
+  // reader who clicks the title gets exactly one thing: the source opening.
+  function handleRowKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    // Only for a key press on the row itself, not one bubbling up from the
+    // nested title link, which already has its own native Enter behaviour
+    // (opening the link) that must not also select the row.
+    if (e.target !== e.currentTarget) return;
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onSelect();
+    }
+  }
+
   return (
-    <button
-      type="button"
+    <div
       data-item-row
+      role="button"
+      tabIndex={0}
       onClick={onSelect}
+      onKeyDown={handleRowKeyDown}
       aria-current={selected ? "true" : undefined}
       className={cn(
         "flex w-full items-start gap-3 border-b border-border px-4 py-3 text-left last:border-b-0 hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-none",
@@ -48,9 +68,17 @@ export function ItemRow({
       <DeadlineBadge iso={dateIso} tinted={open} now={now} />
 
       <div className="flex min-w-0 flex-1 flex-col gap-1">
-        <p lang="lv" className="text-sm leading-snug font-medium break-words text-foreground">
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          lang="lv"
+          onClick={(e) => e.stopPropagation()}
+          className="text-sm leading-snug font-medium break-words text-foreground hover:underline"
+        >
           {title.text}
-        </p>
+          <span className="sr-only"> (opens in a new tab)</span>
+        </a>
 
         {visibleTopics.length > 0 && (
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-0.5 text-xs text-muted-foreground">
@@ -74,7 +102,7 @@ export function ItemRow({
           )}
         </p>
       </div>
-    </button>
+    </div>
   );
 }
 

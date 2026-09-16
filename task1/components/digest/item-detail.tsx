@@ -1,13 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import type { ScoredItem } from "@/lib/types";
 import { displayTitle } from "@/lib/display-title";
 import { describeItemDates } from "@/lib/dates";
-import { pastPhrase } from "@/lib/relative-date";
+import { deadlinePhrase, pastPhrase } from "@/lib/relative-date";
 import { matchedTopics, topicLabel } from "@/lib/digest/topics";
 import { DeadlineTimeline } from "./deadline-timeline";
+
+/** Title, deadline (if any), source and link, as plain text for pasting into Slack or email. */
+function buildSummary(item: ScoredItem, now: Date): string {
+  const lines = [displayTitle(item.title).text];
+  if (item.actionable && item.deadline) {
+    const dates = describeItemDates(item, now);
+    const label = dates.find((d) => d.isDeadline)?.label ?? "Deadline";
+    lines.push(`${label}: ${deadlinePhrase(item.deadline, now)}`);
+  }
+  lines.push(item.sourceLabel, item.url);
+  return lines.join("\n");
+}
 
 /**
  * Everything a card kept behind "Details" now lives here permanently: the
@@ -27,6 +40,23 @@ export function ItemDetail({
   llmAvailable?: boolean;
 }) {
   const [showFull, setShowFull] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const copiedTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => () => clearTimeout(copiedTimer.current), []);
+
+  async function handleCopySummary() {
+    if (!item) return;
+    try {
+      await navigator.clipboard.writeText(buildSummary(item, now));
+      setCopied(true);
+      clearTimeout(copiedTimer.current);
+      copiedTimer.current = setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard access can be denied (permissions, insecure context); the
+      // confirmation simply never appears rather than throwing at the user.
+    }
+  }
 
   if (!item) {
     return (
@@ -43,6 +73,21 @@ export function ItemDetail({
 
   return (
     <div className="flex flex-col gap-4 p-4">
+      <div className="flex flex-wrap gap-2">
+        <Button
+          variant="outline"
+          size="sm"
+          render={
+            <a href={item.url} target="_blank" rel="noopener noreferrer">
+              <span lang="lv">Open on {item.sourceLabel}</span>
+            </a>
+          }
+        />
+        <Button variant="outline" size="sm" onClick={handleCopySummary} aria-live="polite">
+          {copied ? "Copied" : "Copy summary"}
+        </Button>
+      </div>
+
       <div>
         <a
           href={item.url}
