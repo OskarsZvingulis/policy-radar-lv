@@ -144,3 +144,28 @@
     cursor: not-allowed;
   }
 }
+
+@layer components {
+  /* Reserves the scrollbar's own gutter so a pane appearing/becoming
+     scrollable never shifts its content, and keeps the bar itself thin and
+     muted instead of the browser default, on every scrollable pane: the
+     filter sidebar's source list, the item list, and the detail pane. */
+  .scroll-pane {
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+  .scroll-pane::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .scroll-pane::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scroll-pane::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}

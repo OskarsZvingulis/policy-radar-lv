@@ -26,6 +26,7 @@ export function FilterSidebar({
   sources,
   onSourcesChange,
   counts,
+  containSources = false,
 }: {
   view: ViewId;
   onViewChange: (v: ViewId) => void;
@@ -34,6 +35,12 @@ export function FilterSidebar({
   sources: string[];
   onSourcesChange: (s: string[]) => void;
   counts: FilterCounts;
+  /** Desktop's persistent column has a fixed height and room to spare, so View
+   * and Topics should stay fully visible and only the Sources list scrolls
+   * within it. The mobile bottom sheet has no such fixed height (it sizes to
+   * content up to 85vh and scrolls as a whole), so it keeps the plain
+   * stacked layout instead. */
+  containSources?: boolean;
 }) {
   const hasActiveFilters = topics.length > 0 || sources.length > 0;
 
@@ -52,7 +59,10 @@ export function FilterSidebar({
   }
 
   return (
-    <nav aria-label="Filters" className="flex flex-col gap-6 text-sm">
+    <nav
+      aria-label="Filters"
+      className={cn("flex flex-col gap-4 text-sm", containSources && "h-full min-h-0")}
+    >
       <section>
         <h2 className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">View</h2>
         <ul className="flex flex-col gap-0.5">
@@ -103,7 +113,7 @@ export function FilterSidebar({
         </section>
       )}
 
-      <section>
+      <section className={cn(containSources && "flex min-h-0 flex-1 flex-col")}>
         <h2
           className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase"
           title={
@@ -124,7 +134,7 @@ export function FilterSidebar({
             </>
           )}
         </h2>
-        <ul className="flex flex-col gap-0.5">
+        <ul className={cn("flex flex-col gap-0.5", containSources && "scroll-pane min-h-0 flex-1 overflow-y-auto")}>
           {SOURCE_REGISTRY.map((s) => {
             const count = counts.bySource[s.id] ?? 0;
             const checked = sources.includes(s.id);
@@ -152,7 +162,7 @@ export function FilterSidebar({
         <Button
           variant="ghost"
           size="sm"
-          className="self-start"
+          className="shrink-0 self-start"
           onClick={() => {
             onTopicsChange([]);
             onSourcesChange([]);

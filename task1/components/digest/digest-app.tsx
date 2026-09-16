@@ -15,6 +15,7 @@ import { FilterSidebar } from "./filter-sidebar";
 import { FilterSheet } from "./filter-sheet";
 import { ItemList } from "./item-list";
 import { ItemDetail } from "./item-detail";
+import { EmptyDetailPanel } from "./empty-detail-panel";
 
 const PAGE_SIZE = 25;
 
@@ -221,11 +222,11 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
       )}
 
       <div className="flex min-h-0 min-w-0 flex-1">
-        <aside className="hidden w-60 min-w-0 shrink-0 overflow-y-auto border-r border-border p-4 xl:block">
-          <FilterSidebar {...sidebarProps} />
+        <aside className="hidden w-60 min-w-0 shrink-0 border-r border-border p-4 xl:flex xl:flex-col">
+          <FilterSidebar {...sidebarProps} containSources />
         </aside>
 
-        <main className="min-w-0 flex-1 overflow-y-auto">
+        <main className="scroll-pane min-w-0 flex-1 overflow-y-auto">
           {state.view !== "not_relevant" && (
             <div className="flex items-center justify-end gap-2 border-b border-border px-4 py-1.5 text-xs">
               <label htmlFor="sort-by" className="text-muted-foreground">
@@ -270,8 +271,12 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
         </main>
 
         {isDesktop && (
-          <aside className="w-[420px] min-w-0 shrink-0 overflow-y-auto border-l border-border">
-            <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+          <aside className="scroll-pane w-[420px] min-w-0 shrink-0 overflow-y-auto border-l border-border">
+            {selectedItem ? (
+              <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+            ) : (
+              <EmptyDetailPanel digest={digest} now={now} onSelect={handleSelect} />
+            )}
           </aside>
         )}
       </div>
@@ -299,14 +304,16 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
           <Dialog.Root open onOpenChange={(open) => !open && closeDetail()}>
             <Dialog.Portal>
               <Dialog.Backdrop className="fixed inset-0 z-40 bg-black/40" />
-              <Dialog.Popup className="fixed inset-0 z-50 overflow-y-auto bg-background md:inset-6 md:rounded-lg md:border md:border-border md:shadow-lg">
+              <Dialog.Popup className="scroll-pane fixed inset-0 z-50 overflow-y-auto bg-background md:inset-6 md:rounded-lg md:border md:border-border md:shadow-lg">
                 <div className="sticky top-0 flex items-center justify-between border-b border-border bg-background px-4 py-2">
                   <Dialog.Title className="text-sm font-medium">Details</Dialog.Title>
                   <Dialog.Close className="flex min-h-11 min-w-11 items-center justify-center rounded px-2 py-1 text-sm underline underline-offset-2">
                     Back
                   </Dialog.Close>
                 </div>
-                <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+                {selectedItem && (
+                  <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+                )}
               </Dialog.Popup>
             </Dialog.Portal>
           </Dialog.Root>

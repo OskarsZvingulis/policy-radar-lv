@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import type { ScoredItem } from "@/lib/types";
 import { displayTitle } from "@/lib/display-title";
 import { describeItemDates } from "@/lib/dates";
@@ -35,7 +35,7 @@ export function ItemDetail({
   now = new Date(),
   llmAvailable = true,
 }: {
-  item: ScoredItem | null;
+  item: ScoredItem;
   now?: Date;
   llmAvailable?: boolean;
 }) {
@@ -46,7 +46,6 @@ export function ItemDetail({
   useEffect(() => () => clearTimeout(copiedTimer.current), []);
 
   async function handleCopySummary() {
-    if (!item) return;
     try {
       await navigator.clipboard.writeText(buildSummary(item, now));
       setCopied(true);
@@ -58,14 +57,6 @@ export function ItemDetail({
     }
   }
 
-  if (!item) {
-    return (
-      <div className="flex h-full items-center justify-center p-6 text-center text-sm text-muted-foreground">
-        Select an item to see deadlines and details.
-      </div>
-    );
-  }
-
   const title = displayTitle(item.title);
   const dates = describeItemDates(item, now);
   const context = dates.filter((d) => !d.isDeadline);
@@ -74,15 +65,18 @@ export function ItemDetail({
   return (
     <div className="flex flex-col gap-4 p-4">
       <div className="flex flex-wrap gap-2">
-        <Button
-          variant="outline"
-          size="sm"
-          render={
-            <a href={item.url} target="_blank" rel="noopener noreferrer">
-              <span lang="lv">Open on {item.sourceLabel}</span>
-            </a>
-          }
-        />
+        {/* A real <a>, not <Button render>: base-ui's own docs say links have
+            their own semantics and shouldn't be given button semantics via
+            render, so this is styled directly with the button's classes
+            instead of wrapped in the component. */}
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "outline", size: "sm" })}
+        >
+          <span lang="lv">Open on {item.sourceLabel}</span>
+        </a>
         <Button variant="outline" size="sm" onClick={handleCopySummary} aria-live="polite">
           {copied ? "Copied" : "Copy summary"}
         </Button>

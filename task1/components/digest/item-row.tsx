@@ -67,7 +67,7 @@ export function ItemRow({
     >
       <DeadlineBadge iso={dateIso} tinted={open} now={now} />
 
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
+      <div className="flex min-w-0 max-w-[80ch] flex-1 flex-col gap-1">
         <a
           href={item.url}
           target="_blank"
@@ -124,7 +124,7 @@ export function NotRelevantRow({ item, now = new Date() }: { item: NotRelevantIt
       <div className="w-16 shrink-0 text-xs tabular-nums text-muted-foreground sm:w-[4.5rem]">
         {absoluteDay(item.date, now)}
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-1">
+      <div className="flex min-w-0 max-w-[80ch] flex-1 flex-col gap-1">
         <p lang="lv" className="text-sm leading-snug font-medium break-words text-foreground">
           {title.text}
         </p>
