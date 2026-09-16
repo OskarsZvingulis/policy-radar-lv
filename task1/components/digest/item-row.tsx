@@ -74,7 +74,7 @@ export function ItemRow({
           rel="noopener noreferrer"
           lang="lv"
           onClick={(e) => e.stopPropagation()}
-          className="text-sm leading-snug font-medium break-words text-foreground hover:underline"
+          className="line-clamp-3 text-sm leading-snug font-medium break-words text-foreground hover:underline"
         >
           {title.text}
           <span className="sr-only"> (opens in a new tab)</span>
@@ -125,7 +125,7 @@ export function NotRelevantRow({ item, now = new Date() }: { item: NotRelevantIt
         {absoluteDay(item.date, now)}
       </div>
       <div className="flex min-w-0 max-w-[80ch] flex-1 flex-col gap-1">
-        <p lang="lv" className="text-sm leading-snug font-medium break-words text-foreground">
+        <p lang="lv" className="line-clamp-3 text-sm leading-snug font-medium break-words text-foreground">
           {title.text}
         </p>
         <p className="text-xs text-muted-foreground">{item.reason}</p>

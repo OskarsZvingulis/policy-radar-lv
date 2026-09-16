@@ -25,6 +25,12 @@ function minutesAgo(ms: number): string {
   return minutes === 1 ? "1 minute ago" : `${minutes} minutes ago`;
 }
 
+/** Same age, compressed for the phone-width cache notice. */
+function minutesAgoShort(ms: number): string {
+  const minutes = Math.floor(ms / 60_000);
+  return minutes < 1 ? "just now" : `${minutes} min ago`;
+}
+
 /**
  * Layout shell only: owns URL state, the digest stream, and derives what
  * each region needs via the lib/ pure functions. It renders nothing about
@@ -217,7 +223,10 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
 
       {cacheAgeMs !== null && (
         <p className="px-3 pt-2 text-xs text-muted-foreground">
-          Showing results from {minutesAgo(cacheAgeMs)}. The sources are only re-scanned every few minutes.
+          <span className="sm:hidden">Updated {minutesAgoShort(cacheAgeMs)}</span>
+          <span className="hidden sm:inline">
+            Showing results from {minutesAgo(cacheAgeMs)}. The sources are only re-scanned every few minutes.
+          </span>
         </p>
       )}
 
@@ -236,7 +245,7 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
                 id="sort-by"
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as "deadline" | "relevance")}
-                className="rounded border border-border bg-background px-1.5 py-0.5"
+                className="h-11 rounded border border-border bg-background px-1.5 text-base xl:h-auto xl:py-0.5 xl:text-xs"
               >
                 <option value="deadline">deadline</option>
                 <option value="relevance">relevance</option>

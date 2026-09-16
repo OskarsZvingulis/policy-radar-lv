@@ -74,6 +74,7 @@ export function FilterSidebar({
                 aria-pressed={view === v.id}
                 className={cn(
                   "flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left hover:bg-muted",
+                  !containSources && "min-h-11",
                   view === v.id && "bg-muted font-medium text-foreground",
                 )}
               >
@@ -96,7 +97,12 @@ export function FilterSidebar({
               const checked = topics.includes(t.id);
               return (
                 <li key={t.id}>
-                  <label className="flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-muted">
+                  <label
+                    className={cn(
+                      "flex w-full cursor-pointer items-center gap-2 rounded-md px-2 py-1.5 hover:bg-muted",
+                      !containSources && "min-h-11",
+                    )}
+                  >
                     <input
                       type="checkbox"
                       checked={checked}
@@ -140,7 +146,12 @@ export function FilterSidebar({
             const checked = sources.includes(s.id);
             return (
               <li key={s.id}>
-                <label className="flex w-full cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 hover:bg-muted">
+                <label
+                  className={cn(
+                    "flex w-full cursor-pointer items-start gap-2 rounded-md px-2 py-1.5 hover:bg-muted",
+                    !containSources && "min-h-11",
+                  )}
+                >
                   <input
                     type="checkbox"
                     checked={checked}
@@ -162,7 +173,7 @@ export function FilterSidebar({
         <Button
           variant="ghost"
           size="sm"
-          className="shrink-0 self-start"
+          className={cn("shrink-0 self-start", !containSources && "h-11 min-w-11")}
           onClick={() => {
             onTopicsChange([]);
             onSourcesChange([]);

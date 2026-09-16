@@ -26,7 +26,7 @@ export const SearchInput = forwardRef<
         onChange={(e) => onChange(e.target.value)}
         placeholder="Search acts, topics, 26-TA-..."
         aria-label="Search the digest"
-        className="h-9 w-full min-w-0 rounded-md border border-border bg-background px-3 pr-10 text-sm outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50"
+        className="h-11 w-full min-w-0 rounded-md border border-border bg-background px-3 pr-10 text-base outline-none placeholder:text-muted-foreground focus-visible:ring-3 focus-visible:ring-ring/50 xl:h-9 xl:text-sm"
       />
       {!value && (
         <kbd

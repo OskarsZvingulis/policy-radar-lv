@@ -21,11 +21,11 @@ const WORD: Record<LiveSourceState["status"], string> = {
 };
 
 /**
- * "14 of 100" is operational health, not the digest itself. This collapses
- * the 8 source chips that used to lead the page into one line and a popover,
- * so the reader's eye lands on the digest, not on scrape plumbing.
+ * One line of text, shared by the pill's own label and the plain copy the
+ * top bar falls back to on narrow screens (see TopBar's More menu), so the
+ * two never drift into disagreeing about source health.
  */
-export function SourceStatus({ sources }: { sources: LiveSourceState[] }) {
+export function sourceStatusSummary(sources: LiveSourceState[]): { summary: string; failed: boolean } {
   const failed = sources.filter((s) => s.status === "error" || s.status === "timeout");
   const scanning = sources.some((s) => s.status === "pending");
   const doneCount = sources.filter((s) => s.status !== "pending").length;
@@ -35,6 +35,18 @@ export function SourceStatus({ sources }: { sources: LiveSourceState[] }) {
     : failed.length > 0
       ? `${failed.length} source${failed.length === 1 ? "" : "s"} failed`
       : `${sources.length} of ${sources.length} sources ok`;
+
+  return { summary, failed: failed.length > 0 };
+}
+
+/**
+ * "14 of 100" is operational health, not the digest itself. This collapses
+ * the 8 source chips that used to lead the page into one line and a popover,
+ * so the reader's eye lands on the digest, not on scrape plumbing.
+ */
+export function SourceStatus({ sources }: { sources: LiveSourceState[] }) {
+  const failed = sources.filter((s) => s.status === "error" || s.status === "timeout");
+  const { summary } = sourceStatusSummary(sources);
 
   return (
     <Popover.Root>
