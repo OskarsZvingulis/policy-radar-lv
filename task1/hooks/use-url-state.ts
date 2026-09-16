@@ -1,70 +1,72 @@
 "use client";
 
-import { useCallback, useMemo } from "react";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
-import { DEFAULT_FILTER_STATE, type FilterState, type ViewId } from "@/lib/digest/filter";
+import { useCallback, useEffect, useReducer, useRef } from "react";
+import {
+  parseUrlState,
+  serializeUrlState,
+  urlStateReducer,
+  type UrlState,
+} from "@/lib/digest/url-state";
 
-export interface UrlState extends FilterState {
-  page: number;
-  /** Id of the selected item, if any. Deep-links a single row. */
-  item?: string;
-}
+const QUERY_WRITE_DEBOUNCE_MS = 200;
 
-const VALID_VIEWS: ViewId[] = ["open", "all", "not_relevant"];
-
-function parseView(raw: string | null): ViewId {
-  return VALID_VIEWS.includes(raw as ViewId) ? (raw as ViewId) : DEFAULT_FILTER_STATE.view;
-}
-
-function splitParam(raw: string | null): string[] {
-  return raw ? raw.split(",").filter(Boolean) : [];
+function currentUrl(): string {
+  return window.location.pathname + window.location.search;
 }
 
 /**
- * Every filter, the page, and the selected item live in the URL rather than
- * component state: the acceptance criteria call for each to survive a
- * reload and for the whole view to be shareable as a link, and a URL is the
- * only state a link can carry.
+ * React holds the real filter/page/item state; the URL is a one-way mirror
+ * of it, updated with history.replaceState rather than routed through
+ * Next's router, so a filter change is a synchronous local state update, not
+ * a server round trip. See lib/digest/url-state.ts for why that distinction
+ * is the actual fix, not just a style preference.
  */
 export function useUrlState(): [UrlState, (patch: Partial<UrlState>) => void] {
-  const router = useRouter();
-  const pathname = usePathname();
-  const params = useSearchParams();
-
-  const state: UrlState = useMemo(
-    () => ({
-      view: parseView(params.get("view")),
-      topics: splitParam(params.get("topic")),
-      sources: splitParam(params.get("source")),
-      query: params.get("q") ?? "",
-      page: Math.max(1, Number(params.get("page")) || 1),
-      item: params.get("item") ?? undefined,
-    }),
-    [params],
+  const [state, dispatch] = useReducer(urlStateReducer, undefined, () =>
+    parseUrlState(typeof window === "undefined" ? "" : window.location.search),
   );
 
-  const setState = useCallback(
-    (patch: Partial<UrlState>) => {
-      const merged: UrlState = { ...state, ...patch };
-      // Any change other than paging or selecting an item invalidates the
-      // current page, otherwise a filter can land the reader on an empty
-      // page 3 with nothing to show and no obvious way out.
-      const onlyPageOrItem = Object.keys(patch).every((k) => k === "page" || k === "item");
-      if (!onlyPageOrItem) merged.page = 1;
+  const writeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  // Set by setState just before dispatching, read by the effect below once
+  // the resulting render commits. A query-only change (typing) debounces its
+  // URL write; every other change writes immediately. The React state update
+  // itself is never debounced, only the address-bar write.
+  const queryOnlyRef = useRef(false);
 
-      const next = new URLSearchParams();
-      if (merged.view !== DEFAULT_FILTER_STATE.view) next.set("view", merged.view);
-      if (merged.topics.length > 0) next.set("topic", merged.topics.join(","));
-      if (merged.sources.length > 0) next.set("source", merged.sources.join(","));
-      if (merged.query) next.set("q", merged.query);
-      if (merged.page > 1) next.set("page", String(merged.page));
-      if (merged.item) next.set("item", merged.item);
+  const setState = useCallback((patch: Partial<UrlState>) => {
+    queryOnlyRef.current = Object.keys(patch).length === 1 && "query" in patch;
+    dispatch({ type: "patch", patch });
+  }, []);
 
-      const qs = next.toString();
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
-    },
-    [state, router, pathname],
-  );
+  // Mirrors state to the URL. Keyed on `state` rather than called inline
+  // from setState so it always writes React's own authoritative post-render
+  // value, never a hand-recomputed copy that could drift from the reducer.
+  useEffect(() => {
+    const url = (() => {
+      const qs = serializeUrlState(state);
+      return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+    })();
+    const commit = () => {
+      if (url !== currentUrl()) window.history.replaceState(window.history.state, "", url);
+    };
+
+    clearTimeout(writeTimer.current);
+    if (queryOnlyRef.current) {
+      writeTimer.current = setTimeout(commit, QUERY_WRITE_DEBOUNCE_MS);
+      return () => clearTimeout(writeTimer.current);
+    }
+    commit();
+  }, [state]);
+
+  // Browser back/forward: replaceState never fires popstate on its own (only
+  // real navigation does), so this can't loop back on the effect above.
+  useEffect(() => {
+    function onPopState() {
+      dispatch({ type: "replace", state: parseUrlState(window.location.search) });
+    }
+    window.addEventListener("popstate", onPopState);
+    return () => window.removeEventListener("popstate", onPopState);
+  }, []);
 
   return [state, setState];
 }
