@@ -5,6 +5,7 @@ import { Dialog } from "@base-ui/react/dialog";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { useDigestStream } from "@/hooks/use-digest-stream";
 import { useUrlState } from "@/hooks/use-url-state";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { applyFilters } from "@/lib/digest/filter";
 import { groupForList } from "@/lib/digest/group";
 import { paginate, paginateGroups, pageContaining } from "@/lib/digest/paginate";
@@ -36,6 +37,13 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
   const [sortBy, setSortBy] = useState<"deadline" | "relevance">("deadline");
   const [filtersOpen, setFiltersOpen] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
+  // Below xl the detail pane is a Dialog; at xl and up it's a persistent third
+  // column. These are mutually exclusive, not just visually swapped: a Dialog
+  // that merely *looks* hidden at desktop width still scroll-locks the page,
+  // traps focus, and marks everything else aria-hidden for assistive tech, so
+  // it must not mount at all once isDesktop is true.
+  const isDesktop = useMediaQuery("(min-width: 1280px)");
+  const lastFocusedRowRef = useRef<HTMLElement | null>(null);
 
   // One instant per digest, not per render, so re-filtering doesn't cause a
   // consultation to flip open/closed mid-interaction. `digest` is a
@@ -99,8 +107,21 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
     [scored, state.item],
   );
 
-  const handleSelect = useCallback((id: string) => setState({ item: id }), [setState]);
-  const closeDetail = useCallback(() => setState({ item: undefined }), [setState]);
+  const handleSelect = useCallback(
+    (id: string) => {
+      // Captured explicitly rather than relying on the Dialog's own restore:
+      // this dialog has no Dialog.Trigger (it opens from URL state, not a
+      // click on it), which is what most focus-restore implementations key
+      // off, so a manual capture/restore pair is the reliable path.
+      lastFocusedRowRef.current = document.activeElement as HTMLElement | null;
+      setState({ item: id });
+    },
+    [setState],
+  );
+  const closeDetail = useCallback(() => {
+    setState({ item: undefined });
+    lastFocusedRowRef.current?.focus();
+  }, [setState]);
 
   // Keyboard nav: "/" focuses search, j/k or arrows move focus between rows
   // (native <button> semantics then make Enter/Space open them, no separate
@@ -248,29 +269,48 @@ export function DigestApp({ initialData }: { initialData: DigestResult | null })
           )}
         </main>
 
-        <aside className="hidden w-[420px] min-w-0 shrink-0 overflow-y-auto border-l border-border xl:block">
-          <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
-        </aside>
+        {isDesktop && (
+          <aside className="w-[420px] min-w-0 shrink-0 overflow-y-auto border-l border-border">
+            <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+          </aside>
+        )}
       </div>
 
-      <FilterSheet open={filtersOpen} onOpenChange={setFiltersOpen} {...sidebarProps} />
+      {/* Same reasoning as the detail Dialog below: gated on isDesktop, not
+          just the "Filters" trigger button's own xl:hidden, so a sheet left
+          open while resizing past the breakpoint can't strand the page
+          scroll-locked with the sidebar unreachable behind it. */}
+      {!isDesktop && (
+        <FilterSheet open={filtersOpen} onOpenChange={setFiltersOpen} {...sidebarProps} />
+      )}
 
       {/* Below xl, a selected item opens as a full-screen overlay instead of a
-          persistent third column, since there isn't room for three panes. */}
-      <Dialog.Root open={Boolean(state.item)} onOpenChange={(open) => !open && closeDetail()}>
-        <Dialog.Portal>
-          <Dialog.Backdrop className="fixed inset-0 z-40 bg-black/40 xl:hidden" />
-          <Dialog.Popup className="fixed inset-0 z-50 overflow-y-auto bg-background xl:hidden md:inset-6 md:rounded-lg md:border md:border-border md:shadow-lg">
-            <div className="sticky top-0 flex items-center justify-between border-b border-border bg-background px-4 py-2">
-              <Dialog.Title className="text-sm font-medium">Details</Dialog.Title>
-              <Dialog.Close className="rounded px-2 py-1 text-sm underline underline-offset-2">
-                Back
-              </Dialog.Close>
-            </div>
-            <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
-          </Dialog.Popup>
-        </Dialog.Portal>
-      </Dialog.Root>
+          persistent third column, since there isn't room for three panes.
+          Not rendered at all at xl and up: an invisible Dialog still
+          scroll-locks the page and hides the rest of the app from assistive
+          tech, so "hidden with a class" isn't enough, it must not mount.
+          Also gated on state.item itself, not just passed as `open`: with no
+          exit transition defined on this popup, base-ui's own close animation
+          bookkeeping left the Popup at display:block after both Escape and
+          the Back button, i.e. `open` going false didn't reliably unmount it.
+          Removing the whole subtree from React the moment state.item clears
+          sidesteps that regardless of the cause. */}
+        {!isDesktop && state.item && (
+          <Dialog.Root open onOpenChange={(open) => !open && closeDetail()}>
+            <Dialog.Portal>
+              <Dialog.Backdrop className="fixed inset-0 z-40 bg-black/40" />
+              <Dialog.Popup className="fixed inset-0 z-50 overflow-y-auto bg-background md:inset-6 md:rounded-lg md:border md:border-border md:shadow-lg">
+                <div className="sticky top-0 flex items-center justify-between border-b border-border bg-background px-4 py-2">
+                  <Dialog.Title className="text-sm font-medium">Details</Dialog.Title>
+                  <Dialog.Close className="flex min-h-11 min-w-11 items-center justify-center rounded px-2 py-1 text-sm underline underline-offset-2">
+                    Back
+                  </Dialog.Close>
+                </div>
+                <ItemDetail item={selectedItem} now={now} llmAvailable={digest?.llmAvailable} />
+              </Dialog.Popup>
+            </Dialog.Portal>
+          </Dialog.Root>
+        )}
     </div>
   );
 }
