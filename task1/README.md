@@ -8,9 +8,9 @@ the four separate listings it actually publishes (draft acts, public
 consultations, state secretaries' meetings, Cabinet meetings), because they
 carry different documents and different deadlines.
 
-A real run scanned **326 items**, kept the ones inside a 7-day recency window,
-and surfaced **33** as startup-relevant, in under 10 seconds, against live
-government sites. Eight of those had a submission window still open, which is
+A real run scanned **318 items**, kept the ones inside a 7-day recency window,
+and surfaced **41** as startup-relevant, in under 10 seconds, against live
+government sites. Nine of those had a submission window still open, which is
 the only thing the interface treats as actionable. See `samples/` for exact
 output and `npm run eval` for how well the relevance engine performs against
 hand-labelled real items.
@@ -99,7 +99,7 @@ content full-screen instead of in a third column.
 Three views, not the tier system an earlier draft used: **Open for
 input** (an actual submission window is open), **All relevant** (grouped
 into "Closes this week", "Closes later", "No submission window"), and **Not
-relevant**, the roughly 290 scanned items the rules filtered out, each with
+relevant**, the roughly 275 scanned items the rules filtered out, each with
 the reason, so a reader who remembers seeing something the digest didn't
 surface can find it and see why rather than just finding it missing. Search
 is diacritic-insensitive (`uznemejdarbiba` finds `uzņēmējdarbība`) and
@@ -201,8 +201,8 @@ self-windows to "new this week", and all 8 run on every request.
   EU position paper from the same run does not surface at all: searching for
   it under "Not relevant" shows the actual reason it was filtered.
 - `samples/digest-2026-09-14.{md,html,json}` is a real digest generated from
-  a live run (`npm run generate-digest`): 326 scanned, 33 surfaced (8 with an
-  open window), 290 not relevant, all 8 sources `ok`, rules-only (no LLM key
+  a live run (`npm run generate-digest`): 318 scanned, 41 surfaced (9 with an
+  open window), 274 not relevant, all 8 sources `ok`, rules-only (no LLM key
   set in this environment, see "Cost per run" below for what the LLM step
   costs when one is).
 
