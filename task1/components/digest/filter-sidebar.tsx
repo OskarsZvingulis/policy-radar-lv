@@ -37,6 +37,16 @@ export function FilterSidebar({
 }) {
   const hasActiveFilters = topics.length > 0 || sources.length > 0;
 
+  // A dedupe-merged act counts toward every source it appeared in (see
+  // sourcesOf in lib/digest/filter.ts), so the source counts can add up to
+  // more than the number of rows actually in this view. Flagged here rather
+  // than silently, since a reader doing the arithmetic would otherwise
+  // reasonably conclude the counts were wrong.
+  const viewTotal = view === "open" ? counts.open : view === "all" ? counts.all : counts.notRelevant;
+  const sourceCountsOverlap =
+    view !== "not_relevant" &&
+    Object.values(counts.bySource).reduce((sum, n) => sum + n, 0) > viewTotal;
+
   function toggle(list: string[], id: string, set: (v: string[]) => void) {
     set(list.includes(id) ? list.filter((x) => x !== id) : [...list, id]);
   }
@@ -94,7 +104,26 @@ export function FilterSidebar({
       )}
 
       <section>
-        <h2 className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase">Sources</h2>
+        <h2
+          className="mb-2 text-xs font-medium tracking-wide text-muted-foreground uppercase"
+          title={
+            sourceCountsOverlap
+              ? "Counts can add up to more than the total shown for View: an act listed on more than one source (a public consultation that is also a draft act, for example) is counted under each of them."
+              : undefined
+          }
+        >
+          Sources
+          {sourceCountsOverlap && (
+            <>
+              <span aria-hidden> *</span>
+              <span className="sr-only">
+                {" "}
+                (counts can add up to more than the total: an act listed on more than one source is counted
+                under each)
+              </span>
+            </>
+          )}
+        </h2>
         <ul className="flex flex-col gap-0.5">
           {SOURCE_REGISTRY.map((s) => {
             const count = counts.bySource[s.id] ?? 0;

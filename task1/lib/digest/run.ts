@@ -100,20 +100,25 @@ function isWithinRecencyWindow(item: Item): boolean {
  * "0 of 25".
  *
  * So nothing is discarded now. Every copy is kept as an `appearance` carrying
- * its own deadline and URL, and the merged card leads with the appearance a
- * reader can still act on:
+ * its own deadline and URL. Two things are picked independently from that
+ * set, deliberately not the same "whichever copy won" choice:
  *
- *   1. Among copies whose deadline is still open, a public consultation wins,
- *      because that is a window the public may submit into. A legal-act
- *      "deadline" is inter-ministry coordination, which a founder cannot file
- *      against.
- *   2. Within that, soonest close first.
- *   3. If nothing is open, highest score, then lowest id.
+ *   - The deadline and its label come from whichever open copy closes
+ *     soonest, since that is the date actually worth acting on first,
+ *     whatever source it happened to come from. If nothing is open, highest
+ *     score wins, then lowest id, both as a stable tie-break.
+ *   - The link prefers a public consultation specifically, whenever one is
+ *     open, even if a different copy's deadline is technically sooner: a
+ *     ministry-coordination "deadline" is an internal step nobody outside
+ *     government can act on, while the consultation page is the one place a
+ *     founder can actually submit something. Falls back to the deadline
+ *     copy's own URL when no consultation is open.
  *
- * The card's deadline and its link come from the same appearance, so it can
- * never say "1 day left" while pointing at a page about a different date.
- * Every tie-break is total, so the merge does not depend on the order the
- * collectors happened to return in.
+ * In practice these are almost always the same copy, because a public
+ * consultation runs before the coordination stage that follows it
+ * chronologically, so its deadline is normally the earlier one anyway.
+ * They're kept as two separate lookups rather than one combined rule so the
+ * link is still correct on the rarer occasion they diverge.
  */
 const TA_CODE = /\b(\d{2}-TA-\d+)\b/;
 
@@ -141,11 +146,8 @@ function compareByText(a: string, b: string): number {
   return a < b ? -1 : a > b ? 1 : 0;
 }
 
-/** Soonest actionable window first; a public consultation outranks a tie. */
-function compareOpenCopies(a: Dedupable, b: Dedupable): number {
-  const aConsult = a.source === CONSULTATION_SOURCE ? 0 : 1;
-  const bConsult = b.source === CONSULTATION_SOURCE ? 0 : 1;
-  if (aConsult !== bConsult) return aConsult - bConsult;
+/** Soonest deadline first among copies already known to be open. */
+function compareByDeadlineThenId(a: Dedupable, b: Dedupable): number {
   const at = new Date(a.deadline!).getTime();
   const bt = new Date(b.deadline!).getTime();
   if (at !== bt) return at - bt;
@@ -160,10 +162,18 @@ function mergeGroup<T extends Dedupable>(copies: T[], now: Date): T {
   if (copies.length === 1) return copies[0];
 
   const open = copies.filter((c) => isDeadlineStillOpen(c.deadline, now));
+  // Deadline, label, institution, stage: all come from whichever open copy
+  // closes soonest, since that is genuinely the next thing to happen.
   const lead =
     open.length > 0
-      ? [...open].sort(compareOpenCopies)[0]
+      ? [...open].sort(compareByDeadlineThenId)[0]
       : [...copies].sort(compareClosedCopies)[0];
+
+  // The link is a separate lookup: a public consultation wins it whenever
+  // one is open, even on the rare occasion its own deadline isn't the
+  // soonest, because it's the one page an outsider can actually act on.
+  const openConsultation = open.find((c) => c.source === CONSULTATION_SOURCE);
+  const primaryUrlCopy = openConsultation ?? lead;
 
   const appearances: Appearance[] = copies.map((c) => ({
     source: c.source,
@@ -178,6 +188,7 @@ function mergeGroup<T extends Dedupable>(copies: T[], now: Date): T {
 
   return {
     ...lead,
+    url: primaryUrlCopy.url,
     score: Math.max(...copies.map((c) => c.score)),
     // Actionable if any listing of this act has an open window, since the
     // reader can act on that listing even if the lead copy is not the one.

@@ -107,6 +107,72 @@ describe("dedupeByAct", () => {
     expect(out).toHaveLength(3);
   });
 
+  it("shows the earliest open deadline even when that copy isn't the consultation", () => {
+    // The QA fix this covers: the old tie-break always preferred a
+    // consultation copy outright, so this case would previously have shown
+    // the consultation's later date instead of the genuinely soonest one.
+    const out = dedupeByAct(
+      [
+        item({
+          id: "tap_legal_acts:26-TA-1",
+          source: "tap_legal_acts",
+          deadline: "2026-09-16T00:00:00.000Z", // sooner
+        }),
+        item({
+          id: "tap_consultations:26-TA-1",
+          source: "tap_consultations",
+          deadline: "2026-09-25T00:00:00.000Z", // later, but still open
+        }),
+      ],
+      NOW,
+    );
+    expect(out[0].deadline).toBe("2026-09-16T00:00:00.000Z");
+    expect(out[0].source).toBe("tap_legal_acts");
+  });
+
+  it("still uses the open consultation's link even when its own deadline isn't the soonest", () => {
+    const out = dedupeByAct(
+      [
+        item({
+          id: "tap_legal_acts:26-TA-1",
+          source: "tap_legal_acts",
+          url: "https://example.lv/legal-acts-page",
+          deadline: "2026-09-16T00:00:00.000Z", // sooner: this is the displayed deadline
+        }),
+        item({
+          id: "tap_consultations:26-TA-1",
+          source: "tap_consultations",
+          url: "https://example.lv/consultation-page",
+          deadline: "2026-09-25T00:00:00.000Z", // later, but open, and it's the actionable page
+        }),
+      ],
+      NOW,
+    );
+    expect(out[0].deadline).toBe("2026-09-16T00:00:00.000Z");
+    expect(out[0].url).toBe("https://example.lv/consultation-page");
+  });
+
+  it("falls back to the deadline copy's own URL when no consultation is open", () => {
+    const out = dedupeByAct(
+      [
+        item({
+          id: "tap_legal_acts:26-TA-1",
+          source: "tap_legal_acts",
+          url: "https://example.lv/legal-acts-page",
+          deadline: "2026-09-16T00:00:00.000Z",
+        }),
+        item({
+          id: "tap_consultations:26-TA-1",
+          source: "tap_consultations",
+          url: "https://example.lv/consultation-page",
+          deadline: "2026-09-01T00:00:00.000Z", // already closed
+        }),
+      ],
+      NOW,
+    );
+    expect(out[0].url).toBe("https://example.lv/legal-acts-page");
+  });
+
   it("preserves input order of first appearance", () => {
     const out = dedupeByAct([
       item({ id: "liaa_news:a", source: "liaa_news", title: "first" }),

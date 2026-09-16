@@ -40,6 +40,30 @@ function bySources<T extends { source: string }>(sources: string[]) {
   return (item: T) => sources.length === 0 || sources.includes(item.source);
 }
 
+/**
+ * Every source an item is filed under: every source it actually appeared in
+ * once a merged act is unpacked, not just the single lead copy's source. A
+ * public consultation dedupe-merged into a legal-act card is still a
+ * genuine consultation; counting and filtering it only by the card's lead
+ * source is what made "TAP portāls: Sabiedrības līdzdalība" read 0 while 25
+ * consultations had been scanned. This is why the count shown under a
+ * source can add up to more than the number of rows in the view: one merged
+ * act legitimately counts toward more than one source.
+ */
+function sourcesOf(item: ScoredItem): string[] {
+  if (item.appearances && item.appearances.length > 0) {
+    return [...new Set(item.appearances.map((a) => a.source))];
+  }
+  return [item.source];
+}
+
+/** Same idea as bySources, but checking every source from sourcesOf rather
+ *  than only the lead copy: otherwise a source could show a non-zero count
+ *  in the sidebar yet filter to zero rows when actually selected. */
+function byAnySource(sources: string[]) {
+  return (item: ScoredItem) => sources.length === 0 || sourcesOf(item).some((s) => sources.includes(s));
+}
+
 function byTopics(topics: string[]) {
   return (item: ScoredItem) =>
     topics.length === 0 || matchedTopics(item.matchedRules).some((t) => topics.includes(t));
@@ -66,7 +90,7 @@ export function applyFilters(
   state: FilterState,
   now: Date = new Date(),
 ): FilterResult {
-  const sourceMatch = bySources<ScoredItem>(state.sources);
+  const sourceMatch = byAnySource(state.sources);
   const sourceMatchNotRelevant = bySources<NotRelevantItem>(state.sources);
   const topicMatch = byTopics(state.topics);
   const queryMatch = (item: ScoredItem) => matchesQuery(toSearchable(item), state.query);
@@ -92,9 +116,12 @@ export function applyFilters(
   // there is no relevant-item base to count from. The sidebar is showing
   // where the *excluded* items came from, so it counts those instead.
   const bySource: Record<string, number> = {};
-  const sourceCountBase = state.view === "not_relevant" ? notRelevantByQuery : viewBase.filter(topicMatch);
-  for (const item of sourceCountBase) {
-    bySource[item.source] = (bySource[item.source] ?? 0) + 1;
+  if (state.view === "not_relevant") {
+    for (const item of notRelevantByQuery) bySource[item.source] = (bySource[item.source] ?? 0) + 1;
+  } else {
+    for (const item of viewBase.filter(topicMatch)) {
+      for (const src of sourcesOf(item)) bySource[src] = (bySource[src] ?? 0) + 1;
+    }
   }
 
   // Topic counts: every filter except the topic one, same reasoning. Not

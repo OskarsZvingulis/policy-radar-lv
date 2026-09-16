@@ -94,6 +94,46 @@ describe("applyFilters — source and topic", () => {
   });
 });
 
+describe("applyFilters — merged acts count toward every source they appeared in", () => {
+  // The QA evidence: "TAP portāls: Sabiedrības līdzdalība 0" while 25
+  // consultations had genuinely been scanned, because the merged card's
+  // single `source` field only ever held its lead copy's source.
+  const merged = item({
+    id: "tap_legal_acts:26-TA-1",
+    source: "tap_legal_acts",
+    sourceLabel: "TAP portāls: Tiesību aktu projekti",
+    appearances: [
+      { source: "tap_legal_acts", sourceLabel: "TAP portāls: Tiesību aktu projekti", url: "https://x/legal", actionable: false },
+      {
+        source: "tap_consultations",
+        sourceLabel: "TAP portāls: Sabiedrības līdzdalība",
+        url: "https://x/consult",
+        actionable: true,
+      },
+    ],
+  });
+
+  it("counts a merged act under every source it appeared in, not just the lead", () => {
+    const { counts } = applyFilters([merged], [], { ...DEFAULT_FILTER_STATE, view: "all" });
+    expect(counts.bySource).toEqual({ tap_legal_acts: 1, tap_consultations: 1 });
+  });
+
+  it("filtering by a non-lead source still returns the merged act", () => {
+    const { items: out } = applyFilters([merged], [], {
+      ...DEFAULT_FILTER_STATE,
+      view: "all",
+      sources: ["tap_consultations"],
+    });
+    expect(out.map((i) => i.id)).toEqual(["tap_legal_acts:26-TA-1"]);
+  });
+
+  it("an item with no appearances still counts under its own single source", () => {
+    const plain = item({ id: "plain", source: "liaa_news", sourceLabel: "LIAA" });
+    const { counts } = applyFilters([plain], [], { ...DEFAULT_FILTER_STATE, view: "all" });
+    expect(counts.bySource).toEqual({ liaa_news: 1 });
+  });
+});
+
 describe("applyFilters — search", () => {
   const items = [
     item({ id: "a", title: "Infrastruktūra uzņēmējdarbības atbalstam" }),
